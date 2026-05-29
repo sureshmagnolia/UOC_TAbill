@@ -448,7 +448,7 @@
       "From": "Palakkad KSRTC Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "7.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -533,6 +533,33 @@
       "Type": "Last_Mile"
     },
     {
+      "Route_ID": "ALA_SMT",
+      "Step": "1",
+      "From": "SN College Alathur",
+      "To": "Erattakulam Stop",
+      "Mode": "Taxi",
+      "KM": "0.5",
+      "Type": "First_Mile"
+    },
+    {
+      "Route_ID": "ALA_SMT",
+      "Step": "2",
+      "From": "Erattakulam Stop",
+      "To": "Thrissur KSRTC Stand",
+      "Mode": "Bus",
+      "KM": "44.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "ALA_SMT",
+      "Step": "3",
+      "From": "Thrissur KSRTC Stand",
+      "To": "St Marys College",
+      "Mode": "Taxi",
+      "KM": "2.0",
+      "Type": "Last_Mile"
+    },
+    {
       "Route_ID": "ALA_SMY",
       "Step": "1",
       "From": "SN College Alathur",
@@ -592,7 +619,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -898,7 +925,7 @@
       "From": "MES Asmabi College",
       "To": "Vemballur Stop",
       "Mode": "Taxi",
-      "KM": "1.0",
+      "KM": "7.5",
       "Type": "First_Mile"
     },
     {
@@ -949,7 +976,7 @@
     {
       "Route_ID": "ASM_NEM",
       "Step": "1",
-      "From": "MES Asmabi College",
+      "From": "MES Asmabi (Vemballur)",
       "To": "Kodungallur Stand",
       "Mode": "Taxi",
       "KM": "7.5",
@@ -959,7 +986,7 @@
       "Route_ID": "ASM_NEM",
       "Step": "2",
       "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
+      "To": "Thrissur KSRTC",
       "Mode": "Bus",
       "KM": "36.0",
       "Type": "Main_Haul"
@@ -967,8 +994,8 @@
     {
       "Route_ID": "ASM_NEM",
       "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
+      "From": "Thrissur KSRTC",
+      "To": "Vadakkencherry",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
@@ -976,8 +1003,8 @@
     {
       "Route_ID": "ASM_NEM",
       "Step": "4",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
+      "From": "Vadakkencherry",
+      "To": "Nemmara Stand",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
@@ -985,8 +1012,8 @@
     {
       "Route_ID": "ASM_NEM",
       "Step": "5",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
+      "From": "Nemmara Stand",
+      "To": "NSS Nemmara",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
@@ -1123,7 +1150,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -1132,7 +1159,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -1852,7 +1879,7 @@
       "From": "Palakkad Stadium Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "7.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -2050,7 +2077,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -2077,7 +2104,7 @@
       "From": "Palakkad Stadium Stand",
       "To": "Govt Victoria College",
       "Mode": "Taxi",
-      "KM": "2.0",
+      "KM": "2.5",
       "Type": "Last_Mile"
     },
     {
@@ -2383,7 +2410,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -2959,7 +2986,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -3463,7 +3490,7 @@
       "From": "Pattambi Bus Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -3742,7 +3769,7 @@
       "From": "Vemballur Stop",
       "To": "MES Asmabi College",
       "Mode": "Taxi",
-      "KM": "1.0",
+      "KM": "7.5",
       "Type": "Last_Mile"
     },
     {
@@ -4219,7 +4246,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -4228,7 +4255,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -4477,8 +4504,8 @@
     {
       "Route_ID": "NEM_ASM",
       "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
+      "From": "NSS Nemmara",
+      "To": "Nemmara Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
@@ -4486,8 +4513,8 @@
     {
       "Route_ID": "NEM_ASM",
       "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
+      "From": "Nemmara Stand",
+      "To": "Vadakkencherry",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
@@ -4495,8 +4522,8 @@
     {
       "Route_ID": "NEM_ASM",
       "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
+      "From": "Vadakkencherry",
+      "To": "Thrissur KSRTC",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
@@ -4504,7 +4531,7 @@
     {
       "Route_ID": "NEM_ASM",
       "Step": "4",
-      "From": "Thrissur KSRTC Stand",
+      "From": "Thrissur KSRTC",
       "To": "Kodungallur Stand",
       "Mode": "Bus",
       "KM": "36.0",
@@ -4514,7 +4541,7 @@
       "Route_ID": "NEM_ASM",
       "Step": "5",
       "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
+      "To": "MES Asmabi (Vemballur)",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Last_Mile"
@@ -4840,7 +4867,7 @@
       "From": "Palakkad KSRTC Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "6.5",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -4970,6 +4997,42 @@
       "Type": "Last_Mile"
     },
     {
+      "Route_ID": "NEM_SMT",
+      "Step": "1",
+      "From": "NSS College Nemmara",
+      "To": "Nemmara Bus Stand",
+      "Mode": "Taxi",
+      "KM": "1.5",
+      "Type": "First_Mile"
+    },
+    {
+      "Route_ID": "NEM_SMT",
+      "Step": "2",
+      "From": "Nemmara Bus Stand",
+      "To": "Vadakkencherry NH Stop",
+      "Mode": "Bus",
+      "KM": "12.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "NEM_SMT",
+      "Step": "3",
+      "From": "Vadakkencherry NH Stop",
+      "To": "Thrissur KSRTC Stand",
+      "Mode": "Bus",
+      "KM": "35.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "NEM_SMT",
+      "Step": "4",
+      "From": "Thrissur KSRTC Stand",
+      "To": "St Marys College",
+      "Mode": "Taxi",
+      "KM": "2.0",
+      "Type": "Last_Mile"
+    },
+    {
       "Route_ID": "NEM_SMY",
       "Step": "1",
       "From": "NSS College Nemmara",
@@ -5083,7 +5146,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -5533,7 +5596,7 @@
       "From": "Pattambi Railway Stn",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -5668,7 +5731,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -5704,7 +5767,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
-      "KM": "7.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5731,7 +5794,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5740,7 +5803,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5803,7 +5866,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Stadium Stand",
       "Mode": "Taxi",
-      "KM": "7.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5830,7 +5893,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5875,7 +5938,7 @@
       "From": "NSS College Parakkulam",
       "To": "Pattambi Bus Stand",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5902,7 +5965,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5911,7 +5974,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -5974,7 +6037,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
-      "KM": "6.5",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6001,7 +6064,7 @@
       "From": "NSS College Parakkulam",
       "To": "Pattambi Railway Stn",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6028,7 +6091,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6055,7 +6118,7 @@
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6091,7 +6154,7 @@
       "From": "NSS College Parakkulam",
       "To": "Pattambi Railway Stn",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6118,7 +6181,7 @@
       "From": "NSS College Parakkulam",
       "To": "Kuttippuram Bus Stand",
       "Mode": "Taxi",
-      "KM": "12.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6136,7 +6199,7 @@
       "From": "NSS College Parakkulam",
       "To": "Pattambi Railway Stn",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "First_Mile"
     },
     {
@@ -6577,7 +6640,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -7216,7 +7279,7 @@
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "4.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -7337,6 +7400,33 @@
       "Type": "Last_Mile"
     },
     {
+      "Route_ID": "SMT_ALA",
+      "Step": "1",
+      "From": "St Marys College",
+      "To": "Thrissur KSRTC Stand",
+      "Mode": "Taxi",
+      "KM": "2.0",
+      "Type": "First_Mile"
+    },
+    {
+      "Route_ID": "SMT_ALA",
+      "Step": "2",
+      "From": "Thrissur KSRTC Stand",
+      "To": "Erattakulam Stop",
+      "Mode": "Bus",
+      "KM": "44.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "SMT_ALA",
+      "Step": "3",
+      "From": "Erattakulam Stop",
+      "To": "SN College Alathur",
+      "Mode": "Taxi",
+      "KM": "0.5",
+      "Type": "Last_Mile"
+    },
+    {
       "Route_ID": "SMT_ASM",
       "Step": "1",
       "From": "St Marys College",
@@ -7418,6 +7508,42 @@
       "Type": "Last_Mile"
     },
     {
+      "Route_ID": "SMT_NEM",
+      "Step": "1",
+      "From": "St Marys College",
+      "To": "Thrissur KSRTC Stand",
+      "Mode": "Taxi",
+      "KM": "2.0",
+      "Type": "First_Mile"
+    },
+    {
+      "Route_ID": "SMT_NEM",
+      "Step": "2",
+      "From": "Thrissur KSRTC Stand",
+      "To": "Vadakkencherry NH Stop",
+      "Mode": "Bus",
+      "KM": "35.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "SMT_NEM",
+      "Step": "3",
+      "From": "Vadakkencherry NH Stop",
+      "To": "Nemmara Bus Stand",
+      "Mode": "Bus",
+      "KM": "12.0",
+      "Type": "Main_Haul"
+    },
+    {
+      "Route_ID": "SMT_NEM",
+      "Step": "4",
+      "From": "Nemmara Bus Stand",
+      "To": "NSS College Nemmara",
+      "Mode": "Taxi",
+      "KM": "1.5",
+      "Type": "Last_Mile"
+    },
+    {
       "Route_ID": "SMT_OTP",
       "Step": "1",
       "From": "St Marys College",
@@ -7468,7 +7594,7 @@
       "From": "Pattambi Railway Stn",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -7549,7 +7675,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     },
     {
@@ -7783,7 +7909,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -7891,7 +8017,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -7945,7 +8071,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -7954,7 +8080,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -8080,7 +8206,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -8125,7 +8251,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -8161,7 +8287,7 @@
       "From": "Kuttippuram",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "12.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -8242,7 +8368,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -8269,7 +8395,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "First_Mile"
     },
     {
@@ -8359,7 +8485,7 @@
       "From": "Govt Victoria College",
       "To": "Palakkad Stadium Stand",
       "Mode": "Taxi",
-      "KM": "2.0",
+      "KM": "2.5",
       "Type": "First_Mile"
     },
     {
@@ -8593,7 +8719,7 @@
       "From": "Pattambi Railway Stn",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
-      "KM": "14.0",
+      "KM": "14.5",
       "Type": "Last_Mile"
     },
     {
@@ -8737,7 +8863,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "12.0",
+      "KM": "0.0",
       "Type": "Last_Mile"
     }
   ]
