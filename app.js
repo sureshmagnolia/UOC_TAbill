@@ -268,7 +268,7 @@ function updateCalculations() {
             const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
             const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
             const mode = row.querySelector('select').value;
-            let rowTotal = (mode === 'Rail') ? fare + (km * appSettings.misc.trainIncidentalRate) : fare;
+            let rowTotal = (mode === 'Rail') ? (fare + (km * appSettings.misc.trainIncidentalRate)) : fare;
             total += rowTotal + da;
         }
     });
@@ -322,12 +322,12 @@ async function generatePDF() {
         
         let rDist = "", rdDist = "", tFare = "", iRate = "", iAmt = "", rdRate = "", rdAmt = "";
         if (mode === 'Rail') { 
-            rDist = km; tFare = fare; iRate = appSettings.misc.trainIncidentalRate; iAmt = (km * iRate).toFixed(2); 
+            rDist = km || ""; tFare = fare || ""; iRate = appSettings.misc.trainIncidentalRate; iAmt = km ? (km * iRate).toFixed(2) : ""; 
         } else { 
-            rdDist = km; rdRate = appSettings.misc.specialConveyanceRate; rdAmt = fare.toFixed(2); 
+            rdDist = km || ""; rdRate = appSettings.misc.specialConveyanceRate; rdAmt = fare ? fare.toFixed(2) : ""; 
         }
         
-        let lineT = (mode === 'Rail' ? fare + parseFloat(iAmt) : fare) + da;
+        let lineT = (mode === 'Rail' ? (fare + (parseFloat(iAmt) || 0)) : fare) + da;
         totalClaim += lineT;
         
         tableData.push([dateTime, from, to, mode, rDist, rdDist, tFare, iRate, iAmt, rdRate, rdAmt, (da>0?"1":""), da||"", lineT.toFixed(2), idx===0?getVal('bill-purpose'):""]);
@@ -346,19 +346,22 @@ async function generatePDF() {
 
     doc.setFontSize(9);
     doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 50, doc.lastAutoTable.finalY + 10);
-    doc.text("Signature of Officer: __________________________", pageWidth - 70, doc.lastAutoTable.finalY + 25);
 
     // Page 2: Instructions
     doc.addPage();
     doc.setFontSize(12); doc.text("UNIVERSITY OF CALICUT - TA RULES & INSTRUCTIONS", pageWidth / 2, 20, { align: "center" });
     doc.setFontSize(9);
     const inst = [
-        "1. No TA/DA paid if distance is < 8 km.",
+        "1. No TA/DA will be paid if the journey distance is not more than Eight Kilometres.",
         "2. Road Mileage: Rs 2.50 per KM (Special Conveyance).",
-        "3. Rail Fare: 2nd AC Fare + 90ps per KM incidental expenses.",
-        "4. Daily Allowance: Rs 600 per business day.",
-        "5. Claims must be submitted within 3 months of journey.",
-        "6. Grade I: Pay > 50400 (II AC), Grade II(a): Pay > 42500 (I Class), Grade II(b): Pay > 27800 (III AC)."
+        "3. Rail Fare: 2nd AC Fare + 90ps per KM incidental expenses for Grade I officers.",
+        "4. Daily Allowance: Rs 600 per day for actual day of University business.",
+        "5. Classification of Grades based on Basic Pay:",
+        "   Grade I: Rs. 50,400/- and above",
+        "   Grade II (a): Rs. 42,500/- and above, but below Rs. 50,400/-",
+        "   Grade II (b): Rs. 27,800/- and above, but below Rs. 42,500/-",
+        "   Grade III: Rs. 18,000/- and above, but below Rs. 27,800/-",
+        "   Grade IV: Below Rs. 18,000/-"
     ];
     let iy = 40;
     inst.forEach(line => { doc.text(line, 20, iy); iy += 8; });
@@ -390,10 +393,10 @@ function generateHTMLBill() {
         const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
         
         let rD="", rdD="", tF="", iR="", iA="", rdR="", rdA="";
-        if (mode === 'Rail') { rD=km; tF=fare; iR=appSettings.misc.trainIncidentalRate; iA=(km*iR).toFixed(2); }
-        else { rdD=km; rdR=appSettings.misc.specialConveyanceRate; rdA=fare.toFixed(2); }
+        if (mode === 'Rail') { rD=km||""; tF=fare||""; iR=appSettings.misc.trainIncidentalRate; iA=km ? (km*iR).toFixed(2) : ""; }
+        else { rdD=km||""; rdR=appSettings.misc.specialConveyanceRate; rdA=fare ? fare.toFixed(2) : ""; }
         
-        let lineT = (mode === 'Rail' ? fare + parseFloat(iA||0) : fare) + da;
+        let lineT = (mode === 'Rail' ? (fare + (parseFloat(iA) || 0)) : fare) + da;
         totalClaim += lineT;
         
         tableHtml += `<tr><td>${date}<br><small>${fTime}-${tTime}</small></td><td>${from}</td><td>${to}</td><td>${mode}</td><td>${rD}</td><td>${rdD}</td><td>${tF}</td><td>${iR}</td><td>${iA}</td><td>${rdR}</td><td>${rdA}</td><td>${da>0?"1":""}</td><td>${da||""}</td><td>${lineT.toFixed(2)}</td>${idx===0?`<td rowspan="${rows.length}" style="font-size:8px;text-align:left;">${getVal('bill-purpose')}</td>`:""}</tr>`;
@@ -410,7 +413,7 @@ function generateHTMLBill() {
         .signature-row { display: flex; justify-content: space-between; margin-top: 30px; }
         @media print { .no-print { display: none; } }
     </style></head><body>
-        <div class="no-print"><button onclick="window.print()" style="padding:10px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Print 2-Sided Bill</button></div>
+        <div class="no-print"><button onclick="window.print()" style="padding:10px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Print Bill (2 Sided)</button></div>
         <div style="text-align:center;"><h1>UNIVERSITY OF CALICUT</h1><p>TRAVELLING ALLOWANCE BILL FOR THE MONTH OF ${getVal('bill-month').toUpperCase()}</p></div>
         <table style="width:100%;font-size:12px;margin-bottom:10px;">
             <tr><td width="55%">1) Name: <strong>${getVal('prof-name')}</strong></td><td>5) Basic Pay: <strong>${getVal('prof-basic-pay')}</strong></td></tr>
@@ -428,7 +431,16 @@ function generateHTMLBill() {
         <div class="signature-row"><div>Place: .............<br>Date: ${new Date().toLocaleDateString('en-GB')}</div><div style="text-align:center;border:1px solid #000;width:50px;height:60px;display:flex;align-items:center;">Stamp</div><div style="text-align:center;">__________________________<br>Signature of Officer</div></div>
         <div style="page-break-before:always;margin-top:50px;border-top:1px dashed #000;padding-top:20px;">
             <h3 style="text-align:center;">RATES OF T.A. AND D.A. (UNIVERSITY RULES)</h3>
-            <p>1. Road Mileage: Rs 2.50 per KM (Special Conveyance).<br>2. Rail Fare: 2nd AC + 90ps/km incidental.<br>3. DA: Rs 600 per day.</p>
+            <p>1. No T.A./D.A. will be paid if the journey distance is not more than Eight Kilometres.<br>
+            2. Road Mileage: Rs 2.50 per kilometer (special conveyance).<br>
+            3. Rail Fare: 2nd AC Fare + 90ps per KM incidental expenses for Grade I officers.<br>
+            4. Daily Allowance: Rs 600 per day for actual day of University business.<br>
+            5. Classification of Grades based on Basic Pay:<br>
+               Grade I: Rs. 50,400/- and above<br>
+               Grade II (a): Rs. 42,500/- and above, but below Rs. 50,400/-<br>
+               Grade II (b): Rs. 27,800/- and above, but below Rs. 42,500/-<br>
+               Grade III: Rs. 18,000/- and above, but below Rs. 27,800/-<br>
+               Grade IV: Below Rs. 18,000/-</p>
         </div>
     </body></html>`;
     const w = window.open('', '_blank'); w.document.write(html); w.document.close();

@@ -619,7 +619,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -2077,7 +2077,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -2986,7 +2986,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -5146,7 +5146,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -5731,7 +5731,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -7675,7 +7675,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     },
     {
@@ -7909,7 +7909,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8017,7 +8017,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8071,7 +8071,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8080,7 +8080,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8206,7 +8206,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8251,7 +8251,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8368,7 +8368,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8395,7 +8395,7 @@
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "First_Mile"
     },
     {
@@ -8863,7 +8863,7 @@
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
-      "KM": "0.0",
+      "KM": "12.0",
       "Type": "Last_Mile"
     }
   ]
