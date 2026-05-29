@@ -118,6 +118,39 @@
 
             <!-- Right Column: Journey Table -->
             <div class="lg:col-span-2 space-y-6">
+                <!-- Quick Entry Section -->
+                <section class="bg-blue-900 p-6 rounded-lg shadow-md text-white">
+                    <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Quick Journey Entry
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">From College</label>
+                                <select id="quick-from" class="w-full p-2 rounded text-gray-900 text-sm"></select>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">To College</label>
+                                <select id="quick-to" class="w-full p-2 rounded text-gray-900 text-sm"></select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Onward Date</label>
+                                <input type="date" id="quick-date-onward" class="w-full p-2 rounded text-gray-900 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Return Date</label>
+                                <input type="date" id="quick-date-return" class="w-full p-2 rounded text-gray-900 text-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="generateQuickJourney()" class="mt-4 w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 rounded transition">
+                        Auto-Fill Journey Log
+                    </button>
+                </section>
+
                 <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-blue-800">Journey Log</h2>

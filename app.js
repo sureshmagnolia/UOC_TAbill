@@ -24,6 +24,7 @@ async function init() {
         const response = await fetch('ta_database.json');
         taDatabase = await response.json();
         console.log("Database loaded:", taDatabase);
+        populateCollegeDropdowns();
     } catch (e) {
         console.error("Failed to load database", e);
     }
@@ -34,6 +35,93 @@ async function init() {
     // Add first 2 rows by default
     addJourneyRow();
     addJourneyRow();
+}
+
+function populateCollegeDropdowns() {
+    const fromSelect = document.getElementById('quick-from');
+    const toSelect = document.getElementById('quick-to');
+    
+    if (!fromSelect || !toSelect) return;
+    
+    fromSelect.innerHTML = '<option value="">Select College</option>';
+    toSelect.innerHTML = '<option value="">Select College</option>';
+    
+    taDatabase.abbreviations.forEach(abbr => {
+        const opt1 = document.createElement('option');
+        opt1.value = abbr.Abbreviation;
+        opt1.innerText = `${abbr.Abbreviation} - ${abbr['Full College Name & Location']}`;
+        fromSelect.appendChild(opt1);
+        
+        const opt2 = document.createElement('option');
+        opt2.value = abbr.Abbreviation;
+        opt2.innerText = `${abbr.Abbreviation} - ${abbr['Full College Name & Location']}`;
+        toSelect.appendChild(opt2);
+    });
+}
+
+function generateQuickJourney() {
+    const fromAbbr = document.getElementById('quick-from').value;
+    const toAbbr = document.getElementById('quick-to').value;
+    const onwardDate = document.getElementById('quick-date-onward').value;
+    const returnDate = document.getElementById('quick-date-return').value;
+    
+    if (!fromAbbr || !toAbbr || !onwardDate) {
+        alert("Please select colleges and onward date.");
+        return;
+    }
+    
+    const tbody = document.getElementById('journey-body');
+    tbody.innerHTML = ""; // Clear existing
+    
+    // 1. Find Onward Route
+    const onwardRouteId = `${fromAbbr}_${toAbbr}`;
+    const onwardSteps = taDatabase.routes.filter(r => r.Route_ID === onwardRouteId);
+    
+    if (onwardSteps.length === 0) {
+        alert(`No predefined route found for ${onwardRouteId} in database.`);
+        return;
+    }
+    
+    onwardSteps.forEach(step => {
+        addJourneyRow();
+        const row = tbody.lastElementChild;
+        row.querySelector('input[type="date"]').value = onwardDate;
+        row.querySelector('input[placeholder="From"]').value = step.From;
+        row.querySelector('input[placeholder="To"]').value = step.To;
+        row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
+        row.querySelector('input[placeholder="KM"]').value = step.KM;
+    });
+    
+    // 2. Find Return Route
+    if (returnDate) {
+        const returnRouteId = `${toAbbr}_${fromAbbr}`;
+        const returnSteps = taDatabase.routes.filter(r => r.Route_ID === returnRouteId);
+        
+        if (returnSteps.length > 0) {
+            returnSteps.forEach(step => {
+                addJourneyRow();
+                const row = tbody.lastElementChild;
+                row.querySelector('input[type="date"]').value = returnDate;
+                row.querySelector('input[placeholder="From"]').value = step.From;
+                row.querySelector('input[placeholder="To"]').value = step.To;
+                row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
+                row.querySelector('input[placeholder="KM"]').value = step.KM;
+            });
+        } else {
+            // If reverse ID not found, try to reverse onward steps manually
+            [...onwardSteps].reverse().forEach(step => {
+                addJourneyRow();
+                const row = tbody.lastElementChild;
+                row.querySelector('input[type="date"]').value = returnDate;
+                row.querySelector('input[placeholder="From"]').value = step.To;
+                row.querySelector('input[placeholder="To"]').value = step.From;
+                row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
+                row.querySelector('input[placeholder="KM"]').value = step.KM;
+            });
+        }
+    }
+    
+    updateCalculations();
 }
 
 function loadSettings() {
