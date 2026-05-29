@@ -83,9 +83,8 @@ function generateQuickJourney() {
             addJourneyRow();
             const row = tbody.lastElementChild;
             const km = parseFloat(step.KM) || 0;
-            const mode = step.Mode === 'Taxi' ? 'Special' : step.Mode;
+            const mode = step.Mode === 'Taxi' ? 'Special' : (step.Mode === 'Train' ? 'Rail' : step.Mode);
             
-            // Calculate duration (approx 40km/h for Bus/Taxi, 60km/h for Train)
             const speed = mode === 'Rail' ? 60 : 40;
             const durationMin = Math.max(10, Math.round((km / speed) * 60));
             
@@ -94,16 +93,13 @@ function generateQuickJourney() {
             const toTime = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
             
             row.querySelector('input[type="date"]').value = date;
+            row.querySelector('input[placeholder="FT"]').value = fromTime;
+            row.querySelector('input[placeholder="TT"]').value = toTime;
             row.querySelector('input[placeholder="From"]').value = step.From;
             row.querySelector('input[placeholder="To"]').value = step.To;
             row.querySelector('select').value = mode;
             row.querySelector('input[placeholder="KM"]').value = step.KM;
             
-            // Add custom time fields to row
-            row.querySelector('input[placeholder="FT"]').value = fromTime;
-            row.querySelector('input[placeholder="TT"]').value = toTime;
-
-            // Add buffer for next segment (10 mins)
             currentTime.setMinutes(currentTime.getMinutes() + (idx < steps.length - 1 ? 10 : 0));
         });
     };
@@ -127,6 +123,20 @@ function generateQuickJourney() {
         if (returnSteps.length > 0) {
             addTimedSteps(returnSteps, returnDate, returnStartTime);
         }
+    }
+
+    // 3. Auto-Calculate DA
+    const d1 = new Date(onwardDate);
+    const d2 = returnDate ? new Date(returnDate) : d1;
+    const days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
+    
+    if (days > 0) {
+        addJourneyRow();
+        const daRow = tbody.lastElementChild;
+        daRow.querySelector('input[type="date"]').value = returnDate || onwardDate;
+        daRow.querySelector('input[placeholder="From"]').value = "(Daily Allowance)";
+        daRow.querySelector('input[placeholder="DA"]').value = days * 600;
+        daRow.dataset.days = days;
     }
     
     updateCalculations();
