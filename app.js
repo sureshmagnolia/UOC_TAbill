@@ -442,5 +442,186 @@ async function generatePDF() {
     window.open(doc.output('bloburl'), '_blank');
 }
 
+function generateHTMLBill() {
+    const getVal = (id) => document.getElementById(id).value;
+    const month = getVal('bill-month') || "..................";
+    const name = getVal('prof-name');
+    const designation = getVal('prof-designation');
+    const college = getVal('prof-college');
+    const address = getVal('prof-address');
+    const basicPay = getVal('prof-basic-pay');
+    const accNo = getVal('prof-acc-no');
+    const bankIfsc = getVal('prof-bank-ifsc');
+    const purpose = getVal('bill-purpose');
+
+    const rows = document.querySelectorAll('#journey-body tr');
+    let tableHtml = "";
+    let totalClaim = 0;
+
+    rows.forEach((row, idx) => {
+        const date = row.querySelector('input[type="date"]').value;
+        const from = row.querySelector('input[placeholder="From"]').value;
+        const to = row.querySelector('input[placeholder="To"]').value;
+        const mode = row.querySelector('select').value;
+        const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
+        const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
+        const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+        
+        let railDist = "", roadDist = "", trainFare = "", incidentalRate = "", incidentalAmt = "", roadRate = "", roadAmt = "";
+        let lineTotal = 0;
+
+        if (mode === 'Special') {
+            roadDist = km;
+            roadRate = appSettings.misc.specialConveyanceRate;
+            roadAmt = (km * roadRate).toFixed(2);
+            lineTotal = km * roadRate;
+        } else if (mode === 'Rail') {
+            railDist = km;
+            trainFare = fare;
+            incidentalRate = appSettings.misc.trainIncidentalRate;
+            incidentalAmt = (km * incidentalRate).toFixed(2);
+            lineTotal = fare + (km * incidentalRate);
+        } else {
+            if (mode === 'Air') railDist = km; else roadDist = km;
+            trainFare = fare;
+            lineTotal = fare;
+        }
+
+        lineTotal += da;
+        totalClaim += lineTotal;
+
+        tableHtml += `
+            <tr>
+                <td>${date}</td>
+                <td>${from}</td>
+                <td>${to}</td>
+                <td>${mode}</td>
+                <td>${railDist}</td>
+                <td>${roadDist}</td>
+                <td>${trainFare}</td>
+                <td>${incidentalRate}</td>
+                <td>${incidentalAmt}</td>
+                <td>${roadRate}</td>
+                <td>${roadAmt}</td>
+                <td>${da > 0 ? "1" : ""}</td>
+                <td>${da || ""}</td>
+                <td>${lineTotal.toFixed(2)}</td>
+                ${idx === 0 ? `<td rowspan="${rows.length}" style="font-size: 8px; vertical-align: top;">${purpose}</td>` : ""}
+            </tr>
+        `;
+    });
+
+    const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>TA Bill - ${name}</title>
+            <style>
+                body { font-family: sans-serif; padding: 20px; font-size: 12px; line-height: 1.4; color: #333; }
+                .header { text-align: center; margin-bottom: 20px; }
+                .header h1 { margin: 0; font-size: 18px; }
+                .header p { margin: 2px 0; }
+                .meta-table { width: 100%; margin-bottom: 20px; }
+                .meta-table td { padding: 4px 0; }
+                .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                .bill-table th, .bill-table td { border: 1px solid #000; padding: 4px; text-align: center; font-size: 10px; }
+                .bill-table th { background: #f2f2f2; }
+                .footer { margin-top: 40px; }
+                .signature-section { display: flex; justify-content: space-between; margin-top: 60px; }
+                .stamp { border: 1px solid #000; width: 60px; height: 70px; display: flex; align-items: center; text-align: center; font-size: 9px; }
+                @media print { .no-print { display: none; } body { padding: 0; } }
+            </style>
+        </head>
+        <body>
+            <button class="no-print" onclick="window.print()" style="margin-bottom: 20px; padding: 10px 20px; background: #2563eb; color: #white; border: none; border-radius: 4px; cursor: pointer;">Print Bill</button>
+            <div class="header">
+                <h1>UNIVERSITY OF CALICUT</h1>
+                <p>(PAREEKSHA BHAVAN)</p>
+                <p><strong>TRAVELLING ALLOWANCE FOR THE MONTH OF ${month.toUpperCase()}</strong></p>
+            </div>
+
+            <table class="meta-table">
+                <tr>
+                    <td width="55%">1) Name (In Block Letters): <strong>${name}</strong></td>
+                    <td>5) Basic Pay/Consolidated Amount: <strong>${basicPay}</strong></td>
+                </tr>
+                <tr>
+                    <td>2) Designation: <strong>${designation}</strong></td>
+                    <td>6) Savings Bank A/c No: <strong>${accNo}</strong></td>
+                </tr>
+                <tr>
+                    <td>3) Name of the College: <strong>${college}</strong></td>
+                    <td>7) Name of the Bank with IFSC Code: <strong>${bankIfsc}</strong></td>
+                </tr>
+                <tr>
+                    <td>4) Permanent Address: <strong>${address}</strong></td>
+                    <td>Voucher No: .................................<br>Month of: .................................<br>Debit Head: .................................</td>
+                </tr>
+            </table>
+
+            <table class="bill-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Date</th>
+                        <th colspan="2">Place</th>
+                        <th rowspan="2">Mode</th>
+                        <th colspan="2">Distance</th>
+                        <th colspan="3">Rail/Air Journey</th>
+                        <th colspan="2">Road Journey</th>
+                        <th colspan="2">Daily Allowance</th>
+                        <th rowspan="2">Total</th>
+                        <th rowspan="2">Purpose</th>
+                    </tr>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Rail</th>
+                        <th>Road</th>
+                        <th>Fare</th>
+                        <th>Rate</th>
+                        <th>Amt</th>
+                        <th>Rate</th>
+                        <th>Amt</th>
+                        <th>Days</th>
+                        <th>Amt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${tableHtml}
+                    <tr>
+                        <td colspan="13" style="text-align: right;"><strong>Total</strong></td>
+                        <td><strong>${totalClaim.toFixed(2)}</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="footer">
+                <p><strong>CERTIFICATE</strong></p>
+                <p>1) I certify that the amount claimed in this bill or any part thereof has not been claimed previously OR drawn from any other source.</p>
+                <p>2) I certify that the road journey on .................... for which mileage allowance has been claimed at the higher rates was performed in my own car Reg. No. ....................</p>
+                
+                <div class="signature-section">
+                    <div>
+                        <p>Place: <strong>Palakkad</strong></p>
+                        <p>Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+                    </div>
+                    <div class="stamp">Revenue<br>Stamp</div>
+                    <div style="text-align: center;">
+                        <br><br>
+                        <p>__________________________</p>
+                        <p>Signature of the Officer who travelled</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>
+    `;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+}
+
 // Start the app
 init();
