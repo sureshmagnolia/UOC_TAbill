@@ -5,15 +5,16 @@ let appSettings = {};
 
 const DEFAULT_SETTINGS = {
     grades: [
-        { id: "I", minPay: 50400, roadRate: 0.80, trainClass: "II AC", daInside: 400, daOutside: 550 },
-        { id: "II(a)", minPay: 42500, roadRate: 0.60, trainClass: "I Class", daInside: 320, daOutside: 450 },
-        { id: "II(b)", minPay: 27800, roadRate: 0.50, trainClass: "III AC", daInside: 320, daOutside: 450 },
-        { id: "III", minPay: 18000, roadRate: 0.50, trainClass: "II Class", daInside: 250, daOutside: 350 },
-        { id: "IV", minPay: 0, roadRate: 0.50, trainClass: "II Class", daInside: 250, daOutside: 350 }
+        { id: "I", minPay: 50400, roadRate: 0.80, trainClass: "II AC", daInside: 600, daOutside: 600 },
+        { id: "II(a)", minPay: 42500, roadRate: 0.60, trainClass: "I Class", daInside: 600, daOutside: 600 },
+        { id: "II(b)", minPay: 27800, roadRate: 0.50, trainClass: "III AC", daInside: 600, daOutside: 600 },
+        { id: "III", minPay: 18000, roadRate: 0.50, trainClass: "II Class", daInside: 600, daOutside: 600 },
+        { id: "IV", minPay: 0, roadRate: 0.50, trainClass: "II Class", daInside: 600, daOutside: 600 }
     ],
     misc: {
-        specialConveyanceRate: 2.50, // Updated from sample
-        trainIncidentalRate: 0.90, // Updated from sample
+        specialConveyanceRate: 2.50,
+        trainIncidentalRate: 0.90, // per KM
+        railFarePerKM: 1.60, // Estimated 2nd AC rate for auto-calc
         minDistanceForTA: 8, // km
     }
 };
@@ -169,7 +170,7 @@ function addJourneyRow() {
             <input type="number" class="form-input w-12 text-right text-xs p-1 border-none bg-transparent" placeholder="KM" oninput="updateCalculations()">
         </td>
         <td class="p-1">
-            <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="Fare" oninput="updateCalculations()">
+            <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="Fare" oninput="handleFareInput(this)">
         </td>
         <td class="p-1">
             <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="DA" oninput="updateCalculations()">
@@ -228,22 +229,45 @@ function handleStationInput(input) {
     updateCalculations();
 }
 
+function handleFareInput(input) {
+    input.dataset.auto = "false";
+    updateCalculations();
+}
+
 function updateCalculations() {
     let total = 0;
     const rows = document.querySelectorAll('#journey-body tr');
+    const pay = parseFloat(document.getElementById('prof-basic-pay').value) || 0;
+    const grade = appSettings.grades.find(g => pay >= g.minPay) || appSettings.grades[4];
     
     rows.forEach(row => {
-        const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
-        const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
-        const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+        const kmInput = row.querySelector('input[placeholder="KM"]');
+        const fareInput = row.querySelector('input[placeholder="Fare"]');
+        const daInput = row.querySelector('input[placeholder="DA"]');
+        
+        const km = parseFloat(kmInput.value) || 0;
         const mode = row.querySelector('select').value;
+        
+        // Auto-calculate Fare if empty or auto-flagged
+        if (fareInput.value === "" || fareInput.dataset.auto === "true") {
+            if (mode === 'Rail') {
+                fareInput.value = Math.round(km * appSettings.misc.railFarePerKM);
+                fareInput.dataset.auto = "true";
+            } else if (mode === 'Special') {
+                fareInput.value = (km * appSettings.misc.specialConveyanceRate).toFixed(2);
+                fareInput.dataset.auto = "true";
+            }
+        }
+
+        const fare = parseFloat(fareInput.value) || 0;
+        const da = parseFloat(daInput.value) || 0;
         
         let rowTotal = 0;
         if (mode === 'Special') {
-            rowTotal = km * appSettings.misc.specialConveyanceRate;
+            rowTotal = fare; 
         } else if (mode === 'Rail') {
             rowTotal = fare + (km * appSettings.misc.trainIncidentalRate);
-        } else if (mode === 'Bus' || mode === 'Air') {
+        } else {
             rowTotal = fare;
         }
         
@@ -308,8 +332,8 @@ function renderSettings() {
                 <input type="number" step="0.01" value="${appSettings.misc.trainIncidentalRate}" class="form-input" onchange="updateSetting('misc', 'trainIncidentalRate', null, this.value)">
             </div>
             <div>
-                <label class="text-[10px] uppercase font-bold text-gray-400">Min Distance (TA)</label>
-                <input type="number" value="${appSettings.misc.minDistanceForTA}" class="form-input" onchange="updateSetting('misc', 'minDistanceForTA', null, this.value)">
+                <label class="text-[10px] uppercase font-bold text-gray-400">Rail Fare (per KM)</label>
+                <input type="number" step="0.01" value="${appSettings.misc.railFarePerKM}" class="form-input" onchange="updateSetting('misc', 'railFarePerKM', null, this.value)">
             </div>
         </div>
     `;
@@ -448,14 +472,14 @@ async function generatePDF() {
         if (mode === 'Special') {
             roadDist = km;
             roadRate = appSettings.misc.specialConveyanceRate;
-            roadAmt = km * roadRate;
-            lineTotal = roadAmt;
+            roadAmt = (km * roadRate).toFixed(2);
+            lineTotal = km * roadRate;
         } else if (mode === 'Rail') {
             railDist = km;
             trainFare = fare;
             incidentalRate = appSettings.misc.trainIncidentalRate;
-            incidentalAmt = km * incidentalRate;
-            lineTotal = trainFare + incidentalAmt;
+            incidentalAmt = (km * incidentalRate).toFixed(2);
+            lineTotal = fare + (km * incidentalRate);
         } else {
             // Bus/Air
             if (mode === 'Air') railDist = km; else roadDist = km;
@@ -467,7 +491,7 @@ async function generatePDF() {
         totalClaim += lineTotal;
 
         tableData.push([
-            date, from, to, mode, railDist, roadDist, trainFare, incidentalRate, incidentalAmt, roadRate, roadAmt, (da > 0 ? "1" : ""), da, lineTotal, ""
+            date, from, to, mode, railDist, roadDist, trainFare, incidentalRate, incidentalAmt, roadRate, roadAmt, (da > 0 ? "1" : ""), da, lineTotal.toFixed(2), ""
         ]);
     });
 
@@ -503,13 +527,7 @@ async function generatePDF() {
             13: { cellWidth: 12 }, // Line Total
             14: { cellWidth: 15, halign: 'center' } // Purpose
         },
-        margin: { left: 5, right: 5 },
-        didDrawCell: (data) => {
-            if (data.section === 'body' && data.column.index === 14 && data.row.index === 0) {
-                // This is the Purpose column. If we wanted vertical text, we'd do it here.
-                // For now, let's just make it wrap.
-            }
-        }
+        margin: { left: 5, right: 5 }
     });
 
     const finalY = doc.lastAutoTable.finalY + 10;
@@ -610,7 +628,7 @@ function generateHTMLBill() {
                 .header h1 { margin: 0; font-size: 18px; }
                 .header p { margin: 2px 0; }
                 .meta-table { width: 100%; margin-bottom: 20px; }
-                .meta-table td { padding: 4px 0; }
+                .meta-table td { padding: 4px; }
                 .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
                 .bill-table th, .bill-table td { border: 1px solid #000; padding: 4px; text-align: center; font-size: 10px; }
                 .bill-table th { background: #f2f2f2; }
@@ -628,7 +646,7 @@ function generateHTMLBill() {
                 <p><strong>TRAVELLING ALLOWANCE FOR THE MONTH OF ${month.toUpperCase()}</strong></p>
             </div>
 
-            <table class="meta-table">
+            <table class="meta-table" width="100%">
                 <tr>
                     <td width="55%">1) Name (In Block Letters): <strong>${name}</strong></td>
                     <td>5) Basic Pay/Consolidated Amount: <strong>${basicPay}</strong></td>
@@ -691,7 +709,7 @@ function generateHTMLBill() {
                 
                 <div class="signature-section">
                     <div>
-                        <p>Place: <strong>Palakkad</strong></p>
+                        <p>Place: ....................</p>
                         <p>Date: <strong>${new Date().toLocaleDateString()}</strong></p>
                     </div>
                     <div class="stamp">Revenue<br>Stamp</div>
