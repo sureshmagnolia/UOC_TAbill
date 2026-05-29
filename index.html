@@ -128,12 +128,13 @@
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">From College</label>
-                                <select id="quick-from" class="w-full p-2 rounded text-gray-900 text-sm"></select>
+                                <input type="text" id="quick-from" list="colleges-list" class="w-full p-2 rounded text-gray-900 text-sm" placeholder="Search college...">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">To College</label>
-                                <select id="quick-to" class="w-full p-2 rounded text-gray-900 text-sm"></select>
+                                <input type="text" id="quick-to" list="colleges-list" class="w-full p-2 rounded text-gray-900 text-sm" placeholder="Search college...">
                             </div>
+                            <datalist id="colleges-list"></datalist>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
@@ -170,7 +171,7 @@
                         <table class="w-full text-left text-sm" id="journey-table">
                             <thead class="bg-gray-50 text-gray-600 uppercase text-[10px] font-bold">
                                 <tr>
-                                    <th class="p-2 border-b">Date</th>
+                                    <th class="p-2 border-b w-40">Date & Time</th>
                                     <th class="p-2 border-b">From</th>
                                     <th class="p-2 border-b">To</th>
                                     <th class="p-2 border-b">Mode</th>

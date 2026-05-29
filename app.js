@@ -39,24 +39,15 @@ async function init() {
 }
 
 function populateCollegeDropdowns() {
-    const fromSelect = document.getElementById('quick-from');
-    const toSelect = document.getElementById('quick-to');
+    const dl = document.getElementById('colleges-list');
+    if (!dl) return;
     
-    if (!fromSelect || !toSelect) return;
-    
-    fromSelect.innerHTML = '<option value="">Select College</option>';
-    toSelect.innerHTML = '<option value="">Select College</option>';
-    
+    dl.innerHTML = '';
     taDatabase.abbreviations.forEach(abbr => {
-        const opt1 = document.createElement('option');
-        opt1.value = abbr.Abbreviation;
-        opt1.innerText = `${abbr.Abbreviation} - ${abbr['Full College Name & Location']}`;
-        fromSelect.appendChild(opt1);
-        
-        const opt2 = document.createElement('option');
-        opt2.value = abbr.Abbreviation;
-        opt2.innerText = `${abbr.Abbreviation} - ${abbr['Full College Name & Location']}`;
-        toSelect.appendChild(opt2);
+        const opt = document.createElement('option');
+        opt.value = abbr.Abbreviation;
+        opt.innerText = abbr['Full College Name & Location'];
+        dl.appendChild(opt);
     });
 }
 
@@ -109,8 +100,6 @@ function generateQuickJourney() {
     const onwardSteps = taDatabase.routes.filter(r => r.Route_ID === onwardRouteId);
     if (onwardSteps.length > 0) {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime);
-    } else {
-        alert(`No predefined route found for ${onwardRouteId}.`);
     }
 
     // 2. Return
@@ -133,8 +122,13 @@ function generateQuickJourney() {
     if (days > 0) {
         addJourneyRow();
         const daRow = tbody.lastElementChild;
+        daRow.dataset.type = "DA";
+        daRow.classList.add("bg-blue-50", "font-bold");
         daRow.querySelector('input[type="date"]').value = returnDate || onwardDate;
-        daRow.querySelector('input[placeholder="From"]').value = "(Daily Allowance)";
+        daRow.querySelector('input[placeholder="From"]').value = `DA for ${days} Days`;
+        daRow.querySelector('input[placeholder="To"]').value = "";
+        daRow.querySelector('input[placeholder="KM"]').value = "";
+        daRow.querySelector('select').classList.add("hidden");
         daRow.querySelector('input[placeholder="DA"]').value = days * 600;
         daRow.dataset.days = days;
     }
@@ -246,7 +240,7 @@ function handleStationInput(input) {
         
         if (route) {
             row.querySelector('input[placeholder="KM"]').value = route.KM;
-            row.querySelector('select').value = route.Mode === 'Taxi' ? 'Special' : route.Mode;
+            row.querySelector('select').value = route.Mode === 'Taxi' ? 'Special' : (route.Mode === 'Train' ? 'Rail' : route.Mode);
         }
     }
     updateCalculations();
@@ -260,10 +254,13 @@ function handleFareInput(input) {
 function updateCalculations() {
     let total = 0;
     const rows = document.querySelectorAll('#journey-body tr');
-    const pay = parseFloat(document.getElementById('prof-basic-pay').value) || 0;
-    const grade = appSettings.grades.find(g => pay >= g.minPay) || appSettings.grades[4];
     
     rows.forEach(row => {
+        if (row.dataset.type === "DA") {
+            total += parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+            return;
+        }
+
         const kmInput = row.querySelector('input[placeholder="KM"]');
         const fareInput = row.querySelector('input[placeholder="Fare"]');
         const daInput = row.querySelector('input[placeholder="DA"]');
@@ -276,7 +273,7 @@ function updateCalculations() {
             if (mode === 'Rail') {
                 fareInput.value = Math.round(km * appSettings.misc.railFarePerKM);
                 fareInput.dataset.auto = "true";
-            } else if (mode === 'Special') {
+            } else if (mode === 'Special' || mode === 'Bus') {
                 fareInput.value = (km * appSettings.misc.specialConveyanceRate).toFixed(2);
                 fareInput.dataset.auto = "true";
             }
@@ -286,7 +283,7 @@ function updateCalculations() {
         const da = parseFloat(daInput.value) || 0;
         
         let rowTotal = 0;
-        if (mode === 'Special') {
+        if (mode === 'Special' || mode === 'Bus') {
             rowTotal = fare; 
         } else if (mode === 'Rail') {
             rowTotal = fare + (km * appSettings.misc.trainIncidentalRate);
@@ -347,7 +344,7 @@ function renderSettings() {
     html += `
         <div class="grid grid-cols-3 gap-4">
             <div>
-                <label class="text-[10px] uppercase font-bold text-gray-400">Special Conveyance (Road)</label>
+                <label class="text-[10px] uppercase font-bold text-gray-400">Road Mileage (Bus/Taxi)</label>
                 <input type="number" step="0.01" value="${appSettings.misc.specialConveyanceRate}" class="form-input" onchange="updateSetting('misc', 'specialConveyanceRate', null, this.value)">
             </div>
             <div>
@@ -476,11 +473,23 @@ async function generatePDF() {
     const tableData = [];
     const rows = document.querySelectorAll('#journey-body tr');
     let totalClaim = 0;
-    
-    const pay = parseFloat(getVal('prof-basic-pay')) || 0;
-    const grade = appSettings.grades.find(g => pay >= g.minPay) || appSettings.grades[4];
 
     rows.forEach((row, idx) => {
+        if (row.dataset.type === "DA") {
+            const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+            const days = row.dataset.days || "1";
+            totalClaim += da;
+            tableData.push([
+                { content: `(DA for ${days} Days)`, colSpan: 12, styles: { halign: 'center', fontStyle: 'bold' } },
+                "", "", "", "", "", "", "", "", "", "", "", da, "", ""
+            ]);
+            // Filter out the empty cells that autoTable would otherwise draw
+            tableData[tableData.length-1] = tableData[tableData.length-1].slice(0, 2); 
+            tableData[tableData.length-1].push(da);
+            tableData[tableData.length-1].push("");
+            return;
+        }
+
         const date = row.querySelector('input[type="date"]').value;
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
@@ -492,7 +501,7 @@ async function generatePDF() {
         let railDist = "", roadDist = "", trainFare = "", incidentalRate = "", incidentalAmt = "", roadRate = "", roadAmt = "";
         let lineTotal = 0;
 
-        if (mode === 'Special') {
+        if (mode === 'Special' || mode === 'Bus') {
             roadDist = km;
             roadRate = appSettings.misc.specialConveyanceRate;
             roadAmt = (km * roadRate).toFixed(2);
@@ -504,7 +513,6 @@ async function generatePDF() {
             incidentalAmt = (km * incidentalRate).toFixed(2);
             lineTotal = fare + (km * incidentalRate);
         } else {
-            // Bus/Air
             if (mode === 'Air') railDist = km; else roadDist = km;
             trainFare = fare;
             lineTotal = fare;
@@ -590,6 +598,20 @@ function generateHTMLBill() {
     let totalClaim = 0;
 
     rows.forEach((row, idx) => {
+        if (row.dataset.type === "DA") {
+            const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+            const days = row.dataset.days || "1";
+            totalClaim += da;
+            tableHtml += `
+                <tr style="background: #fdfdfd; font-weight: bold;">
+                    <td colspan="13" style="text-align: center;">DA for ${days} Days</td>
+                    <td>${da.toFixed(2)}</td>
+                    ${idx === 0 ? `<td rowspan="${rows.length}" style="font-size: 8px; vertical-align: top; text-align: left;">${purpose}</td>` : ""}
+                </tr>
+            `;
+            return;
+        }
+
         const date = formatDate(row.querySelector('input[type="date"]').value);
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
@@ -603,7 +625,7 @@ function generateHTMLBill() {
         let railDist = "", roadDist = "", trainFare = "", incidentalRate = "", incidentalAmt = "", roadRate = "", roadAmt = "";
         let lineTotal = 0;
 
-        if (mode === 'Special') {
+        if (mode === 'Special' || mode === 'Bus') {
             roadDist = km;
             roadRate = appSettings.misc.specialConveyanceRate;
             roadAmt = (km * roadRate).toFixed(2);
@@ -662,6 +684,7 @@ function generateHTMLBill() {
                 .bill-table th, .bill-table td { border: 1px solid #000; padding: 3px; text-align: center; font-size: 9px; line-height: 1.1; }
                 .bill-table th { background: #eee; font-weight: bold; }
                 .footer { margin-top: 20px; font-size: 11px; }
+                .cert-box { border: 1px solid #000; padding: 10px; margin-top: 10px; }
                 .signature-row { display: flex; justify-content: space-between; margin-top: 40px; }
                 .stamp-box { border: 1px solid #000; width: 60px; height: 70px; display: flex; align-items: center; text-align: center; font-size: 10px; }
                 
@@ -714,7 +737,7 @@ function generateHTMLBill() {
                 <table class="bill-table">
                     <thead>
                         <tr>
-                            <th rowspan="2" width="8%">Date &<br>Time</th>
+                            <th rowspan="2" width="10%">Date &<br>Time</th>
                             <th colspan="2">Place</th>
                             <th rowspan="2" width="6%">Mode of<br>Conv.</th>
                             <th colspan="2">Distance</th>
