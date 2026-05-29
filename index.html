@@ -137,12 +137,18 @@
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Onward Date</label>
-                                <input type="date" id="quick-date-onward" class="w-full p-2 rounded text-gray-900 text-sm">
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Onward Date & Time</label>
+                                <div class="flex gap-1">
+                                    <input type="date" id="quick-date-onward" class="w-2/3 p-2 rounded text-gray-900 text-sm">
+                                    <input type="time" id="quick-time-onward" value="08:00" class="w-1/3 p-2 rounded text-gray-900 text-sm">
+                                </div>
                             </div>
                             <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Return Date</label>
-                                <input type="date" id="quick-date-return" class="w-full p-2 rounded text-gray-900 text-sm">
+                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Return Date & Time</label>
+                                <div class="flex gap-1">
+                                    <input type="date" id="quick-date-return" class="w-2/3 p-2 rounded text-gray-900 text-sm">
+                                    <input type="time" id="quick-time-return" value="16:00" class="w-1/3 p-2 rounded text-gray-900 text-sm">
+                                </div>
                             </div>
                         </div>
                     </div>

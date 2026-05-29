@@ -65,60 +65,67 @@ function generateQuickJourney() {
     const toAbbr = document.getElementById('quick-to').value;
     const onwardDate = document.getElementById('quick-date-onward').value;
     const returnDate = document.getElementById('quick-date-return').value;
+    const onwardStartTime = document.getElementById('quick-time-onward').value;
+    const returnStartTime = document.getElementById('quick-time-return').value;
     
-    if (!fromAbbr || !toAbbr || !onwardDate) {
-        alert("Please select colleges and onward date.");
+    if (!fromAbbr || !toAbbr || !onwardDate || !onwardStartTime) {
+        alert("Please select colleges, onward date and start time.");
         return;
     }
     
     const tbody = document.getElementById('journey-body');
     tbody.innerHTML = ""; // Clear existing
     
-    // 1. Find Onward Route
+    const addTimedSteps = (steps, date, startTime) => {
+        let currentTime = new Date(`${date}T${startTime}`);
+        
+        steps.forEach((step, idx) => {
+            addJourneyRow();
+            const row = tbody.lastElementChild;
+            const km = parseFloat(step.KM) || 0;
+            const mode = step.Mode === 'Taxi' ? 'Special' : step.Mode;
+            
+            // Calculate duration (approx 40km/h for Bus/Taxi, 60km/h for Train)
+            const speed = mode === 'Rail' ? 60 : 40;
+            const durationMin = Math.max(10, Math.round((km / speed) * 60));
+            
+            const fromTime = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            currentTime.setMinutes(currentTime.getMinutes() + durationMin);
+            const toTime = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            
+            row.querySelector('input[type="date"]').value = date;
+            row.querySelector('input[placeholder="From"]').value = step.From;
+            row.querySelector('input[placeholder="To"]').value = step.To;
+            row.querySelector('select').value = mode;
+            row.querySelector('input[placeholder="KM"]').value = step.KM;
+            
+            // Add custom time fields to row
+            row.querySelector('input[placeholder="FT"]').value = fromTime;
+            row.querySelector('input[placeholder="TT"]').value = toTime;
+
+            // Add buffer for next segment (10 mins)
+            currentTime.setMinutes(currentTime.getMinutes() + (idx < steps.length - 1 ? 10 : 0));
+        });
+    };
+
+    // 1. Onward
     const onwardRouteId = `${fromAbbr}_${toAbbr}`;
     const onwardSteps = taDatabase.routes.filter(r => r.Route_ID === onwardRouteId);
-    
-    if (onwardSteps.length === 0) {
-        alert(`No predefined route found for ${onwardRouteId} in database.`);
-        return;
+    if (onwardSteps.length > 0) {
+        addTimedSteps(onwardSteps, onwardDate, onwardStartTime);
+    } else {
+        alert(`No predefined route found for ${onwardRouteId}.`);
     }
-    
-    onwardSteps.forEach(step => {
-        addJourneyRow();
-        const row = tbody.lastElementChild;
-        row.querySelector('input[type="date"]').value = onwardDate;
-        row.querySelector('input[placeholder="From"]').value = step.From;
-        row.querySelector('input[placeholder="To"]').value = step.To;
-        row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
-        row.querySelector('input[placeholder="KM"]').value = step.KM;
-    });
-    
-    // 2. Find Return Route
-    if (returnDate) {
+
+    // 2. Return
+    if (returnDate && returnStartTime) {
         const returnRouteId = `${toAbbr}_${fromAbbr}`;
-        const returnSteps = taDatabase.routes.filter(r => r.Route_ID === returnRouteId);
-        
+        let returnSteps = taDatabase.routes.filter(r => r.Route_ID === returnRouteId);
+        if (returnSteps.length === 0 && onwardSteps.length > 0) {
+            returnSteps = [...onwardSteps].reverse().map(s => ({...s, From: s.To, To: s.From}));
+        }
         if (returnSteps.length > 0) {
-            returnSteps.forEach(step => {
-                addJourneyRow();
-                const row = tbody.lastElementChild;
-                row.querySelector('input[type="date"]').value = returnDate;
-                row.querySelector('input[placeholder="From"]').value = step.From;
-                row.querySelector('input[placeholder="To"]').value = step.To;
-                row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
-                row.querySelector('input[placeholder="KM"]').value = step.KM;
-            });
-        } else {
-            // If reverse ID not found, try to reverse onward steps manually
-            [...onwardSteps].reverse().forEach(step => {
-                addJourneyRow();
-                const row = tbody.lastElementChild;
-                row.querySelector('input[type="date"]').value = returnDate;
-                row.querySelector('input[placeholder="From"]').value = step.To;
-                row.querySelector('input[placeholder="To"]').value = step.From;
-                row.querySelector('select').value = step.Mode === 'Taxi' ? 'Special' : step.Mode;
-                row.querySelector('input[placeholder="KM"]').value = step.KM;
-            });
+            addTimedSteps(returnSteps, returnDate, returnStartTime);
         }
     }
     
@@ -151,7 +158,13 @@ function addJourneyRow() {
     tr.className = "hover:bg-gray-50 transition border-b";
     
     tr.innerHTML = `
-        <td class="p-1"><input type="date" class="form-input text-[10px] p-1 border-none bg-transparent"></td>
+        <td class="p-1">
+            <input type="date" class="form-input text-[10px] p-1 border-none bg-transparent">
+            <div class="flex gap-1 mt-1">
+                <input type="text" placeholder="FT" class="form-input text-[9px] p-0 w-8 border-none bg-transparent opacity-50" oninput="updateCalculations()">
+                <input type="text" placeholder="TT" class="form-input text-[9px] p-0 w-8 border-none bg-transparent opacity-50" oninput="updateCalculations()">
+            </div>
+        </td>
         <td class="p-1">
             <input type="text" list="stations" class="form-input text-xs p-1 border-none bg-transparent" placeholder="From" oninput="handleStationInput(this)">
         </td>
@@ -167,7 +180,7 @@ function addJourneyRow() {
             </select>
         </td>
         <td class="p-1">
-            <input type="number" class="form-input w-12 text-right text-xs p-1 border-none bg-transparent" placeholder="KM" oninput="updateCalculations()">
+            <input type="number" class="form-input w-10 text-right text-xs p-1 border-none bg-transparent" placeholder="KM" oninput="updateCalculations()">
         </td>
         <td class="p-1">
             <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="Fare" oninput="handleFareInput(this)">
@@ -550,7 +563,8 @@ async function generatePDF() {
 
 function generateHTMLBill() {
     const getVal = (id) => document.getElementById(id).value;
-    const month = getVal('bill-month') || "..................";
+    const formatDate = (d) => { if(!d) return ""; const parts = d.split('-'); return `${parts[2]}/${parts[1]}/${parts[0].slice(-2)}`; };
+    
     const name = getVal('prof-name');
     const designation = getVal('prof-designation');
     const college = getVal('prof-college');
@@ -558,6 +572,7 @@ function generateHTMLBill() {
     const basicPay = getVal('prof-basic-pay');
     const accNo = getVal('prof-acc-no');
     const bankIfsc = getVal('prof-bank-ifsc');
+    const month = getVal('bill-month');
     const purpose = getVal('bill-purpose');
 
     const rows = document.querySelectorAll('#journey-body tr');
@@ -565,13 +580,15 @@ function generateHTMLBill() {
     let totalClaim = 0;
 
     rows.forEach((row, idx) => {
-        const date = row.querySelector('input[type="date"]').value;
+        const date = formatDate(row.querySelector('input[type="date"]').value);
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
         const mode = row.querySelector('select').value;
         const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
         const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
         const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+        const fTime = row.querySelector('input[placeholder="FT"]').value || "";
+        const tTime = row.querySelector('input[placeholder="TT"]').value || "";
         
         let railDist = "", roadDist = "", trainFare = "", incidentalRate = "", incidentalAmt = "", roadRate = "", roadAmt = "";
         let lineTotal = 0;
@@ -598,7 +615,7 @@ function generateHTMLBill() {
 
         tableHtml += `
             <tr>
-                <td>${date}</td>
+                <td>${date}<br><small>${fTime}-${tTime}</small></td>
                 <td>${from}</td>
                 <td>${to}</td>
                 <td>${mode}</td>
@@ -612,7 +629,7 @@ function generateHTMLBill() {
                 <td>${da > 0 ? "1" : ""}</td>
                 <td>${da || ""}</td>
                 <td>${lineTotal.toFixed(2)}</td>
-                ${idx === 0 ? `<td rowspan="${rows.length}" style="font-size: 8px; vertical-align: top;">${purpose}</td>` : ""}
+                ${idx === 0 ? `<td rowspan="${rows.length}" style="font-size: 8px; vertical-align: top; text-align: left;">${purpose}</td>` : ""}
             </tr>
         `;
     });
@@ -623,100 +640,193 @@ function generateHTMLBill() {
         <head>
             <title>TA Bill - ${name}</title>
             <style>
-                body { font-family: sans-serif; padding: 20px; font-size: 12px; line-height: 1.4; color: #333; }
-                .header { text-align: center; margin-bottom: 20px; }
-                .header h1 { margin: 0; font-size: 18px; }
-                .header p { margin: 2px 0; }
-                .meta-table { width: 100%; margin-bottom: 20px; }
-                .meta-table td { padding: 4px; }
-                .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-                .bill-table th, .bill-table td { border: 1px solid #000; padding: 4px; text-align: center; font-size: 10px; }
-                .bill-table th { background: #f2f2f2; }
-                .footer { margin-top: 40px; }
-                .signature-section { display: flex; justify-content: space-between; margin-top: 60px; }
-                .stamp { border: 1px solid #000; width: 60px; height: 70px; display: flex; align-items: center; text-align: center; font-size: 9px; }
-                @media print { .no-print { display: none; } body { padding: 0; } }
+                @page { size: A4; margin: 10mm; }
+                body { font-family: 'Times New Roman', serif; color: #000; background: #fff; margin: 0; padding: 0; }
+                .page { width: 210mm; min-height: 297mm; padding: 10mm; margin: 0 auto; background: #fff; position: relative; box-sizing: border-box; page-break-after: always; }
+                .header { text-align: center; border-bottom: 1px double #000; padding-bottom: 10px; margin-bottom: 15px; }
+                .header h1 { margin: 0; font-size: 20px; font-weight: bold; }
+                .header p { margin: 2px 0; font-size: 14px; }
+                .meta-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 12px; }
+                .meta-table td { padding: 3px 0; vertical-align: top; }
+                .bill-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+                .bill-table th, .bill-table td { border: 1px solid #000; padding: 3px; text-align: center; font-size: 9px; line-height: 1.1; }
+                .bill-table th { background: #eee; font-weight: bold; }
+                .footer { margin-top: 20px; font-size: 11px; }
+                .signature-row { display: flex; justify-content: space-between; margin-top: 40px; }
+                .stamp-box { border: 1px solid #000; width: 60px; height: 70px; display: flex; align-items: center; text-align: center; font-size: 10px; }
+                
+                /* Instructions Page */
+                .instructions { font-size: 11px; line-height: 1.3; }
+                .instructions h2 { font-size: 14px; text-align: center; text-decoration: underline; margin-bottom: 15px; }
+                .instructions ol { padding-left: 20px; }
+                .instructions li { margin-bottom: 8px; }
+                .grade-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                .grade-table th, .grade-table td { border: 1px solid #000; padding: 4px; text-align: left; }
+                
+                @media print { 
+                    .no-print { display: none; } 
+                    .page { border: none; box-shadow: none; margin: 0; width: 100%; } 
+                }
             </style>
         </head>
         <body>
-            <button class="no-print" onclick="window.print()" style="margin-bottom: 20px; padding: 10px 20px; background: #2563eb; color: #white; border: none; border-radius: 4px; cursor: pointer;">Print Bill</button>
-            <div class="header">
-                <h1>UNIVERSITY OF CALICUT</h1>
-                <p>(PAREEKSHA BHAVAN)</p>
-                <p><strong>TRAVELLING ALLOWANCE FOR THE MONTH OF ${month.toUpperCase()}</strong></p>
+            <div class="no-print" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+                <button onclick="window.print()" style="padding: 10px 20px; background: #2563eb; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Print 2-Sided Bill</button>
             </div>
 
-            <table class="meta-table" width="100%">
-                <tr>
-                    <td width="55%">1) Name (In Block Letters): <strong>${name}</strong></td>
-                    <td>5) Basic Pay/Consolidated Amount: <strong>${basicPay}</strong></td>
-                </tr>
-                <tr>
-                    <td>2) Designation: <strong>${designation}</strong></td>
-                    <td>6) Savings Bank A/c No: <strong>${accNo}</strong></td>
-                </tr>
-                <tr>
-                    <td>3) Name of the College: <strong>${college}</strong></td>
-                    <td>7) Name of the Bank with IFSC Code: <strong>${bankIfsc}</strong></td>
-                </tr>
-                <tr>
-                    <td>4) Permanent Address: <strong>${address}</strong></td>
-                    <td>Voucher No: .................................<br>Month of: .................................<br>Debit Head: .................................</td>
-                </tr>
-            </table>
+            <!-- PAGE 1: BILL -->
+            <div class="page">
+                <div class="header">
+                    <h1>UNIVERSITY OF CALICUT</h1>
+                    <p>(PAREEKSHA BHAVAN)</p>
+                    <p><strong>TRAVELLING ALLOWANCE BILL FOR THE MONTH OF ${month.toUpperCase()}</strong></p>
+                </div>
 
-            <table class="bill-table">
-                <thead>
+                <table class="meta-table">
                     <tr>
-                        <th rowspan="2">Date</th>
-                        <th colspan="2">Place</th>
-                        <th rowspan="2">Mode</th>
-                        <th colspan="2">Distance</th>
-                        <th colspan="3">Rail/Air Journey</th>
-                        <th colspan="2">Road Journey</th>
-                        <th colspan="2">Daily Allowance</th>
-                        <th rowspan="2">Total</th>
-                        <th rowspan="2">Purpose</th>
+                        <td width="55%">1) Name (in block letters): <strong>${name}</strong></td>
+                        <td>5) Basic Pay/Consolidated Amount: <strong>${basicPay}</strong></td>
                     </tr>
                     <tr>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Rail</th>
-                        <th>Road</th>
-                        <th>Fare</th>
-                        <th>Rate</th>
-                        <th>Amt</th>
-                        <th>Rate</th>
-                        <th>Amt</th>
-                        <th>Days</th>
-                        <th>Amt</th>
+                        <td>2) Designation: <strong>${designation}</strong></td>
+                        <td>6) Savings Bank A/c No: <strong>${accNo}</strong></td>
                     </tr>
-                </thead>
-                <tbody>
-                    ${tableHtml}
                     <tr>
-                        <td colspan="13" style="text-align: right;"><strong>Total</strong></td>
-                        <td><strong>${totalClaim.toFixed(2)}</strong></td>
-                        <td></td>
+                        <td>3) Name of College: <strong>${college}</strong></td>
+                        <td>7) Name of the Bank with IFSC Code: <strong>${bankIfsc}</strong></td>
                     </tr>
-                </tbody>
-            </table>
+                    <tr>
+                        <td rowspan="2">4) Permanent Address: <strong>${address}</strong></td>
+                        <td style="border-top: 1px solid #ddd; padding-top: 5px;">Voucher No: .................................<br>Month of: .................................<br>Debit Head: .................................</td>
+                    </tr>
+                </table>
 
-            <div class="footer">
-                <p><strong>CERTIFICATE</strong></p>
-                <p>1) I certify that the amount claimed in this bill or any part thereof has not been claimed previously OR drawn from any other source.</p>
-                <p>2) I certify that the road journey on .................... for which mileage allowance has been claimed at the higher rates was performed in my own car Reg. No. ....................</p>
-                
-                <div class="signature-section">
-                    <div>
-                        <p>Place: ....................</p>
-                        <p>Date: <strong>${new Date().toLocaleDateString()}</strong></p>
+                <table class="bill-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" width="8%">Date &<br>Time</th>
+                            <th colspan="2">Place</th>
+                            <th rowspan="2" width="6%">Mode of<br>Conv.</th>
+                            <th colspan="2">Distance</th>
+                            <th colspan="3">Rail/Air Journey</th>
+                            <th colspan="2">Road Journey</th>
+                            <th colspan="2">Daily Allowance</th>
+                            <th rowspan="2" width="7%">Total</th>
+                            <th rowspan="2" width="15%">Purpose</th>
+                        </tr>
+                        <tr>
+                            <th width="10%">From</th>
+                            <th width="10%">To</th>
+                            <th width="4%">Rail</th>
+                            <th width="4%">Road</th>
+                            <th width="6%">Fare</th>
+                            <th width="5%">Rate</th>
+                            <th width="6%">Amt</th>
+                            <th width="5%">Rate</th>
+                            <th width="6%">Amt</th>
+                            <th width="4%">Days</th>
+                            <th width="6%">Amt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableHtml}
+                        <tr style="font-weight: bold; background: #f9f9f9;">
+                            <td colspan="13" style="text-align: right; padding-right: 10px;">GRAND TOTAL</td>
+                            <td>${totalClaim.toFixed(2)}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="footer">
+                    <p style="text-align: center; font-weight: bold; text-decoration: underline;">CERTIFICATE</p>
+                    <p>1. I certify that the amount claimed in this bill has not been claimed previously OR drawn from any other source.</p>
+                    <p>2. I certify that the road journey on .................... for which mileage allowance has been claimed at the higher rates was performed in my own car Reg. No. ....................</p>
+                    <p>3. I certify that I was actually present on the previous day of the practical examination for the preparation work.</p>
+                    
+                    <div class="signature-row">
+                        <div style="width: 30%;">
+                            <p>Place: ....................</p>
+                            <p>Date: <strong>${new Date().toLocaleDateString('en-GB')}</strong></p>
+                        </div>
+                        <div class="stamp-box">Revenue<br>Stamp</div>
+                        <div style="text-align: center; width: 40%;">
+                            <br><br>
+                            <p>..........................................................</p>
+                            <p><strong>Signature of the Officer who travelled</strong></p>
+                        </div>
                     </div>
-                    <div class="stamp">Revenue<br>Stamp</div>
-                    <div style="text-align: center;">
-                        <br><br>
-                        <p>__________________________</p>
-                        <p>Signature of the Officer who travelled</p>
+                </div>
+            </div>
+
+            <!-- PAGE 2: INSTRUCTIONS -->
+            <div class="page instructions">
+                <h2 style="margin-top: 0;">RATES OF T.A. AND D.A. TO EXAMINERS AND UNIVERSITY OFFICERS</h2>
+                <p><strong>Note:</strong> i) No T.A./D.A. will be paid if the journey distance is not more than Eight Kilometres unless otherwise specified.</p>
+                <p>ii) For calculating T.A./D.A. Head quarters alone will be considered. Vacation address will not be considered.</p>
+                <p>iii) The Vice-chancellor may, for special reasons to be recorded, allow a particular examiner mileage allowance at a higher rate than is prescribed in rule 1 below.</p>
+                <p>iv) The provisions under these rules are independent of the provisions in Part II, KSR.</p>
+
+                <p><strong>Rule 1. Travelling Allowance for journey by Road/Rail:</strong></p>
+                <p>Road Mileage @ Rs. 2.50 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 90 paise per kilometre for Grade I officers.</p>
+                
+                <table class="grade-table">
+                    <thead>
+                        <tr>
+                            <th>Classification</th>
+                            <th>Rate (Ps)</th>
+                            <th>Eligible Train Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Grade I:</strong> Employees with basic pay of Rs. 50,400/- and above</td>
+                            <td>0.80</td>
+                            <td>II AC</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grade II (a):</strong> Employees with basic pay of Rs. 42,500/- to Rs. 50,400/-</td>
+                            <td>0.60</td>
+                            <td>I Class</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grade II (b):</strong> Employees with basic pay of Rs. 27,800/- to Rs. 42,500/-</td>
+                            <td>0.50</td>
+                            <td>III AC</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grade III:</strong> Employees with basic pay of Rs. 18,000/- to Rs. 27,800/-</td>
+                            <td>0.50</td>
+                            <td>II Class</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grade IV:</strong> Employees with basic pay below Rs. 18,000/-</td>
+                            <td>0.50</td>
+                            <td>II Class</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>General:</strong> If one travels more than 200 kilometres a day by Road, the rate of mileage allowance for the excess over 200 kilometres will be reduced to 3/4 of the normal rate.</p>
+
+                <p><strong>4. Daily Allowance:</strong></p>
+                <ol>
+                    <li>Rs. 600/- per day for actual day of University business irrespective of duration of hours of halt. For inter-state travel Rs. 550/- per day (Grade 1).</li>
+                    <li>Rs. 550/- per day will be paid as D.A. for duty at Lakshadweep.</li>
+                    <li>For Chemistry Practical Examination one D.A. will be paid for the previous day for preparation work provided certificate is furnished.</li>
+                    <li>For meetings of Board of Examiners, Question Paper Setters, D.A. for the actual day of University business will be paid in addition to eligible T.A.</li>
+                    <li>No T.A./D.A. will be paid to Examiners for Practical/Viva-Voce etc. unless distance travelled exceeds 8 kilometres. If distance is 2-8 km, conveyance allowance @ Rs. 50/- per day will be paid.</li>
+                </ol>
+
+                <div style="margin-top: 30px; border: 1px solid #000; padding: 15px;">
+                    <p><strong>FOR OFFICE USE ONLY (PAREEKSHA BHAVAN)</strong></p>
+                    <p>Memo of Budget Allotment: Rs. ......................... Advance drawn: .........................</p>
+                    <p>Expenditure including this bill: Rs. ......................... Balance Claimed: .........................</p>
+                    <p>Passed for payment of Rs. ................................. (Rupees ..................................................................................................... only)</p>
+                    <div class="signature-row" style="margin-top: 20px;">
+                        <p>Section Officer</p>
+                        <p>Asst. Registrar</p>
+                        <p>Joint Registrar/F.O.</p>
                     </div>
                 </div>
             </div>
