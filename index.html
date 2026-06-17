@@ -7,8 +7,13 @@
     <script src="libs/tailwind.js"></script>
     <script src="libs/jspdf.umd.min.js"></script>
     <script src="libs/jspdf.plugin.autotable.min.js"></script>
-    <style>
-        .form-input { @apply w-full p-2 border rounded text-sm; }
+    <style type="text/tailwindcss">
+        .form-input { 
+            @apply w-full p-2 border border-yellow-300 rounded text-sm bg-yellow-100 focus:bg-yellow-200 focus:border-yellow-400 outline-none transition-colors; 
+            background-color: #fffde7 !important; 
+            border-color: #fdd835 !important;
+        }
+        .form-input:focus { background-color: #fff59d !important; }
         .btn { @apply px-4 py-2 rounded font-semibold transition; }
         .btn-primary { @apply bg-blue-600 text-white hover:bg-blue-700; }
         .btn-secondary { @apply bg-gray-200 text-gray-700 hover:bg-gray-300; }
@@ -24,10 +29,7 @@
                 <p class="text-gray-500 text-sm">University of Calicut (Pareeksha Bhavan)</p>
             </div>
             <div class="space-x-2">
-                <button onclick="loadSampleData()" class="btn btn-secondary flex items-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-                    Load Sample
-                </button>
+
                 <button onclick="openSettings()" class="btn btn-secondary flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                     Settings
@@ -54,24 +56,24 @@
                     <div class="space-y-3">
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Full Name (Block Letters)</label>
-                            <input type="text" id="prof-name" class="form-input" placeholder="SURESH V">
+                            <input type="text" id="prof-name" class="form-input">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Designation</label>
-                            <input type="text" id="prof-designation" class="form-input" placeholder="Assistant Professor">
+                            <input type="text" id="prof-designation" class="form-input">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Name of College</label>
-                            <input type="text" id="prof-college" class="form-input" placeholder="Govt. Victoria College, Palakkad">
+                            <input type="text" id="prof-college" class="form-input">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Permanent Address</label>
-                            <textarea id="prof-address" class="form-input h-20" placeholder="Address..."></textarea>
+                            <textarea id="prof-address" class="form-input h-20"></textarea>
                         </div>
                         <div class="grid grid-cols-2 gap-3">
                             <div>
                                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Basic Pay</label>
-                                <input type="number" id="prof-basic-pay" class="form-input" placeholder="87300">
+                                <input type="number" id="prof-basic-pay" class="form-input">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Grade</label>
@@ -93,7 +95,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Bank & IFSC</label>
-                            <input type="text" id="prof-bank-ifsc" class="form-input" placeholder="SBI, Victoria College Road, SBIN0012886">
+                            <input type="text" id="prof-bank-ifsc" class="form-input">
                         </div>
                     </div>
                 </section>
@@ -106,11 +108,11 @@
                     <div class="space-y-3">
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Bill Month</label>
-                            <input type="text" id="bill-month" class="form-input" placeholder="JANUARY 2024">
+                            <input type="text" id="bill-month" class="form-input">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Purpose of Journey</label>
-                            <textarea id="bill-purpose" class="form-input h-24" placeholder="For Attending M.Sc 2nd Semester Practical Examination..."></textarea>
+                            <textarea id="bill-purpose" class="form-input h-24"></textarea>
                         </div>
                     </div>
                 </section>
@@ -175,7 +177,9 @@
                                     <th class="p-2 border-b">From</th>
                                     <th class="p-2 border-b">To</th>
                                     <th class="p-2 border-b">Mode</th>
-                                    <th class="p-2 border-b w-20">KM</th>
+                                    <th class="p-2 border-b w-20">Dist (Km)</th>
+                                    <th class="p-2 border-b w-24">Fare (Rs)</th>
+                                    <th class="p-2 border-b w-24">DA (Rs)</th>
                                     <th class="p-2 border-b w-10"></th>
                                 </tr>
                             </thead>

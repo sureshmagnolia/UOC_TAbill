@@ -36,7 +36,8 @@ function saveFormState() {
                 km: row.querySelector('input[placeholder="KM"]').value,
                 fare: row.querySelector('input[placeholder="Fare"]').value,
                 fareAuto: row.querySelector('input[placeholder="Fare"]').dataset.auto,
-                da: row.querySelector('input[placeholder="DA"]').value
+                da: row.querySelector('input[placeholder="DA"]').value,
+                isLimited: row.querySelector('.limit-check') ? row.querySelector('.limit-check').checked : false
             });
         }
     });
@@ -85,6 +86,7 @@ function loadFormState() {
                         row.querySelector('input[placeholder="Fare"]').value = j.fare || '';
                         row.querySelector('input[placeholder="Fare"]').dataset.auto = j.fareAuto || 'true';
                         row.querySelector('input[placeholder="DA"]').value = j.da || '';
+                        if (j.isLimited && row.querySelector('.limit-check')) row.querySelector('.limit-check').checked = true;
                     }
                 });
                 loadedJourneys = true;
@@ -107,7 +109,7 @@ const DEFAULT_SETTINGS = {
     ],
     misc: {
         specialConveyanceRate: 2.50,
-        trainIncidentalRate: 0.90, // per KM
+        trainIncidentalRate: 0.80, // per KM
         railFarePerKM: 1.60, // Estimated 2nd AC rate
         minDistanceForTA: 8, // km
     }
@@ -161,7 +163,7 @@ function generateQuickJourney() {
     const tbody = document.getElementById('journey-body');
     tbody.innerHTML = ""; // Clear existing
     
-    const addTimedSteps = (steps, date, startTime) => {
+    const addTimedSteps = (steps, date, startTime, isLimitedTrip = false) => {
         let currentTime = new Date(`${date}T${startTime}`);
         
         steps.forEach((step, idx) => {
@@ -173,9 +175,9 @@ function generateQuickJourney() {
             const speed = (mode === 'Rail') ? 60 : 40;
             const durationMin = Math.max(15, Math.round((km / speed) * 60));
             
-            const fromTime = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            const fromTime = currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
             currentTime.setMinutes(currentTime.getMinutes() + durationMin);
-            const toTime = currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+            const toTime = currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
             
             row.querySelector('input[type="date"]').value = date;
             row.querySelector('input[placeholder="FT"]').value = fromTime;
@@ -191,6 +193,9 @@ function generateQuickJourney() {
             } else {
                 row.querySelector('input[placeholder="Fare"]').dataset.auto = "true";
             }
+            if (isLimitedTrip && row.querySelector('.limit-check')) {
+                row.querySelector('.limit-check').checked = true;
+            }
 
             calculateRowFare(row);
 
@@ -202,8 +207,11 @@ function generateQuickJourney() {
     // 1. Onward
     const onwardRouteId = `${fromAbbr}_${toAbbr}`;
     const onwardSteps = taDatabase.routes.filter(r => r.Route_ID === onwardRouteId);
+    let totalKm = onwardSteps.reduce((sum, step) => sum + parseFloat(step.KM || 0), 0);
+    let isLimitedTrip = totalKm > 0 && totalKm <= 8;
+
     if (onwardSteps.length > 0) {
-        addTimedSteps(onwardSteps, onwardDate, onwardStartTime);
+        addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
     // 2. Return
@@ -214,7 +222,7 @@ function generateQuickJourney() {
             returnSteps = [...onwardSteps].reverse().map(s => ({...s, From: s.To, To: s.From}));
         }
         if (returnSteps.length > 0) {
-            addTimedSteps(returnSteps, returnDate, returnStartTime);
+            addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
         }
     }
 
@@ -284,9 +292,9 @@ function addJourneyRow() {
     tr.innerHTML = `
         <td class="p-1">
             <input type="date" class="form-input text-[10px] p-1 border-none bg-transparent">
-            <div class="flex gap-1 mt-1">
-                <input type="text" placeholder="FT" class="form-input text-[9px] p-0 w-8 border-none bg-transparent opacity-50" oninput="updateCalculations()">
-                <input type="text" placeholder="TT" class="form-input text-[9px] p-0 w-8 border-none bg-transparent opacity-50" oninput="updateCalculations()">
+            <div class="flex gap-1 mt-1 justify-center">
+                <input type="text" placeholder="FT" class="form-input text-[9px] p-0 w-12 border-none bg-transparent opacity-50 text-center" oninput="updateCalculations()">
+                <input type="text" placeholder="TT" class="form-input text-[9px] p-0 w-12 border-none bg-transparent opacity-50 text-center" oninput="updateCalculations()">
             </div>
         </td>
         <td class="p-1">
@@ -304,13 +312,23 @@ function addJourneyRow() {
             </select>
         </td>
         <td class="p-1">
-            <input type="number" class="form-input w-10 text-right text-xs p-1 border-none bg-transparent" placeholder="KM" oninput="calculateRowFare(this.closest('tr'))">
+            <div class="flex items-center justify-end bg-transparent">
+                <input type="number" class="form-input w-12 text-right text-xs p-1 border-none bg-transparent" placeholder="KM" oninput="calculateRowFare(this.closest('tr'))">
+                <span class="text-[9px] text-gray-500 font-medium px-1">Km</span>
+            </div>
+            <div class="text-[8px] text-gray-400 text-center mt-1 leading-tight"><input type="checkbox" class="limit-check align-middle" onchange="calculateRowFare(this.closest('tr'))"> ≤8km</div>
         </td>
         <td class="p-1">
-            <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="Fare" oninput="handleFareManual(this)">
+            <div class="flex items-center justify-end bg-transparent">
+                <span class="text-[9px] text-gray-500 font-medium px-1">Rs</span>
+                <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="Fare" oninput="handleFareManual(this)">
+            </div>
         </td>
         <td class="p-1">
-            <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="DA" oninput="updateCalculations()">
+            <div class="flex items-center justify-end bg-transparent">
+                <span class="text-[9px] text-gray-500 font-medium px-1">Rs</span>
+                <input type="number" class="form-input w-16 text-right text-xs p-1 border-none bg-transparent" placeholder="DA" oninput="updateCalculations()">
+            </div>
         </td>
         <td class="p-1 text-center">
             <button onclick="removeRow('${rowId}')" class="text-red-300 hover:text-red-500">
@@ -368,12 +386,16 @@ function handleFareManual(input) {
 
 function calculateRowFare(row) {
     if (row.dataset.type === "DA") return;
-    const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
+    const kmText = row.querySelector('input[placeholder="KM"]').value;
+    const km = parseFloat(kmText) || 0;
     const mode = row.querySelector('select').value;
     const fareInput = row.querySelector('input[placeholder="Fare"]');
     
     if (fareInput.dataset.auto !== "false") {
-        if (mode === 'Rail') {
+        let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
+        if (isLimited) {
+            fareInput.value = "0.00";
+        } else if (mode === 'Rail') {
             fareInput.value = Math.round(km * appSettings.misc.railFarePerKM);
         } else if (mode === 'Special' || mode === 'Bus') {
             fareInput.value = (km * appSettings.misc.specialConveyanceRate).toFixed(2);
@@ -389,11 +411,16 @@ function updateCalculations() {
         if (row.dataset.type === "DA") {
             total += parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
         } else {
-            const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
+            const kmText = row.querySelector('input[placeholder="KM"]').value;
+            const km = parseFloat(kmText) || 0;
             const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
             const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
             const mode = row.querySelector('select').value;
-            let rowTotal = (mode === 'Rail') ? (fare + (km * appSettings.misc.trainIncidentalRate)) : fare;
+            let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
+            let rowTotal = 0;
+            if (!isLimited) {
+                rowTotal = (mode === 'Rail') ? (fare + (km * appSettings.misc.trainIncidentalRate)) : fare;
+            }
             total += rowTotal + da;
         }
     });
@@ -429,13 +456,14 @@ function numberToWords(num) {
 }
 
 // PDF & HTML Generation
-async function generatePDF() {
+function generatePDF() {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('l', 'mm', 'a4');
+    const doc = new jsPDF('p', 'pt', 'a4');
     const pageWidth = doc.internal.pageSize.getWidth();
+
     const getVal = (id) => document.getElementById(id).value;
     const formatDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
-
+    
     let autoMonth = "";
     const firstDateInput = document.querySelector('#journey-body tr input[type="date"]');
     if (firstDateInput && firstDateInput.value) {
@@ -443,27 +471,45 @@ async function generatePDF() {
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
     }
     const month = autoMonth || getVal('bill-month').toUpperCase();
-    
-    // Page 1: Bill
-    doc.setFontSize(14); doc.text("UNIVERSITY OF CALICUT (PAREEKSHA BHAVAN)", pageWidth / 2, 12, { align: "center" });
-    doc.setFontSize(10); doc.text(`TRAVELLING ALLOWANCE BILL FOR THE MONTH OF ${month}`, pageWidth / 2, 18, { align: "center" });
 
-    doc.setFontSize(8);
-    doc.text(`1) Name: ${getVal('prof-name')}`, 10, 25);
-    doc.text(`5) Basic Pay: ${getVal('prof-basic-pay')}`, pageWidth/2 + 20, 25);
-    doc.text(`2) Designation: ${getVal('prof-designation')}`, 10, 29);
-    doc.text(`6) SB A/c: ${getVal('prof-acc-no')}`, pageWidth/2 + 20, 29);
-    doc.text(`3) College: ${getVal('prof-college')}`, 10, 33);
-    doc.text(`7) Bank & IFSC: ${getVal('prof-bank-ifsc')}`, pageWidth/2 + 20, 33);
-    doc.text(`4) Address: ${getVal('prof-address')}`, 10, 37);
+    doc.setFontSize(14); doc.text("UNIVERSITY OF CALICUT", pageWidth / 2, 40, { align: "center" });
+    doc.setFontSize(12); doc.text("(PAREEKSHA BHAVAN)", pageWidth / 2, 55, { align: "center" });
+    doc.setFontSize(10); doc.text(`TRAVELLING ALLOWANCE BILL FOR THE MONTH OF ${month}`, pageWidth / 2, 70, { align: "center" });
+
+    doc.setFontSize(9);
+    doc.text(`1) Name: ${getVal('prof-name')}`, 40, 90);
+    doc.text(`5) Basic Pay: Rs ${getVal('prof-basic-pay')}/-`, 350, 90);
+    doc.text(`2) Designation: ${getVal('prof-designation')}`, 40, 105);
+    doc.text(`6) SB A/c No: ${getVal('prof-acc-no')}`, 350, 105);
+    doc.text(`3) College: ${getVal('prof-college')}`, 40, 120);
+    doc.text(`7) Bank & IFSC: ${getVal('prof-bank-ifsc')}`, 350, 120);
+    doc.text(`4) Address: ${getVal('prof-address').substring(0, 40)}`, 40, 135);
 
     const tableData = [];
     let totalClaim = 0;
-    document.querySelectorAll('#journey-body tr').forEach((row, idx) => {
+    
+    let limBuf = null;
+    const flushLim = (isFirst) => {
+        if (!limBuf) return;
+        totalClaim += limBuf.da;
+        let days = (limBuf.da > 0 && limBuf.da % 600 === 0) ? limBuf.da / 600 : (limBuf.da > 0 && limBuf.da % 400 === 0 ? limBuf.da / 400 : 1);
+        let rate = limBuf.da > 0 ? limBuf.da / days : 0;
+        let daStr = limBuf.da > 0 ? `\n${rate} X ${days} Days = ${limBuf.da}` : "";
+        tableData.push(["", { content: `TA Limited to DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, limBuf.da>0?days:"", limBuf.da||"", limBuf.da.toFixed(2), isFirst ? getVal('bill-purpose') : ""]);
+        limBuf = null;
+    };
+
+    const rows = document.querySelectorAll('#journey-body tr');
+    rows.forEach((row, idx) => {
+        const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
+            flushLim(isFirst);
             const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
             totalClaim += da;
-            tableData.push([{ content: `DA for ${row.dataset.days} Days`, colSpan: 11, styles: { halign: 'center', fontStyle: 'bold' } }, "", "", "", "", "", "", "", "", "", "", row.dataset.days, da.toFixed(2), da.toFixed(2), ""]);
+            const days = row.dataset.days;
+            const rate = da > 0 ? da / days : 0;
+            const daStr = da > 0 ? `\n${rate} X ${days} Days = ${da}` : "";
+            tableData.push(["", { content: `DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, days, da.toFixed(2), da.toFixed(2), isFirst?getVal('bill-purpose'):""]);
             return;
         }
         const dateRaw = row.querySelector('input[type="date"]').value;
@@ -475,62 +521,266 @@ async function generatePDF() {
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
         const mode = row.querySelector('select').value;
-        const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
-        const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
+        const kmText = row.querySelector('input[placeholder="KM"]').value;
+        const km = parseFloat(kmText) || 0;
+        let fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
         const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
         
-        let rDist = "", rdDist = "", tFare = "", iRate = "", iAmt = "", rdRate = "", rdAmt = "";
-        if (mode === 'Rail') { 
-            rDist = km || ""; tFare = fare || ""; iRate = appSettings.misc.trainIncidentalRate; iAmt = km ? (km * iRate).toFixed(2) : ""; 
-        } else { 
-            rdDist = km || ""; rdRate = appSettings.misc.specialConveyanceRate; rdAmt = fare ? fare.toFixed(2) : ""; 
+        let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
+        
+        if (isLimited) {
+            if (!limBuf) {
+                limBuf = { dateTime: dateTime, date: date, da: da, isFirst: isFirst };
+            } else {
+                limBuf.da += da;
+                if (!limBuf.date.includes(date)) {
+                    limBuf.date += `\n${date}`;
+                    limBuf.dateTime += `\n${dateTime}`;
+                }
+            }
+        } else {
+            flushLim(limBuf && limBuf.isFirst);
+            let rDist = "", rdDist = "", tFare = "", iRate = "", iAmt = "", rdRate = "", rdAmt = "";
+            if (mode === 'Rail') { 
+                rDist = kmText || ""; 
+                tFare = fare || ""; 
+                iRate = appSettings.misc.trainIncidentalRate; 
+                iAmt = (km ? (km * iRate).toFixed(2) : ""); 
+            } else { 
+                rdDist = kmText || ""; 
+                rdRate = appSettings.misc.specialConveyanceRate; 
+                rdAmt = (fare ? fare.toFixed(2) : ""); 
+            }
+            
+            let lineT = (mode === 'Rail' ? (fare + (parseFloat(iAmt) || 0)) : fare) + da;
+            totalClaim += lineT;
+            
+            tableData.push([dateTime, from, to, mode, rDist, rdDist, tFare, iRate, iAmt, rdRate, rdAmt, (da>0?"1":""), da||"", lineT.toFixed(2), isFirst?getVal('bill-purpose'):""]);
         }
-        
-        let lineT = (mode === 'Rail' ? (fare + (parseFloat(iAmt) || 0)) : fare) + da;
-        totalClaim += lineT;
-        
-        tableData.push([dateTime, from, to, mode, rDist, rdDist, tFare, iRate, iAmt, rdRate, rdAmt, (da>0?"1":""), da||"", lineT.toFixed(2), idx===0?getVal('bill-purpose'):""]);
     });
+    flushLim(limBuf && limBuf.isFirst);
 
     doc.autoTable({
-        startY: 42,
+        startY: 150,
         head: [
             [{ content: 'Date & Time', rowSpan: 2 }, { content: 'Place', colSpan: 2 }, { content: 'Mode', rowSpan: 2 }, { content: 'Dist', colSpan: 2 }, { content: 'Rail (2nd AC)', colSpan: 3 }, { content: 'Road', colSpan: 2 }, { content: 'DA', colSpan: 2 }, { content: 'Total', rowSpan: 2 }, { content: 'Purpose', rowSpan: 2 }],
             ['From', 'To', 'Rail', 'Road', 'Fare', 'Rate', 'Amt', 'Rate', 'Amt', 'Days', 'Amt'],
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
         ],
         body: tableData,
-        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1 }, headStyles: { fillColor: 240, textColor: 0, halign: 'center' }
+        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' }
     });
 
-    doc.setFontSize(9);
-    doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 50, doc.lastAutoTable.finalY + 10);
-    doc.setFontSize(8);
-    doc.text(`(${numberToWords(totalClaim)} Only)`, 10, doc.lastAutoTable.finalY + 10);
+    let finalY = doc.lastAutoTable.finalY + 15;
+    
+    // Add page if there's no room for the complex certificate section
+    if (finalY + 380 > doc.internal.pageSize.getHeight()) {
+        doc.addPage();
+        finalY = 40;
+    }
 
-    // Page 2: Instructions
+    doc.setFontSize(9);
+    doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 40, finalY, { align: "right" });
+    doc.text(`Total Amount in Words: ${numberToWords(totalClaim)} Only`, 40, finalY);
+
+    finalY += 20;
+    doc.setFontSize(10);
+    doc.text("CERTIFICATE", pageWidth / 2, finalY, { align: "center" });
+    finalY += 10;
+
+    doc.autoTable({
+        startY: finalY,
+        body: [
+            ['General*', '1)', 'I Certify that the amount claimed in this bill or any part thereof has not been claimed previously OR drawn from any other source.'],
+            ['', '2)', 'I Certify that the road journey on .............................. for which mileage expense has been claimed at the higher rates was performed in my own car Reg. No. ..............................'],
+            ['', '3)', 'I Certify that i was actually present on the previous day of the practical examination for the preparation work\n*Necessary certificate should be attested with dated signature']
+        ],
+        theme: 'plain',
+        styles: { fontSize: 8, cellPadding: 2 },
+        columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 15 } }
+    });
+    finalY = doc.lastAutoTable.finalY + 15;
+
+    let placeText = getVal('prof-college');
+    if (placeText.includes(',')) placeText = placeText.split(',')[1].trim();
+    doc.text(`Place: ${placeText || '.........................'}`, 40, finalY);
+    doc.text("Signature..........................................................", pageWidth - 40, finalY, { align: "right" });
+    finalY += 15;
+    doc.text(`Date: ${new Date().toLocaleDateString('en-GB')}`, 40, finalY);
+    
+    finalY += 15;
+    doc.line(40, finalY, pageWidth - 40, finalY);
+    finalY += 15;
+
+    doc.autoTable({
+        startY: finalY,
+        body: [
+            [
+                'Memo of Budget Allotment\n\nfor the year.......................\n\nExpenditure including\n\nthis bill..........................\n\nBalance.............................',
+                'Passed and Countersigned for\n\nRs. .........................................\n\nDate. ......................................',
+                'Advance Drawn................................\n\nBalance Claimed................................\n\n\n\nSignature of the Officer Who Travelled'
+            ]
+        ],
+        theme: 'plain',
+        styles: { fontSize: 8, cellPadding: 5, valign: 'top' }
+    });
+    finalY = doc.lastAutoTable.finalY + 15;
+
+    doc.text("Countersigned and certified that the days for which halting allowance is claimed were necessarily", pageWidth / 2, finalY, { align: "center" });
+    finalY += 12;
+    doc.text("spent for conduct of university business. The Claim may be admitted", pageWidth / 2, finalY, { align: "center" });
+    
+    finalY += 30;
+    doc.text("Signature...........................................................", 40, finalY);
+    doc.text("Chairman/Board of Examiners/Question Paper Setters in ......................", pageWidth - 40, finalY, { align: "right" });
+    
+    finalY += 25;
+    doc.text("Asst.", 100, finalY);
+    doc.text("S.O.", pageWidth / 2, finalY, { align: "center" });
+    doc.text("A.R./D.R.", pageWidth - 100, finalY, { align: "right" });
+
+    finalY += 15;
+
+    doc.autoTable({
+        startY: finalY,
+        body: [
+            [
+                'Pre-Audit By Finance Branch\n\nRs...................................................................................\n\n(Rupees. ..............................................................................\n\n.................................................................................Only)\n\nfound admissible and passed for payment.\n\n\n\nAsst.                   S. O.                   A.R/D.R/J.R./FO',
+                'Payement by Pareeksha Bhavan\n\nThe Amount paid by Cheque\n\nNo...................................................................................\n\nDate.................................................................................\n\n\n\n\nAsst.                   S. O.                   A.R/D.R/J.R./FO'
+            ]
+        ],
+        theme: 'grid',
+        styles: { fontSize: 8, cellPadding: 8, valign: 'top', textColor: 0, lineColor: 0, lineWidth: 0.5 },
+        columnStyles: { 0: { cellWidth: '50%' }, 1: { cellWidth: '50%' } }
+    });
+
     doc.addPage();
-    doc.setFontSize(12); doc.text("UNIVERSITY OF CALICUT - TA RULES & INSTRUCTIONS", pageWidth / 2, 20, { align: "center" });
-    doc.setFontSize(9);
-    const inst = [
-        "1. No TA/DA will be paid if the journey distance is not more than Eight Kilometres.",
-        "2. Road Mileage: Rs 2.50 per KM (Special Conveyance).",
-        "3. Rail Fare: 2nd AC Fare + 90ps per KM incidental expenses for Grade I officers.",
-        "4. Daily Allowance: Rs 600 per day for actual day of University business.",
-        "5. Classification of Grades based on Basic Pay:",
-        "   Grade I: Rs. 50,400/- and above",
-        "   Grade II (a): Rs. 42,500/- and above, but below Rs. 50,400/-",
-        "   Grade II (b): Rs. 27,800/- and above, but below Rs. 42,500/-",
-        "   Grade III: Rs. 18,000/- and above, but below Rs. 27,800/-",
-        "   Grade IV: Below Rs. 18,000/-"
-    ];
-    let iy = 40;
-    inst.forEach(line => { doc.text(line, 20, iy); iy += 8; });
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
+    doc.text("RATES OF T. A. AND D. A. TO EXAMINERS, QUESTION PAPER SETTERS, SYNDICATE MEMBERS,", pageWidth / 2, 40, { align: "center" });
+    doc.text("PRINCIPALS OR", pageWidth / 2, 52, { align: "center" });
+    doc.text("THOSE WHO TRAVEL ON CALICUT UNIVERSITY EXAMINATION BUSINESS", pageWidth / 2, 64, { align: "center" });
+    
+    doc.setLineWidth(0.5);
+    doc.line(pageWidth / 2 - 240, 42, pageWidth / 2 + 240, 42);
+    doc.line(pageWidth / 2 - 40, 54, pageWidth / 2 + 40, 54);
+    doc.line(pageWidth / 2 - 210, 66, pageWidth / 2 + 210, 66);
 
-    window.open(doc.output('bloburl'), '_blank');
+    doc.autoTable({
+        startY: 75,
+        body: [
+            ['Note:', 'i)', 'No. T.A./D.A. will be paid if the journey distance is not more than Eight Kilometres unless otherwise specified in the rules.'],
+            ['', 'ii)', 'For calculating T.A./D.A. Head quarters alone will be considered. Vacation address will not be considered.'],
+            ['', 'iii)', 'The Vice-Chancellor may, for special reasons to be recorded, allow a particular examiner/question paper setter, mileage allowance at a higher rate than is prescribed in rule 1 below.'],
+            ['', 'iv)', 'The provisions under these rules are independent of the provisions in Part II, KSR.']
+        ],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
+        columnStyles: { 0: { cellWidth: 30 }, 1: { cellWidth: 15 } },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        body: [
+            ['Rule 1. Travelling Allowance for journey by Road/Rail'],
+            ['Road Mileage @ Rs.2 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers']
+        ],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
+        margin: { left: 40, right: 40 },
+        didParseCell: function(data) {
+            if (data.row.index === 0) data.cell.styles.fontStyle = 'bold';
+            else data.cell.styles.cellPadding = { left: 15, top: 2, bottom: 2, right: 2 };
+        }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        head: [['Classification', 'Rate', 'Eligible class of\njourney by train']],
+        body: [
+            ['Grade I - All employees who draw an actual basic pay of Rs. 50,400/- and above', '0.80', 'II AC'],
+            ['Grade II (a) - Employees with actual basic pay of Rs. 42,500/- and above, but below Rs.50,400/-', '0.60', 'I Class'],
+            ['Grade II (b) - Employees with actual basic pay of Rs.27,800/- and above, but below Rs.42,500/-', '0.50', 'III AC'],
+            ['Grade III - Employees with actual basic pay of Rs.18,000/- and above, but below Rs.27,800/-', '0.50', 'II Class'],
+            ['Grade IV - Employees with actual basic pay below Rs.18,000/-', '0.50', 'II Class']
+        ],
+        theme: 'grid', styles: { fontSize: 8, cellPadding: 4, textColor: 0, lineColor: 0, lineWidth: 0.5 },
+        headStyles: { fillColor: false, fontStyle: 'bold', halign: 'center' },
+        columnStyles: { 0: { cellWidth: 380 }, 1: { halign: 'center', cellWidth: 40 }, 2: { halign: 'center', cellWidth: 80 } },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        body: [['General - If one travels more than 200 kilometres a day by Road, the rate of mileage allowance for the excess over 200 kilometres will be reduced to 3/4 of the normal rate per kilometre.']],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: {left: 15, top: 2, bottom: 2, right: 2}, textColor: 0 },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        body: [
+            [{ content: '2.', styles: { fontStyle: 'bold' } }, { content: 'Mileage for journey by Air :', colSpan: 2, styles: { fontStyle: 'bold' } }],
+            ['', { content: '(i) Prior Sanction from the Vice-Chancellor has to be obtained for performing journey by Air.\n(ii) Actual Air fare + D.A as Incidental Expenses each way (Air tickets should be produced along with the T.A./D.A claims) + Boarding pass / Ticket Jacket.', colSpan: 2 }],
+            [{ content: '3.', styles: { fontStyle: 'bold' } }, { content: 'Mileage for Journey by Ship', colSpan: 2, styles: { fontStyle: 'bold' } }],
+            ['', { content: 'Actual Ship fare + D.A. outside rate OR 1 3/4 of Fare whichever is higher will be paid (Cash Receipt should be produced for claiming ship fare)', colSpan: 2 }],
+            [{ content: '4.', styles: { fontStyle: 'bold' } }, { content: 'Daily Allowance', colSpan: 2, styles: { fontStyle: 'bold' } }],
+            ['', 'i)', 'Rupees 400/- (Rupees Four hundred only) per day for actual day of University business irrespective of duration of hours of halt.\nFor inter-state travel Rs.550/- per day (Grade I).']
+        ],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
+        columnStyles: { 0: { cellWidth: 15 }, 1: { cellWidth: 15 } },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        head: [['Grade', 'Inside State', 'Outside State']],
+        body: [
+            ['I', '400/-', '550/-'],
+            ['II (a)', '320/-', '450/-'],
+            ['II (b)', '320/-', '450/-'],
+            ['III', '250/-', '350/-'],
+            ['IV', '250/-', '350/-']
+        ],
+        theme: 'grid', styles: { fontSize: 8, cellPadding: 4, textColor: 0, lineColor: 0, lineWidth: 0.5, halign: 'center' },
+        headStyles: { fillColor: false, fontStyle: 'bold' },
+        margin: { left: 120, right: 120 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        body: [
+            ['', 'ii)', 'Rs. 550/- per day will be paid as D.A. for duty at Lakshadweep.'],
+            ['', 'iii)', 'For Chemistry Practical Examination one D.A. will be paid for the previous day of the examination for preparation work provided a certificate to that effect is furnished on the T.A. bill.'],
+            ['', 'iv)', 'For meetings of Board of Examiners, Question Paper Setters, D.A. for the actual day of University business will be paid to the members in addition to the eligible T.A. All Officers are eligible for T.A./D.A. only if the distance travelled exceeds 8 kilometres, as per rules.'],
+            ['', 'v)', 'No T.A./D.A. will be paid to the Examiners for Practical/Viva-Voce Examinations etc. unless the distance travelled exceeds 8 kilometres. If the distance travelled is below 8 kilometres but more than 2 kilometres conveyance allowance @ Rs. 5/- per day will be paid for the actual number of days of duty.'],
+            ['', 'vi)', 'For intervening Holidays or Off days between days of Duty T.A. or D.A. whichever is less will only be paid.']
+        ],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
+        columnStyles: { 0: { cellWidth: 15 }, 1: { cellWidth: 15 } },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.autoTable({
+        startY: doc.lastAutoTable.finalY + 5,
+        body: [
+            [{ content: '5.', styles: { fontStyle: 'bold' } }, { content: 'T.A. and D.A. to Syndicate Members / Senate Members', colSpan: 2, styles: { fontStyle: 'bold' } }],
+            ['', 'i)', 'Road mileage @ Rs.12/- per kilometres will be paid (Special conveyance) irrespective of the distance travelled in a day.'],
+            ['', 'ii)', 'D.A. will be Rs. 900/-']
+        ],
+        theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
+        columnStyles: { 0: { cellWidth: 15 }, 1: { cellWidth: 15 } },
+        margin: { left: 40, right: 40 }
+    });
+
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
+    doc.text("Controller of Examinations", pageWidth - 40, doc.lastAutoTable.finalY + 30, { align: "right" });
+
+    // Download instantly instead of opening blob window
+    doc.save('TA_Bill_University_of_Calicut.pdf');
 }
 
-function generateHTMLBill() {
+function generateHTMLBill(autoPrint = false) {
     const getVal = (id) => document.getElementById(id).value;
     const fixDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
     
@@ -542,44 +792,84 @@ function generateHTMLBill() {
     }
     const month = autoMonth || getVal('bill-month').toUpperCase();
 
-    let tableHtml = ""; let totalClaim = 0;
+    let htmlRows = []; 
+    let totalClaim = 0;
+    let limBufHtml = null;
+
+    const flushLimHtml = (isFirst) => {
+        if (!limBufHtml) return;
+        totalClaim += limBufHtml.da;
+        let days = (limBufHtml.da > 0 && limBufHtml.da % 600 === 0) ? limBufHtml.da / 600 : (limBufHtml.da > 0 && limBufHtml.da % 400 === 0 ? limBufHtml.da / 400 : 1);
+        let rate = limBufHtml.da > 0 ? limBufHtml.da / days : 0;
+        let daStr = limBufHtml.da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${limBufHtml.da}</span>` : "";
+        htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${limBufHtml.date}</td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">TA Limited to DA${daStr}</td><td class="text-center">${limBufHtml.da>0?days:""}</td><td class="text-right">${limBufHtml.da?limBufHtml.da.toFixed(2):""}</td><td class="text-right font-bold">${limBufHtml.da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
+        limBufHtml = null;
+    };
+
     const rows = document.querySelectorAll('#journey-body tr');
     rows.forEach((row, idx) => {
+        const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
+            flushLimHtml(isFirst);
             const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
             totalClaim += da;
-            tableHtml += `<tr><td></td><td colspan="2">(DA for ${row.dataset.days} Days )</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">${row.dataset.days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right">${da.toFixed(2)}</td></tr>`;
+            const days = row.dataset.days;
+            const rate = da > 0 ? da / days : 0;
+            const daStr = da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${da}</span>` : "";
+            htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
             return;
         }
         const dateRaw = row.querySelector('input[type="date"]').value;
         const date = fixDate(dateRaw);
+        const fTime = row.querySelector('input[placeholder="FT"]').value || "";
+        const tTime = row.querySelector('input[placeholder="TT"]').value || "";
+        const dateTime = (fTime || tTime) ? `${date}<br><span style="font-size:8px">${fTime} - ${tTime}</span>` : date;
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
         const mode = row.querySelector('select').value;
-        const km = parseFloat(row.querySelector('input[placeholder="KM"]').value) || 0;
-        const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
+        const kmText = row.querySelector('input[placeholder="KM"]').value;
+        const km = parseFloat(kmText) || 0;
+        let fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
         const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
         
-        let col5="", col6="", col7="", col8="", col9="", col10="", col11="", col14="";
-        if (mode === 'Rail') { 
-            col5=km||""; 
-            col7=fare||""; 
-            col8=appSettings.misc.trainIncidentalRate; 
-            col9=km ? (km*col8).toFixed(2) : ""; 
-        } else { 
-            col6=km||""; 
-            col10=appSettings.misc.specialConveyanceRate; 
-            col11=fare ? fare.toFixed(2) : ""; 
+        let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
+        
+        if (isLimited) {
+            if (!limBufHtml) {
+                limBufHtml = { date: dateTime, dateOnly: date, da: da, isFirst: isFirst };
+            } else {
+                limBufHtml.da += da;
+                if (!limBufHtml.dateOnly.includes(date)) {
+                    limBufHtml.dateOnly += `<br>${date}`;
+                    limBufHtml.date += `<br>${dateTime}`;
+                }
+            }
+        } else {
+            flushLimHtml(limBufHtml && limBufHtml.isFirst);
+            let col5="", col6="", col7="", col8="", col9="", col10="", col11="", col14="";
+            if (mode === 'Rail') { 
+                col5=kmText||""; 
+                col7=fare||""; 
+                col8=appSettings.misc.trainIncidentalRate; 
+                col9=(km ? (km*col8).toFixed(2) : ""); 
+            } else { 
+                col6=kmText||""; 
+                col10=appSettings.misc.specialConveyanceRate; 
+                col11=(fare ? fare.toFixed(2) : ""); 
+            }
+            
+            let lineT = (mode === 'Rail' ? (fare + (parseFloat(col9) || 0)) : fare) + da;
+            totalClaim += lineT;
+            col14 = lineT.toFixed(2);
+            
+            htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${dateTime}</td><td class="text-left">${from}</td><td class="text-left">${to}</td><td class="text-center">${mode}</td><td class="text-center">${col5}</td><td class="text-center">${col6}</td><td class="text-right">${col7}</td><td class="text-right">${col8}</td><td class="text-right">${col9}</td><td class="text-right">${col10}</td><td class="text-right">${col11}</td><td class="text-center">${da>0?"1":""}</td><td class="text-right">${da||""}</td><td class="text-right">${col14}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
         }
-        
-        let lineT = (mode === 'Rail' ? (fare + (parseFloat(col9) || 0)) : fare) + da;
-        totalClaim += lineT;
-        col14 = lineT.toFixed(2);
-        
-        tableHtml += `<tr><td class="text-center">${date}</td><td>${from}</td><td>${to}</td><td>${mode}</td><td class="text-right">${col5}</td><td class="text-right">${col6}</td><td class="text-right">${col7}</td><td class="text-right">${col8}</td><td class="text-right">${col9}</td><td class="text-right">${col10}</td><td class="text-right">${col11}</td><td class="text-center"></td><td class="text-right"></td><td class="text-right">${col14}</td>${idx===0?`<td rowspan="${rows.length+1}" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`;
     });
+    flushLimHtml(limBufHtml && limBufHtml.isFirst);
 
-    tableHtml += `<tr><td colspan="13" class="text-right font-bold" style="padding-right:10px;">Total</td><td class="text-right font-bold">${totalClaim.toFixed(2)}</td>${rows.length===0?'<td></td>':''}</tr>`;
+    htmlRows.push(`<tr><td colspan="13" class="text-right font-bold" style="padding-right:10px;">Total</td><td class="text-right font-bold">${totalClaim.toFixed(2)}</td>${htmlRows.length===0?'<td></td>':''}</tr>`);
+    
+    let tableHtml = htmlRows.join('').replace(/@@ROWSPAN@@/g, htmlRows.length);
     tableHtml += `<tr><td colspan="15" class="text-left font-bold" style="padding-left:10px;">Total Amount in Words: ${numberToWords(totalClaim)} Only</td></tr>`;
 
     const html = `
@@ -679,7 +969,7 @@ function generateHTMLBill() {
                     <th colspan="2" width="10%">Mileage allowance<br>for Road Journeys</th>
                     <th colspan="2" width="14%">Daily Allowance for<br>Halts/Special Allowance</th>
                     <th rowspan="3" width="7%">Total in<br>Each Line</th>
-                    <th rowspan="3" width="5%">Purpose of Journey<br>and Halt with<br>authority (No. &<br>Date of<br>communication )<br>(Copy to be<br>attached)</th>
+                    <th rowspan="3" width="5%">Purpose</th>
                 </tr>
                 <tr>
                     <th rowspan="2">From<br><br>Station</th>
@@ -807,57 +1097,57 @@ function generateHTMLBill() {
         </table>
         </div> <!-- End of content-bottom -->
         </div> <!-- End of page-content -->
-        <div id="page-instructions" class="page-container" style="font-size: 11px; line-height: 1.4; padding: 10mm;">
-            <h3 class="text-center" style="text-decoration: underline; font-size: 13px; margin-bottom: 15px;">
+        <div id="page-instructions" class="page-container" style="font-size: 10px; line-height: 1.35; padding: 10mm 15mm; margin-top: 0; box-sizing: border-box;">
+            <h3 class="text-center" style="text-decoration: underline; font-size: 12px; margin-bottom: 10px;">
                 RATES OF T. A. AND D. A. TO EXAMINERS, QUESTION PAPER SETTERS, SYNDICATE MEMBERS, PRINCIPALS OR<br>
                 THOSE WHO TRAVEL ON CALICUT UNIVERSITY EXAMINATION BUSINESS
             </h3>
             
-            <table style="width: 100%; border: none; font-size: 11px;">
+            <table style="width: 100%; border: none; font-size: 10px;">
                 <tr><td style="width: 40px; vertical-align: top;">Note:</td><td style="width: 20px; vertical-align: top;">i)</td><td>No. T. A./D. A. will be paid if the journey distance is not more than Eight Kilometres unless otherwise specified in the rules.</td></tr>
                 <tr><td></td><td style="vertical-align: top;">ii)</td><td>For calculating T. A./D. A. Head quarters alone will be considered. Vacation address will not be considered.</td></tr>
                 <tr><td></td><td style="vertical-align: top;">iii)</td><td>The Vice-Chancellor may, for special reasons to be recorded, allow a particular examiner/question paper setter, mileage allowance at a higher rate than is prescribed in rule 1 below.</td></tr>
                 <tr><td></td><td style="vertical-align: top;">iv)</td><td>The provisions under these rules are independent of the provisions in Part II, KSR.</td></tr>
             </table>
 
-            <div style="margin-top: 10px;"><b>Rule 1. Travelling Allowance for journey by Road/Rail</b></div>
+            <div style="margin-top: 8px;"><b>Rule 1. Travelling Allowance for journey by Road/Rail</b></div>
             <div style="margin-left: 20px;">Road Mileage @ Rs.2 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers</div>
             
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 10px; text-align: center; border: 1px solid #000;" border="1">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 8px; text-align: center; border: 1px solid #000;" border="1">
                 <tr>
-                    <th style="padding: 4px; text-align: left;">Classification</th>
-                    <th style="padding: 4px;">Rate</th>
-                    <th style="padding: 4px;">Eligible class of<br>journey by train</th>
+                    <th style="padding: 3px; text-align: left;">Classification</th>
+                    <th style="padding: 3px;">Rate</th>
+                    <th style="padding: 3px;">Eligible class of<br>journey by train</th>
                 </tr>
-                <tr><td style="padding: 4px; text-align: left;">Grade I - All employees who draw an actual basic pay of Rs. 50,400/- and above</td><td>0.80</td><td>II AC</td></tr>
-                <tr><td style="padding: 4px; text-align: left;">Grade II (a) - Employees with actual basic pay of Rs. 42,500/- and above, but below Rs.50,400/-</td><td>0.60</td><td>I Class</td></tr>
-                <tr><td style="padding: 4px; text-align: left;">Grade II (b) - Employees with actual basic pay of Rs.27,800/- and above, but below Rs.42,500/-</td><td>0.50</td><td>III AC</td></tr>
-                <tr><td style="padding: 4px; text-align: left;">Grade III - Employees with actual basic pay of Rs.18,000/- and above, but below Rs.27,800/-</td><td>0.50</td><td>II Class</td></tr>
-                <tr><td style="padding: 4px; text-align: left;">Grade IV - Employees with actual basic pay below Rs.18,000/-</td><td>0.50</td><td>II Class</td></tr>
+                <tr><td style="padding: 3px; text-align: left;">Grade I - All employees who draw an actual basic pay of Rs. 50,400/- and above</td><td>0.80</td><td>II AC</td></tr>
+                <tr><td style="padding: 3px; text-align: left;">Grade II (a) - Employees with actual basic pay of Rs. 42,500/- and above, but below Rs.50,400/-</td><td>0.60</td><td>I Class</td></tr>
+                <tr><td style="padding: 3px; text-align: left;">Grade II (b) - Employees with actual basic pay of Rs.27,800/- and above, but below Rs.42,500/-</td><td>0.50</td><td>III AC</td></tr>
+                <tr><td style="padding: 3px; text-align: left;">Grade III - Employees with actual basic pay of Rs.18,000/- and above, but below Rs.27,800/-</td><td>0.50</td><td>II Class</td></tr>
+                <tr><td style="padding: 3px; text-align: left;">Grade IV - Employees with actual basic pay below Rs.18,000/-</td><td>0.50</td><td>II Class</td></tr>
             </table>
 
-            <div style="margin-left: 20px; margin-bottom: 10px;">General - If one travels more than 200 kilometres a day by Road, the rate of mileage allowance for the excess over 200 kilometres will be reduced to &frac34; of the normal rate per kilometre.</div>
+            <div style="margin-left: 20px; margin-bottom: 8px;">General - If one travels more than 200 kilometres a day by Road, the rate of mileage allowance for the excess over 200 kilometres will be reduced to &frac34; of the normal rate per kilometre.</div>
 
-            <table style="width: 100%; border: none; font-size: 11px;">
+            <table style="width: 100%; border: none; font-size: 10px;">
                 <tr><td style="width: 20px; vertical-align: top;">2.</td><td><b>Mileage for journey by Air :</b> (i) Prior Sanction from the Vice-Chancellor has to be obtained for performing journey by Air.<br>(ii) Actual Air fare + D.A as Incidental Expenses each way (Air tickets should be produced along with the T.A./D.A claims) + Boarding pass / Ticket Jacket.</td></tr>
                 <tr><td style="vertical-align: top;">3.</td><td><b>Mileage for Journey by Ship</b><br>Actual Ship fare + D.A. outside rate OR 1&frac34; of Fare whichever is higher will be paid (Cash Receipt should be produced for claiming ship fare)</td></tr>
                 <tr><td style="vertical-align: top;">4.</td><td><b>Daily Allowance</b>
-                    <table style="width: 100%; border: none; font-size: 11px;">
+                    <table style="width: 100%; border: none; font-size: 10px;">
                         <tr><td style="width: 20px; vertical-align: top;">i)</td><td>Rupees 400/- (Rupees Four hundred only) per day for actual day of University business irrespective of duration of hours of halt. For inter-state travel Rs.550/- per day (Grade I).</td></tr>
                     </table>
                 </td></tr>
             </table>
 
-            <table style="width: 60%; border-collapse: collapse; margin: 10px auto; text-align: center; border: 1px solid #000;" border="1">
-                <tr><th style="padding: 4px;">Grade</th><th style="padding: 4px;">Inside State</th><th style="padding: 4px;">Outside State</th></tr>
-                <tr><td style="padding: 4px;">I</td><td>400/-</td><td>550/-</td></tr>
-                <tr><td style="padding: 4px;">II (a)</td><td>320/-</td><td>450/-</td></tr>
-                <tr><td style="padding: 4px;">II (b)</td><td>320/-</td><td>450/-</td></tr>
-                <tr><td style="padding: 4px;">III</td><td>250/-</td><td>350/-</td></tr>
-                <tr><td style="padding: 4px;">IV</td><td>250/-</td><td>350/-</td></tr>
+            <table style="width: 60%; border-collapse: collapse; margin: 8px auto; text-align: center; border: 1px solid #000;" border="1">
+                <tr><th style="padding: 3px;">Grade</th><th style="padding: 3px;">Inside State</th><th style="padding: 3px;">Outside State</th></tr>
+                <tr><td style="padding: 3px;">I</td><td>400/-</td><td>550/-</td></tr>
+                <tr><td style="padding: 3px;">II (a)</td><td>320/-</td><td>450/-</td></tr>
+                <tr><td style="padding: 3px;">II (b)</td><td>320/-</td><td>450/-</td></tr>
+                <tr><td style="padding: 3px;">III</td><td>250/-</td><td>350/-</td></tr>
+                <tr><td style="padding: 3px;">IV</td><td>250/-</td><td>350/-</td></tr>
             </table>
 
-            <table style="width: 100%; border: none; font-size: 11px; margin-left: 20px;">
+            <table style="width: 100%; border: none; font-size: 10px; margin-left: 20px;">
                 <tr><td style="width: 20px; vertical-align: top;">ii)</td><td>Rs. 550/- per day will be paid as D.A. for duty at Lakshadweep.</td></tr>
                 <tr><td style="vertical-align: top;">iii)</td><td>For Chemistry Practical Examination one D.A. will be paid for the previous day of the examination for preparation work provided a certificate to that effect is furnished on the T.A. bill.</td></tr>
                 <tr><td style="vertical-align: top;">iv)</td><td>For meetings of Board of Examiners, Question Paper Setters, D.A. for the actual day of University business will be paid to the members in addition to the eligible T.A. All Officers are eligible for T.A./D.A. only if the distance travelled exceeds 8 kilometres, as per rules.</td></tr>
@@ -865,17 +1155,16 @@ function generateHTMLBill() {
                 <tr><td style="vertical-align: top;">vi)</td><td>For intervening Holidays or Off days between days of Duty T.A. or D.A. whichever is less will only be paid.</td></tr>
             </table>
 
-            <table style="width: 100%; border: none; font-size: 11px; margin-top: 10px;">
+            <table style="width: 100%; border: none; font-size: 10px; margin-top: 8px;">
                 <tr><td style="width: 20px; vertical-align: top;">5.</td><td><b>T.A. and D.A. to Syndicate Members / Senate Members</b>
-                    <table style="width: 100%; border: none; font-size: 11px;">
+                    <table style="width: 100%; border: none; font-size: 10px;">
                         <tr><td style="width: 20px; vertical-align: top;">i)</td><td>Road mileage @ Rs.12/- per kilometres will be paid (Special conveyance) irrespective of the distance travelled in a day.</td></tr>
                         <tr><td style="vertical-align: top;">ii)</td><td>D.A. will be Rs. 900/-</td></tr>
                     </table>
                 </td></tr>
             </table>
 
-            <div style="text-align: right; margin-top: 30px; margin-right: 20px; font-weight: bold;">Controller of Examinations</div>
-            <div style="font-size: 9px; margin-top: 20px;">CUP/307/18/50,000</div>
+            <div style="text-align: right; margin-top: 15px; margin-right: 20px; font-weight: bold;">Controller of Examinations</div>
         </div>
         <script>
             window.onload = function() {
