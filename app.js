@@ -566,6 +566,16 @@ function generatePDF() {
     });
     flushLim(limBuf && limBuf.isFirst);
 
+    if (tableData.length > 0) {
+        tableData[0][tableData[0].length - 1] = { 
+            content: "", 
+            rowSpan: tableData.length 
+        };
+        for (let i = 1; i < tableData.length; i++) {
+            tableData[i].pop();
+        }
+    }
+
     doc.autoTable({
         startY: 150,
         head: [
@@ -574,7 +584,33 @@ function generatePDF() {
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
         ],
         body: tableData,
-        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' }
+        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' },
+        didDrawCell: function(data) {
+            if (data.section === 'body' && data.column.index === 14 && data.row.index === 0) {
+                var text = getVal('bill-purpose');
+                var fontSize = 8;
+                doc.setFontSize(fontSize);
+                doc.setTextColor(0);
+                
+                var textLines = doc.splitTextToSize(text, data.cell.height - 4);
+                while (textLines.length * (fontSize * 1.2) > data.cell.width - 4 && fontSize > 4) {
+                    fontSize -= 0.5;
+                    doc.setFontSize(fontSize);
+                    textLines = doc.splitTextToSize(text, data.cell.height - 4);
+                }
+                
+                var lineHt = fontSize * 1.2;
+                var totalBlockWidth = textLines.length * lineHt;
+                var startX = data.cell.x + data.cell.width / 2 - totalBlockWidth / 2 + lineHt / 3;
+                
+                for (var i = 0; i < textLines.length; i++) {
+                    var tw = doc.getTextWidth(textLines[i]);
+                    var lx = startX + i * lineHt;
+                    var ly = data.cell.y + data.cell.height / 2 + tw / 2;
+                    doc.text(textLines[i], lx, ly, { angle: 90 });
+                }
+            }
+        }
     });
 
     let finalY = doc.lastAutoTable.finalY + 15;
@@ -808,7 +844,7 @@ function generateHTMLBill(autoPrint = false) {
         let days = (limBufHtml.da > 0 && limBufHtml.da % 600 === 0) ? limBufHtml.da / 600 : (limBufHtml.da > 0 && limBufHtml.da % 400 === 0 ? limBufHtml.da / 400 : 1);
         let rate = limBufHtml.da > 0 ? limBufHtml.da / days : 0;
         let daStr = limBufHtml.da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${limBufHtml.da}</span>` : "";
-        htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${limBufHtml.date}</td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">TA Limited to DA${daStr}</td><td class="text-center">${limBufHtml.da>0?days:""}</td><td class="text-right">${limBufHtml.da?limBufHtml.da.toFixed(2):""}</td><td class="text-right font-bold">${limBufHtml.da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
+        htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${limBufHtml.date}</td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">TA Limited to DA${daStr}</td><td class="text-center">${limBufHtml.da>0?days:""}</td><td class="text-right">${limBufHtml.da?limBufHtml.da.toFixed(2):""}</td><td class="text-right font-bold">${limBufHtml.da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
         limBufHtml = null;
     };
 
@@ -822,7 +858,7 @@ function generateHTMLBill(autoPrint = false) {
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
             const daStr = da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${da}</span>` : "";
-            htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
+            htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
             return;
         }
         const dateRaw = row.querySelector('input[type="date"]').value;
@@ -868,7 +904,7 @@ function generateHTMLBill(autoPrint = false) {
             totalClaim += lineT;
             col14 = lineT.toFixed(2);
             
-            htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${dateTime}</td><td class="text-left">${from}</td><td class="text-left">${to}</td><td class="text-center">${mode}</td><td class="text-center">${col5}</td><td class="text-center">${col6}</td><td class="text-right">${col7}</td><td class="text-right">${col8}</td><td class="text-right">${col9}</td><td class="text-right">${col10}</td><td class="text-right">${col11}</td><td class="text-center">${da>0?"1":""}</td><td class="text-right">${da||""}</td><td class="text-right">${col14}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`);
+            htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${dateTime}</td><td class="text-left">${from}</td><td class="text-left">${to}</td><td class="text-center">${mode}</td><td class="text-center">${col5}</td><td class="text-center">${col6}</td><td class="text-right">${col7}</td><td class="text-right">${col8}</td><td class="text-right">${col9}</td><td class="text-right">${col10}</td><td class="text-right">${col11}</td><td class="text-center">${da>0?"1":""}</td><td class="text-right">${da||""}</td><td class="text-right">${col14}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
         }
     });
     flushLimHtml(limBufHtml && limBufHtml.isFirst);
@@ -1213,6 +1249,16 @@ function generateHTMLBill(autoPrint = false) {
                         document.documentElement.style.setProperty('--pad-table', (3 * bestF) + 'px ' + (2 * bestF) + 'px');
                         document.documentElement.style.setProperty('--margin-block', (10 * bestF) + 'px');
                         document.documentElement.style.setProperty('--box-size', (50 * bestF) + 'px');
+                    }
+                    
+                    const purposeText = document.getElementById('html-purpose-text');
+                    const purposeContainer = document.getElementById('html-purpose-container');
+                    if (purposeText && purposeContainer) {
+                        let pFontSize = 10;
+                        while ((purposeText.scrollWidth > purposeContainer.clientWidth || purposeText.scrollHeight > purposeContainer.clientHeight) && pFontSize > 4) {
+                            pFontSize -= 0.5;
+                            purposeText.style.fontSize = pFontSize + 'px';
+                        }
                     }
                 }, 100);
             };
