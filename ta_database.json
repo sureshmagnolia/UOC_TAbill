@@ -66,11 +66,6 @@
       "Hub Category": "General"
     },
     {
-      "Abbreviation": "SMY",
-      "Full College Name & Location": "College SMY",
-      "Hub Category": "General"
-    },
-    {
       "Abbreviation": "UOC",
       "Full College Name & Location": "University of Calicut (Thenjipalam)",
       "Hub Category": "General"
@@ -491,33 +486,6 @@
     },
     {
       "Route_ID": "ALA_SMT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ALA_SMY",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_SMY",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_SMY",
       "Step": "3",
       "From": "Thrissur KSRTC Stand",
       "To": "St Marys College",
@@ -1557,7 +1525,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "CTR_SMY",
+      "Route_ID": "CTR_SMT",
       "Step": "1",
       "From": "Govt College Chittur",
       "To": "Chittur Bus Stand",
@@ -1566,7 +1534,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "CTR_SMY",
+      "Route_ID": "CTR_SMT",
       "Step": "2",
       "From": "Chittur Bus Stand",
       "To": "Palakkad Stadium Stand",
@@ -1575,7 +1543,7 @@
       "Type": "Main_Haul"
     },
     {
-      "Route_ID": "CTR_SMY",
+      "Route_ID": "CTR_SMT",
       "Step": "3",
       "From": "Palakkad Jn Railway",
       "To": "Thrissur Railway Stn",
@@ -1585,7 +1553,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "CTR_SMY",
+      "Route_ID": "CTR_SMT",
       "Step": "4",
       "From": "Thrissur Railway Stn",
       "To": "St Marys College",
@@ -2435,7 +2403,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "MCY_SMY",
+      "Route_ID": "MCY_SMT",
       "Step": "1",
       "From": "Mercy College Palakkad",
       "To": "Palakkad Jn Railway",
@@ -2444,7 +2412,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "MCY_SMY",
+      "Route_ID": "MCY_SMT",
       "Step": "2",
       "From": "Palakkad Jn Railway",
       "To": "Thrissur Railway Stn",
@@ -2454,7 +2422,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "MCY_SMY",
+      "Route_ID": "MCY_SMT",
       "Step": "3",
       "From": "Thrissur Railway Stn",
       "To": "St Marys College",
@@ -2971,7 +2939,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "MKD_SMY",
+      "Route_ID": "MKD_SMT",
       "Step": "1",
       "From": "MES Kalladi College",
       "To": "Mannarkkad Bus Stand",
@@ -2980,7 +2948,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "MKD_SMY",
+      "Route_ID": "MKD_SMT",
       "Step": "2",
       "From": "Mannarkkad Bus Stand",
       "To": "Palakkad KSRTC Stand",
@@ -2989,7 +2957,7 @@
       "Type": "Main_Haul"
     },
     {
-      "Route_ID": "MKD_SMY",
+      "Route_ID": "MKD_SMT",
       "Step": "3",
       "From": "Palakkad Jn Railway",
       "To": "Thrissur Railway Stn",
@@ -2999,7 +2967,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "MKD_SMY",
+      "Route_ID": "MKD_SMT",
       "Step": "4",
       "From": "Thrissur Railway Stn",
       "To": "St Marys College",
@@ -4062,42 +4030,6 @@
     },
     {
       "Route_ID": "NEM_SMT",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_SMY",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_SMY",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SMY",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SMY",
       "Step": "4",
       "From": "Thrissur KSRTC Stand",
       "To": "St Marys College",
@@ -6256,34 +6188,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "SMY_ALA",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMY_ALA",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMY_ALA",
-      "Step": "3",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMY_CTR",
+      "Route_ID": "SMT_CTR",
       "Step": "1",
       "From": "St Marys College",
       "To": "Thrissur Railway Stn",
@@ -6292,7 +6197,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "SMY_CTR",
+      "Route_ID": "SMT_CTR",
       "Step": "2",
       "From": "Thrissur Railway Stn",
       "To": "Palakkad Jn Railway",
@@ -6302,7 +6207,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "SMY_CTR",
+      "Route_ID": "SMT_CTR",
       "Step": "3",
       "From": "Palakkad Stadium Stand",
       "To": "Chittur Bus Stand",
@@ -6311,7 +6216,7 @@
       "Type": "Main_Haul"
     },
     {
-      "Route_ID": "SMY_CTR",
+      "Route_ID": "SMT_CTR",
       "Step": "4",
       "From": "Chittur Bus Stand",
       "To": "Govt College Chittur",
@@ -6320,7 +6225,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "SMY_MCY",
+      "Route_ID": "SMT_MCY",
       "Step": "1",
       "From": "St Marys College",
       "To": "Thrissur Railway Stn",
@@ -6329,7 +6234,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "SMY_MCY",
+      "Route_ID": "SMT_MCY",
       "Step": "2",
       "From": "Thrissur Railway Stn",
       "To": "Palakkad Jn Railway",
@@ -6339,7 +6244,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "SMY_MCY",
+      "Route_ID": "SMT_MCY",
       "Step": "3",
       "From": "Palakkad Jn Railway",
       "To": "Mercy College Palakkad",
@@ -6348,7 +6253,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "SMY_MKD",
+      "Route_ID": "SMT_MKD",
       "Step": "1",
       "From": "St Marys College",
       "To": "Thrissur Railway Stn",
@@ -6357,7 +6262,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "SMY_MKD",
+      "Route_ID": "SMT_MKD",
       "Step": "2",
       "From": "Thrissur Railway Stn",
       "To": "Palakkad Jn Railway",
@@ -6367,7 +6272,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "SMY_MKD",
+      "Route_ID": "SMT_MKD",
       "Step": "3",
       "From": "Palakkad KSRTC Stand",
       "To": "Mannarkkad Bus Stand",
@@ -6376,7 +6281,7 @@
       "Type": "Main_Haul"
     },
     {
-      "Route_ID": "SMY_MKD",
+      "Route_ID": "SMT_MKD",
       "Step": "4",
       "From": "Mannarkkad Bus Stand",
       "To": "MES Kalladi College",
@@ -6385,43 +6290,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "SMY_NEM",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMY_NEM",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMY_NEM",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMY_NEM",
-      "Step": "4",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMY_VIC",
+      "Route_ID": "SMT_VIC",
       "Step": "1",
       "From": "St Marys College",
       "To": "Thrissur Railway Stn",
@@ -6430,7 +6299,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "SMY_VIC",
+      "Route_ID": "SMT_VIC",
       "Step": "2",
       "From": "Thrissur Railway Stn",
       "To": "Palakkad Jn Railway",
@@ -6440,7 +6309,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "SMY_VIC",
+      "Route_ID": "SMT_VIC",
       "Step": "3",
       "From": "Palakkad Jn Railway",
       "To": "Govt Victoria College",
@@ -7264,7 +7133,7 @@
       "Type": "Last_Mile"
     },
     {
-      "Route_ID": "VIC_SMY",
+      "Route_ID": "VIC_SMT",
       "Step": "1",
       "From": "Govt Victoria College",
       "To": "Palakkad Jn Railway",
@@ -7273,7 +7142,7 @@
       "Type": "First_Mile"
     },
     {
-      "Route_ID": "VIC_SMY",
+      "Route_ID": "VIC_SMT",
       "Step": "2",
       "From": "Palakkad Jn Railway",
       "To": "Thrissur Railway Stn",
@@ -7283,7 +7152,7 @@
       "Fare": 750
     },
     {
-      "Route_ID": "VIC_SMY",
+      "Route_ID": "VIC_SMT",
       "Step": "3",
       "From": "Thrissur Railway Stn",
       "To": "St Marys College",
