@@ -119,7 +119,30 @@ const DEFAULT_SETTINGS = {
 async function init() {
     try {
         const response = await fetch('ta_database.json');
-        taDatabase = await response.json();
+        const rawDb = await response.json();
+        
+        let flatRoutes = [];
+        if (rawDb.legs && !Array.isArray(rawDb.routes)) {
+            Object.keys(rawDb.routes).forEach(routeId => {
+                const legIds = rawDb.routes[routeId];
+                legIds.forEach((legId, idx) => {
+                    const legData = rawDb.legs[legId];
+                    flatRoutes.push({
+                        Route_ID: routeId,
+                        Step: String(idx + 1),
+                        ...legData
+                    });
+                });
+            });
+        } else {
+            flatRoutes = rawDb.routes || [];
+        }
+        
+        taDatabase = {
+            abbreviations: rawDb.abbreviations || [],
+            routes: flatRoutes
+        };
+        
         populateCollegeDropdowns();
     } catch (e) {
         console.error("Failed to load database", e);

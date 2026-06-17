@@ -76,271 +76,141 @@
       "Hub Category": "General"
     }
   ],
-  "routes": [
-    {
-      "Route_ID": "ALA_ASM",
-      "Step": "1",
+  "legs": {
+    "LEG_1": {
       "From": "SN College Alathur",
       "To": "Erattakulam Stop",
       "Mode": "Taxi",
       "KM": "0.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "ALA_ASM",
-      "Step": "2",
+    "LEG_2": {
       "From": "Erattakulam Stop",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "44.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_ASM",
-      "Step": "3",
+    "LEG_3": {
       "From": "Thrissur KSRTC Stand",
       "To": "Kodungallur Stand",
       "Mode": "Bus",
       "KM": "36.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_ASM",
-      "Step": "4",
+    "LEG_4": {
       "From": "Kodungallur Stand",
       "To": "MES Asmabi College",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_CTR",
-      "Step": "1",
+    "LEG_5": {
       "From": "SN College Alathur",
       "To": "Erattakulam (Alathur)",
       "Mode": "Taxi",
       "KM": "0.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "ALA_CTR",
-      "Step": "2",
+    "LEG_6": {
       "From": "Erattakulam (Alathur)",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_CTR",
-      "Step": "2",
+    "LEG_7": {
       "From": "Erattakulam (Alathur)",
       "To": "Palakkad Stadium Stand",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_CTR",
-      "Step": "3",
+    "LEG_8": {
       "From": "Palakkad Stadium Stand",
       "To": "Chittur Bus Stand",
       "Mode": "Bus",
       "KM": "15.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_CTR",
-      "Step": "4",
+    "LEG_9": {
       "From": "Chittur Bus Stand",
       "To": "Govt College Chittur",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_LFC",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_LFC",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_LFC",
-      "Step": "3",
+    "LEG_10": {
       "From": "Thrissur KSRTC Stand",
       "To": "Guruvayur Bus Stand",
       "Mode": "Bus",
       "KM": "26.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_LFC",
-      "Step": "4",
+    "LEG_11": {
       "From": "Guruvayur Bus Stand",
       "To": "Little Flower College",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_MCY",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_MCY",
-      "Step": "2",
+    "LEG_12": {
       "From": "Erattakulam Stop",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_MCY",
-      "Step": "3",
+    "LEG_13": {
       "From": "Palakkad KSRTC Stand",
       "To": "Mercy College Palakkad",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_MKD",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_MKD",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_MKD",
-      "Step": "3",
+    "LEG_14": {
       "From": "Palakkad KSRTC Stand",
       "To": "Mannarkkad Bus Stand",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_MKD",
-      "Step": "4",
+    "LEG_15": {
       "From": "Mannarkkad Bus Stand",
       "To": "MES Kalladi College",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_NAT",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_NAT",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_NAT",
-      "Step": "3",
+    "LEG_16": {
       "From": "Thrissur KSRTC Stand",
       "To": "Nattika Jn",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_NAT",
-      "Step": "4",
+    "LEG_17": {
       "From": "Nattika Jn",
       "To": "SN College Nattika",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_NEM",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_NEM",
-      "Step": "2",
+    "LEG_18": {
       "From": "Erattakulam Stop",
       "To": "Nemmara Bus Stand",
       "Mode": "Bus",
       "KM": "14.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_NEM",
-      "Step": "3",
+    "LEG_19": {
       "From": "Nemmara Bus Stand",
       "To": "NSS College Nemmara",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_OTP",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_OTP",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_OTP",
-      "Step": "3",
+    "LEG_20": {
       "From": "Palakkad Jn Railway",
       "To": "Ottappalam Railway Stn",
       "Mode": "Train",
@@ -348,72 +218,28 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ALA_OTP",
-      "Step": "4",
+    "LEG_21": {
       "From": "Ottappalam Railway Stn",
       "To": "NSS College Ottappalam",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_PRK",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_PRK",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_PRK",
-      "Step": "3",
+    "LEG_22": {
       "From": "Palakkad KSRTC Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_PTB",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_PTB",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_PTB",
-      "Step": "3",
+    "LEG_23": {
       "From": "Palakkad KSRTC Stand",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Hub_Connect"
     },
-    {
-      "Route_ID": "ALA_PTB",
-      "Step": "4",
+    "LEG_24": {
       "From": "Palakkad Jn Railway",
       "To": "Pattambi Railway Stn",
       "Mode": "Train",
@@ -421,99 +247,35 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ALA_PTB",
-      "Step": "5",
+    "LEG_25": {
       "From": "Pattambi Railway Stn",
       "To": "SNGS College Pattambi",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_SKG",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_SKG",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_SKG",
-      "Step": "3",
+    "LEG_26": {
       "From": "Thrissur KSRTC Stand",
       "To": "Ariyannur Stop",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ALA_SKG",
-      "Step": "4",
+    "LEG_27": {
       "From": "Ariyannur Stop",
       "To": "Sree Krishna College GVR",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_SMT",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_SMT",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_SMT",
-      "Step": "3",
+    "LEG_28": {
       "From": "Thrissur KSRTC Stand",
       "To": "St Marys College",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_UOC",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam Stop",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_UOC",
-      "Step": "2",
-      "From": "Erattakulam Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_UOC",
-      "Step": "3",
+    "LEG_29": {
       "From": "Thrissur Railway Stn",
       "To": "Parappanangadi Stn",
       "Mode": "Train",
@@ -521,99 +283,49 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ALA_UOC",
-      "Step": "4",
+    "LEG_30": {
       "From": "Parappanangadi Stn",
       "To": "University of Calicut",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ALA_VIC",
-      "Step": "1",
-      "From": "SN College Alathur",
-      "To": "Erattakulam (Alathur)",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ALA_VIC",
-      "Step": "2",
-      "From": "Erattakulam (Alathur)",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ALA_VIC",
-      "Step": "3",
+    "LEG_31": {
       "From": "Palakkad KSRTC Stand",
       "To": "Govt Victoria College",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_ALA",
-      "Step": "1",
+    "LEG_32": {
       "From": "MES Asmabi College",
       "To": "Kodungallur Stand",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "ASM_ALA",
-      "Step": "2",
+    "LEG_33": {
       "From": "Kodungallur Stand",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "36.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_ALA",
-      "Step": "3",
+    "LEG_34": {
       "From": "Thrissur KSRTC Stand",
       "To": "Erattakulam Stop",
       "Mode": "Bus",
       "KM": "44.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_ALA",
-      "Step": "4",
+    "LEG_35": {
       "From": "Erattakulam Stop",
       "To": "SN College Alathur",
       "Mode": "Taxi",
       "KM": "0.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_CTR",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_CTR",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_CTR",
-      "Step": "3",
+    "LEG_36": {
       "From": "Thrissur Railway Stn",
       "To": "Palakkad Jn Railway",
       "Mode": "Train",
@@ -621,254 +333,84 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ASM_CTR",
-      "Step": "4",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_CTR",
-      "Step": "5",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_LFC",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_LFC",
-      "Step": "2",
+    "LEG_37": {
       "From": "Kodungallur Stand",
       "To": "Guruvayur Bus Stand",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_LFC",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_MCY",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_MCY",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_MCY",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "ASM_MCY",
-      "Step": "4",
+    "LEG_38": {
       "From": "Palakkad Jn Railway",
       "To": "Mercy College Palakkad",
       "Mode": "Taxi",
       "KM": "5.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "4",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "5",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_MKD",
-      "Step": "5",
+    "LEG_39": {
       "From": "Mannarkkad Bus Stand",
       "To": "MES Kalladi Mannarkkad",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_NAT",
-      "Step": "1",
+    "LEG_40": {
       "From": "MES Asmabi College",
       "To": "Vemballur Stop",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "ASM_NAT",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_NAT",
-      "Step": "2",
+    "LEG_41": {
       "From": "Vemballur Stop",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Bus",
       "KM": "18.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_NAT",
-      "Step": "2",
+    "LEG_42": {
       "From": "Kodungallur Stand",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_NAT",
-      "Step": "3",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_NEM",
-      "Step": "1",
+    "LEG_43": {
       "From": "MES Asmabi (Vemballur)",
       "To": "Kodungallur Stand",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "ASM_NEM",
-      "Step": "2",
+    "LEG_44": {
       "From": "Kodungallur Stand",
       "To": "Thrissur KSRTC",
       "Mode": "Bus",
       "KM": "36.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_NEM",
-      "Step": "3",
+    "LEG_45": {
       "From": "Thrissur KSRTC",
       "To": "Vadakkencherry",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_NEM",
-      "Step": "4",
+    "LEG_46": {
       "From": "Vadakkencherry",
       "To": "Nemmara Stand",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_NEM",
-      "Step": "5",
+    "LEG_47": {
       "From": "Nemmara Stand",
       "To": "NSS Nemmara",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_OTP",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_OTP",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_OTP",
-      "Step": "3",
+    "LEG_48": {
       "From": "Thrissur Railway Stn",
       "To": "Ottappalam Railway Stn",
       "Mode": "Train",
@@ -876,73 +418,14 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ASM_OTP",
-      "Step": "4",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_PRK",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_PRK",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_PRK",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "ASM_PRK",
-      "Step": "4",
+    "LEG_49": {
       "From": "Palakkad Jn Railway",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_PTB",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_PTB",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_PTB",
-      "Step": "3",
+    "LEG_50": {
       "From": "Thrissur Railway Stn",
       "To": "Pattambi Railway Stn",
       "Mode": "Train",
@@ -950,226 +433,84 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "ASM_PTB",
-      "Step": "4",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_SKG",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_SKG",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "45.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_SKG",
-      "Step": "3",
+    "LEG_51": {
       "From": "Guruvayur Bus Stand",
       "To": "Sree Krishna College GVR",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_SMT",
-      "Step": "1",
-      "From": "MES Asmabi (Vemballur)",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_SMT",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_SMT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "1",
-      "From": "MES Asmabi (Vemballur)",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "2",
+    "LEG_52": {
       "From": "Kodungallur Stand",
       "To": "University of Calicut (NH 66)",
       "Mode": "Bus",
       "KM": "115.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "3",
+    "LEG_53": {
       "From": "University Campus",
       "To": "Internal Dept",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "3",
+    "LEG_54": {
       "From": "University Campus",
       "To": "Campus Office/Gate",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_UOC",
-      "Step": "3",
+    "LEG_55": {
       "From": "University Campus",
       "To": "Campus Office",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "ASM_VIC",
-      "Step": "1",
-      "From": "MES Asmabi College",
-      "To": "Kodungallur Stand",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "ASM_VIC",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "ASM_VIC",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "ASM_VIC",
-      "Step": "4",
+    "LEG_56": {
       "From": "Palakkad Jn Railway",
       "To": "Govt Victoria College",
       "Mode": "Taxi",
       "KM": "4.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "CTR_ALA",
-      "Step": "1",
+    "LEG_57": {
       "From": "Govt College Chittur",
       "To": "Chittur Bus Stand",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "CTR_ALA",
-      "Step": "2",
+    "LEG_58": {
       "From": "Chittur Bus Stand",
       "To": "Palakkad Stadium Stand",
       "Mode": "Bus",
       "KM": "15.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "CTR_ALA",
-      "Step": "3",
+    "LEG_59": {
       "From": "Palakkad KSRTC Stand",
       "To": "Erattakulam (Alathur)",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "CTR_ALA",
-      "Step": "3",
+    "LEG_60": {
       "From": "Palakkad Stadium Stand",
       "To": "Erattakulam (Alathur)",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "CTR_ALA",
-      "Step": "4",
+    "LEG_61": {
       "From": "Erattakulam (Alathur)",
       "To": "SN College Alathur",
       "Mode": "Taxi",
       "KM": "0.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "CTR_ASM",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_ASM",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_ASM",
-      "Step": "3",
+    "LEG_62": {
       "From": "Palakkad Jn Railway",
       "To": "Thrissur Railway Stn",
       "Mode": "Train",
@@ -1177,411 +518,35 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "CTR_ASM",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_ASM",
-      "Step": "5",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_LFC",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_LFC",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_LFC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_LFC",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_LFC",
-      "Step": "5",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_MCY",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_MCY",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_MCY",
-      "Step": "3",
+    "LEG_63": {
       "From": "Palakkad Stadium Stand",
       "To": "Mercy College Palakkad",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "CTR_MKD",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_MKD",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_MKD",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_MKD",
-      "Step": "4",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_NAT",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_NAT",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_NAT",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_NAT",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_NAT",
-      "Step": "5",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_NEM",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_NEM",
-      "Step": "2",
+    "LEG_64": {
       "From": "Chittur Bus Stand",
       "To": "Nemmara Bus Stand",
       "Mode": "Bus",
       "KM": "18.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "CTR_NEM",
-      "Step": "3",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_OTP",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_OTP",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_OTP",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_OTP",
-      "Step": "4",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_PRK",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_PRK",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_PRK",
-      "Step": "3",
+    "LEG_65": {
       "From": "Palakkad Stadium Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "CTR_PTB",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_PTB",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_PTB",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_PTB",
-      "Step": "4",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_SKG",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_SKG",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_SKG",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_SKG",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Ariyannur Stop",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_SKG",
-      "Step": "5",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_SMT",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_SMT",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_SMT",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "CTR_SMT",
-      "Step": "4",
+    "LEG_66": {
       "From": "Thrissur Railway Stn",
       "To": "St Marys College",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "CTR_UOC",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_UOC",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_UOC",
-      "Step": "3",
+    "LEG_67": {
       "From": "Palakkad Jn Railway",
       "To": "Parappanangadi Stn",
       "Mode": "Train",
@@ -1589,299 +554,70 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "CTR_UOC",
-      "Step": "4",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "CTR_VIC",
-      "Step": "1",
-      "From": "Govt College Chittur",
-      "To": "Chittur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "CTR_VIC",
-      "Step": "2",
-      "From": "Chittur Bus Stand",
-      "To": "Palakkad Stadium Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "CTR_VIC",
-      "Step": "3",
+    "LEG_68": {
       "From": "Palakkad Stadium Stand",
       "To": "Govt Victoria College",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "LFC_ALA",
-      "Step": "1",
+    "LEG_69": {
       "From": "Little Flower College",
       "To": "Guruvayur Bus Stand",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "LFC_ALA",
-      "Step": "2",
+    "LEG_70": {
       "From": "Guruvayur Bus Stand",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "26.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_ALA",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_ASM",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_ASM",
-      "Step": "2",
+    "LEG_71": {
       "From": "Guruvayur Bus Stand",
       "To": "Kodungallur Stand",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_ASM",
-      "Step": "3",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_CTR",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_CTR",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_CTR",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "LFC_CTR",
-      "Step": "4",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_CTR",
-      "Step": "5",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_MCY",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_MCY",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_MCY",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "LFC_MCY",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_MKD",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_MKD",
-      "Step": "2",
+    "LEG_72": {
       "From": "Guruvayur Stand",
       "To": "Mannarkkad (via Shoranur)",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_NAT",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_NAT",
-      "Step": "2",
+    "LEG_73": {
       "From": "Guruvayur Bus Stand",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_NAT",
-      "Step": "3",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_NEM",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_NEM",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_NEM",
-      "Step": "3",
+    "LEG_74": {
       "From": "Thrissur KSRTC Stand",
       "To": "Vadakkencherry NH Stop",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_NEM",
-      "Step": "4",
+    "LEG_75": {
       "From": "Vadakkencherry NH Stop",
       "To": "Nemmara Bus Stand",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_NEM",
-      "Step": "5",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_OTP",
-      "Step": "1",
+    "LEG_76": {
       "From": "Little Flower College",
       "To": "Guruvayur Railway Stn",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "LFC_OTP",
-      "Step": "2",
+    "LEG_77": {
       "From": "Guruvayur Railway Stn",
       "To": "Ottappalam Railway Stn",
       "Mode": "Train",
@@ -1889,64 +625,7 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "LFC_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_PRK",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_PRK",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_PRK",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "LFC_PRK",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_PTB",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_PTB",
-      "Step": "2",
+    "LEG_78": {
       "From": "Guruvayur Railway Stn",
       "To": "Pattambi Railway Stn",
       "Mode": "Train",
@@ -1954,2174 +633,350 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "LFC_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_SKG",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_SKG",
-      "Step": "2",
+    "LEG_79": {
       "From": "Guruvayur Bus Stand",
       "To": "Ariyannur Stop",
       "Mode": "Bus",
       "KM": "4.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_SKG",
-      "Step": "3",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_SMT",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_SMT",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_SMT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_UOC",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_UOC",
-      "Step": "2",
+    "LEG_80": {
       "From": "Guruvayur Stand",
       "To": "University of Calicut (NH 66)",
       "Mode": "Bus",
       "KM": "65.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "LFC_UOC",
-      "Step": "3",
-      "From": "University Campus",
-      "To": "Internal Dept",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "LFC_VIC",
-      "Step": "1",
-      "From": "Little Flower College",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "LFC_VIC",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "LFC_VIC",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "LFC_VIC",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_ALA",
-      "Step": "1",
+    "LEG_81": {
       "From": "Mercy College Palakkad",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "MCY_ALA",
-      "Step": "2",
+    "LEG_82": {
       "From": "Palakkad KSRTC Stand",
       "To": "Erattakulam Stop",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MCY_ALA",
-      "Step": "3",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_ASM",
-      "Step": "1",
+    "LEG_83": {
       "From": "Mercy College Palakkad",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
       "KM": "5.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "MCY_ASM",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_ASM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MCY_ASM",
-      "Step": "4",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_CTR",
-      "Step": "1",
+    "LEG_84": {
       "From": "Mercy College Palakkad",
       "To": "Palakkad Stadium Stand",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "MCY_CTR",
-      "Step": "2",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MCY_CTR",
-      "Step": "3",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_LFC",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_LFC",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_LFC",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MCY_LFC",
-      "Step": "4",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_MKD",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_MKD",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MCY_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_NAT",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_NAT",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_NAT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MCY_NAT",
-      "Step": "4",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_NEM",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_NEM",
-      "Step": "2",
+    "LEG_85": {
       "From": "Palakkad KSRTC Stand",
       "To": "Nemmara Bus Stand",
       "Mode": "Bus",
       "KM": "28.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MCY_NEM",
-      "Step": "3",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_OTP",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_OTP",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_PRK",
-      "Step": "1",
+    "LEG_86": {
       "From": "Mercy College Palakkad",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Intra_City"
     },
-    {
-      "Route_ID": "MCY_PTB",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_PTB",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_SKG",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_SKG",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_SKG",
-      "Step": "3",
+    "LEG_87": {
       "From": "Thrissur KSRTC Stand",
       "To": "Ariyannur Stop (GVR)",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MCY_SKG",
-      "Step": "4",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_SMT",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_SMT",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "1",
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Parappanangadi Stn",
-      "Mode": "Train",
-      "KM": "105.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Hub_Connect"
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "3",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Parappanangadi Stn",
-      "Mode": "Train",
-      "KM": "105.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MCY_UOC",
-      "Step": "4",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MCY_VIC",
-      "Step": "1",
+    "LEG_88": {
       "From": "Mercy College Palakkad",
       "To": "Govt Victoria College",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Intra_City"
     },
-    {
-      "Route_ID": "MKD_ALA",
-      "Step": "1",
+    "LEG_89": {
       "From": "MES Kalladi College",
       "To": "Mannarkkad Bus Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "MKD_ALA",
-      "Step": "2",
+    "LEG_90": {
       "From": "Mannarkkad Bus Stand",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_ALA",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "1",
+    "LEG_91": {
       "From": "MES Kalladi Mannarkkad",
       "To": "Mannarkkad Bus Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_ASM",
-      "Step": "5",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_CTR",
-      "Step": "1",
-      "From": "MES Kalladi Mannarkkad",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_CTR",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_CTR",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_CTR",
-      "Step": "3",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_CTR",
-      "Step": "4",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_LFC",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_LFC",
-      "Step": "2",
+    "LEG_92": {
       "From": "Mannarkkad Stand",
       "To": "Guruvayur (via Shoranur)",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_LFC",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_MCY",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_MCY",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_MCY",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "1",
-      "From": "MES Kalladi Mannarkkad",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_NAT",
-      "Step": "5",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_NEM",
-      "Step": "1",
-      "From": "MES Kalladi Mannarkkad",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_NEM",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_NEM",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_NEM",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_NEM",
-      "Step": "4",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_OTP",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_OTP",
-      "Step": "1",
-      "From": "MES Kalladi Mannarkkad",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_OTP",
-      "Step": "2",
+    "LEG_93": {
       "From": "Mannarkkad Bus Stand",
       "To": "Ottappalam Bus Stand",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_OTP",
-      "Step": "2",
+    "LEG_94": {
       "From": "Mannarkkad Stand",
       "To": "Ottappalam Bus Stand (via Cherp.)",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_OTP",
-      "Step": "3",
+    "LEG_95": {
       "From": "Ottappalam Bus Stand",
       "To": "NSS College Ottappalam",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "MKD_PRK",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_PRK",
-      "Step": "2",
+    "LEG_96": {
       "From": "Mannarkkad Stand",
       "To": "Pattambi Bus Stand (via Cherpulassery)",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_PRK",
-      "Step": "3",
+    "LEG_97": {
       "From": "Pattambi Bus Stand",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "MKD_PTB",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_PTB",
-      "Step": "1",
-      "From": "MES Kalladi Mannarkkad",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_PTB",
-      "Step": "2",
+    "LEG_98": {
       "From": "Mannarkkad Bus Stand",
       "To": "Pattambi Bus Stand",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_PTB",
-      "Step": "2",
+    "LEG_99": {
       "From": "Mannarkkad Stand",
       "To": "Pattambi Bus Stand (via Cherp.)",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_PTB",
-      "Step": "3",
+    "LEG_100": {
       "From": "Pattambi Bus Stand",
       "To": "SNGS College Pattambi",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "MKD_SKG",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_SKG",
-      "Step": "2",
+    "LEG_101": {
       "From": "Mannarkkad Bus Stand",
       "To": "Guruvayur (via Shoranur)",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_SKG",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_SMT",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_SMT",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_SMT",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "MKD_SMT",
-      "Step": "4",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "MKD_UOC",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_UOC",
-      "Step": "2",
+    "LEG_102": {
       "From": "Mannarkkad Stand",
       "To": "University of Calicut (via Pthalmanna)",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "MKD_UOC",
-      "Step": "3",
+    "LEG_103": {
       "From": "University Campus Stop",
       "To": "Internal Dept",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "MKD_VIC",
-      "Step": "1",
-      "From": "MES Kalladi College",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "MKD_VIC",
-      "Step": "2",
-      "From": "Mannarkkad Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "MKD_VIC",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_ALA",
-      "Step": "1",
+    "LEG_104": {
       "From": "SN College Nattika",
       "To": "Nattika Jn",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "NAT_ALA",
-      "Step": "2",
+    "LEG_105": {
       "From": "Nattika Jn",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_ALA",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "1",
+    "LEG_106": {
       "From": "SN College Nattika",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "2",
+    "LEG_107": {
       "From": "Nattika Jn (NH 66)",
       "To": "Vemballur Stop",
       "Mode": "Bus",
       "KM": "18.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "2",
+    "LEG_108": {
       "From": "Nattika Jn",
       "To": "Kodungallur Stand",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "3",
+    "LEG_109": {
       "From": "Vemballur Stop",
       "To": "MES Asmabi College",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "NAT_ASM",
-      "Step": "3",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_CTR",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_CTR",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_CTR",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_CTR",
-      "Step": "4",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_CTR",
-      "Step": "5",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_LFC",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_LFC",
-      "Step": "2",
+    "LEG_110": {
       "From": "Nattika Jn",
       "To": "Guruvayur Bus Stand",
       "Mode": "Bus",
       "KM": "22.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_LFC",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_MCY",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_MCY",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_MCY",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_MCY",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "4",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "5",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_MKD",
-      "Step": "5",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi Mannarkkad",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "3",
+    "LEG_111": {
       "From": "Thrissur KSRTC Stand",
       "To": "Vadakkencherry Stop",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "4",
+    "LEG_112": {
       "From": "Vadakkencherry Stop",
       "To": "Nemmara Bus Stand",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "4",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_NEM",
-      "Step": "5",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_OTP",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_OTP",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_OTP",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "33.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_OTP",
-      "Step": "4",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_PRK",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_PRK",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_PRK",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_PRK",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_PTB",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_PTB",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_PTB",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_PTB",
-      "Step": "4",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_SKG",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_SKG",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_SKG",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_SMT",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_SMT",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_SMT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_UOC",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_UOC",
-      "Step": "2",
+    "LEG_113": {
       "From": "Nattika Jn",
       "To": "University of Calicut (NH 66)",
       "Mode": "Bus",
       "KM": "102.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NAT_UOC",
-      "Step": "3",
-      "From": "University Campus",
-      "To": "Internal Dept",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_UOC",
-      "Step": "3",
-      "From": "University Campus",
-      "To": "Campus Office",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NAT_VIC",
-      "Step": "1",
-      "From": "SN College Nattika",
-      "To": "Nattika Jn",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NAT_VIC",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NAT_VIC",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NAT_VIC",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_ALA",
-      "Step": "1",
+    "LEG_114": {
       "From": "NSS College Nemmara",
       "To": "Nemmara Bus Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "NEM_ALA",
-      "Step": "2",
+    "LEG_115": {
       "From": "Nemmara Bus Stand",
       "To": "Erattakulam Stop",
       "Mode": "Bus",
       "KM": "14.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_ALA",
-      "Step": "3",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_ASM",
-      "Step": "1",
+    "LEG_116": {
       "From": "NSS Nemmara",
       "To": "Nemmara Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "NEM_ASM",
-      "Step": "2",
+    "LEG_117": {
       "From": "Nemmara Stand",
       "To": "Vadakkencherry",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_ASM",
-      "Step": "3",
+    "LEG_118": {
       "From": "Vadakkencherry",
       "To": "Thrissur KSRTC",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_ASM",
-      "Step": "4",
+    "LEG_119": {
       "From": "Thrissur KSRTC",
       "To": "Kodungallur Stand",
       "Mode": "Bus",
       "KM": "36.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_ASM",
-      "Step": "5",
+    "LEG_120": {
       "From": "Kodungallur Stand",
       "To": "MES Asmabi (Vemballur)",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "NEM_CTR",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_CTR",
-      "Step": "2",
+    "LEG_121": {
       "From": "Nemmara Bus Stand",
       "To": "Chittur Bus Stand",
       "Mode": "Bus",
       "KM": "18.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_CTR",
-      "Step": "3",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_LFC",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_LFC",
-      "Step": "2",
+    "LEG_122": {
       "From": "Nemmara Bus Stand",
       "To": "Vadakkencherry NH Stop",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_LFC",
-      "Step": "3",
+    "LEG_123": {
       "From": "Vadakkencherry NH Stop",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_LFC",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_LFC",
-      "Step": "5",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_MCY",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_MCY",
-      "Step": "2",
+    "LEG_124": {
       "From": "Nemmara Bus Stand",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Bus",
       "KM": "28.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_MCY",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_MKD",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_MKD",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_MKD",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_MKD",
-      "Step": "4",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "2",
+    "LEG_125": {
       "From": "Nemmara Bus Stand",
       "To": "Vadakkencherry Stop",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "3",
+    "LEG_126": {
       "From": "Vadakkencherry Stop",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "35.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_NAT",
-      "Step": "5",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_OTP",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_OTP",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_OTP",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NEM_OTP",
-      "Step": "4",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_PRK",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_PRK",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_PRK",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_PTB",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_PTB",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_PTB",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NEM_PTB",
-      "Step": "4",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_SKG",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_SKG",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SKG",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SKG",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Ariyannur Stop",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SKG",
-      "Step": "5",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_SMT",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_SMT",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SMT",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_SMT",
-      "Step": "4",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_UOC",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_UOC",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_UOC",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_UOC",
-      "Step": "4",
-      "From": "Thrissur Railway Stn",
-      "To": "Parappanangadi Stn",
-      "Mode": "Train",
-      "KM": "80.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "NEM_UOC",
-      "Step": "5",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "NEM_VIC",
-      "Step": "1",
-      "From": "NSS College Nemmara",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "NEM_VIC",
-      "Step": "2",
-      "From": "Nemmara Bus Stand",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "NEM_VIC",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_ALA",
-      "Step": "1",
+    "LEG_127": {
       "From": "NSS College Ottappalam",
       "To": "Ottappalam Railway Stn",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "OTP_ALA",
-      "Step": "2",
+    "LEG_128": {
       "From": "Ottappalam Railway Stn",
       "To": "Palakkad Jn Railway",
       "Mode": "Train",
@@ -4129,36 +984,7 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "OTP_ALA",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "OTP_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_ASM",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_ASM",
-      "Step": "2",
+    "LEG_129": {
       "From": "Ottappalam Railway Stn",
       "To": "Thrissur Railway Stn",
       "Mode": "Train",
@@ -4166,73 +992,7 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "OTP_ASM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "OTP_ASM",
-      "Step": "4",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_CTR",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_CTR",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_CTR",
-      "Step": "3",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "OTP_CTR",
-      "Step": "4",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_LFC",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_LFC",
-      "Step": "2",
+    "LEG_130": {
       "From": "Ottappalam Railway Stn",
       "To": "Guruvayur Railway Stn",
       "Mode": "Train",
@@ -4240,174 +1000,35 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "OTP_LFC",
-      "Step": "3",
+    "LEG_131": {
       "From": "Guruvayur Railway Stn",
       "To": "Little Flower College",
       "Mode": "Taxi",
       "KM": "1.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "OTP_MCY",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_MCY",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_MCY",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_MKD",
-      "Step": "1",
+    "LEG_132": {
       "From": "NSS College Ottappalam",
       "To": "Ottappalam Bus Stand",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "OTP_MKD",
-      "Step": "2",
+    "LEG_133": {
       "From": "Ottappalam Stand",
       "To": "Mannarkkad (via Cherpulassery)",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "OTP_MKD",
-      "Step": "2",
+    "LEG_134": {
       "From": "Ottappalam Stand",
       "To": "Mannarkkad Stand (via Cherp.)",
       "Mode": "Bus",
       "KM": "38.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "OTP_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi Mannarkkad",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_NAT",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_NAT",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "33.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_NAT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "OTP_NAT",
-      "Step": "4",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_NEM",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_NEM",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_NEM",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "OTP_NEM",
-      "Step": "4",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_PRK",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_PRK",
-      "Step": "2",
+    "LEG_135": {
       "From": "Ottappalam Railway Stn",
       "To": "Pattambi Railway Stn",
       "Mode": "Train",
@@ -4415,120 +1036,28 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "OTP_PRK",
-      "Step": "3",
+    "LEG_136": {
       "From": "Pattambi Railway Stn",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "OTP_PTB",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_PTB",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "18.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_SKG",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_SKG",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Guruvayur Railway Stn",
-      "Mode": "Train",
-      "KM": "45.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_SKG",
-      "Step": "3",
+    "LEG_137": {
       "From": "Guruvayur Railway Stn",
       "To": "Sree Krishna College",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "OTP_SKG",
-      "Step": "3",
+    "LEG_138": {
       "From": "Guruvayur Railway Stn",
       "To": "Sree Krishna College GVR",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "OTP_SMT",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_SMT",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "33.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_UOC",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_UOC",
-      "Step": "2",
+    "LEG_139": {
       "From": "Ottappalam Railway Stn",
       "To": "Parappanangadi Stn",
       "Mode": "Train",
@@ -4536,283 +1065,56 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "OTP_UOC",
-      "Step": "3",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "OTP_VIC",
-      "Step": "1",
-      "From": "NSS College Ottappalam",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "OTP_VIC",
-      "Step": "2",
-      "From": "Ottappalam Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "OTP_VIC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_ALA",
-      "Step": "1",
+    "LEG_140": {
       "From": "NSS College Parakkulam",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_ALA",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_ALA",
-      "Step": "3",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_ASM",
-      "Step": "1",
+    "LEG_141": {
       "From": "NSS College Parakkulam",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_ASM",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PRK_ASM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_ASM",
-      "Step": "4",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_CTR",
-      "Step": "1",
+    "LEG_142": {
       "From": "NSS College Parakkulam",
       "To": "Palakkad Stadium Stand",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_CTR",
-      "Step": "2",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_CTR",
-      "Step": "3",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_LFC",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_LFC",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PRK_LFC",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_LFC",
-      "Step": "4",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_MCY",
-      "Step": "1",
+    "LEG_143": {
       "From": "NSS College Parakkulam",
       "To": "Mercy College Palakkad",
       "Mode": "Taxi",
       "KM": "7.5",
       "Type": "Intra_City"
     },
-    {
-      "Route_ID": "PRK_MKD",
-      "Step": "1",
+    "LEG_144": {
       "From": "NSS College Parakkulam",
       "To": "Pattambi Bus Stand",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_MKD",
-      "Step": "2",
+    "LEG_145": {
       "From": "Pattambi Stand",
       "To": "Mannarkkad (via Cherpulassery)",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "PRK_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_NAT",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_NAT",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PRK_NAT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_NAT",
-      "Step": "4",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_NEM",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_NEM",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_NEM",
-      "Step": "3",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_OTP",
-      "Step": "1",
+    "LEG_146": {
       "From": "NSS College Parakkulam",
       "To": "Pattambi Railway Stn",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_OTP",
-      "Step": "2",
+    "LEG_147": {
       "From": "Pattambi Railway Stn",
       "To": "Ottappalam Railway Stn",
       "Mode": "Train",
@@ -4820,92 +1122,7 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "PRK_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_PTB",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_PTB",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PRK_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_SKG",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_SKG",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PRK_SKG",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Ariyannur Stop (GVR)",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PRK_SKG",
-      "Step": "4",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_SMT",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_SMT",
-      "Step": "2",
+    "LEG_148": {
       "From": "Pattambi Railway Stn",
       "To": "Thrissur Railway Stn",
       "Mode": "Train",
@@ -4913,45 +1130,21 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "PRK_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PRK_UOC",
-      "Step": "1",
+    "LEG_149": {
       "From": "NSS College Parakkulam",
       "To": "Kuttippuram Bus Stand",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PRK_UOC",
-      "Step": "2",
+    "LEG_150": {
       "From": "Kuttippuram",
       "To": "University of Calicut (via NH 66)",
       "Mode": "Bus",
       "KM": "42.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "PRK_VIC",
-      "Step": "1",
-      "From": "NSS College Parakkulam",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PRK_VIC",
-      "Step": "2",
+    "LEG_151": {
       "From": "Pattambi Railway Stn",
       "To": "Palakkad Jn Railway",
       "Mode": "Train",
@@ -4959,147 +1152,21 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "PRK_VIC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_ALA",
-      "Step": "1",
+    "LEG_152": {
       "From": "SNGS College Pattambi",
       "To": "Pattambi Railway Stn",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PTB_ALA",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_ALA",
-      "Step": "3",
+    "LEG_153": {
       "From": "Palakkad Jn",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Hub_Connect"
     },
-    {
-      "Route_ID": "PTB_ALA",
-      "Step": "4",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PTB_ALA",
-      "Step": "5",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_ASM",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_ASM",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_ASM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PTB_ASM",
-      "Step": "4",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_CTR",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_CTR",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_CTR",
-      "Step": "3",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PTB_CTR",
-      "Step": "4",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_LFC",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_LFC",
-      "Step": "2",
+    "LEG_154": {
       "From": "Pattambi Railway Stn",
       "To": "Guruvayur Railway Stn",
       "Mode": "Train",
@@ -5107,1228 +1174,126 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "PTB_LFC",
-      "Step": "3",
-      "From": "Guruvayur Railway Stn",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_MCY",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_MCY",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_MCY",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_MKD",
-      "Step": "1",
+    "LEG_155": {
       "From": "SNGS College Pattambi",
       "To": "Pattambi Bus Stand",
       "Mode": "Taxi",
       "KM": "1.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "PTB_MKD",
-      "Step": "2",
+    "LEG_156": {
       "From": "Pattambi Bus Stand",
       "To": "Mannarkkad (via Cherpulassery)",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "PTB_MKD",
-      "Step": "2",
+    "LEG_157": {
       "From": "Pattambi Bus Stand",
       "To": "Mannarkkad Stand (via Cherp.)",
       "Mode": "Bus",
       "KM": "45.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "PTB_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi Mannarkkad",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_NAT",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_NAT",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_NAT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PTB_NAT",
-      "Step": "4",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_NEM",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_NEM",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_NEM",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "PTB_NEM",
-      "Step": "4",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_OTP",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_OTP",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "18.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_PRK",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_PRK",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_PRK",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_SKG",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_SKG",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Guruvayur Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_SKG",
-      "Step": "3",
-      "From": "Guruvayur Railway Stn",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_SMT",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_SMT",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "PTB_UOC",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Bus Stand",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_UOC",
-      "Step": "2",
+    "LEG_158": {
       "From": "Pattambi Bus Stand",
       "To": "University of Calicut (via Valanchery)",
       "Mode": "Bus",
       "KM": "55.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "PTB_UOC",
-      "Step": "3",
+    "LEG_159": {
       "From": "University of Calicut",
       "To": "Campus Gate/Internal Dept",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "PTB_UOC",
-      "Step": "3",
+    "LEG_160": {
       "From": "University of Calicut",
       "To": "Internal Campus",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "PTB_VIC",
-      "Step": "1",
-      "From": "SNGS College Pattambi",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "PTB_VIC",
-      "Step": "2",
-      "From": "Pattambi Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "PTB_VIC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_ALA",
-      "Step": "1",
+    "LEG_161": {
       "From": "Sree Krishna College GVR",
       "To": "Ariyannur Stop",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SKG_ALA",
-      "Step": "2",
+    "LEG_162": {
       "From": "Ariyannur Stop",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "SKG_ALA",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_ASM",
-      "Step": "1",
+    "LEG_163": {
       "From": "Sree Krishna College GVR",
       "To": "Guruvayur Bus Stand",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SKG_ASM",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "45.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_ASM",
-      "Step": "3",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_CTR",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_CTR",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_CTR",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_CTR",
-      "Step": "4",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_CTR",
-      "Step": "5",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_LFC",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_LFC",
-      "Step": "2",
+    "LEG_164": {
       "From": "Ariyannur Stop",
       "To": "Guruvayur Bus Stand",
       "Mode": "Bus",
       "KM": "4.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "SKG_LFC",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_MCY",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_MCY",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_MCY",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_MCY",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_MKD",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_MKD",
-      "Step": "2",
+    "LEG_165": {
       "From": "Guruvayur Bus Stand",
       "To": "Mannarkkad (via Shoranur)",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "SKG_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_NAT",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_NAT",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Nattika Jn (NH 66)",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_NAT",
-      "Step": "3",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_NEM",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_NEM",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_NEM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_NEM",
-      "Step": "4",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_NEM",
-      "Step": "5",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_OTP",
-      "Step": "1",
+    "LEG_166": {
       "From": "Sree Krishna College",
       "To": "Guruvayur Railway Stn",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SKG_OTP",
-      "Step": "1",
+    "LEG_167": {
       "From": "Sree Krishna College GVR",
       "To": "Guruvayur Railway Stn",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SKG_OTP",
-      "Step": "2",
-      "From": "Guruvayur Railway Stn",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "45.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_PRK",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_PRK",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_PRK",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_PRK",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_PTB",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Guruvayur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_PTB",
-      "Step": "2",
-      "From": "Guruvayur Railway Stn",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_SMT",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_SMT",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_SMT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_UOC",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_UOC",
-      "Step": "2",
-      "From": "Guruvayur Stand",
-      "To": "University of Calicut (NH 66)",
-      "Mode": "Bus",
-      "KM": "65.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_UOC",
-      "Step": "3",
-      "From": "University Campus",
-      "To": "Internal Dept",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SKG_VIC",
-      "Step": "1",
-      "From": "Sree Krishna College GVR",
-      "To": "Ariyannur Stop",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SKG_VIC",
-      "Step": "2",
-      "From": "Ariyannur Stop",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SKG_VIC",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SKG_VIC",
-      "Step": "4",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_ALA",
-      "Step": "1",
+    "LEG_168": {
       "From": "St Marys College",
       "To": "Thrissur KSRTC Stand",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SMT_ALA",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_ALA",
-      "Step": "3",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_ASM",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_ASM",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_ASM",
-      "Step": "3",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi (Vemballur)",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_LFC",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_LFC",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_LFC",
-      "Step": "3",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_NAT",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_NAT",
-      "Step": "2",
+    "LEG_169": {
       "From": "Thrissur KSRTC Stand",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Bus",
       "KM": "24.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "SMT_NAT",
-      "Step": "3",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_NEM",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_NEM",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_NEM",
-      "Step": "3",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_NEM",
-      "Step": "4",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_OTP",
-      "Step": "1",
+    "LEG_170": {
       "From": "St Marys College",
       "To": "Thrissur Railway Stn",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "SMT_OTP",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "33.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_PRK",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_PRK",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_PRK",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_PTB",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_PTB",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "44.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_SKG",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_SKG",
-      "Step": "2",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Ariyannur Stop (GVR)",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_SKG",
-      "Step": "3",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_UOC",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_UOC",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Parappanangadi Stn",
-      "Mode": "Train",
-      "KM": "80.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_UOC",
-      "Step": "3",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_CTR",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_CTR",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_CTR",
-      "Step": "3",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_CTR",
-      "Step": "4",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_MCY",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_MCY",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_MCY",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_MKD",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_MKD",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_MKD",
-      "Step": "3",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
-      "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "SMT_MKD",
-      "Step": "4",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "SMT_VIC",
-      "Step": "1",
-      "From": "St Marys College",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "SMT_VIC",
-      "Step": "2",
-      "From": "Thrissur Railway Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "SMT_VIC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_ALA",
-      "Step": "1",
+    "LEG_171": {
       "From": "University of Calicut",
       "To": "Parappanangadi Stn",
       "Mode": "Bus",
       "KM": "12.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "UOC_ALA",
-      "Step": "2",
+    "LEG_172": {
       "From": "Parappanangadi Stn",
       "To": "Thrissur Railway Stn",
       "Mode": "Train",
@@ -6336,90 +1301,35 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "UOC_ALA",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Erattakulam Stop",
-      "Mode": "Bus",
-      "KM": "44.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "UOC_ALA",
-      "Step": "4",
-      "From": "Erattakulam Stop",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "1",
+    "LEG_173": {
       "From": "University Campus",
       "To": "Kodungallur (NH 66 Bus)",
       "Mode": "Bus",
       "KM": "115.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "1",
+    "LEG_174": {
       "From": "University Campus",
       "To": "Campus Stop",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "1",
+    "LEG_175": {
       "From": "University of Calicut",
       "To": "Campus Stop",
       "Mode": "Walking",
       "KM": "0.0",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "2",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi (Vemballur)",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "2",
+    "LEG_176": {
       "From": "University Campus Stop",
       "To": "Kodungallur Stand (NH 66)",
       "Mode": "Bus",
       "KM": "115.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_ASM",
-      "Step": "3",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_CTR",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_CTR",
-      "Step": "2",
+    "LEG_177": {
       "From": "Parappanangadi Stn",
       "To": "Palakkad Jn Railway",
       "Mode": "Train",
@@ -6427,218 +1337,42 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "UOC_CTR",
-      "Step": "3",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "UOC_CTR",
-      "Step": "4",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_LFC",
-      "Step": "1",
+    "LEG_178": {
       "From": "University Campus",
       "To": "Guruvayur Stand (NH 66)",
       "Mode": "Bus",
       "KM": "65.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_LFC",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_MCY",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_MCY",
-      "Step": "2",
-      "From": "Parappanangadi Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "105.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "UOC_MCY",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "5.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_MCY",
-      "Step": "3",
+    "LEG_179": {
       "From": "Palakkad Jn Railway",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
       "KM": "2.0",
       "Type": "Hub_Connect"
     },
-    {
-      "Route_ID": "UOC_MCY",
-      "Step": "4",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_MKD",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Campus Stop",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_MKD",
-      "Step": "2",
+    "LEG_180": {
       "From": "University Campus Stop",
       "To": "Mannarkkad Bus Stand",
       "Mode": "Bus",
       "KM": "85.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_NAT",
-      "Step": "1",
+    "LEG_181": {
       "From": "University Campus",
       "To": "Nattika Jn (NH 66 Bus)",
       "Mode": "Bus",
       "KM": "102.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_NAT",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Campus Stop",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_NAT",
-      "Step": "2",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_NAT",
-      "Step": "2",
+    "LEG_182": {
       "From": "University Campus Stop",
       "To": "Nattika Jn (NH 66)",
       "Mode": "Bus",
       "KM": "102.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_NAT",
-      "Step": "3",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_NEM",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_NEM",
-      "Step": "2",
-      "From": "Parappanangadi Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "80.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "UOC_NEM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Vadakkencherry NH Stop",
-      "Mode": "Bus",
-      "KM": "35.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "UOC_NEM",
-      "Step": "4",
-      "From": "Vadakkencherry NH Stop",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "UOC_NEM",
-      "Step": "5",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_OTP",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_OTP",
-      "Step": "2",
+    "LEG_183": {
       "From": "Parappanangadi Stn",
       "To": "Ottappalam Railway Stn",
       "Mode": "Train",
@@ -6646,547 +1380,1357 @@
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "UOC_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_PRK",
-      "Step": "1",
+    "LEG_184": {
       "From": "University of Calicut",
       "To": "Kuttippuram",
       "Mode": "Bus",
       "KM": "42.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_PRK",
-      "Step": "2",
+    "LEG_185": {
       "From": "Kuttippuram",
       "To": "NSS College Parakkulam",
       "Mode": "Taxi",
       "KM": "14.5",
       "Type": "Last_Mile"
     },
-    {
-      "Route_ID": "UOC_PTB",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Campus Stop",
-      "Mode": "Walking",
-      "KM": "0.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_PTB",
-      "Step": "2",
+    "LEG_186": {
       "From": "University Campus Stop",
       "To": "Pattambi Bus Stand",
       "Mode": "Bus",
       "KM": "55.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_PTB",
-      "Step": "2",
+    "LEG_187": {
       "From": "Campus Stop",
       "To": "Pattambi Bus Stand (via Valanchery)",
       "Mode": "Bus",
       "KM": "55.0",
       "Type": "Main_Haul"
     },
-    {
-      "Route_ID": "UOC_PTB",
-      "Step": "3",
-      "From": "Pattambi Bus Stand",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_SKG",
-      "Step": "1",
-      "From": "University Campus",
-      "To": "Guruvayur Stand (NH 66)",
-      "Mode": "Bus",
-      "KM": "65.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "UOC_SKG",
-      "Step": "2",
-      "From": "Guruvayur Bus Stand",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_SMT",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_SMT",
-      "Step": "2",
-      "From": "Parappanangadi Stn",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "80.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "UOC_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "UOC_VIC",
-      "Step": "1",
-      "From": "University of Calicut",
-      "To": "Parappanangadi Stn",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "UOC_VIC",
-      "Step": "2",
-      "From": "Parappanangadi Stn",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Train",
-      "KM": "105.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "UOC_VIC",
-      "Step": "3",
-      "From": "Palakkad Jn Railway",
-      "To": "Govt Victoria College",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_ALA",
-      "Step": "1",
+    "LEG_188": {
       "From": "Govt Victoria College",
       "To": "Palakkad KSRTC Stand",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "VIC_ALA",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Erattakulam (Alathur)",
-      "Mode": "Bus",
-      "KM": "22.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_ALA",
-      "Step": "3",
-      "From": "Erattakulam (Alathur)",
-      "To": "SN College Alathur",
-      "Mode": "Taxi",
-      "KM": "0.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_ASM",
-      "Step": "1",
+    "LEG_189": {
       "From": "Govt Victoria College",
       "To": "Palakkad Jn Railway",
       "Mode": "Taxi",
       "KM": "4.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "VIC_ASM",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_ASM",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Kodungallur Stand",
-      "Mode": "Bus",
-      "KM": "36.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_ASM",
-      "Step": "4",
-      "From": "Kodungallur Stand",
-      "To": "MES Asmabi College",
-      "Mode": "Taxi",
-      "KM": "7.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_CTR",
-      "Step": "1",
+    "LEG_190": {
       "From": "Govt Victoria College",
       "To": "Palakkad Stadium Stand",
       "Mode": "Taxi",
       "KM": "2.5",
       "Type": "First_Mile"
     },
-    {
-      "Route_ID": "VIC_CTR",
-      "Step": "2",
-      "From": "Palakkad Stadium Stand",
-      "To": "Chittur Bus Stand",
-      "Mode": "Bus",
-      "KM": "15.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_CTR",
-      "Step": "3",
-      "From": "Chittur Bus Stand",
-      "To": "Govt College Chittur",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_LFC",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_LFC",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_LFC",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Guruvayur Bus Stand",
-      "Mode": "Bus",
-      "KM": "26.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_LFC",
-      "Step": "4",
-      "From": "Guruvayur Bus Stand",
-      "To": "Little Flower College",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_MCY",
-      "Step": "1",
+    "LEG_191": {
       "From": "Govt Victoria College",
       "To": "Mercy College Palakkad",
       "Mode": "Taxi",
       "KM": "3.5",
       "Type": "Intra_City"
     },
-    {
-      "Route_ID": "VIC_MKD",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_MKD",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mannarkkad Bus Stand",
-      "Mode": "Bus",
+    "LEG_1191": {
+      "From": "Parappanangadi Stn",
+      "To": "Pattambi Railway Stn",
+      "Mode": "Train",
       "KM": "38.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_MKD",
-      "Step": "3",
-      "From": "Mannarkkad Bus Stand",
-      "To": "MES Kalladi College",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_NAT",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_NAT",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "VIC_NAT",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Nattika Jn (NH 66)",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_NAT",
-      "Step": "4",
-      "From": "Nattika Jn",
-      "To": "SN College Nattika",
-      "Mode": "Taxi",
-      "KM": "1.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_NEM",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_NEM",
-      "Step": "2",
-      "From": "Palakkad KSRTC Stand",
-      "To": "Nemmara Bus Stand",
-      "Mode": "Bus",
-      "KM": "28.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_NEM",
-      "Step": "3",
-      "From": "Nemmara Bus Stand",
-      "To": "NSS College Nemmara",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_OTP",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_OTP",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Ottappalam Railway Stn",
-      "Mode": "Train",
-      "KM": "32.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_OTP",
-      "Step": "3",
-      "From": "Ottappalam Railway Stn",
-      "To": "NSS College Ottappalam",
-      "Mode": "Taxi",
-      "KM": "2.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_PRK",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_PRK",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_PRK",
-      "Step": "3",
+    "LEG_1192": {
       "From": "Pattambi Railway Stn",
-      "To": "NSS College Parakkulam",
-      "Mode": "Taxi",
-      "KM": "14.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_PTB",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_PTB",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Pattambi Railway Stn",
-      "Mode": "Train",
-      "KM": "55.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_PTB",
-      "Step": "3",
-      "From": "Pattambi Railway Stn",
-      "To": "SNGS College Pattambi",
-      "Mode": "Taxi",
-      "KM": "1.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_SKG",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_SKG",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_SKG",
-      "Step": "3",
-      "From": "Thrissur KSRTC Stand",
-      "To": "Ariyannur Stop (GVR)",
-      "Mode": "Bus",
-      "KM": "24.0",
-      "Type": "Main_Haul"
-    },
-    {
-      "Route_ID": "VIC_SKG",
-      "Step": "4",
-      "From": "Ariyannur Stop",
-      "To": "Sree Krishna College GVR",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_SMT",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_SMT",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
-      "To": "Thrissur Railway Stn",
-      "Mode": "Train",
-      "KM": "74.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "Route_ID": "VIC_SMT",
-      "Step": "3",
-      "From": "Thrissur Railway Stn",
-      "To": "St Marys College",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Last_Mile"
-    },
-    {
-      "Route_ID": "VIC_UOC",
-      "Step": "1",
-      "From": "Govt Victoria College",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "4.5",
-      "Type": "First_Mile"
-    },
-    {
-      "Route_ID": "VIC_UOC",
-      "Step": "2",
-      "From": "Palakkad Jn Railway",
       "To": "Parappanangadi Stn",
       "Mode": "Train",
-      "KM": "105.0",
+      "KM": "38.0",
       "Type": "Main_Haul",
       "Fare": 750
     },
-    {
-      "Route_ID": "VIC_UOC",
-      "Step": "3",
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
+    "LEG_1193": {
+      "From": "Thrissur KSRTC Stand",
+      "To": "Thrissur Railway Stn",
+      "Mode": "Walking",
+      "KM": "0.0",
+      "Type": "First_Mile"
+    },
+    "LEG_1194": {
+      "From": "Thrissur Railway Stn",
+      "To": "Thrissur KSRTC Stand",
+      "Mode": "Walking",
+      "KM": "0.0",
       "Type": "Last_Mile"
+    },
+    "LEG_1195": {
+      "From": "Guruvayur Bus Stand",
+      "To": "Guruvayur Railway Stn",
+      "Mode": "Walking",
+      "KM": "0.0",
+      "Type": "First_Mile"
+    },
+    "LEG_1196": {
+      "From": "Guruvayur Railway Stn",
+      "To": "Guruvayur Bus Stand",
+      "Mode": "Walking",
+      "KM": "0.0",
+      "Type": "Last_Mile"
+    },
+    "LEG_1197": {
+      "From": "Parappanangadi Stn",
+      "To": "Guruvayur Railway Stn",
+      "Mode": "Train",
+      "KM": "106",
+      "Type": "Main_Haul",
+      "Fare": 750
+    },
+    "LEG_1198": {
+      "From": "Guruvayur Railway Stn",
+      "To": "Parappanangadi Stn",
+      "Mode": "Train",
+      "KM": "106",
+      "Type": "Main_Haul",
+      "Fare": 750
+    },
+    "LEG_1199": {
+      "From": "Palakkad Jn Railway",
+      "To": "Guruvayur Railway Stn",
+      "Mode": "Train",
+      "KM": "97",
+      "Type": "Main_Haul",
+      "Fare": 750
+    },
+    "LEG_1200": {
+      "From": "Guruvayur Railway Stn",
+      "To": "Palakkad Jn Railway",
+      "Mode": "Train",
+      "KM": "97",
+      "Type": "Main_Haul",
+      "Fare": 750
+    },
+    "LEG_1201": {
+      "From": "Thrissur Railway Stn",
+      "To": "Guruvayur Railway Stn",
+      "Mode": "Train",
+      "KM": "23",
+      "Type": "Main_Haul",
+      "Fare": 750
+    },
+    "LEG_1202": {
+      "From": "Guruvayur Railway Stn",
+      "To": "Thrissur Railway Stn",
+      "Mode": "Train",
+      "KM": "23",
+      "Type": "Main_Haul",
+      "Fare": 750
     }
-  ]
+  },
+  "routes": {
+    "ALA_ASM": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "ALA_CTR": [
+      "LEG_5",
+      "LEG_7",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "ALA_LFC": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_1201",
+      "LEG_11"
+    ],
+    "ALA_MCY": [
+      "LEG_1",
+      "LEG_12",
+      "LEG_13"
+    ],
+    "ALA_MKD": [
+      "LEG_1",
+      "LEG_12",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "ALA_NAT": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "ALA_NEM": [
+      "LEG_1",
+      "LEG_18",
+      "LEG_19"
+    ],
+    "ALA_OTP": [
+      "LEG_1",
+      "LEG_12",
+      "LEG_20",
+      "LEG_21"
+    ],
+    "ALA_PRK": [
+      "LEG_1",
+      "LEG_12",
+      "LEG_22"
+    ],
+    "ALA_PTB": [
+      "LEG_1",
+      "LEG_12",
+      "LEG_23",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "ALA_SKG": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_1201",
+      "LEG_51"
+    ],
+    "ALA_SMT": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_28"
+    ],
+    "ALA_UOC": [
+      "LEG_1",
+      "LEG_2",
+      "LEG_29",
+      "LEG_30"
+    ],
+    "ALA_VIC": [
+      "LEG_5",
+      "LEG_6",
+      "LEG_31"
+    ],
+    "ASM_ALA": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "ASM_CTR": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "ASM_LFC": [
+      "LEG_32",
+      "LEG_37",
+      "LEG_11"
+    ],
+    "ASM_MCY": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_38"
+    ],
+    "ASM_MKD": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "ASM_NAT": [
+      "LEG_32",
+      "LEG_42",
+      "LEG_17"
+    ],
+    "ASM_NEM": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "ASM_OTP": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_48",
+      "LEG_21"
+    ],
+    "ASM_PRK": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_49"
+    ],
+    "ASM_PTB": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_50",
+      "LEG_25"
+    ],
+    "ASM_SKG": [
+      "LEG_32",
+      "LEG_37",
+      "LEG_51"
+    ],
+    "ASM_SMT": [
+      "LEG_43",
+      "LEG_33",
+      "LEG_28"
+    ],
+    "ASM_UOC": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_29",
+      "LEG_30"
+    ],
+    "ASM_VIC": [
+      "LEG_32",
+      "LEG_33",
+      "LEG_36",
+      "LEG_56"
+    ],
+    "CTR_ALA": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_60",
+      "LEG_61"
+    ],
+    "CTR_ASM": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "CTR_LFC": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_62",
+      "LEG_10",
+      "LEG_11"
+    ],
+    "CTR_MCY": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_63"
+    ],
+    "CTR_MKD": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "CTR_NAT": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_62",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "CTR_NEM": [
+      "LEG_57",
+      "LEG_64",
+      "LEG_19"
+    ],
+    "CTR_OTP": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_20",
+      "LEG_21"
+    ],
+    "CTR_PRK": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_65"
+    ],
+    "CTR_PTB": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "CTR_SKG": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_62",
+      "LEG_26",
+      "LEG_27"
+    ],
+    "CTR_SMT": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_62",
+      "LEG_66"
+    ],
+    "CTR_UOC": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_67",
+      "LEG_30"
+    ],
+    "CTR_VIC": [
+      "LEG_57",
+      "LEG_58",
+      "LEG_68"
+    ],
+    "LFC_ALA": [
+      "LEG_69",
+      "LEG_1202",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "LFC_ASM": [
+      "LEG_69",
+      "LEG_71",
+      "LEG_4"
+    ],
+    "LFC_CTR": [
+      "LEG_69",
+      "LEG_70",
+      "LEG_36",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "LFC_MCY": [
+      "LEG_69",
+      "LEG_70",
+      "LEG_36",
+      "LEG_38"
+    ],
+    "LFC_MKD": [
+      "LEG_69",
+      "LEG_1200",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "LFC_NAT": [
+      "LEG_69",
+      "LEG_73",
+      "LEG_17"
+    ],
+    "LFC_NEM": [
+      "LEG_69",
+      "LEG_1200",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "LFC_OTP": [
+      "LEG_76",
+      "LEG_77",
+      "LEG_21"
+    ],
+    "LFC_PRK": [
+      "LEG_69",
+      "LEG_70",
+      "LEG_36",
+      "LEG_49"
+    ],
+    "LFC_PTB": [
+      "LEG_76",
+      "LEG_78",
+      "LEG_25"
+    ],
+    "LFC_SKG": [
+      "LEG_69",
+      "LEG_79",
+      "LEG_27"
+    ],
+    "LFC_SMT": [
+      "LEG_69",
+      "LEG_70",
+      "LEG_28"
+    ],
+    "LFC_UOC": [
+      "LEG_69",
+      "LEG_1198",
+      "LEG_30"
+    ],
+    "LFC_VIC": [
+      "LEG_69",
+      "LEG_70",
+      "LEG_36",
+      "LEG_56"
+    ],
+    "MCY_ALA": [
+      "LEG_81",
+      "LEG_82",
+      "LEG_35"
+    ],
+    "MCY_ASM": [
+      "LEG_83",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "MCY_CTR": [
+      "LEG_84",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "MCY_LFC": [
+      "LEG_83",
+      "LEG_62",
+      "LEG_10",
+      "LEG_11"
+    ],
+    "MCY_MKD": [
+      "LEG_81",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "MCY_NAT": [
+      "LEG_83",
+      "LEG_62",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "MCY_NEM": [
+      "LEG_81",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "MCY_OTP": [
+      "LEG_83",
+      "LEG_20",
+      "LEG_21"
+    ],
+    "MCY_PRK": [
+      "LEG_86"
+    ],
+    "MCY_PTB": [
+      "LEG_83",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "MCY_SKG": [
+      "LEG_83",
+      "LEG_62",
+      "LEG_87",
+      "LEG_27"
+    ],
+    "MCY_SMT": [
+      "LEG_83",
+      "LEG_62",
+      "LEG_66"
+    ],
+    "MCY_UOC": [
+      "LEG_83",
+      "LEG_81",
+      "LEG_67",
+      "LEG_23",
+      "LEG_30",
+      "LEG_67",
+      "LEG_30"
+    ],
+    "MCY_VIC": [
+      "LEG_88"
+    ],
+    "MKD_ALA": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_82",
+      "LEG_35"
+    ],
+    "MKD_ASM": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "MKD_CTR": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "MKD_LFC": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_1199",
+      "LEG_11"
+    ],
+    "MKD_MCY": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_13"
+    ],
+    "MKD_NAT": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_62",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "MKD_NEM": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "MKD_OTP": [
+      "LEG_89",
+      "LEG_93",
+      "LEG_95"
+    ],
+    "MKD_PRK": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_24",
+      "LEG_136"
+    ],
+    "MKD_PTB": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "MKD_SKG": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_1199",
+      "LEG_51"
+    ],
+    "MKD_SMT": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_62",
+      "LEG_28"
+    ],
+    "MKD_UOC": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_23",
+      "LEG_67",
+      "LEG_30"
+    ],
+    "MKD_VIC": [
+      "LEG_89",
+      "LEG_90",
+      "LEG_31"
+    ],
+    "NAT_ALA": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "NAT_ASM": [
+      "LEG_104",
+      "LEG_108",
+      "LEG_4"
+    ],
+    "NAT_CTR": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "NAT_LFC": [
+      "LEG_104",
+      "LEG_110",
+      "LEG_11"
+    ],
+    "NAT_MCY": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_38"
+    ],
+    "NAT_MKD": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "NAT_NEM": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "NAT_OTP": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_48",
+      "LEG_21"
+    ],
+    "NAT_PRK": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_49"
+    ],
+    "NAT_PTB": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_50",
+      "LEG_25"
+    ],
+    "NAT_SKG": [
+      "LEG_104",
+      "LEG_110",
+      "LEG_51"
+    ],
+    "NAT_SMT": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_28"
+    ],
+    "NAT_UOC": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_29",
+      "LEG_30"
+    ],
+    "NAT_VIC": [
+      "LEG_104",
+      "LEG_105",
+      "LEG_36",
+      "LEG_56"
+    ],
+    "NEM_ALA": [
+      "LEG_114",
+      "LEG_115",
+      "LEG_35"
+    ],
+    "NEM_ASM": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "NEM_CTR": [
+      "LEG_114",
+      "LEG_121",
+      "LEG_9"
+    ],
+    "NEM_LFC": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_1199",
+      "LEG_11"
+    ],
+    "NEM_MCY": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_13"
+    ],
+    "NEM_MKD": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "NEM_NAT": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_62",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "NEM_OTP": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_20",
+      "LEG_21"
+    ],
+    "NEM_PRK": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_22"
+    ],
+    "NEM_PTB": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "NEM_SKG": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_1199",
+      "LEG_51"
+    ],
+    "NEM_SMT": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_62",
+      "LEG_28"
+    ],
+    "NEM_UOC": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_23",
+      "LEG_67",
+      "LEG_30"
+    ],
+    "NEM_VIC": [
+      "LEG_114",
+      "LEG_124",
+      "LEG_31"
+    ],
+    "OTP_ALA": [
+      "LEG_127",
+      "LEG_128",
+      "LEG_82",
+      "LEG_35"
+    ],
+    "OTP_ASM": [
+      "LEG_127",
+      "LEG_129",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "OTP_CTR": [
+      "LEG_127",
+      "LEG_128",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "OTP_LFC": [
+      "LEG_127",
+      "LEG_130",
+      "LEG_131"
+    ],
+    "OTP_MCY": [
+      "LEG_127",
+      "LEG_128",
+      "LEG_38"
+    ],
+    "OTP_MKD": [
+      "LEG_132",
+      "LEG_133",
+      "LEG_15"
+    ],
+    "OTP_NAT": [
+      "LEG_127",
+      "LEG_129",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "OTP_NEM": [
+      "LEG_127",
+      "LEG_128",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "OTP_PRK": [
+      "LEG_127",
+      "LEG_135",
+      "LEG_136"
+    ],
+    "OTP_PTB": [
+      "LEG_127",
+      "LEG_135",
+      "LEG_25"
+    ],
+    "OTP_SKG": [
+      "LEG_127",
+      "LEG_130",
+      "LEG_137",
+      "LEG_138"
+    ],
+    "OTP_SMT": [
+      "LEG_127",
+      "LEG_129",
+      "LEG_66"
+    ],
+    "OTP_UOC": [
+      "LEG_127",
+      "LEG_139",
+      "LEG_30"
+    ],
+    "OTP_VIC": [
+      "LEG_127",
+      "LEG_128",
+      "LEG_56"
+    ],
+    "PRK_ALA": [
+      "LEG_140",
+      "LEG_82",
+      "LEG_35"
+    ],
+    "PRK_ASM": [
+      "LEG_141",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "PRK_CTR": [
+      "LEG_142",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "PRK_LFC": [
+      "LEG_141",
+      "LEG_62",
+      "LEG_10",
+      "LEG_11"
+    ],
+    "PRK_MCY": [
+      "LEG_143"
+    ],
+    "PRK_MKD": [
+      "LEG_146",
+      "LEG_151",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "PRK_NAT": [
+      "LEG_141",
+      "LEG_62",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "PRK_NEM": [
+      "LEG_140",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "PRK_OTP": [
+      "LEG_146",
+      "LEG_147",
+      "LEG_21"
+    ],
+    "PRK_PTB": [
+      "LEG_141",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "PRK_SKG": [
+      "LEG_141",
+      "LEG_62",
+      "LEG_87",
+      "LEG_27"
+    ],
+    "PRK_SMT": [
+      "LEG_146",
+      "LEG_148",
+      "LEG_66"
+    ],
+    "PRK_UOC": [
+      "LEG_146",
+      "LEG_1192",
+      "LEG_30"
+    ],
+    "PRK_VIC": [
+      "LEG_146",
+      "LEG_151",
+      "LEG_56"
+    ],
+    "PTB_ALA": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_153",
+      "LEG_82",
+      "LEG_35"
+    ],
+    "PTB_ASM": [
+      "LEG_152",
+      "LEG_148",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "PTB_CTR": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "PTB_LFC": [
+      "LEG_152",
+      "LEG_154",
+      "LEG_131"
+    ],
+    "PTB_MCY": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_38"
+    ],
+    "PTB_MKD": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "PTB_NAT": [
+      "LEG_152",
+      "LEG_148",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "PTB_NEM": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "PTB_OTP": [
+      "LEG_152",
+      "LEG_147",
+      "LEG_21"
+    ],
+    "PTB_PRK": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_49"
+    ],
+    "PTB_SKG": [
+      "LEG_152",
+      "LEG_154",
+      "LEG_138"
+    ],
+    "PTB_SMT": [
+      "LEG_152",
+      "LEG_148",
+      "LEG_66"
+    ],
+    "PTB_UOC": [
+      "LEG_152",
+      "LEG_1192",
+      "LEG_30"
+    ],
+    "PTB_VIC": [
+      "LEG_152",
+      "LEG_151",
+      "LEG_56"
+    ],
+    "SKG_ALA": [
+      "LEG_163",
+      "LEG_1202",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "SKG_ASM": [
+      "LEG_163",
+      "LEG_71",
+      "LEG_4"
+    ],
+    "SKG_CTR": [
+      "LEG_161",
+      "LEG_162",
+      "LEG_36",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "SKG_LFC": [
+      "LEG_161",
+      "LEG_164",
+      "LEG_11"
+    ],
+    "SKG_MCY": [
+      "LEG_161",
+      "LEG_162",
+      "LEG_36",
+      "LEG_38"
+    ],
+    "SKG_MKD": [
+      "LEG_163",
+      "LEG_1200",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "SKG_NAT": [
+      "LEG_163",
+      "LEG_73",
+      "LEG_17"
+    ],
+    "SKG_NEM": [
+      "LEG_163",
+      "LEG_1200",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "SKG_OTP": [
+      "LEG_166",
+      "LEG_167",
+      "LEG_77",
+      "LEG_21"
+    ],
+    "SKG_PRK": [
+      "LEG_161",
+      "LEG_162",
+      "LEG_36",
+      "LEG_49"
+    ],
+    "SKG_PTB": [
+      "LEG_167",
+      "LEG_78",
+      "LEG_25"
+    ],
+    "SKG_SMT": [
+      "LEG_161",
+      "LEG_162",
+      "LEG_28"
+    ],
+    "SKG_UOC": [
+      "LEG_163",
+      "LEG_1198",
+      "LEG_30"
+    ],
+    "SKG_VIC": [
+      "LEG_161",
+      "LEG_162",
+      "LEG_36",
+      "LEG_56"
+    ],
+    "SMT_ALA": [
+      "LEG_168",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "SMT_ASM": [
+      "LEG_168",
+      "LEG_3",
+      "LEG_120"
+    ],
+    "SMT_LFC": [
+      "LEG_168",
+      "LEG_10",
+      "LEG_11"
+    ],
+    "SMT_NAT": [
+      "LEG_168",
+      "LEG_169",
+      "LEG_17"
+    ],
+    "SMT_NEM": [
+      "LEG_168",
+      "LEG_36",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "SMT_OTP": [
+      "LEG_170",
+      "LEG_48",
+      "LEG_21"
+    ],
+    "SMT_PRK": [
+      "LEG_170",
+      "LEG_50",
+      "LEG_136"
+    ],
+    "SMT_PTB": [
+      "LEG_170",
+      "LEG_50",
+      "LEG_25"
+    ],
+    "SMT_SKG": [
+      "LEG_168",
+      "LEG_87",
+      "LEG_27"
+    ],
+    "SMT_UOC": [
+      "LEG_168",
+      "LEG_29",
+      "LEG_30"
+    ],
+    "SMT_CTR": [
+      "LEG_170",
+      "LEG_36",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "SMT_MCY": [
+      "LEG_170",
+      "LEG_36",
+      "LEG_38"
+    ],
+    "SMT_MKD": [
+      "LEG_168",
+      "LEG_36",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "SMT_VIC": [
+      "LEG_170",
+      "LEG_36",
+      "LEG_56"
+    ],
+    "UOC_ALA": [
+      "LEG_171",
+      "LEG_172",
+      "LEG_34",
+      "LEG_35"
+    ],
+    "UOC_ASM": [
+      "LEG_171",
+      "LEG_172",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "UOC_CTR": [
+      "LEG_171",
+      "LEG_177",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "UOC_LFC": [
+      "LEG_171",
+      "LEG_1197",
+      "LEG_11"
+    ],
+    "UOC_MCY": [
+      "LEG_171",
+      "LEG_177",
+      "LEG_38",
+      "LEG_179",
+      "LEG_13"
+    ],
+    "UOC_MKD": [
+      "LEG_171",
+      "LEG_177",
+      "LEG_179",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "UOC_NAT": [
+      "LEG_171",
+      "LEG_172",
+      "LEG_16",
+      "LEG_17"
+    ],
+    "UOC_NEM": [
+      "LEG_171",
+      "LEG_177",
+      "LEG_179",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "UOC_OTP": [
+      "LEG_171",
+      "LEG_183",
+      "LEG_21"
+    ],
+    "UOC_PRK": [
+      "LEG_171",
+      "LEG_1191",
+      "LEG_136"
+    ],
+    "UOC_PTB": [
+      "LEG_171",
+      "LEG_1191",
+      "LEG_25"
+    ],
+    "UOC_SKG": [
+      "LEG_171",
+      "LEG_1197",
+      "LEG_51"
+    ],
+    "UOC_SMT": [
+      "LEG_171",
+      "LEG_172",
+      "LEG_28"
+    ],
+    "UOC_VIC": [
+      "LEG_171",
+      "LEG_177",
+      "LEG_56"
+    ],
+    "VIC_ALA": [
+      "LEG_188",
+      "LEG_59",
+      "LEG_61"
+    ],
+    "VIC_ASM": [
+      "LEG_189",
+      "LEG_62",
+      "LEG_3",
+      "LEG_4"
+    ],
+    "VIC_CTR": [
+      "LEG_190",
+      "LEG_8",
+      "LEG_9"
+    ],
+    "VIC_LFC": [
+      "LEG_189",
+      "LEG_62",
+      "LEG_10",
+      "LEG_11"
+    ],
+    "VIC_MCY": [
+      "LEG_191"
+    ],
+    "VIC_MKD": [
+      "LEG_188",
+      "LEG_14",
+      "LEG_15"
+    ],
+    "VIC_NAT": [
+      "LEG_189",
+      "LEG_62",
+      "LEG_169",
+      "LEG_17"
+    ],
+    "VIC_NEM": [
+      "LEG_188",
+      "LEG_85",
+      "LEG_19"
+    ],
+    "VIC_OTP": [
+      "LEG_189",
+      "LEG_20",
+      "LEG_21"
+    ],
+    "VIC_PRK": [
+      "LEG_189",
+      "LEG_24",
+      "LEG_136"
+    ],
+    "VIC_PTB": [
+      "LEG_189",
+      "LEG_24",
+      "LEG_25"
+    ],
+    "VIC_SKG": [
+      "LEG_189",
+      "LEG_62",
+      "LEG_87",
+      "LEG_27"
+    ],
+    "VIC_SMT": [
+      "LEG_189",
+      "LEG_62",
+      "LEG_66"
+    ],
+    "VIC_UOC": [
+      "LEG_189",
+      "LEG_67",
+      "LEG_30"
+    ]
+  }
 }
