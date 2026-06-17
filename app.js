@@ -3,6 +3,100 @@
 let taDatabase = { abbreviations: [], routes: [] };
 let appSettings = {};
 
+const persistIds = [
+    'prof-name', 'prof-designation', 'prof-college', 'prof-address', 'prof-basic-pay', 'prof-acc-no', 'prof-bank-ifsc',
+    'bill-month', 'bill-purpose', 'quick-from', 'quick-to', 'quick-date-onward', 'quick-time-onward', 'quick-date-return', 'quick-time-return'
+];
+
+function saveFormState() {
+    const state = {};
+    persistIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) state[id] = el.value;
+    });
+    
+    const journeys = [];
+    document.querySelectorAll('#journey-body tr').forEach(row => {
+        if (row.dataset.type === "DA") {
+            journeys.push({
+                type: "DA",
+                date: row.querySelector('input[type="date"]').value,
+                daDays: row.dataset.days,
+                daAmt: row.querySelector('input[placeholder="DA"]').value
+            });
+        } else {
+            journeys.push({
+                type: "journey",
+                date: row.querySelector('input[type="date"]').value,
+                ft: row.querySelector('input[placeholder="FT"]').value,
+                tt: row.querySelector('input[placeholder="TT"]').value,
+                from: row.querySelector('input[placeholder="From"]').value,
+                to: row.querySelector('input[placeholder="To"]').value,
+                mode: row.querySelector('select').value,
+                km: row.querySelector('input[placeholder="KM"]').value,
+                fare: row.querySelector('input[placeholder="Fare"]').value,
+                fareAuto: row.querySelector('input[placeholder="Fare"]').dataset.auto,
+                da: row.querySelector('input[placeholder="DA"]').value
+            });
+        }
+    });
+    state.journeys = journeys;
+    
+    localStorage.setItem('ta_form_state', JSON.stringify(state));
+}
+
+function loadFormState() {
+    const stateStr = localStorage.getItem('ta_form_state');
+    let loadedJourneys = false;
+    if (stateStr) {
+        try {
+            const state = JSON.parse(stateStr);
+            persistIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && state[id] !== undefined) el.value = state[id];
+            });
+            calculateGrade();
+            
+            if (state.journeys && state.journeys.length > 0) {
+                const tbody = document.getElementById('journey-body');
+                tbody.innerHTML = '';
+                state.journeys.forEach(j => {
+                    addJourneyRow();
+                    const row = tbody.lastElementChild;
+                    if (j.type === "DA") {
+                        row.dataset.type = "DA";
+                        row.classList.add("bg-blue-50", "font-bold");
+                        row.querySelector('input[type="date"]').value = j.date || '';
+                        row.querySelector('input[placeholder="From"]').value = 'DA for ' + j.daDays + ' Days';
+                        row.querySelector('input[placeholder="To"]').classList.add("hidden");
+                        row.querySelector('input[placeholder="KM"]').classList.add("hidden");
+                        row.querySelector('select').classList.add("hidden");
+                        row.querySelector('input[placeholder="Fare"]').classList.add("hidden");
+                        row.querySelector('input[placeholder="DA"]').value = j.daAmt || '';
+                        row.dataset.days = j.daDays;
+                    } else {
+                        row.querySelector('input[type="date"]').value = j.date || '';
+                        row.querySelector('input[placeholder="FT"]').value = j.ft || '';
+                        row.querySelector('input[placeholder="TT"]').value = j.tt || '';
+                        row.querySelector('input[placeholder="From"]').value = j.from || '';
+                        row.querySelector('input[placeholder="To"]').value = j.to || '';
+                        row.querySelector('select').value = j.mode || 'Special';
+                        row.querySelector('input[placeholder="KM"]').value = j.km || '';
+                        row.querySelector('input[placeholder="Fare"]').value = j.fare || '';
+                        row.querySelector('input[placeholder="Fare"]').dataset.auto = j.fareAuto || 'true';
+                        row.querySelector('input[placeholder="DA"]').value = j.da || '';
+                    }
+                });
+                loadedJourneys = true;
+                updateCalculations();
+            }
+        } catch(e) {
+            console.error("Failed to load state", e);
+        }
+    }
+    return loadedJourneys;
+}
+
 const DEFAULT_SETTINGS = {
     grades: [
         { id: "I", minPay: 50400, roadRate: 0.80, trainClass: "II AC", daInside: 600, daOutside: 600 },
@@ -32,8 +126,10 @@ async function init() {
     loadSettings();
     setupEventListeners();
     
-    // Add first empty row
-    addJourneyRow();
+    // Load state, if no journeys were loaded, add first empty row
+    if (!loadFormState()) {
+        addJourneyRow();
+    }
 }
 
 function populateCollegeDropdowns() {
@@ -89,6 +185,13 @@ function generateQuickJourney() {
             row.querySelector('select').value = mode;
             row.querySelector('input[placeholder="KM"]').value = step.KM;
             
+            if (step.Fare) {
+                row.querySelector('input[placeholder="Fare"]').value = step.Fare;
+                row.querySelector('input[placeholder="Fare"]').dataset.auto = "false";
+            } else {
+                row.querySelector('input[placeholder="Fare"]').dataset.auto = "true";
+            }
+
             calculateRowFare(row);
 
             // Add buffer for next segment
@@ -149,6 +252,20 @@ function setupEventListeners() {
         calculateGrade();
         updateCalculations();
     });
+
+    persistIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', saveFormState);
+            el.addEventListener('change', saveFormState);
+        }
+    });
+
+    const journeyBody = document.getElementById('journey-body');
+    if (journeyBody) {
+        journeyBody.addEventListener('input', saveFormState);
+        journeyBody.addEventListener('change', saveFormState);
+    }
 }
 
 function calculateGrade() {
@@ -231,6 +348,14 @@ function handleStationInput(input) {
         if (route) {
             row.querySelector('input[placeholder="KM"]').value = route.KM;
             row.querySelector('select').value = route.Mode === 'Taxi' || route.Mode === 'Special' ? 'Special' : (route.Mode === 'Train' ? 'Rail' : route.Mode);
+            
+            if (route.Fare) {
+                row.querySelector('input[placeholder="Fare"]').value = route.Fare;
+                row.querySelector('input[placeholder="Fare"]').dataset.auto = "false";
+            } else {
+                row.querySelector('input[placeholder="Fare"]').dataset.auto = "true";
+            }
+
             calculateRowFare(row);
         }
     }
@@ -273,6 +398,34 @@ function updateCalculations() {
         }
     });
     document.getElementById('total-amount').innerText = `₹ ${total.toFixed(2)}`;
+    
+    // Defer save to avoid blocking if called frequently
+    if (typeof saveFormState === 'function') {
+        clearTimeout(window._saveTimeout);
+        window._saveTimeout = setTimeout(saveFormState, 500);
+    }
+}
+
+function numberToWords(num) {
+    if (num === 0) return 'Zero';
+    const a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+    const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+    const inWords = (n) => {
+        if ((n = n.toString()).length > 9) return 'overflow';
+        n = ('000000000' + n).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+        if (!n) return ''; var str = '';
+        str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+        str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+        str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+        str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+        str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+        return str.trim();
+    };
+    let whole = Math.floor(num);
+    let decimal = Math.round((num - whole) * 100);
+    let res = inWords(whole) + ' Rupees';
+    if (decimal > 0) { res += ' and ' + inWords(decimal) + ' Paise'; }
+    return res;
 }
 
 // PDF & HTML Generation
@@ -283,7 +436,13 @@ async function generatePDF() {
     const getVal = (id) => document.getElementById(id).value;
     const formatDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
 
-    const month = getVal('bill-month').toUpperCase();
+    let autoMonth = "";
+    const firstDateInput = document.querySelector('#journey-body tr input[type="date"]');
+    if (firstDateInput && firstDateInput.value) {
+        const d = new Date(firstDateInput.value);
+        autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
+    }
+    const month = autoMonth || getVal('bill-month').toUpperCase();
     
     // Page 1: Bill
     doc.setFontSize(14); doc.text("UNIVERSITY OF CALICUT (PAREEKSHA BHAVAN)", pageWidth / 2, 12, { align: "center" });
@@ -346,6 +505,8 @@ async function generatePDF() {
 
     doc.setFontSize(9);
     doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 50, doc.lastAutoTable.finalY + 10);
+    doc.setFontSize(8);
+    doc.text(`(${numberToWords(totalClaim)} Only)`, 10, doc.lastAutoTable.finalY + 10);
 
     // Page 2: Instructions
     doc.addPage();
@@ -373,18 +534,25 @@ function generateHTMLBill() {
     const getVal = (id) => document.getElementById(id).value;
     const fixDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
     
+    let autoMonth = "";
+    const firstDateInput = document.querySelector('#journey-body tr input[type="date"]');
+    if (firstDateInput && firstDateInput.value) {
+        const d = new Date(firstDateInput.value);
+        autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
+    }
+    const month = autoMonth || getVal('bill-month').toUpperCase();
+
     let tableHtml = ""; let totalClaim = 0;
     const rows = document.querySelectorAll('#journey-body tr');
     rows.forEach((row, idx) => {
         if (row.dataset.type === "DA") {
             const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
             totalClaim += da;
-            tableHtml += `<tr style="font-weight:bold;background:#fafafa;"><td colspan="11" style="text-align:center;">DA for ${row.dataset.days} Days</td><td>${row.dataset.days}</td><td>${da.toFixed(2)}</td><td>${da.toFixed(2)}</td><td></td></tr>`;
+            tableHtml += `<tr><td></td><td colspan="2">(DA for ${row.dataset.days} Days )</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="text-center">${row.dataset.days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right">${da.toFixed(2)}</td></tr>`;
             return;
         }
-        const date = fixDate(row.querySelector('input[type="date"]').value);
-        const fTime = row.querySelector('input[placeholder="FT"]').value || "";
-        const tTime = row.querySelector('input[placeholder="TT"]').value || "";
+        const dateRaw = row.querySelector('input[type="date"]').value;
+        const date = fixDate(dateRaw);
         const from = row.querySelector('input[placeholder="From"]').value;
         const to = row.querySelector('input[placeholder="To"]').value;
         const mode = row.querySelector('select').value;
@@ -392,56 +560,368 @@ function generateHTMLBill() {
         const fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
         const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
         
-        let rD="", rdD="", tF="", iR="", iA="", rdR="", rdA="";
-        if (mode === 'Rail') { rD=km||""; tF=fare||""; iR=appSettings.misc.trainIncidentalRate; iA=km ? (km*iR).toFixed(2) : ""; }
-        else { rdD=km||""; rdR=appSettings.misc.specialConveyanceRate; rdA=fare ? fare.toFixed(2) : ""; }
+        let col5="", col6="", col7="", col8="", col9="", col10="", col11="", col14="";
+        if (mode === 'Rail') { 
+            col5=km||""; 
+            col7=fare||""; 
+            col8=appSettings.misc.trainIncidentalRate; 
+            col9=km ? (km*col8).toFixed(2) : ""; 
+        } else { 
+            col6=km||""; 
+            col10=appSettings.misc.specialConveyanceRate; 
+            col11=fare ? fare.toFixed(2) : ""; 
+        }
         
-        let lineT = (mode === 'Rail' ? (fare + (parseFloat(iA) || 0)) : fare) + da;
+        let lineT = (mode === 'Rail' ? (fare + (parseFloat(col9) || 0)) : fare) + da;
         totalClaim += lineT;
+        col14 = lineT.toFixed(2);
         
-        tableHtml += `<tr><td>${date}<br><small>${fTime}-${tTime}</small></td><td>${from}</td><td>${to}</td><td>${mode}</td><td>${rD}</td><td>${rdD}</td><td>${tF}</td><td>${iR}</td><td>${iA}</td><td>${rdR}</td><td>${rdA}</td><td>${da>0?"1":""}</td><td>${da||""}</td><td>${lineT.toFixed(2)}</td>${idx===0?`<td rowspan="${rows.length}" style="font-size:8px;text-align:left;">${getVal('bill-purpose')}</td>`:""}</tr>`;
+        tableHtml += `<tr><td class="text-center">${date}</td><td>${from}</td><td>${to}</td><td>${mode}</td><td class="text-right">${col5}</td><td class="text-right">${col6}</td><td class="text-right">${col7}</td><td class="text-right">${col8}</td><td class="text-right">${col9}</td><td class="text-right">${col10}</td><td class="text-right">${col11}</td><td class="text-center"></td><td class="text-right"></td><td class="text-right">${col14}</td>${idx===0?`<td rowspan="${rows.length+1}" style="font-size:10px;text-align:center;vertical-align:middle;writing-mode:vertical-rl;transform:rotate(180deg);">${getVal('bill-purpose')}</td>`:""}</tr>`;
     });
+
+    tableHtml += `<tr><td colspan="13" class="text-right font-bold" style="padding-right:10px;">Total</td><td class="text-right font-bold">${totalClaim.toFixed(2)}</td>${rows.length===0?'<td></td>':''}</tr>`;
+    tableHtml += `<tr><td colspan="15" class="text-left font-bold" style="padding-left:10px;">Total Amount in Words: ${numberToWords(totalClaim)} Only</td></tr>`;
 
     const html = `
     <!DOCTYPE html><html><head><style>
-        @page { size: A4 landscape; margin: 5mm; }
-        body { font-family: 'Times New Roman', serif; padding: 20px; font-size: 11px; }
-        .bill-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid #000; }
-        .bill-table th, .bill-table td { border: 1px solid #000; padding: 2px; text-align: center; font-size: 8px; word-wrap: break-word; }
-        .bill-table th { background: #f2f2f2; font-weight: bold; }
-        .num-row td { background: #f9f9f9; font-weight: bold; font-size: 7px; }
-        .signature-row { display: flex; justify-content: space-between; margin-top: 30px; }
-        @media print { .no-print { display: none; } }
+        @page { size: A4 portrait; margin: 10mm; }
+        :root {
+            --f-base: 10px;
+            --f-table: 9px;
+            --f-head1: 14px;
+            --f-head2: 12px;
+            --f-head3: 13px;
+            --pad-table: 3px 2px;
+            --margin-block: 10px;
+            --box-size: 50px;
+        }
+        @page { size: A4 portrait; margin: 0; }
+        body { font-family: Arial, sans-serif; padding: 0; font-size: var(--f-base); line-height: 1.2; margin: 0; background: #ccc; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: bold; }
+        .header h1 { font-size: var(--f-head1); margin: 0 0 2px 0; font-weight: normal; }
+        .header h2 { font-size: var(--f-head2); margin: 0 0 5px 0; font-weight: normal; }
+        .header h3 { font-size: var(--f-head3); margin: 0 0 var(--margin-block) 0; text-transform: uppercase; font-weight: normal; }
+        .top-info { width: 100%; margin-bottom: 5px; font-size: var(--f-base); border-collapse: collapse; }
+        .top-info td { padding: 2px 0; vertical-align: top; }
+        .bill-table { width: 100%; border-collapse: collapse; table-layout: fixed; border: 1px solid #000; margin-bottom: calc(var(--margin-block) / 2); }
+        .bill-table th, .bill-table td { border: 1px solid #000; padding: var(--pad-table); text-align: left; font-size: var(--f-table); word-wrap: break-word; }
+        .bill-table th { background: #fff; text-align: center; font-weight: normal; }
+        .num-row td { text-align: center; font-size: var(--f-table); border-bottom: 1px solid #000; }
+        .signature-box { border: 1px solid #000; width: calc(var(--box-size) * 1.2); height: var(--box-size); display: inline-block; background: #fff; }
+        .office-use { width: 100%; border-collapse: collapse; font-size: var(--f-base); margin-top: var(--margin-block); }
+        .office-use td { vertical-align: top; padding: 0; }
+        .bottom-table { width: 100%; border-collapse: collapse; font-size: var(--f-base); margin-top: var(--margin-block); border: 1px solid #000; }
+        .bottom-table th, .bottom-table td { border: 1px solid #000; padding: calc(var(--margin-block) / 2); vertical-align: top; overflow-wrap: anywhere; }
+        .page-container { 
+            box-sizing: border-box; 
+            position: relative;
+            height: 285mm;
+            width: 200mm;
+            padding: 5mm;
+            margin: 5mm auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        @media print { 
+            .no-print { display: none; }
+            body { background: #fff; }
+            .page-container { margin: 0; box-shadow: none; border: none; outline: none; }
+            #page-content { page-break-after: always; }
+        }
+        #content-bottom {
+            position: absolute;
+            bottom: 5mm;
+            left: 5mm;
+            right: 5mm;
+        }
     </style></head><body>
-        <div class="no-print"><button onclick="window.print()" style="padding:10px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Print Bill (2 Sided)</button></div>
-        <div style="text-align:center;"><h1>UNIVERSITY OF CALICUT</h1><p>TRAVELLING ALLOWANCE BILL FOR THE MONTH OF ${getVal('bill-month').toUpperCase()}</p></div>
-        <table style="width:100%;font-size:12px;margin-bottom:10px;">
-            <tr><td width="55%">1) Name: <strong>${getVal('prof-name')}</strong></td><td>5) Basic Pay: <strong>${getVal('prof-basic-pay')}</strong></td></tr>
-            <tr><td>2) Designation: <strong>${getVal('prof-designation')}</strong></td><td>6) A/c No: <strong>${getVal('prof-acc-no')}</strong></td></tr>
-            <tr><td>3) College: <strong>${getVal('prof-college')}</strong></td><td>7) Bank & IFSC: <strong>${getVal('prof-bank-ifsc')}</strong></td></tr>
+        <div class="no-print" style="margin-bottom:10px;"><button onclick="window.print()" style="padding:8px 16px;background:#2563eb;color:#fff;border:none;cursor:pointer;border-radius:4px;">Print Bill</button></div>
+        <div id="page-content" class="page-container">
+            <div id="content-top">
+        <div class="header text-center">
+            <h1>UNIVERSITY OF CALICUT</h1>
+            <h2>(PAREEKSHA BHAVAN)</h2>
+            <h3>TRAVELLING ALLOWANCE FOR THE MONTH OF ${month}</h3>
+        </div>
+        <table class="top-info">
+            <tr>
+                <td width="60%">1) Name (In Block Letters): ${getVal('prof-name')}</td>
+                <td width="40%">5) Basic Pay or Consolidated Amount: ${getVal('prof-basic-pay')}/-</td>
+            </tr>
+            <tr>
+                <td>2) Designation: ${getVal('prof-designation')}</td>
+                <td>6) Savings Bank A/c No: ${getVal('prof-acc-no')}</td>
+            </tr>
+            <tr>
+                <td>3) Name of the College: ${getVal('prof-college')}</td>
+                <td>7) Name of the Bank with IFSC code: ${getVal('prof-bank-ifsc')}</td>
+            </tr>
+            <tr>
+                <td>4) Permanent Address: ${getVal('prof-address')}</td>
+                <td>
+                    Voucher No. .................................................................<br>
+                    Month of .................................................................<br>
+                    Debit Head .................................................................
+                </td>
+            </tr>
         </table>
+        
         <table class="bill-table">
             <thead>
-                <tr><th rowspan="2" width="10%">Date & Time</th><th colspan="2">Place</th><th rowspan="2" width="6%">Mode</th><th colspan="2">Dist</th><th colspan="3">Rail (2nd AC)</th><th colspan="2">Road</th><th colspan="2">DA</th><th rowspan="2" width="7%">Total</th><th rowspan="2" width="15%">Purpose</th></tr>
-                <tr><th>From</th><th>To</th><th>Rail</th><th>Road</th><th>Fare</th><th>Rate</th><th>Amt</th><th>Rate</th><th>Amt</th><th>Days</th><th>Amt</th></tr>
-                <tr class="num-row"><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+                <tr>
+                    <th rowspan="3" width="8%">Date</th>
+                    <th colspan="2" width="22%">Place</th>
+                    <th rowspan="3" width="7%">Mode of<br>Conveyance<br>used<br>(Special/Air/<br>Rail)</th>
+                    <th colspan="2" width="9%">Distance</th>
+                    <th colspan="3" width="18%">Mileage allowance for Rail/Air<br>Journeys</th>
+                    <th colspan="2" width="10%">Mileage allowance<br>for Road Journeys</th>
+                    <th colspan="2" width="14%">Daily Allowance for<br>Halts/Special Allowance</th>
+                    <th rowspan="3" width="7%">Total in<br>Each Line</th>
+                    <th rowspan="3" width="5%">Purpose of Journey<br>and Halt with<br>authority (No. &<br>Date of<br>communication )<br>(Copy to be<br>attached)</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">From<br><br>Station</th>
+                    <th rowspan="2">To<br><br>Station</th>
+                    <th rowspan="2">By Rail<br><br>Air</th>
+                    <th rowspan="2">By Road</th>
+                    <th rowspan="2">Train<br><br>Plane Fare at<br>2nd AC<br>Class</th>
+                    <th colspan="2">Incident Expenses for<br>Train Travel Only</th>
+                    <th rowspan="2">Rate</th>
+                    <th rowspan="2">Amount</th>
+                    <th rowspan="2">Days of<br>Buisiness</th>
+                    <th rowspan="2">Amount of<br>DA/Special<br>Allowance</th>
+                </tr>
+                <tr>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+                <tr class="num-row">
+                    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+                </tr>
             </thead>
-            <tbody>${tableHtml}<tr style="font-weight:bold;background:#eee;"><td colspan="13" style="text-align:right;padding-right:10px;">GRAND TOTAL</td><td>${totalClaim.toFixed(2)}</td><td></td></tr></tbody>
+            <tbody>
+                ${tableHtml}
+            </tbody>
         </table>
-        <div class="signature-row"><div>Place: .............<br>Date: ${new Date().toLocaleDateString('en-GB')}</div><div style="text-align:center;border:1px solid #000;width:50px;height:60px;display:flex;align-items:center;">Stamp</div><div style="text-align:center;">__________________________<br>Signature of Officer</div></div>
-        <div style="page-break-before:always;margin-top:50px;border-top:1px dashed #000;padding-top:20px;">
-            <h3 style="text-align:center;">RATES OF T.A. AND D.A. (UNIVERSITY RULES)</h3>
-            <p>1. No T.A./D.A. will be paid if the journey distance is not more than Eight Kilometres.<br>
-            2. Road Mileage: Rs 2.50 per kilometer (special conveyance).<br>
-            3. Rail Fare: 2nd AC Fare + 90ps per KM incidental expenses for Grade I officers.<br>
-            4. Daily Allowance: Rs 600 per day for actual day of University business.<br>
-            5. Classification of Grades based on Basic Pay:<br>
-               Grade I: Rs. 50,400/- and above<br>
-               Grade II (a): Rs. 42,500/- and above, but below Rs. 50,400/-<br>
-               Grade II (b): Rs. 27,800/- and above, but below Rs. 42,500/-<br>
-               Grade III: Rs. 18,000/- and above, but below Rs. 27,800/-<br>
-               Grade IV: Below Rs. 18,000/-</p>
+        </div> <!-- End of content-top -->
+
+        <div id="content-bottom">
+        <div class="text-center" style="margin: 5px 0; font-size:var(--f-base);">CERTIFICATE</div>
+        <table style="width:100%; font-size:var(--f-table); margin-bottom: 5px; border-collapse: collapse;">
+            <tr>
+                <td width="8%" style="vertical-align:top;">General*</td>
+                <td width="3%" style="vertical-align:top;">1)</td>
+                <td>I Certify that the amount claimed in this bill or any pat1thereof has not been claimed previously OR drawn from any other source.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="vertical-align:top;">2)</td>
+                <td>I Certify that the road journey on .............................. for which mileage expense has been claimed at the higher rates was performed in my own car Reg. No. ..............................</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="vertical-align:top;">3)</td>
+                <td>I Certify that i was actually present on the previous day of the practical examination for the preparation work<br>*Necessary certificate should be attested with dated signature</td>
+            </tr>
+        </table>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom: 5px; font-size:var(--f-base);">
+            <div>
+                Place: ${getVal('prof-college').split(',')[1] ? getVal('prof-college').split(',')[1].trim() : '.........................'}<br>
+                Date: ${new Date().toLocaleDateString('en-GB')}
+            </div>
+            <div style="text-align:right; margin-top:10px;">
+                Signature..........................................................
+            </div>
         </div>
+
+        <div style="border-top:1px solid #000; margin:5px 0;"></div>
+
+        <table class="office-use">
+            <tr>
+                <td width="33%">
+                    Memo of Budget Allotment<br><br>
+                    for the year.......................<br><br>
+                    Expenditure including<br><br>
+                    this bill..........................<br><br>
+                    Balance.............................
+                </td>
+                <td width="33%">
+                    Passed and Countersigned for<br><br>
+                    Rs. .........................................<br><br>
+                    Date. ......................................
+                </td>
+                <td width="34%">
+                    Advance Drawn................................<br><br>
+                    Balance Claimed................................<br><br>
+                    <div style="display:flex; align-items:flex-end; gap:10px; margin-top:5px;">
+                        <div class="signature-box"></div>
+                        <span>Signature of the Officer Who Travelled</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div style="text-align:center; font-size:var(--f-table); margin:10px 0;">
+            Countersigned and certified that the days for whcih halting allowance is claimed were necessarily<br><br>
+            spent for conduct of university buisiness. The Calim may be admitted<br><br>
+            <div style="display:flex; justify-content:space-between; margin-top:10px; padding:0 10px;">
+                <span>Signature...........................................................</span>
+                <span>Chairman/Board of Examiners/Question Paper Setters in ......................</span>
+            </div>
+            <div style="display:flex; justify-content:space-around; margin-top:15px;">
+                <span>Asst.</span>
+                <span>S.O.</span>
+                <span>A.R./D.R.</span>
+            </div>
+        </div>
+
+        <table class="bottom-table">
+            <tr>
+                <td width="50%">
+                    <div class="text-center" style="margin-bottom:10px;">Pre-Audit By Finance Branch</div>
+                    Rs...................................................................................<br><br>
+                    (Rupees. ..............................................................................<br><br>
+                    .................................................................................Only)<br><br>
+                    found admissible and passed for payment.<br><br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                        <span>Asst.</span>
+                        <span>S. O.</span>
+                        <span>A.R/D.R/J.R./FO</span>
+                    </div>
+                </td>
+                <td width="50%">
+                    <div class="text-center" style="margin-bottom:10px;">Payement by Pareeksha Bhavan</div>
+                    The Amount paid by Cheque<br><br>
+                    No...................................................................................<br><br>
+                    Date.................................................................................<br><br><br><br>
+                    <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                        <span>Asst.</span>
+                        <span>S. O.</span>
+                        <span>A.R/D.R/J.R./FO</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </div> <!-- End of content-bottom -->
+        </div> <!-- End of page-content -->
+        <div id="page-instructions" class="page-container" style="font-size: 11px; line-height: 1.4; padding: 10mm;">
+            <h3 class="text-center" style="text-decoration: underline; font-size: 13px; margin-bottom: 15px;">
+                RATES OF T. A. AND D. A. TO EXAMINERS, QUESTION PAPER SETTERS, SYNDICATE MEMBERS, PRINCIPALS OR<br>
+                THOSE WHO TRAVEL ON CALICUT UNIVERSITY EXAMINATION BUSINESS
+            </h3>
+            
+            <table style="width: 100%; border: none; font-size: 11px;">
+                <tr><td style="width: 40px; vertical-align: top;">Note:</td><td style="width: 20px; vertical-align: top;">i)</td><td>No. T. A./D. A. will be paid if the journey distance is not more than Eight Kilometres unless otherwise specified in the rules.</td></tr>
+                <tr><td></td><td style="vertical-align: top;">ii)</td><td>For calculating T. A./D. A. Head quarters alone will be considered. Vacation address will not be considered.</td></tr>
+                <tr><td></td><td style="vertical-align: top;">iii)</td><td>The Vice-Chancellor may, for special reasons to be recorded, allow a particular examiner/question paper setter, mileage allowance at a higher rate than is prescribed in rule 1 below.</td></tr>
+                <tr><td></td><td style="vertical-align: top;">iv)</td><td>The provisions under these rules are independent of the provisions in Part II, KSR.</td></tr>
+            </table>
+
+            <div style="margin-top: 10px;"><b>Rule 1. Travelling Allowance for journey by Road/Rail</b></div>
+            <div style="margin-left: 20px;">Road Mileage @ Rs.2 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers</div>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 10px; text-align: center; border: 1px solid #000;" border="1">
+                <tr>
+                    <th style="padding: 4px; text-align: left;">Classification</th>
+                    <th style="padding: 4px;">Rate</th>
+                    <th style="padding: 4px;">Eligible class of<br>journey by train</th>
+                </tr>
+                <tr><td style="padding: 4px; text-align: left;">Grade I - All employees who draw an actual basic pay of Rs. 50,400/- and above</td><td>0.80</td><td>II AC</td></tr>
+                <tr><td style="padding: 4px; text-align: left;">Grade II (a) - Employees with actual basic pay of Rs. 42,500/- and above, but below Rs.50,400/-</td><td>0.60</td><td>I Class</td></tr>
+                <tr><td style="padding: 4px; text-align: left;">Grade II (b) - Employees with actual basic pay of Rs.27,800/- and above, but below Rs.42,500/-</td><td>0.50</td><td>III AC</td></tr>
+                <tr><td style="padding: 4px; text-align: left;">Grade III - Employees with actual basic pay of Rs.18,000/- and above, but below Rs.27,800/-</td><td>0.50</td><td>II Class</td></tr>
+                <tr><td style="padding: 4px; text-align: left;">Grade IV - Employees with actual basic pay below Rs.18,000/-</td><td>0.50</td><td>II Class</td></tr>
+            </table>
+
+            <div style="margin-left: 20px; margin-bottom: 10px;">General - If one travels more than 200 kilometres a day by Road, the rate of mileage allowance for the excess over 200 kilometres will be reduced to &frac34; of the normal rate per kilometre.</div>
+
+            <table style="width: 100%; border: none; font-size: 11px;">
+                <tr><td style="width: 20px; vertical-align: top;">2.</td><td><b>Mileage for journey by Air :</b> (i) Prior Sanction from the Vice-Chancellor has to be obtained for performing journey by Air.<br>(ii) Actual Air fare + D.A as Incidental Expenses each way (Air tickets should be produced along with the T.A./D.A claims) + Boarding pass / Ticket Jacket.</td></tr>
+                <tr><td style="vertical-align: top;">3.</td><td><b>Mileage for Journey by Ship</b><br>Actual Ship fare + D.A. outside rate OR 1&frac34; of Fare whichever is higher will be paid (Cash Receipt should be produced for claiming ship fare)</td></tr>
+                <tr><td style="vertical-align: top;">4.</td><td><b>Daily Allowance</b>
+                    <table style="width: 100%; border: none; font-size: 11px;">
+                        <tr><td style="width: 20px; vertical-align: top;">i)</td><td>Rupees 400/- (Rupees Four hundred only) per day for actual day of University business irrespective of duration of hours of halt. For inter-state travel Rs.550/- per day (Grade I).</td></tr>
+                    </table>
+                </td></tr>
+            </table>
+
+            <table style="width: 60%; border-collapse: collapse; margin: 10px auto; text-align: center; border: 1px solid #000;" border="1">
+                <tr><th style="padding: 4px;">Grade</th><th style="padding: 4px;">Inside State</th><th style="padding: 4px;">Outside State</th></tr>
+                <tr><td style="padding: 4px;">I</td><td>400/-</td><td>550/-</td></tr>
+                <tr><td style="padding: 4px;">II (a)</td><td>320/-</td><td>450/-</td></tr>
+                <tr><td style="padding: 4px;">II (b)</td><td>320/-</td><td>450/-</td></tr>
+                <tr><td style="padding: 4px;">III</td><td>250/-</td><td>350/-</td></tr>
+                <tr><td style="padding: 4px;">IV</td><td>250/-</td><td>350/-</td></tr>
+            </table>
+
+            <table style="width: 100%; border: none; font-size: 11px; margin-left: 20px;">
+                <tr><td style="width: 20px; vertical-align: top;">ii)</td><td>Rs. 550/- per day will be paid as D.A. for duty at Lakshadweep.</td></tr>
+                <tr><td style="vertical-align: top;">iii)</td><td>For Chemistry Practical Examination one D.A. will be paid for the previous day of the examination for preparation work provided a certificate to that effect is furnished on the T.A. bill.</td></tr>
+                <tr><td style="vertical-align: top;">iv)</td><td>For meetings of Board of Examiners, Question Paper Setters, D.A. for the actual day of University business will be paid to the members in addition to the eligible T.A. All Officers are eligible for T.A./D.A. only if the distance travelled exceeds 8 kilometres, as per rules.</td></tr>
+                <tr><td style="vertical-align: top;">v)</td><td>No T.A./D.A. will be paid to the Examiners for Practical/Viva-Voce Examinations etc. unless the distance travelled exceeds 8 kilometres. If the distance travelled is below 8 kilometres but more than 2 kilometres conveyance allowance @ Rs. 5/- per day will be paid for the actual number of days of duty.</td></tr>
+                <tr><td style="vertical-align: top;">vi)</td><td>For intervening Holidays or Off days between days of Duty T.A. or D.A. whichever is less will only be paid.</td></tr>
+            </table>
+
+            <table style="width: 100%; border: none; font-size: 11px; margin-top: 10px;">
+                <tr><td style="width: 20px; vertical-align: top;">5.</td><td><b>T.A. and D.A. to Syndicate Members / Senate Members</b>
+                    <table style="width: 100%; border: none; font-size: 11px;">
+                        <tr><td style="width: 20px; vertical-align: top;">i)</td><td>Road mileage @ Rs.12/- per kilometres will be paid (Special conveyance) irrespective of the distance travelled in a day.</td></tr>
+                        <tr><td style="vertical-align: top;">ii)</td><td>D.A. will be Rs. 900/-</td></tr>
+                    </table>
+                </td></tr>
+            </table>
+
+            <div style="text-align: right; margin-top: 30px; margin-right: 20px; font-weight: bold;">Controller of Examinations</div>
+            <div style="font-size: 9px; margin-top: 20px;">CUP/307/18/50,000</div>
+        </div>
+        <script>
+            window.onload = function() {
+                setTimeout(() => {
+                    const content = document.getElementById('page-content');
+                    const topDiv = document.getElementById('content-top');
+                    const bottomDiv = document.getElementById('content-bottom');
+                    
+                    const hasOverflow = () => {
+                        const topRect = topDiv.getBoundingClientRect();
+                        const bottomRect = bottomDiv.getBoundingClientRect();
+                        return (topRect.bottom > bottomRect.top - 2) || content.scrollWidth > content.clientWidth;
+                    };
+                    
+                    if (hasOverflow()) {
+                        let minF = 0.4; let maxF = 1.0; let bestF = 1.0;
+                        for(let i=0; i<15; i++) {
+                            let f = (minF + maxF) / 2;
+                            document.documentElement.style.setProperty('--f-base', (10 * f) + 'px');
+                            document.documentElement.style.setProperty('--f-table', (9 * f) + 'px');
+                            document.documentElement.style.setProperty('--f-head1', (14 * f) + 'px');
+                            document.documentElement.style.setProperty('--f-head2', (12 * f) + 'px');
+                            document.documentElement.style.setProperty('--f-head3', (13 * f) + 'px');
+                            document.documentElement.style.setProperty('--pad-table', (3 * f) + 'px ' + (2 * f) + 'px');
+                            document.documentElement.style.setProperty('--margin-block', (10 * f) + 'px');
+                            document.documentElement.style.setProperty('--box-size', (50 * f) + 'px');
+                            
+                            if (hasOverflow()) {
+                                maxF = f;
+                            } else {
+                                minF = f;
+                                bestF = f;
+                            }
+                        }
+                        document.documentElement.style.setProperty('--f-base', (10 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--f-table', (9 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--f-head1', (14 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--f-head2', (12 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--f-head3', (13 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--pad-table', (3 * bestF) + 'px ' + (2 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--margin-block', (10 * bestF) + 'px');
+                        document.documentElement.style.setProperty('--box-size', (50 * bestF) + 'px');
+                    }
+                }, 100);
+            };
+        </script>
     </body></html>`;
     const w = window.open('', '_blank'); w.document.write(html); w.document.close();
 }
