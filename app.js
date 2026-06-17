@@ -147,6 +147,12 @@ function populateCollegeDropdowns() {
     });
 }
 
+function getFullCollegeName(abbr) {
+    if (!taDatabase || !taDatabase.abbreviations) return abbr;
+    const match = taDatabase.abbreviations.find(c => c.Abbreviation === abbr);
+    return match ? match['Full College Name & Location'] : abbr;
+}
+
 function generateQuickJourney() {
     const fromAbbr = document.getElementById('quick-from').value;
     const toAbbr = document.getElementById('quick-to').value;
@@ -470,7 +476,7 @@ function generatePDF() {
         const d = new Date(firstDateInput.value);
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
     }
-    const month = autoMonth || getVal('bill-month').toUpperCase();
+    const month = autoMonth || "";
 
     doc.setFontSize(14); doc.text("UNIVERSITY OF CALICUT", pageWidth / 2, 40, { align: "center" });
     doc.setFontSize(12); doc.text("(PAREEKSHA BHAVAN)", pageWidth / 2, 55, { align: "center" });
@@ -481,7 +487,7 @@ function generatePDF() {
     doc.text(`5) Basic Pay: Rs ${getVal('prof-basic-pay')}/-`, 350, 90);
     doc.text(`2) Designation: ${getVal('prof-designation')}`, 40, 105);
     doc.text(`6) SB A/c No: ${getVal('prof-acc-no')}`, 350, 105);
-    doc.text(`3) College: ${getVal('prof-college')}`, 40, 120);
+    doc.text(`3) College: ${getFullCollegeName(getVal('prof-college'))}`, 40, 120);
     doc.text(`7) Bank & IFSC: ${getVal('prof-bank-ifsc')}`, 350, 120);
     doc.text(`4) Address: ${getVal('prof-address').substring(0, 40)}`, 40, 135);
 
@@ -601,8 +607,8 @@ function generatePDF() {
     });
     finalY = doc.lastAutoTable.finalY + 15;
 
-    let placeText = getVal('prof-college');
-    if (placeText.includes(',')) placeText = placeText.split(',')[1].trim();
+    let collegeName = getFullCollegeName(getVal('prof-college'));
+    let placeText = collegeName.includes(',') ? collegeName.split(',')[1].trim() : collegeName;
     doc.text(`Place: ${placeText || '.........................'}`, 40, finalY);
     doc.text("Signature..........................................................", pageWidth - 40, finalY, { align: "right" });
     finalY += 15;
@@ -790,7 +796,7 @@ function generateHTMLBill(autoPrint = false) {
         const d = new Date(firstDateInput.value);
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
     }
-    const month = autoMonth || getVal('bill-month').toUpperCase();
+    const month = autoMonth || new Date().toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
 
     let htmlRows = []; 
     let totalClaim = 0;
@@ -945,7 +951,7 @@ function generateHTMLBill(autoPrint = false) {
                 <td>6) Savings Bank A/c No: ${getVal('prof-acc-no')}</td>
             </tr>
             <tr>
-                <td>3) Name of the College: ${getVal('prof-college')}</td>
+                <td>3) Name of the College: ${getFullCollegeName(getVal('prof-college'))}</td>
                 <td>7) Name of the Bank with IFSC code: ${getVal('prof-bank-ifsc')}</td>
             </tr>
             <tr>
