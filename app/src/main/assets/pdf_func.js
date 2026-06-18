@@ -201,7 +201,7 @@ function generatePDF() {
     let collegeName = getFullCollegeName(getVal('prof-college')) || '';
     let placeText = '';
     if (collegeName.includes(',')) {
-        placeText = collegeName.split(',')[1].trim();
+        placeText = collegeName.split(',').pop().trim();
     } else {
         placeText = collegeName.trim();
     }
@@ -431,7 +431,7 @@ function generateHTMLBill(autoPrint = false) {
     let collegeName = getFullCollegeName(getVal('prof-college')) || '';
     let placeText = '';
     if (collegeName.includes(',')) {
-        placeText = collegeName.split(',')[1].trim();
+        placeText = collegeName.split(',').pop().trim();
     } else {
         placeText = collegeName.trim();
     }
