@@ -84,7 +84,9 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Grade</label>
-                                <input type="text" id="prof-grade" class="form-input bg-gray-50" readonly placeholder="Auto-calculated">
+                                <select id="prof-grade" class="form-input" onchange="saveFormState(); updateCalculations();">
+                                    <!-- Options will be populated dynamically -->
+                                </select>
                             </div>
                         </div>
                     </div>

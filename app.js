@@ -481,7 +481,20 @@ async function generateQuickJourney() {
 function loadSettings() {
     const saved = localStorage.getItem('ta_bill_settings');
     appSettings = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+    populateGradeDropdown();
     renderSettings();
+}
+
+function populateGradeDropdown() {
+    const select = document.getElementById('prof-grade');
+    if (!select) return;
+    select.innerHTML = '';
+    appSettings.grades.forEach(g => {
+        const opt = document.createElement('option');
+        opt.value = g.id;
+        opt.textContent = `Grade ${g.id}`;
+        select.appendChild(opt);
+    });
 }
 
 function setupEventListeners() {
@@ -1655,7 +1668,8 @@ function renderSettings() {
     c.innerHTML = h;
 }
 function updateSetting(s, i, k, v) { if (s === 'grades') appSettings.grades[i][k] = k === 'trainClass' ? v : parseFloat(v); else appSettings.misc[i] = parseFloat(v); }
-function saveSettings() { localStorage.setItem('ta_bill_settings', JSON.stringify(appSettings)); closeSettings(); calculateGrade(); updateCalculations(); }
+function saveSettings() { localStorage.setItem('ta_bill_settings', JSON.stringify(appSettings)); closeSettings(); populateGradeDropdown(); calculateGrade(); updateCalculations(); }
+function resetRates() { if (confirm("Reset to defaults?")) { appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS)); populateGradeDropdown(); renderSettings(); saveSettings(); } }
 function clearQuickFields() {
     clearCollegeField('quick-from');
     clearCollegeField('quick-to');
