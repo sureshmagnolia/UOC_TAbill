@@ -493,6 +493,13 @@ async function generateQuickJourney() {
 function loadSettings() {
     const saved = localStorage.getItem('ta_bill_settings');
     appSettings = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+    
+    // Auto-migrate: If loaded settings are using the old model or missing minDist, force reset/merge
+    if (!appSettings.misc.trainClasses || !appSettings.misc.trainClasses["II AC"] || appSettings.misc.trainClasses["II AC"].minDist === undefined) {
+        appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
+        localStorage.setItem('ta_bill_settings', JSON.stringify(appSettings));
+    }
+    
     populateGradeDropdown();
     renderSettings();
 }
