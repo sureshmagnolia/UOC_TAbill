@@ -292,17 +292,14 @@ async function generateQuickJourney() {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
-    // 3. Return — load routes for destination college
-    if (returnDate && returnStartTime) {
-        const returnRouteId = `${toAbbr}_${fromAbbr}`;
-        const toRoutes = await loadRoutesFor(toAbbr);
-        let returnSteps = toRoutes.filter(r => r.Route_ID === returnRouteId);
-        if (returnSteps.length === 0 && onwardSteps.length > 0) {
-            returnSteps = [...onwardSteps].reverse().map(s => ({...s, From: s.To, To: s.From}));
-        }
-        if (returnSteps.length > 0) {
-            addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
-        }
+    // 3. Return — simply reverse the onward steps to guarantee exact symmetry
+    if (returnDate && returnStartTime && onwardSteps.length > 0) {
+        const returnSteps = [...onwardSteps].reverse().map(s => ({
+            ...s,
+            From: s.To,
+            To: s.From
+        }));
+        addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
     }
 
     // 4. Auto-Calculate DA
