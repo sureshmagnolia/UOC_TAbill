@@ -1,0 +1,2122 @@
+[
+  {
+    "name": "A.C.KUNHIMON HAJI MEMORIAL ICA COLLEGE, P.O THOZHIYUR, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "A.V.ABDURAHIMAN HAJI ARTS AND SCIENCE COLLEGE, SALAFI COMPLEX, KULUPPA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "AASHRAYAM COLLEGE OF ARTS & SCIENCE, AASHRAYAM ORCHARD, NENMENI, KOLLENGODE",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "ABILITY ARTS AND SCIENCE COLLEGE FOR HEARING IMPAIRED",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 20.2
+  },
+  {
+    "name": "AHALIA SCHOOL OF COMMERCE AND MATHEMATICS, ELIPPARA, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 18.5
+  },
+  {
+    "name": "AHALIA SCHOOL OF MANAGEMENT, KOZHIPPARA. P.O., PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 21.0
+  },
+  {
+    "name": "AL IRSHAD ARTS AND SCIENCE COLLEGE FOR WOMEN, THECHIYAD, KALLURUTTY PO, OMASSERY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "AL JAMIA ARTS AND SCIENCE COLLEGE, PERINTHALMANNA , POOPALAM, VALAMBUR P.O",
+    "nearest_station": "Shoranur",
+    "km_to_station": 34.2
+  },
+  {
+    "name": "AL SHIFA COLLEGE OF ARTS & SCIENCE, KEEZHATTUR PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 36.5
+  },
+  {
+    "name": "AL-ABRAR ORIENTAL ARABIC COLLEGE, KODUVALIKKUNDU, MANNARKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 39.5
+  },
+  {
+    "name": "AL-FURQAN ARABIC COLLEGE, NADAPURAM",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.2
+  },
+  {
+    "name": "AL-HIDAYATH ARABIC COLLEGE, KONDOTTY",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 15.8
+  },
+  {
+    "name": "ALPHONSA ARTS AND SCIENCE COLLEGE, SULTHAN BATHERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 95.0
+  },
+  {
+    "name": "ALPHONSA COLLEGE THIRUVAMBADY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 34.5
+  },
+  {
+    "name": "AMAL COLLEGE OF ADVANCED STUDIES, SANTHIGRAMAM NILAMBUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 66.0
+  },
+  {
+    "name": "AMBEDKAR COLLEGE OF ARTS AND SCIENCE, WANDOOR, MALAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 51.5
+  },
+  {
+    "name": "AMC- ALLIED MANAGEMENT COLLEGE (UN-AIDED), MANISSERY, OTTAPPALAM, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 10.5
+  },
+  {
+    "name": "ANSAR ARABIC COLLEGE VALAVANNUR",
+    "nearest_station": "Tirur",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "ANSAR TRAINING COLLEGE FOR WOMEN,PERUMBILAVU",
+    "nearest_station": "Shoranur",
+    "km_to_station": 14.8
+  },
+  {
+    "name": "ANSAR WOMENS COLLEGE , PERUMPILAVU",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "ANVARUL ISLAM ARABIC(A.I.A) COLLEGE, KUNIYIL",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 31.0
+  },
+  {
+    "name": "ANVARUL ISLAM ARABIC COLLEGE, KUNIYIL PO, KIZHUPARAMBA (VIA), AREACODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 30.5
+  },
+  {
+    "name": "ANVARUL ISLAM WOMENS ARABIC COLLEGE (AIDED), MONGAM, MALAPPURAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 20.2
+  },
+  {
+    "name": "ANWARUL ISLAM ARABIC (A.I.A)COLLEGE, THIRURKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.5
+  },
+  {
+    "name": "ARAFA INSTITUTE FOR TEACHER EDUCATION,ATTUR,THRISSUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 4.2
+  },
+  {
+    "name": "ASPIRE COLLEGE OF ADVANCED STUDIES, THRITHALA.P.O, PALAKKAD",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 9.8
+  },
+  {
+    "name": "ASSABAH ARABIC COLLEGE, PAVITTAPURAM, ALANKODE",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 7.8
+  },
+  {
+    "name": "ASSABAH ARTS AND SCIENCE COLLEGE , VALAYAMKULAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 12.2
+  },
+  {
+    "name": "AWH COLLEGE OF EDUCATION (UNAIDED),FAROOK (P.O),KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 12.5
+  },
+  {
+    "name": "AWH COLLEGE OF SCIENCE & TECHNOLOGY, ANAKKARA",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "AWH SPECIAL COLLEGE, KALLAI, CALICUT",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 2.8
+  },
+  {
+    "name": "B.P.Ed CENTRE, CHAKKITTAPARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 34.5
+  },
+  {
+    "name": "BAFAKHY YATHEEMKHANA COLLEGE, KALPAKANCHERY",
+    "nearest_station": "Tirur",
+    "km_to_station": 10.2
+  },
+  {
+    "name": "BAITHUL IZZA ARABIC COLLEGE, NARIKKUNI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 20.5
+  },
+  {
+    "name": "BAITHUL IZZA ARTS & SCIENCE COLLEGE, NARIKKUNI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 20.5
+  },
+  {
+    "name": "BETHANIA INSTITUTE OF MANAGEMENT STUDIES, KUNNAMKULAM, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "BHARATHAMATHA COLLEGE OF ARTS AND SCIENCE, KOZHINJAMPARA",
+    "nearest_station": "Palakkad",
+    "km_to_station": 25.4
+  },
+  {
+    "name": "BHARATHEEYA VIDYA NIKETHAN ARTS & SCIENCE, KALLEKKAD,PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 7.8
+  },
+  {
+    "name": "BHARATHEEYA VIDYA NIKETHAN COLLEGE OF TEACHER EDUCATION-PKD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 8.0
+  },
+  {
+    "name": "BHAVANS RAMAKRISHNA INSTITUTE OF TEACHER EDUCATION RAMNATUKARA",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.5
+  },
+  {
+    "name": "BLOSSOM ARTS & SCIENCE COLLEGE, VALIYAPARAMBA, PULICKAL, KONDOTTY",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "BSS B.ED TRAINING COLLEGE, ALATHUR, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.8
+  },
+  {
+    "name": "BUSTHANUL ULOOM ARABIC COLLEGE KAIPAMANGALAM THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 28.2
+  },
+  {
+    "name": "C. K. RAGHAVAN MEMORIAL COLLEGE OF TEACHER EDUCATION,PULPALLY, WAYANAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 104.0
+  },
+  {
+    "name": "C.K.G MEMORIAL GOVT COLLEGE, PERAMBRA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "C.M COLLEGE OF ARTS AND SCIENCE, NADAWAYAL, WAYANAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 84.0
+  },
+  {
+    "name": "CALICUT UNIVERSITY REGIONAL CENTRE, Perambra",
+    "nearest_station": "Vadakara",
+    "km_to_station": 26.5
+  },
+  {
+    "name": "CARMEL COLLEGE, MALA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 34.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology (CCSIT),MANNARKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 41.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology (CCSIT). Kodungallur",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT) Mannarkkad",
+    "nearest_station": "Palakkad",
+    "km_to_station": 41.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT) Muttil",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 82.5
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT) Palakkad",
+    "nearest_station": "Palakkad",
+    "km_to_station": 5.5
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT), JMC Aranattukara",
+    "nearest_station": "Thrissur",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT), Peramangalam",
+    "nearest_station": "Thrissur",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT), Pudukkad",
+    "nearest_station": "Thrissur",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT), Thalikkulam",
+    "nearest_station": "Thrissur",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT),MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 27.0
+  },
+  {
+    "name": "Centre for Computer Science and Information Technology(CCSIT),Vadakara",
+    "nearest_station": "Vadakara",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "CENTRE FOR COMPUTER SCIENCE AND INFORMATION TECHNOLOGY, KUTTIPPURAM (CCSIT)",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 1.0
+  },
+  {
+    "name": "CENTRE FOR COMPUTER SCIENCE AND INFORMATION TECHNOLOGY. KODUNGALLUR (CCSIT)",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "CH MUHAMMED KOYA MEMORIAL GOVT. ARTS & SCIENCE COLLEGE , TANUR",
+    "nearest_station": "Tirur",
+    "km_to_station": 12.5
+  },
+  {
+    "name": "CHATHAMKULAM INSTITUTE OF RESEARCH AND ADVANCED STUDIES, EDAPPAKKULAM, MENONPARA, KANJIKODE, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.0
+  },
+  {
+    "name": "CHEMBAI MEMORIAL GOVT MUSIC COLLEGE",
+    "nearest_station": "Palakkad",
+    "km_to_station": 4.0
+  },
+  {
+    "name": "CHERPULASSERY COLLEGE OF SCIENCE AND TECHNOLOGY, KARALMANNA , CHERPULASSERY",
+    "nearest_station": "Shoranur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "CHETANA COLLEGE OF MEDIA AND PERFORMING ARTS CHIYYARAM THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 3.0
+  },
+  {
+    "name": "CHMKM GOVT. ARTS AND SCIENCE COLLEGE, KODUVALLY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "CHRIST COLLEGE (AUTONOMOUS), IRINJALAKUDA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.5
+  },
+  {
+    "name": "CICS COLLEGE OF TEACHER EDUCATION,GURUVAYURAPPAN COLLEGE, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 8.0
+  },
+  {
+    "name": "CO-OPERATIVE ARTS AND SCIENCE COLLEGE KURIKKILAD, VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), CHELAKKARA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.5
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), AGALI, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 75.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), AYALUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 34.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KALLACHI, NADAPURAM",
+    "nearest_station": "Vadakara",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KILIYANAD, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KODUNGALLUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KORANGAD, THAMARASSERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KUZHALMMANNAM, KOTTAYI",
+    "nearest_station": "Palakkad",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), MALAMPUZHA",
+    "nearest_station": "Palakkad",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), MUTHUVALLUR, MALAPPURAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), NATTIKA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), THIRUVAMPADI, MUKKAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 36.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), VADAKKANCHERY",
+    "nearest_station": "Palakkad",
+    "km_to_station": 35.5
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), VATTAMKULAM, EDAPPAL",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "COLLEGE OF APPLIED SCIENCE(IHRD), VAZHAKAD, MALAPPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "COMPOSITE REGIONAL CENTRE FOR SKILL DEVELOPMENT,REHABILITATION & EMPOWERMENT OF PERSONS WITH DISABILITIES(INTELLECTUAL DISABILITIES),(CRC-K),CHEVAYUR - KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 7.0
+  },
+  {
+    "name": "CPA COLLEGE OF GLOBAL STUDIES , PUTHANATHANI",
+    "nearest_station": "Tirur",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "CSI CHRISTIAN MULLER WOMENS COLLEGE, CHOMBALA, VATAKARA, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 9.5
+  },
+  {
+    "name": "DARUL MA-ARIFA ARABIC COLLEGE, (UNAIDED) ODUNGAKAD, PUTHUPADY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 40.0
+  },
+  {
+    "name": "DARUL MA-RIFA ARABIC COLLEGE , ODUNGAKAD , PUTHUPADY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 40.0
+  },
+  {
+    "name": "DARUL ULOOM ARABIC COLLEGE, VAZHAKKAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "DARUL ULOOM TRAINING COLLEGE, VAZHAKKAD, MALAPPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "DAYAPURAM ARTS AND SCIENCE COLLEGE FOR WOMEN, DAYAPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "DE PAUL INSTITUTE OF SCIENCE AND TECHNOLOGY (DISAT), NILAMBUR, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 48.0
+  },
+  {
+    "name": "DEVAKI AMMA MEMORIAL COLLEGE OF TEACHER EDUCATION, CHELEMBRA",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 14.2
+  },
+  {
+    "name": "DEVAMATHA COLLEGE OF ADVANCED STUDIES, KANHIRAPUZHA, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "DHARMAGIRI COLLEGE OF ARTS AND SCIENCE CHERKKAD,KANNAMANGALAM, MALAPPURAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 18.5
+  },
+  {
+    "name": "DIGNITY COLLEGE OF ARTS AND SCIENCE, PERAMBRA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 26.5
+  },
+  {
+    "name": "DIVINE INSTITUTE OF MEDIA SCIENCE(DIMS) CHALAKKUDY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 31.0
+  },
+  {
+    "name": "DON BOSCO COLLEGE MAMPETTA MUKKAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "DON BOSCO COLLEGE, MANNUTHY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "DON BOSCO COLLEGE, SULTHAN BATHERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 95.0
+  },
+  {
+    "name": "DR. PALPU MEMORIAL SNDP YOGAM COLLEGE OF EDUCATION, KODUNGALLUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "DR.B.R. AMBEDKAR MEMORIAL GOVT. ARTS AND SCIENCE COLLEGE, BALUSSERY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "DUXFORD COLLEGE FOR ADVANCED STUDIES, KALIKAVU, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 54.0
+  },
+  {
+    "name": "E.M.E.A COLLEGE, KONDOTTY (ALL DEPARTMENTS)",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "EDUCOS ARTS AND SCIENCE COLLEGE , KUTTIYADI",
+    "nearest_station": "Vadakara",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "ELDHO MOR BASELIOS COLLEGE MEENANGADI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 85.0
+  },
+  {
+    "name": "ELIJAH INSITUTE OF MANAGEMENT STUDIES, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 7.0
+  },
+  {
+    "name": "ELIMS COLLEGE OF ARTS AND SCIENCE, PONGANAKADU, KURICHIKARA, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 10.5
+  },
+  {
+    "name": "ERANAD KNOWLEDGE CITY COLLEGE OF COMMERCE AND SCIENCE, CHERUKULAM, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "ETCES COLLEGE FOR ADVANCED STUDIES, MANJERI, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "EUPHRAISIA TRAINING COLLEGE, IRINJALAKUDA, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "EZHUTHACHAN TRAINING COLLEGE, MANNAPRA, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "FALAHIA ARABIC COLLEGE, DOWN HILL P.O",
+    "nearest_station": "Tirur",
+    "km_to_station": 27.0
+  },
+  {
+    "name": "FAROOK BEd COLLEGE CHANGUVETTY KOTTAKAL MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "FAROOK COLLEGE (AUTONOMOUS), KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "FAROOK INSTITUTE OF MANAGEMENT, FAROOK COLLEGE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "FAROOK TRAINING COLLEGE, FAROOK COLLEGE,KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "FATHIMA ARTS AND SCIENCE COLLEGE MOOTHEDAM, NILAMBUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 75.0
+  },
+  {
+    "name": "GEMS ARTS AND SCIENCE COLLEGE, RAMAPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "GOLDEN HILLS ARTS AND SCIENCE COLLEGE, ELETTIL, VALIYAPARAMBA(PO), KODUVALLY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "GOVERNMENT COLLEGE, CHITTUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "GOVERNMENT COLLEGE, KODENCHERY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "GOVT ARTS & SCIENCE COLLEGE, NILAMBUR, POOKKOTTUMPADAM P.O, MALAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 78.0
+  },
+  {
+    "name": "GOVT. COLLEGE, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "GOVT. ARTS & SCIENCE COLLEGE FOR WOMEN, MUNDUPARAMBA , MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "GOVT. ARTS & SCIENCE COLLEGE, KONDOTTY",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "GOVT. ARTS & SCIENCE COLLEGE, MEENCHANDA, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 4.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, CHELAKKARA, THRISSUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, KOZHINJAMPARA, NAATTUKAL, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, MADAPPALLY",
+    "nearest_station": "Vadakara",
+    "km_to_station": 6.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, MOKERI",
+    "nearest_station": "Vadakara",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, NADAPURAM",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, OLLUR, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 6.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, PATHIRIPPALA, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, THAVANUR, MALAPPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "GOVT. ARTS AND SCIENCE COLLEGE, THRITHALA, PALAKKAD",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 8.0
+  },
+  {
+    "name": "GOVT. COLLEGE OF PHYSICAL EDUCATION, EAST HILL, CALICUT",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "GOVT. COLLEGE OF TEACHER EDUCATION, KOZHIKODE-1",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "GOVT. COLLEGE, MANKADA",
+    "nearest_station": "Tirur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "GOVT.ARTS AND SCIENCE COLLEGE, THOLANUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.0
+  },
+  {
+    "name": "GRACE VALLEY COLLEGE OF ARTS AND SCIENCE, WADI RAHMA, MARAVATTOM, KADAMPUZHA",
+    "nearest_station": "Tirur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "GURUDEVA COLLEGE OF ADVANCED STUDIES, KOYILANDY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "HERMANN GUNDERT MEMORIAL WOMEN'S COLLEGE, PARAPPERI, TIRUR, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 4.0
+  },
+  {
+    "name": "HI-TECH ARTS AND SCIENCE COLLEGE, VATTOLI",
+    "nearest_station": "Vadakara",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "HICER COLLEGE OF ADVANCED STUDIES, THIRUVALI, POONTHOTTAM, PATHIRIYAL (P.O), MALAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 52.0
+  },
+  {
+    "name": "HIDAYATHUL MUSLIMEEM(H.M) COLLEGE OF SCIENCE AND TECHNOLOGY, MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "HINDI PRACHARA KENDRA COLLEGE OF TEACHER EDUCATION, KODUNGALLUR,THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "HOLY CROSS INSTITUTE OF MANAGEMENT AND TECH, EAST NADAKKAVU",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 3.0
+  },
+  {
+    "name": "HOLY FAMILY COLLEGE OF EDUCATION FOR WOMEN, KODUVAYUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "HOLY GRACE ACADEMY OF ARTS & SCIENCE, KURUVILASSERY P.O, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "HOLY GRACE ACADEMY OF MANAGEMENT STUDIES, MALA, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 38.0
+  },
+  {
+    "name": "IDEAL ARTS AND SCIENCE COLLEGE, KARUMANAMKURUSSI PO, CHERPULASSERY",
+    "nearest_station": "Shoranur",
+    "km_to_station": 17.0
+  },
+  {
+    "name": "IDEAL COLLEGE FOR ADVANCED STUDIES, KADAKASSERY",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "IDEAL COLLEGE OF ARTS AND SCIENCE, KUTTIYADI",
+    "nearest_station": "Vadakara",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "IDEAL TRAINING COLLEGE,CHERPULASSERY, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 17.0
+  },
+  {
+    "name": "IES COLLEGE OF ARTS AND SCIENCE, CHITTILAPILLY, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "IKT MEMORIAL ARTS AND SCIENCE COLLEGE, CHERUKULAMBA, VATTALUIR",
+    "nearest_station": "Tirur",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "ILAHIYA ARTS & SCIENCE COLLEGE, KOYILANDY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "ILLAHIA ARABIC COLLEGE, THIRURKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "INDU MEMORIAL TEACHER TRAINING CENTRE, KUZHALMANNAM, PALAKKAD - 678 702",
+    "nearest_station": "Palakkad",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "INSTITUTE OF ADVANCED STUDIES IN EDUCATION,THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 1.8
+  },
+  {
+    "name": "ISHA-ATHUL ISLAM ARABIC COLLEGE, PARAPPANAGADI",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 1.2
+  },
+  {
+    "name": "ISS ARTS AND SCIENCE COLLEGE, PONNIAKURISSY , PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "ISS COLLEGE OF TEACHER EDUCATION, PONNIAKURUSSI, PERINTHALMANNA, MALAPPURAM 679 322",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "ITSR, CHETHALAYAM, SULTHAN BATHERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 96.0
+  },
+  {
+    "name": "JALALIYA WOMEN'S ARABIC COLLEGE, KUTTIKKATUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.5
+  },
+  {
+    "name": "JAMIA NADAWIYYA ARTS & SCIENCE COLLEGE, EDAVANNA",
+    "nearest_station": "Tirur",
+    "km_to_station": 41.5
+  },
+  {
+    "name": "JAMIA NADWIYYA TRAINING COLLEGE(U) SALAH NAGAR,EDAVANNA",
+    "nearest_station": "Tirur",
+    "km_to_station": 41.5
+  },
+  {
+    "name": "JAMIA NADWIYYA WOMEN'S ARABIC COLLEGE, EDAVANNA",
+    "nearest_station": "Tirur",
+    "km_to_station": 41.5
+  },
+  {
+    "name": "JAMIYA ISLAMIYA ARTS AND SCIENCE, MANJERI, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "JAYASREE ARTS AND SCIENCE, PULPALLY, WAYANAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 105.0
+  },
+  {
+    "name": "JDT ISLAM COLLEGE OF ARTS & SCIENCE VELIMADUKUNNU",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "JESUS TRAINING COLLEGE (UNAIDED), MEITHAKUDY, MALA PO, TRICHUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 32.5
+  },
+  {
+    "name": "JM COLLEGE OF ARTS AND SCIENCE (WOMEN'S) PARANNEKKAD , TIRUR",
+    "nearest_station": "Tirur",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "JPE TRAINING COLLEGE, KOORKANCHERY , TRICHUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 2.0
+  },
+  {
+    "name": "K M COLLEGE OF ARTS & SCIENCE, VARAMBILMANNU,VALILAPUZHA-AREAKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 29.5
+  },
+  {
+    "name": "K T M COLLEGE OF ADVANCED STUDIES, KARUVARAKUNDU",
+    "nearest_station": "Shoranur",
+    "km_to_station": 62.0
+  },
+  {
+    "name": "K.K.T.M.GOVT.COLLEGE, PULLUT",
+    "nearest_station": "Thrissur",
+    "km_to_station": 34.0
+  },
+  {
+    "name": "K.M.M.M.O ARABIC COLLEGE, TIRURANGADI",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "K.M.O.ARTS & SCIENCE COLLEGE, KODUVALLY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 21.5
+  },
+  {
+    "name": "K.V USTAD MEMORIAL DARUL HIDAYA ORPHANAGE ARTS AND SCIENCE COLLEGE, KOLOLAMBA",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "KADATHANAD ARTS & SCIENCE COLLEGE, MANDARATHUR, VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "KAS COLLEGE, ANAVATHIL, ULLIYERI, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "KERALA POLICE ACADEMY (KEPA), THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "KET COLLEGE OF TEACHER EDUCATION ,BALLUSSERY VIA, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 27.0
+  },
+  {
+    "name": "KHIDMATH ARTS & SCIENCE COLLEGE , EDAKKULAM , THIRUNAVAYA",
+    "nearest_station": "Tirur",
+    "km_to_station": 10.5
+  },
+  {
+    "name": "KILA - COLLEGE OF DECENTRALISATION AND LOCAL GOVERNANCE MULAMKUNNATHUKAVU",
+    "nearest_station": "Thrissur",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "KMCT ARTS AND SCIENCE COLLEGE, KUTTIPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "KMCT ARTS AND SCIENCE COLLEGE, MANASSERY PO, MUKKOM, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "KMCT COLLEGE OF EDUCATION, (UNAIDED) CHATHAMANGALAM, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "KMO COLLEGE OF TEACHER EDUCATION, KODUVALLY, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 21.5
+  },
+  {
+    "name": "KORAMBAYIL AHAMMED HAJI MEMORIAL UNITY WOMEN'S COLLEGE, MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 27.5
+  },
+  {
+    "name": "KOTTAKKAL FAROOK ARTS AND SCIENCE COLLEGE (UNAIDED), CHANGUVETTY, PARAPPUR, KOTTAKKAL",
+    "nearest_station": "Tirur",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "KPPM COLLEGE, OF TEACHER EDUCATION ANAKKAYAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 26.5
+  },
+  {
+    "name": "KRS SREE NARAYANA COLLEGE THOZUVANUR VALANCHERY",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 9.5
+  },
+  {
+    "name": "KSHM ARTS & SCIENCE COLLEGE, EDATHANATTUKARA, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 52.0
+  },
+  {
+    "name": "KUNHATHUMMA MEMORIAL COLLEGE OF TEACHER EDUCATION, VALILLAPUZHA, MALAPPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 29.5
+  },
+  {
+    "name": "KUNNAMANGALAM GOVT. ARTS & SCIENCE COLLEGE,CHATHAMANGALAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 19.5
+  },
+  {
+    "name": "LAKSHMI NARAYANA ARTS AND SCIENCE COLLEGE, MAYANNUR, THRISSUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "LBS MODEL DEGREE COLLEGE (APPLIED SCIENCE) , PARAPPANANGADI, MALAPPURAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 1.0
+  },
+  {
+    "name": "Le-Ment College of Advanced Studies, Mele Pattambi",
+    "nearest_station": "Shoranur",
+    "km_to_station": 11.5
+  },
+  {
+    "name": "LEAD COLLEGE OF MANAGEMENT, DHONI, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "LIONS EDUCATIONAL TRUST COLLEGE MUDAPPALLUR PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "LITTLE FLOWER COLLEGE, GURUVAYOOR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 27.5
+  },
+  {
+    "name": "LITTLE FLOWER INSTITUTE OF SOCIAL SCIENCES AND HEALTH [LISSAH], KAITHAPOYIL",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 43.5
+  },
+  {
+    "name": "LUMINOUS ARTS AND SCIENCE COLLEGE, VETTICHIRA, ATHAWANAD, MALAPPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "M.DASAN ARTS & SCIENCE COLLEGE ULLIYERI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.5
+  },
+  {
+    "name": "M.E.S ARTS & SCIENCE COLLEGE, CHATHAMANGALAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 20.0
+  },
+  {
+    "name": "M.E.S ARTS AND SCIENCE COLLEGE KUTTIPPURAM,THRIKKANNAPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 2.0
+  },
+  {
+    "name": "M.E.S ARTS AND SCIENCE COLLEGE PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 33.0
+  },
+  {
+    "name": "M.E.S ARTS AND SCIENCE COLLEGE, AMAYUR, PATTAMBI",
+    "nearest_station": "Shoranur",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "M.E.S ASMABI COLLEGE, VEMBALLUR P.O, KODUNGALLUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "M.E.S COLLEGE VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 8.0
+  },
+  {
+    "name": "M.E.S KALLADI COLLEGE, MANNARKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 40.0
+  },
+  {
+    "name": "M.E.S KAPPUNGAL SAYDALAVI HAJI MEMORIAL TRAINING COLLEGE,PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "M.E.S KEVEEYAM COLLEGE, VALANCHERY",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 8.0
+  },
+  {
+    "name": "M.E.S MAMPAD COLLEGE (AUTONOMOUS)",
+    "nearest_station": "Shoranur",
+    "km_to_station": 55.0
+  },
+  {
+    "name": "M.E.S PONNANI COLLEGE",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "M.E.T COLLEGE OF ARTS AND SCIENCE, NADAPURAM",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "M.I TRAINING COLLEGE, PONNANI, MALAPPURAM - 679 586",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "M.P.MOOTHEDATH MEMORIAL SREE NARAYANA(M.P.M.M.S.N) TRUST COLLEGE, SHORNUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "M.S.T.M ARTS AND SCIENCE COLLEGE, PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "M.T.M COLLEGE OF ARTS, SCIENCE AND COMMERCE, VELIANCODE, PONNANI, MALAPPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "MA'DIN ARTS AND SCIENCE COLLEGE, MELMURI",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "MA'DIN GLOBAL INSTITUTE OF MANAGEMENT STUDIES. MELMURI. MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "MADEENATHUL ULOOM ARABIC COLLEGE, PULIKKAL",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "MAHAJUBILEE TRAINING COLLEGE, MULLOORKARA, THRISSUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "MAHLARA ARTS AND SCIENCE COLLEGE FOR WOMEN, MAVOOR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "MAJILIS ARTS AND SCIENCE COLLEGE, PURAMANNUR",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "MAJMA'A ARTS AND SCIENCE COLLEGE RAHMATH NAGAR, KAVANUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "MAJMAA TRAINING COLLEGE, RAHMATH NAGAR, KAVANUR, MALAPPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "MALABAR ARTS AND SCIENCE COLLEGE FOR WOMEN, CHEKKIAD, NADAPURAM",
+    "nearest_station": "Vadakara",
+    "km_to_station": 20.0
+  },
+  {
+    "name": "MALABAR CHRISTIAN COLLEGE, CALICUT",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "MALABAR COLLEGE OF ADVANCED STUDIES, VENGARA",
+    "nearest_station": "Tirur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "MALABAR COLLEGE OF ARTS AND SCIENCE, MOODADI, KOYILANDY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "MALABAR COLLEGE OF COMMERCE AND SCIENCE, MANOOR",
+    "nearest_station": "Tirur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "MAO COLLEGE OF ARTS & SCIENCE, ELAYUR, MALAPPURAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "MAR BASELIOUS COLLEGE OF TEACHER EDUCATION, (UNAIDED) SULTHAN BATHERY, WAYANAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 95.0
+  },
+  {
+    "name": "MAR DIONYSIUS COLLEGE, PAZHANJI",
+    "nearest_station": "Thrissur",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "MAR OSTHATHEOS COLLEGE, PERUMPILAVU THRISSUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "MAR OSTHATHEOS TRAINING COLLEGE, PERUMPILAVU, KUNNAMKULAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "MARIAN ARTS AND SCIENCE COLLEGE, KODUVAYUR, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 13.5
+  },
+  {
+    "name": "MARKAZ ARTS AND SCIENCE COLLEGE, ATHAWANAD",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 11.2
+  },
+  {
+    "name": "MARKAZ COLLEGE OF ARTS AND SCIENCE, KARANTHUR,KUNNAMANGALAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 12.8
+  },
+  {
+    "name": "MARKAZ ORIENTAL COLLEGE, THOTTAKKARA, OTTAPALAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "MARKAZ TRAINING COLLEGE (UNAIDED) ATHAVANAD, KARTHALA",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 12.5
+  },
+  {
+    "name": "MARKAZ WAYANAD WOMEN'S COLLEGE, NOOLPUZHA, SULTHAN BATHERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 105.0
+  },
+  {
+    "name": "MARTHOMA COLLEGE, CHUNGATHARA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 78.5
+  },
+  {
+    "name": "MAWLANA ABUL KALAM AZAD COLLEGE OF SOCIAL SCIENCES,PATTARKULAM,MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "MCT TRAINING COLLEGE (UNAIDED), ALATHURPADI, MELMURI",
+    "nearest_station": "Tirur",
+    "km_to_station": 26.8
+  },
+  {
+    "name": "MEPPAYUR SALAFI COLLEGE OF TEACHER EDUCATION, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 21.5
+  },
+  {
+    "name": "MERCY COLLEGE OF TEACHER EDUCATION, VATAKARA, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 3.2
+  },
+  {
+    "name": "MET'S COLLEGE OF ADVANCED STUDIES, KURIVILASSERY, MALA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 32.5
+  },
+  {
+    "name": "MH COLLEGE OF ARTS AND SCIENCE, KUTTIADY, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 26.5
+  },
+  {
+    "name": "MHES COLLEGE OF SCIENCE AND TECHNOLOGY, VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 9.8
+  },
+  {
+    "name": "MIC ARTS AND SCIENCE COLLEGE , ATHANIKAL, VALLUVAMBRAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 23.5
+  },
+  {
+    "name": "MINORITY ARTS AND SCIENCE COLLEGE, VATTAPARAMBU, PADINJHARANGADI",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 14.2
+  },
+  {
+    "name": "MODEL COLLEGE, MEENANGADI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 85.0
+  },
+  {
+    "name": "MONTI INTERNATIONAL INSTITUTE OF MANAGEMENT STUDIES, PUTHANGADI, MALAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 35.5
+  },
+  {
+    "name": "MOR IVANIAN COLLEGE,THENIDUKKU,VADAKKENCHERRY (P.O.), PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 34.5
+  },
+  {
+    "name": "MORES COLLEGE OF ARTS AND SCIENCE CHEMBRA , KAYANNA, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "MOTHER ARTS AND SCIENCE COLLEGE, PERUVALLUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 18.2
+  },
+  {
+    "name": "MOTHER TERESA COLLEGE OF TEACHER EDUCATION (UNAIDED), PERAMBRA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "MOULANA COLLEGE OF ARTS, SCIENCE AND COMMERCE, CHENNARA, TIRUR",
+    "nearest_station": "Tirur",
+    "km_to_station": 9.5
+  },
+  {
+    "name": "MOULANA COLLEGE OF TEACHER EDUCATION, KUTTAYI, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 12.2
+  },
+  {
+    "name": "MOUNT SEENA COLLEGE OF ARTS & SCIENCE, AKALUR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.8
+  },
+  {
+    "name": "MUHAMMED ABDUL RAHIMAN MEMORIAL ORPHANAGE(M.A.M.O) COLLEGE, MUKKOM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "MUSLIM ORPHANAGES COLLEGE OF ARTS AND SCIENCE, PARAMBADAM, CHERUVATTA",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 9.8
+  },
+  {
+    "name": "N.M.S.M GOVT. COLLEGE, KALPETTA",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 75.0
+  },
+  {
+    "name": "N.S.S COLLEGE, MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 26.5
+  },
+  {
+    "name": "N.S.S COLLEGE, NEMMARA",
+    "nearest_station": "Palakkad",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "N.S.S COLLEGE, OTTAPPALAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 13.8
+  },
+  {
+    "name": "NAIPUNNYA BUSINESS SCHOOL, KORATTY, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "NAIPUNYA INSTITUTE OF MANAGEMENT AND INFORMATION TECHNOLOGY, PONGAM, KORATTY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 32.5
+  },
+  {
+    "name": "NAJATH ARTS AND SCIENCE COLLEGE, NELLIPUZHA, MANNARKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 40.5
+  },
+  {
+    "name": "NAJATH COLLEGE OF SCIENCE & TECHNOLOGY, KARUVARAKUNDU",
+    "nearest_station": "Shoranur",
+    "km_to_station": 62.0
+  },
+  {
+    "name": "NAMBOODIRIS COLLEGE OF TEACHER EDUCATION, MARAR ROAD, IRINJALAKUDA, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.5
+  },
+  {
+    "name": "NASRA COLLEGE OF ARTS AND SCIENCE, TIRURKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.2
+  },
+  {
+    "name": "NATIONAL COLLEGE OF ARTS AND SCIENCE, PULIYAVU, PARAKKADAVU",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.5
+  },
+  {
+    "name": "NATTIKA EDUCATIONAL SOCIETY ARTS AND SCIENCE COLLEGE (NES), THRIPRAYAR SOUTH, VALAPPAD, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 25.5
+  },
+  {
+    "name": "NAVAJYOTHI COLLEGE OF TEACHER EDUCATION, OLARIKKARA, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 4.5
+  },
+  {
+    "name": "NETHAJI MEMORIAL ARTS AND SCIENCE COLLEGE, NENMARA",
+    "nearest_station": "Palakkad",
+    "km_to_station": 30.5
+  },
+  {
+    "name": "NIRMALA COLLEGE OF ARTS AND SCIENCE , KUNNAPPILLY PO, MELOOR, CHALAKUDY, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 33.2
+  },
+  {
+    "name": "NOBLE WOMEN'S COLLEGE, MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "NSS ARTS AND SCIENCE COLLEGE KAPPOOR",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 14.5
+  },
+  {
+    "name": "NSS TRAINING COLLEGE,OTTAPALAM,PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 13.5
+  },
+  {
+    "name": "NUCLEUS COLLEGE OF ARTS AND SCIENCE, MUTHUTHALA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 10.5
+  },
+  {
+    "name": "ORIENTAL COLLEGE OF HOTEL MANAGEMENT AND CULLINERY ARTS, VYTHIRI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 63.5
+  },
+  {
+    "name": "ORIENTAL COLLEGE OF TEACHER EDUCATION POONATH",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 26.2
+  },
+  {
+    "name": "ORIENTAL SCHOOL OF HOTEL MANAGEMENT, LAKKIDI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 58.5
+  },
+  {
+    "name": "P V S COLLEGE OF ARTS AND SCIENCE PANTHEERANKAVU",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 8.5
+  },
+  {
+    "name": "PANAKKAD MOHAMEDALI SHIHAB THANGAL ARTS AND SCIENCE COLLEGE, KUNDOOR, NANNAMBRA",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 10.5
+  },
+  {
+    "name": "PANAKKAD POOKOYA THANGAL MEMORIAL ARTS AND SCIENCE COLLEGE CHERUR",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "PANAMPILLY MEMORIAL GOVT (P.M.G) COLLEGE, CHALAKUDY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "PARAMEKKAVU COLLEGE OF ARTS AND SCIENCE, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 3.0
+  },
+  {
+    "name": "PAZHASSI RAJA COLLEGE PULPALLY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 105.0
+  },
+  {
+    "name": "PEEKAY CICS ARTS AND SCIENCE COLLEGE, MATHARA, CALICUT",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 7.0
+  },
+  {
+    "name": "PK DAS LIBERAL COLLEGE OF ARTS AND SCIENCE, JAWAHAR GARDENS, LAKKIDI, MANGALAM (P.O.), PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "POCKER SAHIB MEMORIAL ORPHANAGE (PSMO) COLLEGE, TIRURANGADI",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 7.0
+  },
+  {
+    "name": "POOKKOYA THANGAL MEMORIAL GOVERNMENT COLLEGE, PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "POPEPAUL MERCY HOME TEACHERS TRAINING CENTRE, PERINGANDOOR - THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 11.5
+  },
+  {
+    "name": "PRAJYOTI NIKETAN COLLEGE, PUDUKAD",
+    "nearest_station": "Thrissur",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "PRAVASI ARTS AND SCIENCE COLLEGE, GOKULAM VENGAD, NEAR VALANCHERY, EDAYUR PO",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 13.5
+  },
+  {
+    "name": "PRAYAGA FOUNDATION FOR EXCELLENCE AND TRAINING, ELAPULLY VILLAGE, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "PRISTINE VALLEY COLLEGE OF ARTS AND SCIENCE, ARAKKODE, PULPATTA, ERNAD, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "PRIYADARSHINI ARTS & SCIENCE COLLEGE, MELMURI",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "PROVIDENCE COLLEGE OF TEACHER EDUCATION FOR WOMEN(UNAIDED)",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "PROVIDENCE WOMEN'S COLLEGE , MALAPARAMBA",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "R.SANKAR MEMORIAL SNDP YOGAM ARTS AND SCIENCE (R.S.M.SNDP) COLLEGE, KOYILANDY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "RAHMANIYA ARABIC COLLEGE, KATAMERI",
+    "nearest_station": "Vadakara",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "RAJIV GANDHI MEMORIAL GOVT ARTS & SCIENCE COLLEGE, AGALI, ATTAPPADI",
+    "nearest_station": "Palakkad",
+    "km_to_station": 75.0
+  },
+  {
+    "name": "REGIONAL COLLEGE OF SCIENCE AND HUMANITIES, KUZHIMANNA",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "ROUZATHUL ULOOM ARABIC COLLEGE, FAROOK COLLEGE, PO, KOZHIKODE - 673 632",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "ROUZATHUL ULOOM ARABIC COLLEGE, PO FAROOK COLLEGE, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "ROYAL COLLEGE OF ARTS AND SCIENCE, THRITHALA",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 9.0
+  },
+  {
+    "name": "S.M.I ARTS AND SCIENCE COLLEGE, KUNHIPPALLY",
+    "nearest_station": "Vadakara",
+    "km_to_station": 6.0
+  },
+  {
+    "name": "S.N.D.P YOGAM M.K. RAGHAVAN MEMORIAL ARTS AND SCIENCE, PULPALLY, WAYANAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 105.0
+  },
+  {
+    "name": "SACRED HEART COLLEGE FOR WOMEN, CHALAKUDY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "SADANAM KUMARAN COLLEGE , MANKARA",
+    "nearest_station": "Palakkad",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SAFA ARABIC COLLEGE, POOKATTIRI , EDAYUR",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "SAFA COLLEGE OF ARTS AND SCIENCE, POOKKATTIRI, VALANCHERY",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 11.0
+  },
+  {
+    "name": "SAFI INSTITUTE OF ADVANCED STUDIES, VAZHAYUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SAHRDAYA COLLEGE OF ADVANCED STUDIES, KODAKARA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "SAHRDAYA INSTITUTE OF MANAGEMENT STUDIES, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "SAHYA ARTS AND SCIENCE COLLEGE WANDOOR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 52.0
+  },
+  {
+    "name": "SALAFIYYA ARABIC COLLEGE , KARINGANAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "SALAFIYYA ARABIC COLLEGE, MEPPAYUR, KOYILANDY",
+    "nearest_station": "Vadakara",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "SALAFIYYA COLLEGE, WANDOOR, KOKKADANKUNNU, VANIYAMBALAM P.O.",
+    "nearest_station": "Shoranur",
+    "km_to_station": 55.0
+  },
+  {
+    "name": "SALAFIYYA TRAINING COLLEGE, KARINGANAD, VILAYUR, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 15.0
+  },
+  {
+    "name": "SAQAFATH INSTITUTE OF ADVANCED STUDIES (SIAS), UMMATHUR, PARAKKADAV, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SAQAFATHUL ISLAM ARABIC COLLEGE, PARAKKADAVU",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SAVITHRI DEVI SABOO MEMORIAL WOMEN'S COLLEGE, VELLANUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 16.0
+  },
+  {
+    "name": "SAYYID MUHAMMED ALI SHIHAB THANGAL MEMORIAL ARTS AND SCIENCE WOMEN'S COLLEGE, KATTILANGADI ATHAVANAD MALAPPUARM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "SCHOENSTATT ACADEMY, SION CENTRE, KUTTUR P.O, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "DR. JOHN MATTHAI CENTRE, ARANATTUKARA (ALL DEPARTMENTS)",
+    "nearest_station": "Thrissur",
+    "km_to_station": 3.0
+  },
+  {
+    "name": "SCHOOL OF MANAGEMENT STUDIES, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "SCHOOL OF MANAGEMENT STUDIES, KUTTIPPURAM",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 3.5
+  },
+  {
+    "name": "SCHOOL OF MANAGEMENT STUDIES, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 5.0
+  },
+  {
+    "name": "SCHOOL OF MANAGEMENT STUDIES, VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 2.0
+  },
+  {
+    "name": "SCHOOL OF MANAGEMENT STUDIES. PERAMANGALAM. THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "SEEDAC COLLEGE OF ARTS AND SCIENCE, SREEKRISHNAPURAM, KOTTAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "SHAREEATH COLLEGE FOR WOMEN , THENHIPALAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 12.5
+  },
+  {
+    "name": "SILVER ARTS & SCIENCE COLLEGE, PERAMBRA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 25.0
+  },
+  {
+    "name": "SIRAJUL HUDA ARTS & SCIENCE COLLEGE, NADAPURAM,",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SIRAJUL HUDA INSTITUTE OF MANAGEMENT STUDIES, KUTTIADI, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "SNDP YOGAM SATHABDI SMARAKA COLLEGE, KUNNAPPALLY, PERINTHALMANNA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "SNEHA COLLEGE OF TEACHER EDUCATION GOVINDAPURAM, ATTAYAMPATHY, PALGHAT 678507",
+    "nearest_station": "Palakkad",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "SNES COLLEGE OF ARTS, COMMERCE & MANAGEMENT , CHETHUKADAVU, KUNNAMANGALAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SNES INSTITUTE OF MANAGEMENT STUDIES AND RESEARCH, CHETHUKADAVU, KUNNAMANGALAM, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SREE GOKULAM ARTS AND SCIENCE COLLEGE PAZHUVIL",
+    "nearest_station": "Thrissur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SREE GOKULAM ARTS AND SCIENCE COLLEGE, BALUSSERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 26.0
+  },
+  {
+    "name": "SREE KERALAVARMA COLLEGE, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "SREE KRISHNAPURAM V.T BHATTATHIRIPAD COLLEGE, MANNAMPATTA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE , ALATHUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE OF ARTS AND SCIENCE, KUNDALASSERY, KERALASSERY",
+    "nearest_station": "Palakkad",
+    "km_to_station": 20.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE OF TEACHER EDUCATION (UNAIDED) CHELANNUR, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE OF TEACHER EDUCATION, SREEKRISHNAPURAM, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE, NATTIKA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 24.0
+  },
+  {
+    "name": "SREE NARAYANA COLLEGE, VATAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 6.0
+  },
+  {
+    "name": "SREE NARAYANA GURU COLLEGE OF ADVANCED STUDIES CHELANNUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "SREE NARAYANA GURU COLLEGE OF ADVANCED STUDIES, VAZHUKUMPARA, PO CHUVANNAMANNU",
+    "nearest_station": "Thrissur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SREE NARAYANAGURU COLLEGE, CHELANNUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "SREE NEELAKANTA GOVT. SANSKRIT COLLEGE(SNGS), PATTAMBI",
+    "nearest_station": "Shoranur",
+    "km_to_station": 10.0
+  },
+  {
+    "name": "SREE RAMA VARMA(S.R.V) GOVERMENT COLLEGE MUSIC & PERFORMING ARTS",
+    "nearest_station": "Palakkad",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SREE SASTHA COLLEGE, EDAKKAD, ELANKUR P.O, MALAPPURAM",
+    "nearest_station": "Tirur",
+    "km_to_station": 32.0
+  },
+  {
+    "name": "SREE SWAMY VIVEKANANDA CENTRE OF TEACHER EDUCATION,OTTAPALAM, PALAKKAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 14.0
+  },
+  {
+    "name": "SREE VIVEKANANDA COLLEGE OF TEACHER EDUCATION, PALEMAD",
+    "nearest_station": "Shoranur",
+    "km_to_station": 78.0
+  },
+  {
+    "name": "SREE VIVEKANANDA COLLEGE, KUNNAMKULAM",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "SREE VIVEKANANDA PADANA KENDRAM ARTS AND SCIENCE COLLEGE, PALEMAD, EDAKKARA",
+    "nearest_station": "Shoranur",
+    "km_to_station": 78.0
+  },
+  {
+    "name": "SREE VIVEKANANDA TEACHER EDUCATION CENTRE, AKKIKAVU, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 24.0
+  },
+  {
+    "name": "SREE VYASA N.S.S COLLEGE, VYASAGIRI, VADAKKANCHERY",
+    "nearest_station": "Shoranur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SREEPATHY INSTITUTE OF ADVANCED STUDIES, VAVANOOR (P.O.), KOOTTANAD",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "SRI SATHYA SAI SCHOOL OF SOCIAL SCIENCES AND MANAGEMENT STUDIES FOR WOMEN, SRISAILAM, NANDI BAZAR, KOYILANDY",
+    "nearest_station": "Vadakara",
+    "km_to_station": 20.0
+  },
+  {
+    "name": "SRI. C.ACHUTHAMENON GOVT. COLLEGE, KUTTANELLUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 6.5
+  },
+  {
+    "name": "SSM COLLEGE OF TEACHER EDUCATION (UNAIDED), NELLIKKAPARAMBA, MUKKAM, KOZHIKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "ST ALOYSIUS COLLEGE, ELTHURUTH",
+    "nearest_station": "Thrissur",
+    "km_to_station": 4.5
+  },
+  {
+    "name": "ST JOSEPHS COLLEGE (AUTONOMOUS), DEVAGIRI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 6.0
+  },
+  {
+    "name": "ST JOSEPHS COLLEGE (AUTONOMOUS), IRINJALAKUDA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "ST MARY'S COLLEGE, PUTHANANGADI, ANGADIPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 28.0
+  },
+  {
+    "name": "ST MARY'S COLLEGE, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "ST MARYS COLLEGE, SULTHAN BATHERY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 96.0
+  },
+  {
+    "name": "ST TERESAS ARTS AND SCIENCE COLLEGE, KOTTAKKAL, MALA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "ST XAVIERS ARTS AND SCIENCE COLLEGE, ERANHIPALAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 4.5
+  },
+  {
+    "name": "ST. BENEDICT'S COLLEGE, PASSUKADAVU, KUTTIADY, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 35.0
+  },
+  {
+    "name": "ST. JOSEPH'S ARTS AND SCIENCE, PAVARATTY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.0
+  },
+  {
+    "name": "ST. JOSEPHS TRAINING COLLEGE, ST. THOMAS MONASTERY COMPLEX, PAVARATTY, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 23.2
+  },
+  {
+    "name": "ST.GREGORIOS TEACHER TRAINING COLLEGE (UN-AIDED), MEENANGADI,WYNAD",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 85.0
+  },
+  {
+    "name": "ST.THOMAS COLLEGE (AUTONOMOUS), THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 1.2
+  },
+  {
+    "name": "SULLAMUSSALAM ARABIC COLLEGE, AREACODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 29.5
+  },
+  {
+    "name": "SULLAMUSSALAM COLLEGE OF TEACHER EDUCATION, AREACODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 29.5
+  },
+  {
+    "name": "SULLAMUSSALAM SCIENCE COLLEGE , AREAKODE",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 30.0
+  },
+  {
+    "name": "SUNNIYA ARABIC (S.A) COLLEGE, CHENNAMANGALUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 26.8
+  },
+  {
+    "name": "SUNNIYA ARABIC COLLEGE, CHENNAMANGALLUR, MUKKAM PO, KOZHIKODE-673 602",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 26.8
+  },
+  {
+    "name": "SYED ABDUL RAHIMAN BAFAKHY THANGAL MEMORAL(S.A.R.B.T.M) GOVT COLLEGE, KOYILANDY",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "T.I.M. TRAINING COLLEGE (UNAIDED), NADAPURAM, KOZHIKODE",
+    "nearest_station": "Vadakara",
+    "km_to_station": 18.2
+  },
+  {
+    "name": "THAQWA AFZAL-UL-ULAMA ARABIC COLLEGE(WOMENS ARABIC), ANDATHODE",
+    "nearest_station": "Kuttippuram",
+    "km_to_station": 27.5
+  },
+  {
+    "name": "THARANANELLUR ARTS AND SCIENCE COLLEGE, IRINJALAKUDA",
+    "nearest_station": "Thrissur",
+    "km_to_station": 22.8
+  },
+  {
+    "name": "THE ELEGANT COLLEGE OF ARTS AND SCIENCE, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "THUNCHAN MEMORIAL GOVERNMENT (T.M.G)COLLEGE , TIRUR",
+    "nearest_station": "Tirur",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "THUNCHATH EZHUTHACHAN COLLEGE, ELAVANCHERI",
+    "nearest_station": "Palakkad",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "UNITY COLLEGE OF ARTS AND SCIENCE, THALIKKULAM, THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 25.5
+  },
+  {
+    "name": "UNIVERSAL COLLEGE OF ARTS AND SCIENCE, MANNARKKAD, PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 39.5
+  },
+  {
+    "name": "UNIVERSITY CENTRE FOR PG STUDIES IN SOCIAL WORK, SULTAN BATHERI",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 96.2
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE CHALAKUDY",
+    "nearest_station": "Thrissur",
+    "km_to_station": 31.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE KANIYAMBATTA WAYANAD 673124",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 82.0
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE PADINJATTUMURI MALAPPURAM",
+    "nearest_station": "Parappanangadi",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, ARANATTUKARA,THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 2.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, KODUVAYUR,PALAKKAD",
+    "nearest_station": "Palakkad",
+    "km_to_station": 12.0
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, MANJERI",
+    "nearest_station": "Tirur",
+    "km_to_station": 28.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, POOMALA (PO), SULTHAN BATHERY - 673 592",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 98.0
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, PUDUPPANAM, VADAKARA",
+    "nearest_station": "Vadakara",
+    "km_to_station": 1.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE, VALAPPAD (PO), THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 24.5
+  },
+  {
+    "name": "UNIVERSITY TEACHER EDUCATION CENTRE,Chakkittappara KOZHIKODE-673526",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 52.5
+  },
+  {
+    "name": "V.K.H.M.O(VAYALIL KUNHALI HAJI MEMORIAL ORPHANAGE) COLLEGE OF ARTS AND SCIENCE FOR WOMEN, MUKKAM",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 29.2
+  },
+  {
+    "name": "VAKIL P.KUMARAN EZHUTHACHAN COLLEGE,VARAVOOR",
+    "nearest_station": "Shoranur",
+    "km_to_station": 18.0
+  },
+  {
+    "name": "VANIKA VYSIA (V.V) COLLEGE OF SCIENCE AND TECHNOLOGY, CHULLIMADA, PUTHUSSERY",
+    "nearest_station": "Palakkad",
+    "km_to_station": 15.2
+  },
+  {
+    "name": "VEDAVYASA COLLEGE OF ARTS AND SCIENCE KAKKOVU VAZHAYUR",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 18.5
+  },
+  {
+    "name": "VIMALA COLLEGE (AUTONOMOUS), THRISSUR",
+    "nearest_station": "Thrissur",
+    "km_to_station": 4.5
+  },
+  {
+    "name": "W.M.O.ARTS & SCIENCE COLLEGE, MUTTIL",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 79.0
+  },
+  {
+    "name": "WIC ARTS AND SCIENCE COLLEGE, WANDOOR, MALAPPURAM",
+    "nearest_station": "Shoranur",
+    "km_to_station": 51.5
+  },
+  {
+    "name": "YUVAKSHETRA INSTITUTE OF MANAGEMENT STUDIES, EZHAKKAD, MUNDUR",
+    "nearest_station": "Palakkad",
+    "km_to_station": 14.8
+  },
+  {
+    "name": "ZAMORINS GURUVAYURAPPAN COLLEGE, CALICUT",
+    "nearest_station": "Kozhikode",
+    "km_to_station": 7.2
+  }
+]

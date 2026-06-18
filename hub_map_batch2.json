@@ -1,0 +1,90 @@
+[ { "name": "CALICUT UNIVERSITY REGIONAL CENTRE, Perambra", "nearest_station":
+"Vadakara", "km_to_station": 26.5 }, { "name": "CARMEL COLLEGE, MALA",
+"nearest_station": "Thrissur", "km_to_station": 34.0 }, { "name": "Centre for
+Computer Science and Information Technology (CCSIT),MANNARKKAD",
+"nearest_station": "Palakkad", "km_to_station": 41.0 }, { "name": "Centre for
+Computer Science and Information Technology (CCSIT). Kodungallur",
+"nearest_station": "Thrissur", "km_to_station": 38.0 }, { "name": "CENTRE FOR
+COMPUTER SCIENCE AND INFORMATION TECHNOLOGY CALICUT UNIVERSITY CAMPUS(CCSIT).",
+"nearest_station": "Parappanangadi", "km_to_station": 12.0 }, { "name": "Centre
+for Computer Science and Information Technology(CCSIT) Mannarkkad",
+"nearest_station": "Palakkad", "km_to_station": 41.0 }, { "name": "Centre for
+Computer Science and Information Technology(CCSIT) Muttil", "nearest_station":
+"Kozhikode", "km_to_station": 82.5 }, { "name": "Centre for Computer Science and
+Information Technology(CCSIT) Palakkad", "nearest_station": "Palakkad",
+"km_to_station": 5.5 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT), CALICUT UNIVERSITY", "nearest_station": "Parappanangadi",
+"km_to_station": 12.0 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT), JMC Aranattukara", "nearest_station": "Thrissur",
+"km_to_station": 2.5 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT), Peramangalam", "nearest_station": "Thrissur",
+"km_to_station": 10.0 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT), Pudukkad", "nearest_station": "Thrissur",
+"km_to_station": 14.5 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT), Thalikkulam", "nearest_station": "Thrissur",
+"km_to_station": 26.0 }, { "name": "Centre for Computer Science and Information
+Technology(CCSIT),MALAPPURAM", "nearest_station": "Tirur", "km_to_station": 27.0
+}, { "name": "Centre for Computer Science and Information
+Technology(CCSIT),Vadakara", "nearest_station": "Vadakara", "km_to_station": 1.5
+}, { "name": "CENTRE FOR COMPUTER SCIENCE AND INFORMATION TECHNOLOGY,
+KUTTIPPURAM (CCSIT)", "nearest_station": "Kuttippuram", "km_to_station": 1.0 },
+{ "name": "CENTRE FOR COMPUTER SCIENCE AND INFORMATION TECHNOLOGY. KODUNGALLUR
+(CCSIT)", "nearest_station": "Thrissur", "km_to_station": 38.0 }, { "name":
+"CENTRE FOR PHYSICAL EDUCATION, UNIVERSITY OF CALICUT CAMPUS",
+"nearest_station": "Parappanangadi", "km_to_station": 12.0 }, { "name": "CH
+MUHAMMED KOYA MEMORIAL GOVT. ARTS & SCIENCE COLLEGE , TANUR", "nearest_station":
+"Tirur", "km_to_station": 12.5 }, { "name": "CHATHAMKULAM INSTITUTE OF RESEARCH
+AND ADVANCED STUDIES, EDAPPAKKULAM, MENONPARA, KANJIKODE, PALAKKAD",
+"nearest_station": "Palakkad", "km_to_station": 24.0 }, { "name": "CHEMBAI
+MEMORIAL GOVT MUSIC COLLEGE", "nearest_station": "Palakkad",
+"km_to_station": 4.0 }, { "name": "CHERPULASSERY COLLEGE OF SCIENCE AND
+TECHNOLOGY, KARALMANNA , CHERPULASSERY", "nearest_station": "Shoranur",
+"km_to_station": 18.0 }, { "name": "CHETANA COLLEGE OF MEDIA AND PERFORMING ARTS
+CHIYYARAM THRISSUR", "nearest_station": "Thrissur", "km_to_station": 3.0 }, {
+"name": "CHMKM GOVT. ARTS AND SCIENCE COLLEGE, KODUVALLY, KOZHIKODE",
+"nearest_station": "Kozhikode", "km_to_station": 22.0 }, { "name": "CHRIST
+COLLEGE (AUTONOMOUS), IRINJALAKUDA", "nearest_station": "Thrissur",
+"km_to_station": 22.5 }, { "name": "CICS COLLEGE OF TEACHER
+EDUCATION,GURUVAYURAPPAN COLLEGE, KOZHIKODE", "nearest_station": "Kozhikode",
+"km_to_station": 8.0 }, { "name": "CO-OPERATIVE ARTS AND SCIENCE COLLEGE
+KURIKKILAD, VATAKARA", "nearest_station": "Vadakara", "km_to_station": 5.0 }, {
+"name": "COLLEGE OF APPLIED SCIENCE(IHRD), CHELAKKARA", "nearest_station":
+"Shoranur", "km_to_station": 15.5 }, { "name": "COLLEGE OF APPLIED
+SCIENCE(IHRD), AGALI, PALAKKAD", "nearest_station": "Palakkad",
+"km_to_station": 75.0 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD), AYALUR",
+"nearest_station": "Palakkad", "km_to_station": 34.0 }, { "name": "COLLEGE OF
+APPLIED SCIENCE(IHRD), KALLACHI, NADAPURAM", "nearest_station": "Vadakara",
+"km_to_station": 22.0 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KILIYANAD,
+KOZHIKODE", "nearest_station": "Kozhikode", "km_to_station": 2.5 }, { "name":
+"COLLEGE OF APPLIED SCIENCE(IHRD), KODUNGALLUR", "nearest_station": "Thrissur",
+"km_to_station": 38.0 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD), KORANGAD,
+THAMARASSERY", "nearest_station": "Kozhikode", "km_to_station": 32.0 }, {
+"name": "COLLEGE OF APPLIED SCIENCE(IHRD), KUZHALMMANNAM, KOTTAYI",
+"nearest_station": "Palakkad", "km_to_station": 18.0 }, { "name": "COLLEGE OF
+APPLIED SCIENCE(IHRD), MALAMPUZHA", "nearest_station": "Palakkad",
+"km_to_station": 8.5 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD),
+MUTHUVALLUR, MALAPPURAM", "nearest_station": "Parappanangadi",
+"km_to_station": 18.0 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD), NATTIKA",
+"nearest_station": "Thrissur", "km_to_station": 25.0 }, { "name": "COLLEGE OF
+APPLIED SCIENCE(IHRD), THIRUVAMPADI, MUKKAM", "nearest_station": "Kozhikode",
+"km_to_station": 36.0 }, { "name": "COLLEGE OF APPLIED SCIENCE(IHRD),
+VADAKKANCHERY", "nearest_station": "Palakkad", "km_to_station": 35.5 }, {
+"name": "COLLEGE OF APPLIED SCIENCE(IHRD), VATTAMKULAM, EDAPPAL",
+"nearest_station": "Kuttippuram", "km_to_station": 11.0 }, { "name": "COLLEGE OF
+APPLIED SCIENCE(IHRD), VAZHAKAD, MALAPPURAM", "nearest_station": "Kozhikode",
+"km_to_station": 25.0 }, { "name": "COMPOSITE REGIONAL CENTRE FOR SKILL
+DEVELOPMENT,REHABILITATION & EMPOWERMENT OF PERSONS WITH
+DISABILITIES(INTELLECTUAL DISABILITIES),(CRC-K),CHEVAYUR - KOZHIKODE",
+"nearest_station": "Kozhikode", "km_to_station": 7.0 }, { "name": "CPA COLLEGE
+OF GLOBAL STUDIES , PUTHANATHANI", "nearest_station": "Tirur",
+"km_to_station": 14.0 }, { "name": "CSI CHRISTIAN MULLER WOMENS COLLEGE,
+CHOMBALA, VATAKARA, KOZHIKODE", "nearest_station": "Vadakara",
+"km_to_station": 9.5 }, { "name": "DARUL MA-ARIFA ARABIC COLLEGE, (UNAIDED)
+ODUNGAKAD, PUTHUPADY, KOZHIKODE", "nearest_station": "Kozhikode",
+"km_to_station": 40.0 }, { "name": "DARUL MA-RIFA ARABIC COLLEGE , ODUNGAKAD ,
+PUTHUPADY", "nearest_station": "Kozhikode", "km_to_station": 40.0 }, { "name":
+"DARUL ULOOM ARABIC COLLEGE, VAZHAKKAD", "nearest_station": "Kozhikode",
+"km_to_station": 25.0 }, { "name": "DARUL ULOOM TRAINING COLLEGE, VAZHAKKAD,
+MALAPPURAM", "nearest_station": "Kozhikode", "km_to_station": 25.0 }, { "name":
+"DAYAPURAM ARTS AND SCIENCE COLLEGE FOR WOMEN, DAYAPURAM", "nearest_station":
+"Kozhikode", "km_to_station": 22.0 } ]

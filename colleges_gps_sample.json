@@ -1,0 +1,162 @@
+[
+  {
+    "id": "ACKU",
+    "name": "A.C.KUNHIMON HAJI MEMORIAL ICA COLLEGE, P.O THOZHIYUR, THRISSUR",
+    "district": "THRISSUR",
+    "category": "Self Financing",
+    "lat": 10.6053779,
+    "lon": 76.0383214
+  },
+  {
+    "id": "AVAB",
+    "name": "A.V.ABDURAHIMAN HAJI ARTS AND SCIENCE COLLEGE, SALAFI COMPLEX, KULUPPA",
+    "district": "KOZHIKODE",
+    "category": "Self Financing",
+    "lat": 11.5731916,
+    "lon": 75.7580588
+  },
+  {
+    "id": "AASH",
+    "name": "AASHRAYAM COLLEGE OF ARTS & SCIENCE, AASHRAYAM ORCHARD, NENMENI, KOLLENGODE",
+    "district": "PALAKKAD",
+    "category": "Self Financing",
+    "lat": 10.7668245,
+    "lon": 76.407393
+  },
+  {
+    "id": "ABIL",
+    "name": "ABILITY ARTS AND SCIENCE COLLEGE FOR HEARING IMPAIRED",
+    "district": "MALAPPURAM",
+    "category": "Self Financing",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "AHAL",
+    "name": "AHALIA SCHOOL OF COMMERCE AND MATHEMATICS, ELIPPARA, PALAKKAD",
+    "district": "PALAKKAD",
+    "category": "Self Financing",
+    "lat": 10.7668245,
+    "lon": 76.407393
+  },
+  {
+    "id": "AHAL",
+    "name": "AHALIA SCHOOL OF MANAGEMENT,  KOZHIPPARA. P.O., PALAKKAD",
+    "district": "PALAKKAD",
+    "category": "Self Financing",
+    "lat": 10.7668245,
+    "lon": 76.407393
+  },
+  {
+    "id": "ALHI",
+    "name": "AL HIDAYATH ARABIC COLLEGE, (UNAIDED), HIDAYATH NAGAR,KONDOTTY",
+    "district": "MALAPPURAM",
+    "category": "Self Financing",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "ALIR",
+    "name": "AL IRSHAD ARTS AND SCIENCE COLLEGE FOR WOMEN, THECHIYAD, KALLURUTTY PO, OMASSERY, KOZHIKODE",
+    "district": "KOZHIKODE",
+    "category": "",
+    "lat": 11.5731916,
+    "lon": 75.7580588
+  },
+  {
+    "id": "ALJA",
+    "name": "AL JAMIA ARTS AND SCIENCE COLLEGE, PERINTHALMANNA , POOPALAM, VALAMBUR P.O",
+    "district": "MALAPPURAM",
+    "category": "Self Financing",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "ALSH",
+    "name": "AL SHIFA COLLEGE OF ARTS & SCIENCE, KEEZHATTUR PERINTHALMANNA",
+    "district": "MALAPPURAM",
+    "category": "Self Financing",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "ALAB",
+    "name": "AL-ABRAR ORIENTAL ARABIC COLLEGE, KODUVALIKKUNDU, MANNARKKAD",
+    "district": "PALAKKAD",
+    "category": "Self Financing",
+    "lat": 10.7668245,
+    "lon": 76.407393
+  },
+  {
+    "id": "ALFU",
+    "name": "AL-FURQAN ARABIC COLLEGE, NADAPURAM",
+    "district": "KOZHIKODE",
+    "category": "Self Financing",
+    "lat": 11.5731916,
+    "lon": 75.7580588
+  },
+  {
+    "id": "ALHI",
+    "name": "AL-HIDAYATH ARABIC COLLEGE, THURAKKAL , KONDOTTY",
+    "district": "MALAPPURAM",
+    "category": "Self Financing",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "ALPH",
+    "name": "ALPHONSA ARTS AND SCIENCE COLLEGE, SULTHAN BATHERY",
+    "district": "WAYANAD",
+    "category": "Self Financing",
+    "lat": 11.6784835,
+    "lon": 76.2650369
+  },
+  {
+    "id": "ALPH",
+    "name": "ALPHONSA COLLEGE THIRUVAMBADY",
+    "district": "KOZHIKODE",
+    "category": "Self Financing",
+    "lat": 11.3592388,
+    "lon": 76.0315582
+  },
+  {
+    "id": "AMAL",
+    "name": "AMAL COLLEGE OF ADVANCED STUDIES, SANTHIGRAMAM NILAMBUR",
+    "district": "MALAPPURAM",
+    "category": "",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "AMBE",
+    "name": "AMBEDKAR COLLEGE OF ARTS AND SCIENCE, WANDOOR, MALAPPURAM",
+    "district": "MALAPPURAM",
+    "category": "",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "AMCA",
+    "name": "AMC-\nALLIED MANAGEMENT\nCOLLEGE (UN-AIDED),\nMANISSERY,\nOTTAPPALAM,\nPALAKKAD",
+    "district": "PALAKKAD",
+    "category": "Self Financing",
+    "lat": 10.7668245,
+    "lon": 76.407393
+  },
+  {
+    "id": "ANSA",
+    "name": "ANSAR ARABIC COLLEGE VALAVANNUR",
+    "district": "MALAPPURAM",
+    "category": "",
+    "lat": 10.9703814,
+    "lon": 76.0027711
+  },
+  {
+    "id": "ANSA",
+    "name": "ANSAR TRAINING COLLEGE FOR WOMEN,PERUMBILAVU",
+    "district": "THRISSUR",
+    "category": "Self Financing",
+    "lat": 10.6053779,
+    "lon": 76.0383214
+  }
+]

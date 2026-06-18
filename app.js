@@ -208,11 +208,18 @@ function generateQuickJourney() {
             currentTime.setMinutes(currentTime.getMinutes() + durationMin);
             const toTime = currentTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
             
+            const abridgeName = (name) => {
+                if (!name || name.length <= 45) return name;
+                const words = name.split(' ');
+                if (words.length <= 4) return name.substring(0, 42) + '...';
+                return words.slice(0, 2).join(' ') + ' ... ' + words.slice(-2).join(' ');
+            };
+            
             row.querySelector('input[type="date"]').value = date;
             row.querySelector('input[placeholder="FT"]').value = fromTime;
             row.querySelector('input[placeholder="TT"]').value = toTime;
-            row.querySelector('input[placeholder="From"]').value = step.From;
-            row.querySelector('input[placeholder="To"]').value = step.To;
+            row.querySelector('input[placeholder="From"]').value = abridgeName(step.From);
+            row.querySelector('input[placeholder="To"]').value = abridgeName(step.To);
             row.querySelector('select').value = mode;
             row.querySelector('input[placeholder="KM"]').value = step.KM;
             
@@ -523,7 +530,7 @@ function generatePDF() {
         totalClaim += limBuf.da;
         let days = (limBuf.da > 0 && limBuf.da % 600 === 0) ? limBuf.da / 600 : (limBuf.da > 0 && limBuf.da % 400 === 0 ? limBuf.da / 400 : 1);
         let rate = limBuf.da > 0 ? limBuf.da / days : 0;
-        let daStr = limBuf.da > 0 ? `\n${rate} X ${days} Days = ${limBuf.da}` : "";
+        let daStr = limBuf.da > 0 ? ` for ${days} Days ${rate} X ${days} = ${limBuf.da}` : "";
         tableData.push(["", { content: `TA Limited to DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, limBuf.da>0?days:"", limBuf.da||"", limBuf.da.toFixed(2), isFirst ? getVal('bill-purpose') : ""]);
         limBuf = null;
     };
@@ -537,7 +544,7 @@ function generatePDF() {
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
-            const daStr = da > 0 ? `\n${rate} X ${days} Days = ${da}` : "";
+            const daStr = da > 0 ? ` for ${days} Days ${rate} X ${days} = ${da}` : "";
             tableData.push(["", { content: `DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, days, da.toFixed(2), da.toFixed(2), isFirst?getVal('bill-purpose'):""]);
             return;
         }
@@ -599,15 +606,25 @@ function generatePDF() {
         }
     }
 
+    let tRows = tableData.length;
+    let globalScale = 1;
+    if (tRows > 7) {
+        globalScale = 7 / tRows;
+        if (globalScale < 0.4) globalScale = 0.4;
+    }
+    
+    let tFontSize = Math.max(4, 6.5 * globalScale);
+    let tPad = Math.max(0.5, 1 * globalScale);
+
     doc.autoTable({
-        startY: 150,
+        startY: 150 - (20 * (1 - globalScale)),
         head: [
             [{ content: 'Date & Time', rowSpan: 2 }, { content: 'Place', colSpan: 2 }, { content: 'Mode', rowSpan: 2 }, { content: 'Dist', colSpan: 2 }, { content: 'Rail (2nd AC)', colSpan: 3 }, { content: 'Road', colSpan: 2 }, { content: 'DA', colSpan: 2 }, { content: 'Total', rowSpan: 2 }, { content: 'Purpose', rowSpan: 2 }],
             ['From', 'To', 'Rail', 'Road', 'Fare', 'Rate', 'Amt', 'Rate', 'Amt', 'Days', 'Amt'],
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
         ],
         body: tableData,
-        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' },
+        theme: 'grid', styles: { fontSize: tFontSize, cellPadding: tPad, textColor: 0, lineColor: 0, lineWidth: 0.5, overflow: 'hidden' }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' },
         didDrawCell: function(data) {
             if (data.section === 'body' && data.column.index === 14 && data.row.index === 0) {
                 var text = getVal('bill-purpose');
@@ -636,22 +653,34 @@ function generatePDF() {
         }
     });
 
-    let finalY = doc.lastAutoTable.finalY + 15;
-    
-    // Add page if there's no room for the complex certificate section
-    if (finalY + 380 > doc.internal.pageSize.getHeight()) {
-        doc.addPage();
-        finalY = 40;
-    }
+    let finalY = doc.lastAutoTable.finalY;
+    let spaceLeft = doc.internal.pageSize.getHeight() - finalY - 20;
+    let requiredSpace = 360;
+    let scale = spaceLeft / requiredSpace;
+    if (scale > 1) scale = 1;
+    if (scale < 0.2) scale = 0.2; // absolute minimum
 
-    doc.setFontSize(9);
+    let s15 = 15 * scale;
+    let s20 = 20 * scale;
+    let s10 = 10 * scale;
+    let s12 = 12 * scale;
+    let s30 = 30 * scale;
+    let s25 = 25 * scale;
+    let fBase = Math.max(6, 10 * scale);
+    let fSmall = Math.max(5, 8 * scale);
+    let fTiny = Math.max(4, 7 * scale);
+    let pPad = Math.max(1, 5 * scale);
+    
+    finalY += s15;
+
+    doc.setFontSize(Math.max(6, 9 * scale));
     doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 40, finalY, { align: "right" });
     doc.text(`Total Amount in Words: ${numberToWords(totalClaim)} Only`, 40, finalY);
 
-    finalY += 20;
-    doc.setFontSize(10);
+    finalY += s20;
+    doc.setFontSize(fBase);
     doc.text("CERTIFICATE", pageWidth / 2, finalY, { align: "center" });
-    finalY += 10;
+    finalY += s10;
 
     doc.autoTable({
         startY: finalY,
@@ -661,21 +690,21 @@ function generatePDF() {
             ['', '3)', 'I Certify that i was actually present on the previous day of the practical examination for the preparation work\n*Necessary certificate should be attested with dated signature']
         ],
         theme: 'plain',
-        styles: { fontSize: 8, cellPadding: 2 },
+        styles: { fontSize: fSmall, cellPadding: Math.max(0.5, 2 * scale) },
         columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 15 } }
     });
-    finalY = doc.lastAutoTable.finalY + 15;
+    finalY = doc.lastAutoTable.finalY + s15;
 
     let collegeName = getFullCollegeName(getVal('prof-college'));
     let placeText = collegeName.includes(',') ? collegeName.split(',')[1].trim() : collegeName;
     doc.text(`Place: ${placeText || '.........................'}`, 40, finalY);
     doc.text("Signature..........................................................", pageWidth - 40, finalY, { align: "right" });
-    finalY += 15;
+    finalY += s15;
     doc.text(`Date: ${new Date().toLocaleDateString('en-GB')}`, 40, finalY);
     
-    finalY += 15;
+    finalY += s15;
     doc.line(40, finalY, pageWidth - 40, finalY);
-    finalY += 15;
+    finalY += s15;
 
     doc.autoTable({
         startY: finalY,
@@ -687,24 +716,24 @@ function generatePDF() {
             ]
         ],
         theme: 'plain',
-        styles: { fontSize: 8, cellPadding: 5, valign: 'top' }
+        styles: { fontSize: fSmall, cellPadding: pPad, valign: 'top' }
     });
-    finalY = doc.lastAutoTable.finalY + 15;
+    finalY = doc.lastAutoTable.finalY + s15;
 
     doc.text("Countersigned and certified that the days for which halting allowance is claimed were necessarily", pageWidth / 2, finalY, { align: "center" });
-    finalY += 12;
+    finalY += s12;
     doc.text("spent for conduct of university business. The Claim may be admitted", pageWidth / 2, finalY, { align: "center" });
     
-    finalY += 30;
+    finalY += s30;
     doc.text("Signature...........................................................", 40, finalY);
     doc.text("Chairman/Board of Examiners/Question Paper Setters in ......................", pageWidth - 40, finalY, { align: "right" });
     
-    finalY += 25;
+    finalY += s25;
     doc.text("Asst.", 100, finalY);
     doc.text("S.O.", pageWidth / 2, finalY, { align: "center" });
     doc.text("A.R./D.R.", pageWidth - 100, finalY, { align: "right" });
 
-    finalY += 15;
+    finalY += s15;
 
     doc.autoTable({
         startY: finalY,
@@ -715,7 +744,7 @@ function generatePDF() {
             ]
         ],
         theme: 'grid',
-        styles: { fontSize: 8, cellPadding: 8, valign: 'top', textColor: 0, lineColor: 0, lineWidth: 0.5 },
+        styles: { fontSize: fTiny, cellPadding: pPad, valign: 'top', textColor: 0, lineColor: 0, lineWidth: 0.5 },
         columnStyles: { 0: { cellWidth: '50%' }, 1: { cellWidth: '50%' } }
     });
 
@@ -748,7 +777,7 @@ function generatePDF() {
         startY: doc.lastAutoTable.finalY + 5,
         body: [
             ['Rule 1. Travelling Allowance for journey by Road/Rail'],
-            ['Road Mileage @ Rs.2 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers']
+            [`Road Mileage @ Rs.${appSettings.misc.specialConveyanceRate.toFixed(2)} per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers`]
         ],
         theme: 'plain', styles: { fontSize: 8, cellPadding: 2, textColor: 0 },
         margin: { left: 40, right: 40 },
@@ -866,7 +895,7 @@ function generateHTMLBill(autoPrint = false) {
         totalClaim += limBufHtml.da;
         let days = (limBufHtml.da > 0 && limBufHtml.da % 600 === 0) ? limBufHtml.da / 600 : (limBufHtml.da > 0 && limBufHtml.da % 400 === 0 ? limBufHtml.da / 400 : 1);
         let rate = limBufHtml.da > 0 ? limBufHtml.da / days : 0;
-        let daStr = limBufHtml.da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${limBufHtml.da}</span>` : "";
+        let daStr = limBufHtml.da > 0 ? ` <span class="font-normal" style="font-size:9px">for ${days} Days ${rate} X ${days} = ${limBufHtml.da}</span>` : "";
         htmlRows.push(`<tr><td class="text-center" style="white-space:pre-wrap; line-height:1.2;">${limBufHtml.date}</td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">TA Limited to DA${daStr}</td><td class="text-center">${limBufHtml.da>0?days:""}</td><td class="text-right">${limBufHtml.da?limBufHtml.da.toFixed(2):""}</td><td class="text-right font-bold">${limBufHtml.da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
         limBufHtml = null;
     };
@@ -880,7 +909,7 @@ function generateHTMLBill(autoPrint = false) {
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
-            const daStr = da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${da}</span>` : "";
+            const daStr = da > 0 ? ` <span class="font-normal" style="font-size:9px">for ${days} Days ${rate} X ${days} = ${da}</span>` : "";
             htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
             return;
         }
@@ -1176,7 +1205,7 @@ function generateHTMLBill(autoPrint = false) {
             </table>
 
             <div style="margin-top: 8px;"><b>Rule 1. Travelling Allowance for journey by Road/Rail</b></div>
-            <div style="margin-left: 20px;">Road Mileage @ Rs.2 per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers</div>
+            <div style="margin-left: 20px;">Road Mileage @ Rs.${appSettings.misc.specialConveyanceRate.toFixed(2)} per kilometer (special conveyance) OR II A/C Railway fare + incidental expense at the rate of 80 paise per kilometre for Grade I officers</div>
             
             <table style="width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 8px; text-align: center; border: 1px solid #000;" border="1">
                 <tr>
