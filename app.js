@@ -138,9 +138,9 @@ const DEFAULT_SETTINGS = {
         trainIncidentalRate: 0.80, // per KM
         minDistanceForTA: 8, // km
         trainClasses: {
-            "II AC":     { base: 300, perKm: 2.00 },
-            "I Class":   { base: 150, perKm: 1.30 },
-            "III AC":    { base: 200, perKm: 1.10 },
+            "II AC":     { base: 750, perKm: 2.00 },
+            "I Class":   { base: 300, perKm: 1.30 },
+            "III AC":    { base: 500, perKm: 1.10 },
             "II Class":  { base: 50,  perKm: 0.40 }
         }
     }
