@@ -11,7 +11,7 @@ import java.net.URL
 
 class OTAUpdater(private val context: Context) {
     // We use the FullColl branch or main branch URL
-    private val remoteUrl = "https://raw.githubusercontent.com/sureshmagnolia/UOC_TAbill/FullColl/ta_database.json"
+    private val remoteUrl = "https://raw.githubusercontent.com/sureshmagnolia/UOC_TAbill/FullColl/app/src/main/assets/ta_abbrevs.json"
 
     suspend fun checkForUpdates() {
         withContext(Dispatchers.IO) {
@@ -23,7 +23,7 @@ class OTAUpdater(private val context: Context) {
 
                 if (connection.responseCode == HttpURLConnection.HTTP_OK) {
                     val remoteSize = connection.contentLengthLong
-                    val localFile = File(context.filesDir, "ta_database.json")
+                    val localFile = File(context.filesDir, "ta_abbrevs.json")
                     
                     // If file doesn't exist, or size is different, download it
                     // (Note: comparing size is a simple heuristic. A better approach uses ETag or Last-Modified)

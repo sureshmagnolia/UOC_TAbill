@@ -74,45 +74,43 @@ class MainScreenViewModel(application: Application) : AndroidViewModel(applicati
 
     private fun loadColleges() {
         try {
-            val localFile = java.io.File(getApplication<Application>().filesDir, "ta_database.json")
+            val localFile = java.io.File(getApplication<Application>().filesDir, "ta_abbrevs.json")
             val inputStream = if (localFile.exists()) {
                 java.io.FileInputStream(localFile)
             } else {
-                getApplication<Application>().assets.open("ta_database.json")
+                getApplication<Application>().assets.open("ta_abbrevs.json")
             }
             val reader = JsonReader(InputStreamReader(inputStream, "UTF-8"))
             val list = mutableListOf<Pair<String, String>>()
+            val seenNames = mutableSetOf<String>()
             
-            reader.beginObject()
+            reader.beginArray()
             while (reader.hasNext()) {
-                val name = reader.nextName()
-                if (name == "abbreviations") {
-                    reader.beginArray()
-                    while (reader.hasNext()) {
-                        reader.beginObject()
-                        var abbreviation = ""
-                        var fullName = ""
-                        while (reader.hasNext()) {
-                            val key = reader.nextName()
-                            if (key == "Abbreviation") {
-                                abbreviation = reader.nextString()
-                            } else if (key == "Full College Name & Location") {
-                                fullName = reader.nextString()
-                            } else {
-                                reader.skipValue()
-                            }
-                        }
-                        reader.endObject()
-                        if (abbreviation.isNotEmpty() && fullName.isNotEmpty()) {
-                            list.add(Pair(fullName, abbreviation))
-                        }
+                reader.beginObject()
+                var abbreviation = ""
+                var fullName = ""
+                while (reader.hasNext()) {
+                    val key = reader.nextName()
+                    if (key == "Abbreviation") {
+                        abbreviation = reader.nextString()
+                    } else if (key == "Full College Name & Location") {
+                        fullName = reader.nextString()
+                    } else {
+                        reader.skipValue()
                     }
-                    reader.endArray()
-                } else {
-                    reader.skipValue()
+                }
+                reader.endObject()
+                if (abbreviation.isNotEmpty() && fullName.isNotEmpty()) {
+                    val nameNorm = fullName.lowercase()
+                        .replace("govt.", "government")
+                        .replace(Regex("[^a-z0-9]"), "")
+                    if (!seenNames.contains(nameNorm)) {
+                        seenNames.add(nameNorm)
+                        list.add(Pair(fullName, abbreviation))
+                    }
                 }
             }
-            reader.endObject()
+            reader.endArray()
             reader.close()
 
             _colleges.value = list.sortedBy { it.first }
