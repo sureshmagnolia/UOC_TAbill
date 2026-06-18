@@ -432,9 +432,19 @@ async function generateQuickJourney() {
 
     // 3. Onward
     const onwardRouteId = `${fromAbbr}_${toAbbr}`;
-    const onwardSteps = sameCollege ? [] : fromRoutes.filter(r => r.Route_ID === onwardRouteId);
+    let onwardSteps = sameCollege ? [] : fromRoutes.filter(r => r.Route_ID === onwardRouteId);
     let totalKm = onwardSteps.reduce((sum, step) => sum + parseFloat(step.KM || 0), 0);
     let isLimitedTrip = totalKm > 0 && totalKm <= 8;
+
+    // Rule: Rail travel is only permissible if total journey distance > 50 km.
+    // If the route contains Train steps but total KM is ≤ 50, downgrade Train → Bus.
+    const RAIL_MIN_KM = 50;
+    const hasRailStep = onwardSteps.some(s => s.Mode === 'Train' || s.Mode === 'Rail');
+    if (hasRailStep && totalKm <= RAIL_MIN_KM) {
+        onwardSteps = onwardSteps.map(s =>
+            (s.Mode === 'Train' || s.Mode === 'Rail') ? { ...s, Mode: 'Bus' } : s
+        );
+    }
 
     if (onwardSteps.length > 0) {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
