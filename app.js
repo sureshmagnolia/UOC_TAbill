@@ -259,16 +259,14 @@ function generateQuickJourney() {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
-    // 2. Return
-    if (returnDate && returnStartTime) {
-        const returnRouteId = `${toAbbr}_${fromAbbr}`;
-        let returnSteps = taDatabase.routes.filter(r => r.Route_ID === returnRouteId);
-        if (returnSteps.length === 0 && onwardSteps.length > 0) {
-            returnSteps = [...onwardSteps].reverse().map(s => ({...s, From: s.To, To: s.From}));
-        }
-        if (returnSteps.length > 0) {
-            addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
-        }
+    // 2. Return — simply reverse the onward steps to guarantee exact symmetry
+    if (returnDate && returnStartTime && onwardSteps.length > 0) {
+        const returnSteps = [...onwardSteps].reverse().map(s => ({
+            ...s,
+            From: s.To,
+            To: s.From
+        }));
+        addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
     }
 
     // 3. Auto-Calculate DA
