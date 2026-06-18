@@ -400,12 +400,16 @@ async function generateQuickJourney() {
         });
     };
 
-    // 1. Load routes for source college (lazy, cached)
-    const fromRoutes = await loadRoutesFor(fromAbbr);
+    // 1. If From and To are the same college, skip route lookup — generate DA only
+    //    (prevents self-route entries like CTR_CTR from appearing as journey legs)
+    const sameCollege = fromAbbr === toAbbr;
 
-    // 2. Onward
+    // 2. Load routes for source college (lazy, cached) — only if needed
+    const fromRoutes = sameCollege ? [] : await loadRoutesFor(fromAbbr);
+
+    // 3. Onward
     const onwardRouteId = `${fromAbbr}_${toAbbr}`;
-    const onwardSteps = fromRoutes.filter(r => r.Route_ID === onwardRouteId);
+    const onwardSteps = sameCollege ? [] : fromRoutes.filter(r => r.Route_ID === onwardRouteId);
     let totalKm = onwardSteps.reduce((sum, step) => sum + parseFloat(step.KM || 0), 0);
     let isLimitedTrip = totalKm > 0 && totalKm <= 8;
 
@@ -413,7 +417,7 @@ async function generateQuickJourney() {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
-    // 3. Return — simply reverse the onward steps to guarantee exact symmetry
+    // 4. Return — simply reverse the onward steps to guarantee exact symmetry
     if (returnDate && returnStartTime && onwardSteps.length > 0) {
         const returnSteps = [...onwardSteps].reverse().map(s => ({
             ...s,
@@ -423,7 +427,7 @@ async function generateQuickJourney() {
         addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
     }
 
-    // 4. Auto-Calculate DA
+    // 5. Auto-Calculate DA
     const d1 = new Date(onwardDate);
     const d2 = returnDate ? new Date(returnDate) : d1;
     const days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
