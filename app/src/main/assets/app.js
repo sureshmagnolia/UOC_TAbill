@@ -193,11 +193,19 @@ function populateCollegeDropdowns() {
     if (!dl) return;
     
     dl.innerHTML = '';
+    const seenNames = new Set();
     taDatabase.abbreviations.forEach(abbr => {
-        const opt = document.createElement('option');
-        opt.value = abbr.Abbreviation;
-        opt.innerText = abbr['Full College Name & Location'];
-        dl.appendChild(opt);
+        const nameNorm = abbr['Full College Name & Location'].toLowerCase()
+            .replace(/govt\./g, 'government')
+            .replace(/[^a-z0-9]/g, '');
+            
+        if (!seenNames.has(nameNorm)) {
+            seenNames.add(nameNorm);
+            const opt = document.createElement('option');
+            opt.value = abbr.Abbreviation;
+            opt.innerText = abbr['Full College Name & Location'];
+            dl.appendChild(opt);
+        }
     });
 }
 
