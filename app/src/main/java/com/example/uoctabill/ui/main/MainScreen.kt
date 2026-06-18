@@ -1,12 +1,16 @@
 package com.example.uoctabill.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.uoctabill.data.Journey
 import com.example.uoctabill.data.Profile
@@ -17,12 +21,42 @@ import java.util.Locale
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = viewModel()) {
     var selectedTab by remember { mutableIntStateOf(0) }
+    val context = LocalContext.current
     val profile by viewModel.profile.collectAsState()
     val journey by viewModel.journey.collectAsState()
     val isGenerating by viewModel.isGenerating.collectAsState()
     val statusMessage by viewModel.statusMessage.collectAsState()
     val colleges by viewModel.colleges.collectAsState()
     val designations = viewModel.designations
+    val savedPdfUri by viewModel.savedPdfUri.collectAsState()
+
+    // Show "Open PDF?" dialog whenever a new PDF is saved
+    if (savedPdfUri != null) {
+        AlertDialog(
+            onDismissRequest = { viewModel.clearSavedPdfUri() },
+            title = { Text("PDF Saved") },
+            text = { Text("PDF saved to Downloads. Open it now?") },
+            confirmButton = {
+                TextButton(onClick = {
+                    viewModel.clearSavedPdfUri()
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        setDataAndType(savedPdfUri, "application/pdf")
+                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                    try {
+                        context.startActivity(intent)
+                    } catch (e: Exception) {
+                        // No PDF viewer installed
+                        viewModel.statusMessage.value = "No PDF viewer app found. Check Downloads."
+                    }
+                }) { Text("Open") }
+            },
+            dismissButton = {
+                TextButton(onClick = { viewModel.clearSavedPdfUri() }) { Text("Later") }
+            }
+        )
+    }
 
     Scaffold(
         topBar = {

@@ -727,14 +727,50 @@ function generatePDF() {
         styles: { fontSize: fSmall, cellPadding: Math.max(0.5, 2 * scale) },
         columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 15 } }
     });
-    finalY = doc.lastAutoTable.finalY + s15;
+    finalY = doc.lastAutoTable.finalY;
 
-    let collegeName = getFullCollegeName(getVal('prof-college'));
-    let placeText = collegeName.includes(',') ? collegeName.split(',')[1].trim() : collegeName;
+    let returnDate = '';
+    const journeyRows = document.querySelectorAll('#journey-body tr');
+    for (let i = journeyRows.length - 1; i >= 0; i--) {
+        const row = journeyRows[i];
+        if (row.dataset.type !== "DA") {
+            const dateInput = row.querySelector('input[type="date"]');
+            if (dateInput && dateInput.value) {
+                const p = dateInput.value.split('-');
+                if (p.length === 3) {
+                    returnDate = `${p[2]}/${p[1]}/${p[0]}`;
+                    break;
+                }
+            }
+        }
+    }
+    if (!returnDate) {
+        returnDate = new Date().toLocaleDateString('en-GB');
+    }
+
+    let collegeName = getFullCollegeName(getVal('prof-college')) || '';
+    let placeText = '';
+    if (collegeName.includes(',')) {
+        placeText = collegeName.split(',')[1].trim();
+    } else {
+        placeText = collegeName.trim();
+    }
+    if (!placeText) {
+        let address = getVal('prof-address') || '';
+        let addressParts = address.split(',').map(s => s.trim()).filter(Boolean);
+        if (addressParts.length > 0) {
+            if (addressParts.length >= 2) {
+                placeText = addressParts[addressParts.length - 2];
+            } else {
+                placeText = addressParts[0];
+            }
+        }
+    }
+
     doc.text(`Place: ${placeText || '.........................'}`, 40, finalY);
     doc.text("Signature..........................................................", pageWidth - 40, finalY, { align: "right" });
     finalY += s15;
-    doc.text(`Date: ${new Date().toLocaleDateString('en-GB')}`, 40, finalY);
+    doc.text(`Date: ${returnDate}`, 40, finalY);
     
     finalY += s15;
     doc.line(40, finalY, pageWidth - 40, finalY);
@@ -922,6 +958,44 @@ function generateHTMLBill(autoPrint = false) {
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
     }
     const month = autoMonth || new Date().toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
+
+    let returnDate = '';
+    const journeyRows = document.querySelectorAll('#journey-body tr');
+    for (let i = journeyRows.length - 1; i >= 0; i--) {
+        const row = journeyRows[i];
+        if (row.dataset.type !== "DA") {
+            const dateInput = row.querySelector('input[type="date"]');
+            if (dateInput && dateInput.value) {
+                const p = dateInput.value.split('-');
+                if (p.length === 3) {
+                    returnDate = `${p[2]}/${p[1]}/${p[0]}`;
+                    break;
+                }
+            }
+        }
+    }
+    if (!returnDate) {
+        returnDate = new Date().toLocaleDateString('en-GB');
+    }
+
+    let collegeName = getFullCollegeName(getVal('prof-college')) || '';
+    let placeText = '';
+    if (collegeName.includes(',')) {
+        placeText = collegeName.split(',')[1].trim();
+    } else {
+        placeText = collegeName.trim();
+    }
+    if (!placeText) {
+        let address = getVal('prof-address') || '';
+        let addressParts = address.split(',').map(s => s.trim()).filter(Boolean);
+        if (addressParts.length > 0) {
+            if (addressParts.length >= 2) {
+                placeText = addressParts[addressParts.length - 2];
+            } else {
+                placeText = addressParts[0];
+            }
+        }
+    }
 
     let htmlRows = []; 
     let totalClaim = 0;
@@ -1150,8 +1224,8 @@ function generateHTMLBill(autoPrint = false) {
 
         <div style="display:flex; justify-content:space-between; margin-bottom: 5px; font-size:var(--f-base);">
             <div>
-                Place: ${getVal('prof-college').split(',')[1] ? getVal('prof-college').split(',')[1].trim() : '.........................'}<br>
-                Date: ${new Date().toLocaleDateString('en-GB')}
+                Place: ${placeText || '.........................'}<br>
+                Date: ${returnDate}
             </div>
             <div style="text-align:right; margin-top:10px;">
                 Signature..........................................................
@@ -1411,9 +1485,9 @@ window.generatePdfFromAndroid = async function(profileJson, journeyJson) {
         document.getElementById('quick-time-return').value = journey.timeReturn || '';
         
         calculateGrade();
-        generateQuickJourney();
+        await generateQuickJourney();
 
-        let base64Result = generatePDF();
+        let base64Result = await Promise.resolve(generatePDF());
         
         if (base64Result) {
             if (base64Result.includes("base64,")) {

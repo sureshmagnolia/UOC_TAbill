@@ -2,6 +2,7 @@ package com.example.uoctabill
 
 import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
@@ -12,7 +13,10 @@ import java.util.Date
 import java.util.Locale
 
 class FileSaveHelper(private val context: Context) {
-    fun savePdfToDownloads(base64Data: String): String? {
+
+    data class SaveResult(val uri: Uri?, val error: String?)
+
+    fun savePdfToDownloads(base64Data: String): SaveResult {
         return try {
             val pdfBytes = Base64.decode(base64Data, Base64.DEFAULT)
             val fileName = "UOC_TABill_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())}.pdf"
@@ -24,29 +28,25 @@ class FileSaveHelper(private val context: Context) {
                     put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf")
                     put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
                 }
-
                 val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
                 if (uri != null) {
                     val outputStream: OutputStream? = resolver.openOutputStream(uri)
-                    outputStream?.use {
-                        it.write(pdfBytes)
-                    }
-                    null // Success
+                    outputStream?.use { it.write(pdfBytes) }
+                    SaveResult(uri, null) // Success with URI
                 } else {
-                    "Failed to create MediaStore entry"
+                    SaveResult(null, "Failed to create MediaStore entry")
                 }
             } else {
                 val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 if (!downloadsDir.exists()) downloadsDir.mkdirs()
                 val file = java.io.File(downloadsDir, fileName)
-                java.io.FileOutputStream(file).use {
-                    it.write(pdfBytes)
-                }
-                null // Success
+                java.io.FileOutputStream(file).use { it.write(pdfBytes) }
+                val uri = Uri.fromFile(file)
+                SaveResult(uri, null) // Success with URI
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            e.message ?: "Unknown error occurred while saving"
+            SaveResult(null, e.message ?: "Unknown error occurred while saving")
         }
     }
 }

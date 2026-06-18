@@ -1,6 +1,7 @@
 package com.example.uoctabill.ui.main
 
 import android.app.Application
+import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.uoctabill.PdfGeneratorHelper
@@ -37,6 +38,12 @@ class MainScreenViewModel(application: Application) : AndroidViewModel(applicati
     val isGenerating: StateFlow<Boolean> = _isGenerating
 
     val statusMessage = MutableStateFlow("")
+
+    // Emits the URI of a freshly saved PDF so the UI can prompt to open it
+    private val _savedPdfUri = MutableStateFlow<Uri?>(null)
+    val savedPdfUri: StateFlow<Uri?> = _savedPdfUri
+
+    fun clearSavedPdfUri() { _savedPdfUri.value = null }
 
     init {
         val prefs = application.getSharedPreferences("ta_prefs", android.content.Context.MODE_PRIVATE)
@@ -161,11 +168,12 @@ class MainScreenViewModel(application: Application) : AndroidViewModel(applicati
             val base64 = pdfGenerator.generatePdf(_profile.value.toJsonString(), _journey.value.toJsonString())
 
             if (base64 != null && !base64.startsWith("ERROR")) {
-                val saveError = fileSaveHelper.savePdfToDownloads(base64)
-                if (saveError == null) {
-                    statusMessage.value = "PDF saved to Downloads successfully!"
+                val result = fileSaveHelper.savePdfToDownloads(base64)
+                if (result.error == null && result.uri != null) {
+                    statusMessage.value = "PDF saved to Downloads!"
+                    _savedPdfUri.value = result.uri
                 } else {
-                    statusMessage.value = "Failed to save PDF to Downloads: $saveError"
+                    statusMessage.value = "Failed to save PDF: ${result.error}"
                 }
             } else {
                 statusMessage.value = "Error generating PDF: $base64"
