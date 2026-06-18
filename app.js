@@ -138,10 +138,10 @@ const DEFAULT_SETTINGS = {
         trainIncidentalRate: 0.80, // per KM
         minDistanceForTA: 8, // km
         trainClasses: {
-            "II AC":     { base: 750, perKm: 2.00 },
-            "I Class":   { base: 300, perKm: 1.30 },
-            "III AC":    { base: 500, perKm: 1.10 },
-            "II Class":  { base: 50,  perKm: 0.40 }
+            "II AC":     { min: 750, base: 300, perKm: 2.00 },
+            "I Class":   { min: 300, base: 150, perKm: 1.30 },
+            "III AC":    { min: 500, base: 200, perKm: 1.10 },
+            "II Class":  { min: 50,  base: 30,  perKm: 0.40 }
         }
     }
 };
@@ -682,8 +682,10 @@ function calculateRowFare(row) {
             const trainClass = grade ? grade.trainClass : "II Class";
             const rates = (appSettings.misc.trainClasses && appSettings.misc.trainClasses[trainClass])
                 ? appSettings.misc.trainClasses[trainClass]
-                : { base: 50, perKm: 0.40 };
-            fareInput.value = Math.round(rates.base + (km * rates.perKm));
+                : { min: 50, base: 30, perKm: 0.40 };
+            const minFare = rates.min !== undefined ? rates.min : (rates.base || 0);
+            const calculated = (rates.base || 0) + (km * (rates.perKm || 0));
+            fareInput.value = Math.round(Math.max(minFare, calculated));
         } else if (mode === 'Special' || mode === 'Bus') {
             const grade = getSelectedGrade();
             const roadRate = (grade && grade.roadRate !== undefined) ? grade.roadRate : appSettings.misc.specialConveyanceRate;
@@ -1683,8 +1685,9 @@ function renderSettings() {
     if (appSettings.misc.trainClasses) {
         Object.keys(appSettings.misc.trainClasses).forEach(cls => {
             const rates = appSettings.misc.trainClasses[cls];
-            h += `<div class="grid grid-cols-3 gap-2 items-center bg-gray-50 p-2 rounded border">
+            h += `<div class="grid grid-cols-4 gap-2 items-center bg-gray-50 p-2 rounded border">
                 <div class="font-bold text-gray-700 text-xs">${cls}</div>
+                <div><label class="text-[9px] uppercase font-bold">Min Fare</label><input type="number" value="${rates.min !== undefined ? rates.min : rates.base}" class="form-input p-1 text-xs" onchange="updateSetting('trainClasses', '${cls}', 'min', this.value)"></div>
                 <div><label class="text-[9px] uppercase font-bold">Base Fare</label><input type="number" value="${rates.base}" class="form-input p-1 text-xs" onchange="updateSetting('trainClasses', '${cls}', 'base', this.value)"></div>
                 <div><label class="text-[9px] uppercase font-bold">Per KM Rate</label><input type="number" step="0.01" value="${rates.perKm}" class="form-input p-1 text-xs" onchange="updateSetting('trainClasses', '${cls}', 'perKm', this.value)"></div>
             </div>`;
