@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test PDF Generator</title>
+</head>
+<body>
+    <iframe id="appFrame" src="../app/src/main/assets/index.html" style="width: 100%; height: 500px;"></iframe>
+    <button id="testBtn">Run Test</button>
+    <div id="output"></div>
+    <script>
+        document.getElementById('testBtn').addEventListener('click', () => {
+            const frameWindow = document.getElementById('appFrame').contentWindow;
+            
+            // Mock Android Bridge
+            frameWindow.AndroidBridge = {
+                onPdfGenerated: function(base64) {
+                    if (base64.startsWith("ERROR")) {
+                        document.getElementById('output').innerText = "FAILED: " + base64;
+                    } else {
+                        document.getElementById('output').innerText = "SUCCESS! PDF length: " + base64.length;
+                    }
+                }
+            };
+
+            const profileJson = JSON.stringify({
+                name: "Test User",
+                designation: "Assistant Professor",
+                baseCollege: "ZGAC",
+                basicPay: "57700",
+                acNo: "1234567890",
+                ifsc: "SBIN0001234",
+                address: "Test Address"
+            });
+
+            const journeyJson = JSON.stringify({
+                fromCollege: "ZGAC",
+                toCollege: "FWMCA",
+                dateOnward: "2024-05-15",
+                timeOnward: "08:00",
+                dateReturn: "2024-05-15",
+                timeReturn: "18:00",
+                purpose: "Exam Duty"
+            });
+
+            frameWindow.generatePdfFromAndroid(profileJson, journeyJson);
+        });
+    </script>
+</body>
+</html>
