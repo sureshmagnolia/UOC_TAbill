@@ -28,6 +28,8 @@ function saveFormState() {
             journeys.push({
                 type: "DA",
                 date: row.querySelector('input[type="date"]').value,
+                fromDate: row.dataset.fromDate || row.querySelector('input[type="date"]').value,
+                toDate: row.dataset.toDate || row.querySelector('input[type="date"]').value,
                 daDays: row.dataset.days,
                 daAmt: row.querySelector('input[placeholder="DA"]').value
             });
@@ -80,14 +82,25 @@ function loadFormState() {
                     if (j.type === "DA") {
                         row.dataset.type = "DA";
                         row.classList.add("bg-blue-50", "font-bold");
-                        row.querySelector('input[type="date"]').value = j.date || '';
-                        row.querySelector('input[placeholder="From"]').value = 'DA for ' + j.daDays + ' Days';
+                        const fromDate = j.fromDate || j.date || '';
+                        const toDate   = j.toDate   || j.date || '';
+                        row.querySelector('input[type="date"]').value = fromDate;
+                        row.dataset.fromDate = fromDate;
+                        row.dataset.toDate   = toDate;
+                        // Rebuild date-range label
+                        const fmtS = (iso) => { if (!iso) return ''; const p = iso.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
+                        const days = j.daDays || 1;
+                        const rangeStr = toDate && toDate !== fromDate
+                            ? `${fmtS(fromDate)} → ${fmtS(toDate)}`
+                            : fmtS(fromDate);
+                        row.querySelector('input[placeholder="From"]').value =
+                            `DA: ${rangeStr} · ${days} Day${days > 1 ? 's' : ''}`;
                         row.querySelector('input[placeholder="To"]').classList.add("hidden");
                         row.querySelector('input[placeholder="KM"]').classList.add("hidden");
                         row.querySelector('select').classList.add("hidden");
                         row.querySelector('input[placeholder="Fare"]').classList.add("hidden");
                         row.querySelector('input[placeholder="DA"]').value = j.daAmt || '';
-                        row.dataset.days = j.daDays;
+                        row.dataset.days = days;
                     } else {
                         row.querySelector('input[type="date"]').value = j.date || '';
                         row.querySelector('input[placeholder="FT"]').value = j.ft || '';
@@ -431,14 +444,29 @@ async function generateQuickJourney() {
     const d1 = new Date(onwardDate);
     const d2 = returnDate ? new Date(returnDate) : d1;
     const days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
-    
+
+    const fmtShort = (iso) => {
+        if (!iso) return '';
+        const p = iso.split('-');
+        return `${p[2]}/${p[1]}/${p[0].slice(-2)}`;
+    };
+
     if (days > 0) {
         addJourneyRow();
         const daRow = tbody.lastElementChild;
         daRow.dataset.type = "DA";
         daRow.classList.add("bg-blue-50", "font-bold");
-        daRow.querySelector('input[type="date"]').value = returnDate || onwardDate;
-        daRow.querySelector('input[placeholder="From"]').value = `DA for ${days} Days`;
+        // Date column → onward date (start of duty)
+        daRow.querySelector('input[type="date"]').value = onwardDate;
+        // Store return date for save/load and PDF
+        daRow.dataset.fromDate = onwardDate;
+        daRow.dataset.toDate   = returnDate || onwardDate;
+        // Show full date range in the From field
+        const dateRange = returnDate && returnDate !== onwardDate
+            ? `${fmtShort(onwardDate)} → ${fmtShort(returnDate)}`
+            : fmtShort(onwardDate);
+        daRow.querySelector('input[placeholder="From"]').value =
+            `DA: ${dateRange} · ${days} Day${days > 1 ? 's' : ''}`;
         daRow.querySelector('input[placeholder="To"]').classList.add("hidden");
         daRow.querySelector('input[placeholder="KM"]').classList.add("hidden");
         daRow.querySelector('select').classList.add("hidden");
@@ -737,7 +765,15 @@ function generatePDF() {
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
-            const daStr = da > 0 ? ` for ${days} Days ${rate} X ${days} = ${da}` : "";
+            const fromDate = row.dataset.fromDate || '';
+            const toDate   = row.dataset.toDate   || '';
+            const fmtD = (iso) => { if (!iso) return ''; const p = iso.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
+            const dateRangeLabel = (fromDate && toDate && fromDate !== toDate)
+                ? `${fmtD(fromDate)} to ${fmtD(toDate)}`
+                : fmtD(fromDate);
+            const daStr = da > 0
+                ? ` (${dateRangeLabel}) for ${days} Days @ ${rate} X ${days} = ${da}`
+                : "";
             tableData.push(["", { content: `DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, days, da.toFixed(2), da.toFixed(2), isFirst?getVal('bill-purpose'):""]);
             return;
         }
