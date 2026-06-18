@@ -437,13 +437,21 @@ async function generateQuickJourney() {
     let isLimitedTrip = totalKm > 0 && totalKm <= 8;
 
     // Rule: Rail travel is only permissible if total journey distance > 50 km.
-    // If the route contains Train steps but total KM is ≤ 50, downgrade Train → Bus.
+    // If the route has Rail steps but total KM ≤ 50, collapse the entire multi-step
+    // route into a single direct Bus step (origin college → destination college).
+    // This avoids awkward entries like "Ottappalam Rly Stn → Palakkad Jn : Bus".
     const RAIL_MIN_KM = 50;
     const hasRailStep = onwardSteps.some(s => s.Mode === 'Train' || s.Mode === 'Rail');
     if (hasRailStep && totalKm <= RAIL_MIN_KM) {
-        onwardSteps = onwardSteps.map(s =>
-            (s.Mode === 'Train' || s.Mode === 'Rail') ? { ...s, Mode: 'Bus' } : s
-        );
+        const originName  = onwardSteps[0].From;
+        const destName    = onwardSteps[onwardSteps.length - 1].To;
+        onwardSteps = [{
+            Route_ID: onwardRouteId,
+            From: originName,
+            To:   destName,
+            Mode: 'Bus',
+            KM:   totalKm
+        }];
     }
 
     if (onwardSteps.length > 0) {
