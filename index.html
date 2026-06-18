@@ -125,10 +125,13 @@
             <div class="lg:col-span-2 space-y-6">
                 <!-- Quick Entry Section -->
                 <section class="bg-blue-900 p-6 rounded-lg shadow-md text-white">
-                    <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        Quick Journey Entry
-                    </h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-bold flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            Quick Journey Entry
+                        </h2>
+                        <button onclick="clearQuickFields()" class="text-xs text-blue-300 hover:text-white underline focus:outline-none">Clear</button>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="grid grid-cols-2 gap-2">
                             <div>

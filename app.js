@@ -183,8 +183,16 @@ async function init() {
     loadSettings();
     setupEventListeners();
 
-    // Load state, if no journeys were loaded, add first empty row
-    if (!loadFormState()) {
+    const loaded = loadFormState();
+    
+    // Default Quick From on startup if empty
+    const quickFrom = document.getElementById('quick-from');
+    const profCollege = document.getElementById('prof-college');
+    if (quickFrom && profCollege && !quickFrom.value) {
+        quickFrom.value = profCollege.value;
+    }
+
+    if (!loaded) {
         addJourneyRow();
     }
 }
@@ -337,6 +345,20 @@ function setupEventListeners() {
         calculateGrade();
         updateCalculations();
     });
+
+    // Default Quick From to Home College on change
+    const profCollege = document.getElementById('prof-college');
+    if (profCollege) {
+        const handler = () => {
+            const quickFrom = document.getElementById('quick-from');
+            if (quickFrom) {
+                quickFrom.value = profCollege.value;
+                saveFormState();
+            }
+        };
+        profCollege.addEventListener('input', handler);
+        profCollege.addEventListener('change', handler);
+    }
 
     persistIds.forEach(id => {
         const el = document.getElementById(id);
@@ -758,7 +780,7 @@ function generatePDF() {
     let collegeName = getFullCollegeName(getVal('prof-college')) || '';
     let placeText = '';
     if (collegeName.includes(',')) {
-        placeText = collegeName.split(',')[1].trim();
+        placeText = collegeName.split(',').pop().trim();
     } else {
         placeText = collegeName.trim();
     }
@@ -988,7 +1010,7 @@ function generateHTMLBill(autoPrint = false) {
     let collegeName = getFullCollegeName(getVal('prof-college')) || '';
     let placeText = '';
     if (collegeName.includes(',')) {
-        placeText = collegeName.split(',')[1].trim();
+        placeText = collegeName.split(',').pop().trim();
     } else {
         placeText = collegeName.trim();
     }
@@ -1462,7 +1484,13 @@ function renderSettings() {
 }
 function updateSetting(s, i, k, v) { if (s === 'grades') appSettings.grades[i][k] = k === 'trainClass' ? v : parseFloat(v); else appSettings.misc[i] = parseFloat(v); }
 function saveSettings() { localStorage.setItem('ta_bill_settings', JSON.stringify(appSettings)); closeSettings(); calculateGrade(); updateCalculations(); }
-function resetRates() { if (confirm("Reset to defaults?")) { appSettings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS)); renderSettings(); saveSettings(); } }
+function clearQuickFields() {
+    const quickFrom = document.getElementById('quick-from');
+    const quickTo = document.getElementById('quick-to');
+    if (quickFrom) quickFrom.value = '';
+    if (quickTo) quickTo.value = '';
+    saveFormState();
+}
 
 init();
 
