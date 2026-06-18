@@ -164,6 +164,7 @@ function populateCollegeDropdowns() {
     dl.innerHTML = '';
     const seenNames = new Set();
     taDatabase.abbreviations.forEach(abbr => {
+        if (!abbr || !abbr['Full College Name & Location']) return;
         const nameNorm = abbr['Full College Name & Location'].toLowerCase()
             .replace(/govt\./g, 'government')
             .replace(/[^a-z0-9]/g, '');
