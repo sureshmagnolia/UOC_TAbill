@@ -61,7 +61,17 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Name of College</label>
-                            <input type="text" id="prof-college" class="form-input" list="colleges-list">
+                            <div class="relative" id="prof-college-wrap">
+                                <input type="text" id="prof-college" autocomplete="off"
+                                    class="form-input pr-8"
+                                    placeholder="Type 3+ letters to search…">
+                                <button type="button" id="prof-college-clear"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 hidden text-base font-bold leading-none focus:outline-none"
+                                    title="Clear">✕</button>
+                                <div id="prof-college-dropdown"
+                                    class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg shadow-2xl mt-1 max-h-52 overflow-y-auto hidden text-left">
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Permanent Address</label>
@@ -123,40 +133,69 @@
                         </h2>
                         <button onclick="clearQuickFields()" class="text-xs text-blue-300 hover:text-white underline focus:outline-none">Clear</button>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">From College</label>
-                                <input type="text" id="quick-from" list="colleges-list" class="w-full p-2 rounded text-gray-900 text-sm" placeholder="Search college...">
+
+                    <!-- All fields stacked vertically, responsive 2-col on md+ -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <!-- FROM -->
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold uppercase opacity-70 tracking-wide">From College</label>
+                            <div class="relative" id="quick-from-wrap">
+                                <input type="text" id="quick-from" autocomplete="off"
+                                    class="w-full p-2 pr-8 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
+                                    placeholder="Type 3+ letters to search…">
+                                <button type="button" id="quick-from-clear"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 hidden text-base font-bold leading-none focus:outline-none"
+                                    title="Clear">✕</button>
+                                <div id="quick-from-dropdown"
+                                    class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg shadow-2xl mt-1 max-h-52 overflow-y-auto hidden text-left">
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">To College</label>
-                                <input type="text" id="quick-to" list="colleges-list" class="w-full p-2 rounded text-gray-900 text-sm" placeholder="Search college...">
-                            </div>
-                            <datalist id="colleges-list"></datalist>
                         </div>
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Onward Date & Time</label>
-                                <div class="flex gap-1">
-                                    <input type="date" id="quick-date-onward" class="w-2/3 p-2 rounded text-gray-900 text-sm">
-                                    <input type="time" id="quick-time-onward" value="08:00" class="w-1/3 p-2 rounded text-gray-900 text-sm">
+                        <!-- TO -->
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold uppercase opacity-70 tracking-wide">To College</label>
+                            <div class="relative" id="quick-to-wrap">
+                                <input type="text" id="quick-to" autocomplete="off"
+                                    class="w-full p-2 pr-8 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-400 outline-none"
+                                    placeholder="Type 3+ letters to search…">
+                                <button type="button" id="quick-to-clear"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 hidden text-base font-bold leading-none focus:outline-none"
+                                    title="Clear">✕</button>
+                                <div id="quick-to-dropdown"
+                                    class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg shadow-2xl mt-1 max-h-52 overflow-y-auto hidden text-left">
                                 </div>
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase mb-1 opacity-70">Return Date & Time</label>
-                                <div class="flex gap-1">
-                                    <input type="date" id="quick-date-return" class="w-2/3 p-2 rounded text-gray-900 text-sm">
-                                    <input type="time" id="quick-time-return" value="16:00" class="w-1/3 p-2 rounded text-gray-900 text-sm">
-                                </div>
+                        </div>
+                        <!-- ONWARD DATE & TIME -->
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold uppercase opacity-70 tracking-wide">Onward Date &amp; Time</label>
+                            <div class="flex gap-2">
+                                <input type="date" id="quick-date-onward"
+                                    class="flex-1 p-2 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+                                <input type="time" id="quick-time-onward" value="08:00"
+                                    class="w-24 p-2 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+                            </div>
+                        </div>
+                        <!-- RETURN DATE & TIME -->
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold uppercase opacity-70 tracking-wide">Return Date &amp; Time <span class="normal-case opacity-60 text-[9px]">(optional)</span></label>
+                            <div class="flex gap-2">
+                                <input type="date" id="quick-date-return"
+                                    class="flex-1 p-2 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
+                                <input type="time" id="quick-time-return" value="16:00"
+                                    class="w-24 p-2 rounded text-gray-900 text-sm focus:ring-2 focus:ring-blue-300 outline-none">
                             </div>
                         </div>
                     </div>
-                    <button onclick="generateQuickJourney()" class="mt-4 w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 rounded transition">
+
+                    <button onclick="generateQuickJourney()"
+                        class="mt-4 w-full bg-blue-500 hover:bg-blue-400 active:bg-blue-600 text-white font-bold py-2.5 rounded transition flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         Auto-Fill Journey Log
                     </button>
                 </section>
 
+                <!-- Journey Log -->
                 <section class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                     <div class="flex justify-between items-center mb-4">
                         <h2 class="text-lg font-bold text-blue-800">Journey Log</h2>
@@ -165,12 +204,12 @@
                             Add Row
                         </button>
                     </div>
-                    
+
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm" id="journey-table">
                             <thead class="bg-gray-50 text-gray-600 uppercase text-[10px] font-bold">
                                 <tr>
-                                    <th class="p-2 border-b w-40">Date & Time</th>
+                                    <th class="p-2 border-b w-40">Date &amp; Time</th>
                                     <th class="p-2 border-b">From</th>
                                     <th class="p-2 border-b">To</th>
                                     <th class="p-2 border-b">Mode</th>
@@ -185,23 +224,28 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="mt-6 p-4 bg-blue-50 rounded-lg flex justify-between items-center">
                         <div class="text-blue-900 font-bold">Total Claim: <span id="total-amount" class="text-xl">₹ 0.00</span></div>
                         <div class="text-xs text-blue-700 font-medium">Auto-calculating based on University rates</div>
                     </div>
-                    
-                    <div class="mt-6 flex justify-end gap-3">
-                        <button onclick="generateHTMLBill()" class="btn btn-secondary flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            Generate HTML
-                        </button>
-                        <button onclick="generatePDF()" class="btn btn-primary flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            Generate PDF
-                        </button>
-                    </div>
                 </section>
+
+                <!-- Generate Actions — below all journey legs -->
+                <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-4 flex flex-col sm:flex-row justify-end gap-3">
+                    <div class="flex-1 flex items-center text-sm text-gray-500">
+                        <svg class="w-4 h-4 mr-1.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Review all legs before generating
+                    </div>
+                    <button onclick="generateHTMLBill()" class="btn btn-secondary flex items-center justify-center gap-2 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        Generate HTML
+                    </button>
+                    <button onclick="generatePDF()" class="btn btn-primary flex items-center justify-center gap-2 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Generate PDF
+                    </button>
+                </div>
             </div>
         </div>
     </div>

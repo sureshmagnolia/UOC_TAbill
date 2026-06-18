@@ -16,7 +16,12 @@ function saveFormState() {
         const el = document.getElementById(id);
         if (el) state[id] = el.value;
     });
-    
+    // Also persist the abbreviations behind the college display names
+    ['quick-from', 'quick-to', 'prof-college'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) state[id + '-abbr'] = el.dataset.abbr || '';
+    });
+
     const journeys = [];
     document.querySelectorAll('#journey-body tr').forEach(row => {
         if (row.dataset.type === "DA") {
@@ -44,7 +49,7 @@ function saveFormState() {
         }
     });
     state.journeys = journeys;
-    
+
     localStorage.setItem('ta_form_state', JSON.stringify(state));
 }
 
@@ -57,6 +62,12 @@ function loadFormState() {
             persistIds.forEach(id => {
                 const el = document.getElementById(id);
                 if (el && state[id] !== undefined) el.value = state[id];
+            });
+            // Restore abbreviations for college autocomplete fields
+            ['quick-from', 'quick-to', 'prof-college'].forEach(id => {
+                const el = document.getElementById(id);
+                const abbr = state[id + '-abbr'];
+                if (el && abbr) el.dataset.abbr = abbr;
             });
             calculateGrade();
             
@@ -183,14 +194,29 @@ async function init() {
     loadSettings();
     setupEventListeners();
 
+    // Set up custom autocomplete for college fields (web only)
+    setupCollegeAutocomplete('quick-from');
+    setupCollegeAutocomplete('quick-to');
+    setupCollegeAutocomplete('prof-college');
+
     const loaded = loadFormState();
-    
-    // Default Quick From on startup if empty
+
+    // Default Quick From on startup if empty — show full college name
     const quickFrom = document.getElementById('quick-from');
     const profCollege = document.getElementById('prof-college');
-    if (quickFrom && profCollege && !quickFrom.value) {
-        quickFrom.value = profCollege.value;
+    if (quickFrom && profCollege && !quickFrom.value && profCollege.value) {
+        const abbr = profCollege.value;
+        const match = taDatabase.abbreviations.find(a => a.Abbreviation === abbr);
+        quickFrom.value = match ? match['Full College Name & Location'] : abbr;
+        quickFrom.dataset.abbr = abbr;
     }
+
+    // Sync clear-button visibility after state is restored
+    ['quick-from', 'quick-to', 'prof-college'].forEach(id => {
+        const inp = document.getElementById(id);
+        const btn = document.getElementById(id + '-clear');
+        if (inp && btn && inp.value) btn.classList.remove('hidden');
+    });
 
     if (!loaded) {
         addJourneyRow();
@@ -219,6 +245,89 @@ function populateCollegeDropdowns() {
     });
 }
 
+/**
+ * Custom autocomplete for college search fields.
+ * Dropdown appears only after 3+ characters are typed.
+ */
+function setupCollegeAutocomplete(inputId) {
+    const input = document.getElementById(inputId);
+    const clearBtn = document.getElementById(inputId + '-clear');
+    const dropdown = document.getElementById(inputId + '-dropdown');
+    if (!input || !dropdown) return;
+
+    // Sync clear-button visibility with current value
+    const syncClear = () => {
+        if (clearBtn) clearBtn.classList.toggle('hidden', !input.value);
+    };
+    syncClear();
+
+    input.addEventListener('input', () => {
+        // When user types, clear any previously selected abbreviation
+        delete input.dataset.abbr;
+        syncClear();
+        const val = input.value.trim();
+        if (val.length < 3) {
+            dropdown.classList.add('hidden');
+            dropdown.innerHTML = '';
+            return;
+        }
+        const lower = val.toLowerCase();
+        const matches = taDatabase.abbreviations.filter(a =>
+            (a['Full College Name & Location'] || '').toLowerCase().includes(lower) ||
+            (a.Abbreviation || '').toLowerCase().includes(lower)
+        ).slice(0, 25);
+
+        if (matches.length === 0) {
+            dropdown.innerHTML = '<div class="px-3 py-2 text-xs text-gray-400">No matches found</div>';
+        } else {
+            dropdown.innerHTML = matches.map(m => {
+                const abb = (m.Abbreviation || '').replace(/"/g, '&quot;');
+                const full = (m['Full College Name & Location'] || '').replace(/"/g, '&quot;');
+                return `<div class="px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-0 flex gap-2 items-start" data-abbr="${abb}" data-full="${full}">
+                    <span class="font-semibold text-blue-800 text-xs shrink-0 mt-0.5">${m.Abbreviation}</span>
+                    <span class="text-gray-600 text-[11px] leading-snug">${m['Full College Name & Location']}</span>
+                </div>`;
+            }).join('');
+        }
+        dropdown.classList.remove('hidden');
+    });
+
+    // Select item from dropdown — show full name, store abbreviation in data-abbr
+    dropdown.addEventListener('mousedown', e => {
+        const item = e.target.closest('[data-abbr]');
+        if (!item) return;
+        e.preventDefault(); // prevent blur before click fires
+        input.value = item.dataset.full || item.dataset.abbr; // display full name
+        input.dataset.abbr = item.dataset.abbr;               // store abbr for routing
+        syncClear();
+        dropdown.classList.add('hidden');
+        saveFormState();
+    });
+
+    // Clear button
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => clearCollegeField(inputId));
+    }
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+        const wrap = document.getElementById(inputId + '-wrap');
+        if (wrap && !wrap.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+}
+
+function clearCollegeField(inputId) {
+    const input = document.getElementById(inputId);
+    const clearBtn = document.getElementById(inputId + '-clear');
+    const dropdown = document.getElementById(inputId + '-dropdown');
+    if (input) { input.value = ''; delete input.dataset.abbr; }
+    if (clearBtn) clearBtn.classList.add('hidden');
+    if (dropdown) { dropdown.classList.add('hidden'); dropdown.innerHTML = ''; }
+    saveFormState();
+}
+
 function getFullCollegeName(abbr) {
     if (!taDatabase || !taDatabase.abbreviations) return abbr;
     const match = taDatabase.abbreviations.find(c => c.Abbreviation === abbr);
@@ -226,8 +335,11 @@ function getFullCollegeName(abbr) {
 }
 
 async function generateQuickJourney() {
-    const fromAbbr = document.getElementById('quick-from').value;
-    const toAbbr = document.getElementById('quick-to').value;
+    const fromEl = document.getElementById('quick-from');
+    const toEl   = document.getElementById('quick-to');
+    // Use stored abbreviation if available (custom autocomplete), else fall back to raw value
+    const fromAbbr = (fromEl.dataset.abbr || fromEl.value).trim();
+    const toAbbr   = (toEl.dataset.abbr   || toEl.value).trim();
     const onwardDate = document.getElementById('quick-date-onward').value;
     const returnDate = document.getElementById('quick-date-return').value;
     const onwardStartTime = document.getElementById('quick-time-onward').value;
@@ -346,18 +458,32 @@ function setupEventListeners() {
         updateCalculations();
     });
 
-    // Default Quick From to Home College on change
+    // When prof-college changes, mirror it to quick-from (full name + abbr)
     const profCollege = document.getElementById('prof-college');
     if (profCollege) {
         const handler = () => {
             const quickFrom = document.getElementById('quick-from');
             if (quickFrom) {
-                quickFrom.value = profCollege.value;
+                // Use stored abbreviation if available, otherwise raw value
+                const abbr = profCollege.dataset.abbr || profCollege.value;
+                const match = taDatabase.abbreviations.find(a => a.Abbreviation === abbr);
+                quickFrom.value = match ? match['Full College Name & Location'] : profCollege.value;
+                quickFrom.dataset.abbr = abbr;
+                // Sync quick-from clear button
+                const qfClear = document.getElementById('quick-from-clear');
+                if (qfClear) qfClear.classList.toggle('hidden', !quickFrom.value);
                 saveFormState();
             }
         };
-        profCollege.addEventListener('input', handler);
         profCollege.addEventListener('change', handler);
+        // Also fire when autocomplete selects (mousedown triggers saveFormState,
+        // but we still need quick-from updated — use a MutationObserver-free trick:
+        // setupCollegeAutocomplete fires saveFormState; we hook via the dropdown blur)
+        document.getElementById('prof-college-dropdown') &&
+            document.getElementById('prof-college-dropdown').addEventListener('mousedown', () => {
+                // defer until after the mousedown handler in setupCollegeAutocomplete sets the value
+                setTimeout(handler, 0);
+            });
     }
 
     persistIds.forEach(id => {
@@ -1485,10 +1611,12 @@ function renderSettings() {
 function updateSetting(s, i, k, v) { if (s === 'grades') appSettings.grades[i][k] = k === 'trainClass' ? v : parseFloat(v); else appSettings.misc[i] = parseFloat(v); }
 function saveSettings() { localStorage.setItem('ta_bill_settings', JSON.stringify(appSettings)); closeSettings(); calculateGrade(); updateCalculations(); }
 function clearQuickFields() {
-    const quickFrom = document.getElementById('quick-from');
-    const quickTo = document.getElementById('quick-to');
-    if (quickFrom) quickFrom.value = '';
-    if (quickTo) quickTo.value = '';
+    clearCollegeField('quick-from');
+    clearCollegeField('quick-to');
+    const od = document.getElementById('quick-date-onward'); if (od) od.value = '';
+    const rd = document.getElementById('quick-date-return'); if (rd) rd.value = '';
+    const ot = document.getElementById('quick-time-onward'); if (ot) ot.value = '08:00';
+    const rt = document.getElementById('quick-time-return'); if (rt) rt.value = '16:00';
     saveFormState();
 }
 
