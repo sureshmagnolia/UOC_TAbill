@@ -127,20 +127,27 @@ function loadFormState() {
 
 const DEFAULT_SETTINGS = {
     grades: [
-        { id: "I", minPay: 50400, roadRate: 0.80, trainClass: "II AC", daInside: 600, daOutside: 600 },
-        { id: "II(a)", minPay: 42500, roadRate: 0.60, trainClass: "I Class", daInside: 600, daOutside: 600 },
-        { id: "II(b)", minPay: 27800, roadRate: 0.50, trainClass: "III AC", daInside: 600, daOutside: 600 },
-        { id: "III", minPay: 18000, roadRate: 0.50, trainClass: "II Class", daInside: 600, daOutside: 600 },
-        { id: "IV", minPay: 0, roadRate: 0.50, trainClass: "II Class", daInside: 600, daOutside: 600 }
+        { id: "I", minPay: 50400, roadRate: 2.50, trainClass: "II AC", daInside: 600, daOutside: 600 },
+        { id: "II(a)", minPay: 42500, roadRate: 2.00, trainClass: "I Class", daInside: 600, daOutside: 600 },
+        { id: "II(b)", minPay: 27800, roadRate: 1.50, trainClass: "III AC", daInside: 600, daOutside: 600 },
+        { id: "III", minPay: 18000, roadRate: 1.00, trainClass: "II Class", daInside: 600, daOutside: 600 },
+        { id: "IV", minPay: 0, roadRate: 1.00, trainClass: "II Class", daInside: 600, daOutside: 600 }
     ],
     misc: {
         specialConveyanceRate: 2.50,
         trainIncidentalRate: 0.80, // per KM
+        trainBaseFare: 120, // Default base/reservation/surcharge
         railFarePerKM: 1.60, // Estimated 2nd AC rate
         minRailFare: 750, // Minimum 2nd AC rail fare
         minDistanceForTA: 8, // km
     }
 };
+
+function getSelectedGrade() {
+    const gradeSelect = document.getElementById('prof-grade');
+    const gradeId = gradeSelect ? gradeSelect.value : "IV";
+    return appSettings.grades.find(g => g.id === gradeId) || appSettings.grades[appSettings.grades.length - 1];
+}
 
 // Route cache: stores pre-flattened { routeId: [legObj,...] } per source college
 const _routeCache = {};
@@ -471,7 +478,9 @@ async function generateQuickJourney() {
         daRow.querySelector('input[placeholder="KM"]').classList.add("hidden");
         daRow.querySelector('select').classList.add("hidden");
         daRow.querySelector('input[placeholder="Fare"]').classList.add("hidden");
-        daRow.querySelector('input[placeholder="DA"]').value = days * 600;
+        const grade = getSelectedGrade();
+        const daRate = grade ? grade.daInside : 600;
+        daRow.querySelector('input[placeholder="DA"]').value = days * daRate;
         daRow.dataset.days = days;
     }
     
@@ -666,9 +675,13 @@ function calculateRowFare(row) {
         if (isLimited) {
             fareInput.value = "0.00";
         } else if (mode === 'Rail') {
-            fareInput.value = Math.max(appSettings.misc.minRailFare || 750, Math.round(km * appSettings.misc.railFarePerKM));
+            const baseFare = appSettings.misc.trainBaseFare !== undefined ? appSettings.misc.trainBaseFare : 120;
+            const perKmRate = appSettings.misc.railFarePerKM || 0;
+            fareInput.value = Math.round(baseFare + (km * perKmRate));
         } else if (mode === 'Special' || mode === 'Bus') {
-            fareInput.value = (km * appSettings.misc.specialConveyanceRate).toFixed(2);
+            const grade = getSelectedGrade();
+            const roadRate = (grade && grade.roadRate !== undefined) ? grade.roadRate : appSettings.misc.specialConveyanceRate;
+            fareInput.value = (km * roadRate).toFixed(2);
         }
         fareInput.dataset.auto = "true";
     }
@@ -1660,9 +1673,10 @@ function renderSettings() {
         </div>`;
     });
     h += `<h3 class="font-bold text-sm text-gray-500 uppercase border-b pb-2 mt-6">Misc Rates</h3>
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-4 gap-4">
             <div><label class="text-[10px] uppercase font-bold">Road Mileage</label><input type="number" step="0.01" value="${appSettings.misc.specialConveyanceRate}" class="form-input" onchange="updateSetting('misc', 'specialConveyanceRate', null, this.value)"></div>
             <div><label class="text-[10px] uppercase font-bold">Incidental</label><input type="number" step="0.01" value="${appSettings.misc.trainIncidentalRate}" class="form-input" onchange="updateSetting('misc', 'trainIncidentalRate', null, this.value)"></div>
+            <div><label class="text-[10px] uppercase font-bold">Train Base Fare</label><input type="number" step="0.01" value="${appSettings.misc.trainBaseFare !== undefined ? appSettings.misc.trainBaseFare : 120}" class="form-input" onchange="updateSetting('misc', 'trainBaseFare', null, this.value)"></div>
             <div><label class="text-[10px] uppercase font-bold">Rail Fare/KM</label><input type="number" step="0.01" value="${appSettings.misc.railFarePerKM}" class="form-input" onchange="updateSetting('misc', 'railFarePerKM', null, this.value)"></div>
         </div></div>`;
     c.innerHTML = h;
