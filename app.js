@@ -113,6 +113,7 @@ const DEFAULT_SETTINGS = {
         specialConveyanceRate: 2.50,
         trainIncidentalRate: 0.80, // per KM
         railFarePerKM: 1.60, // Estimated 2nd AC rate
+        minRailFare: 750, // Minimum 2nd AC rail fare
         minDistanceForTA: 8, // km
     }
 };
@@ -472,7 +473,7 @@ function calculateRowFare(row) {
         if (isLimited) {
             fareInput.value = "0.00";
         } else if (mode === 'Rail') {
-            fareInput.value = Math.round(km * appSettings.misc.railFarePerKM);
+            fareInput.value = Math.max(appSettings.misc.minRailFare || 750, Math.round(km * appSettings.misc.railFarePerKM));
         } else if (mode === 'Special' || mode === 'Bus') {
             fareInput.value = (km * appSettings.misc.specialConveyanceRate).toFixed(2);
         }
