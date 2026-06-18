@@ -1215,7 +1215,13 @@ function generateHTMLBill(autoPrint = false) {
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
-            const daStr = da > 0 ? ` <span class="font-normal" style="font-size:9px">for ${days} Days ${rate} X ${days} = ${da}</span>` : "";
+            const fromDate = row.dataset.fromDate || '';
+            const toDate   = row.dataset.toDate   || '';
+            const fmtD = (iso) => { if (!iso) return ''; const p = iso.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
+            const dateRangeLabel = (fromDate && toDate && fromDate !== toDate)
+                ? `(${fmtD(fromDate)} to ${fmtD(toDate)})`
+                : `(${fmtD(fromDate)})`;
+            const daStr = da > 0 ? ` <span class="font-normal" style="font-size:9px">${dateRangeLabel} for ${days} Days @ ${rate} X ${days} = ${da}</span>` : "";
             htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
             return;
         }
