@@ -52,16 +52,21 @@ class PdfGeneratorHelper(private val context: Context) {
                         request: WebResourceRequest?
                     ): WebResourceResponse? {
                         val urlStr = request?.url?.toString() ?: ""
-                        // Serve ta_database.json from assets to allow fetch() to work
-                        if (urlStr.endsWith("ta_database.json")) {
+                        // Determine which asset file to serve
+                        val assetPath: String? = when {
+                            urlStr.endsWith("ta_abbrevs.json") -> "ta_abbrevs.json"
+                            urlStr.contains("/routes/") -> {
+                                val fileName = urlStr.substringAfterLast("/routes/")
+                                "routes/$fileName"
+                            }
+                            // Legacy fallback for ta_database.json
+                            urlStr.endsWith("ta_database.json") -> "ta_database.json"
+                            else -> null
+                        }
+
+                        if (assetPath != null) {
                             try {
-                                // Check user-modified copy first
-                                val localFile = java.io.File(context.filesDir, "ta_database.json")
-                                val stream = if (localFile.exists()) {
-                                    java.io.FileInputStream(localFile)
-                                } else {
-                                    context.assets.open("ta_database.json")
-                                }
+                                val stream = context.assets.open(assetPath)
                                 return WebResourceResponse("application/json", "UTF-8", stream)
                             } catch (e: Exception) {
                                 e.printStackTrace()

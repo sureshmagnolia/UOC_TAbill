@@ -117,58 +117,71 @@ const DEFAULT_SETTINGS = {
     }
 };
 
-// Initialize App
-async function init() {
+// Route cache: stores pre-flattened { routeId: [legObj,...] } per source college
+const _routeCache = {};
+
+/**
+ * Lazy-loads routes for a given source college abbreviation.
+ * Returns an array of flat route objects: { Route_ID, From, To, Mode, KM, ... }
+ * Caches results so the file is only fetched once per session.
+ */
+async function loadRoutesFor(fromAbbr) {
+    if (_routeCache[fromAbbr]) return _routeCache[fromAbbr];
     try {
-        // Use XHR instead of fetch() — XHR is reliably intercepted by Android's
-        // shouldInterceptRequest on ALL versions, whereas fetch() is not.
-        const rawDb = await new Promise((resolve, reject) => {
+        const routeMap = await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'ta_database.json', true);
+            xhr.open('GET', `routes/${fromAbbr}.json`, true);
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { resolve(JSON.parse(xhr.responseText)); }
                     catch(e) { reject(e); }
-                } else {
-                    reject(new Error('XHR status: ' + xhr.status));
-                }
+                } else { reject(new Error('XHR ' + xhr.status)); }
             };
             xhr.onerror = () => reject(new Error('XHR network error'));
             xhr.send();
         });
-        
-        let flatRoutes = [];
-        if (rawDb.legs && !Array.isArray(rawDb.routes)) {
-            Object.keys(rawDb.routes).forEach(routeId => {
-                const legIds = rawDb.routes[routeId];
-                legIds.forEach((legId, idx) => {
-                    const legData = rawDb.legs[legId];
-                    flatRoutes.push({
-                        Route_ID: routeId,
-                        Step: String(idx + 1),
-                        ...legData
-                    });
-                });
+        // Flatten into array for compatibility with existing generateQuickJourney
+        const flat = [];
+        Object.keys(routeMap).forEach(routeId => {
+            routeMap[routeId].forEach((leg, idx) => {
+                flat.push({ Route_ID: routeId, Step: String(idx + 1), ...leg });
             });
-        } else {
-            flatRoutes = rawDb.routes || [];
-        }
-        
-        taDatabase = {
-            abbreviations: rawDb.abbreviations || [],
-            routes: flatRoutes
-        };
-        
+        });
+        _routeCache[fromAbbr] = flat;
+        return flat;
+    } catch(e) {
+        console.error('Failed to load routes for', fromAbbr, e);
+        return [];
+    }
+}
+
+// Initialize App
+async function init() {
+    try {
+        // Load abbreviations only (~60KB) — routes are lazy-loaded per college
+        const abbrevs = await new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'ta_abbrevs.json', true);
+            xhr.onload = function() {
+                if (xhr.status === 200 || xhr.status === 0) {
+                    try { resolve(JSON.parse(xhr.responseText)); }
+                    catch(e) { reject(e); }
+                } else { reject(new Error('XHR ' + xhr.status)); }
+            };
+            xhr.onerror = () => reject(new Error('XHR network error'));
+            xhr.send();
+        });
+        taDatabase.abbreviations = abbrevs;
         populateCollegeDropdowns();
     } catch (e) {
-        console.error("Failed to load database", e);
+        console.error("Failed to load abbreviations", e);
     }
-    // Signal that DB is ready (even on error, so we don't hang forever)
+    // Signal ready — routes are loaded on demand
     if (_dbReadyResolve) { _dbReadyResolve(); _dbReadyResolve = null; }
 
     loadSettings();
     setupEventListeners();
-    
+
     // Load state, if no journeys were loaded, add first empty row
     if (!loadFormState()) {
         addJourneyRow();
@@ -194,7 +207,7 @@ function getFullCollegeName(abbr) {
     return match ? match['Full College Name & Location'] : abbr;
 }
 
-function generateQuickJourney() {
+async function generateQuickJourney() {
     const fromAbbr = document.getElementById('quick-from').value;
     const toAbbr = document.getElementById('quick-to').value;
     const onwardDate = document.getElementById('quick-date-onward').value;
@@ -257,9 +270,12 @@ function generateQuickJourney() {
         });
     };
 
-    // 1. Onward
+    // 1. Load routes for source college (lazy, cached)
+    const fromRoutes = await loadRoutesFor(fromAbbr);
+
+    // 2. Onward
     const onwardRouteId = `${fromAbbr}_${toAbbr}`;
-    const onwardSteps = taDatabase.routes.filter(r => r.Route_ID === onwardRouteId);
+    const onwardSteps = fromRoutes.filter(r => r.Route_ID === onwardRouteId);
     let totalKm = onwardSteps.reduce((sum, step) => sum + parseFloat(step.KM || 0), 0);
     let isLimitedTrip = totalKm > 0 && totalKm <= 8;
 
@@ -267,10 +283,11 @@ function generateQuickJourney() {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
-    // 2. Return
+    // 3. Return — load routes for destination college
     if (returnDate && returnStartTime) {
         const returnRouteId = `${toAbbr}_${fromAbbr}`;
-        let returnSteps = taDatabase.routes.filter(r => r.Route_ID === returnRouteId);
+        const toRoutes = await loadRoutesFor(toAbbr);
+        let returnSteps = toRoutes.filter(r => r.Route_ID === returnRouteId);
         if (returnSteps.length === 0 && onwardSteps.length > 0) {
             returnSteps = [...onwardSteps].reverse().map(s => ({...s, From: s.To, To: s.From}));
         }
@@ -279,7 +296,7 @@ function generateQuickJourney() {
         }
     }
 
-    // 3. Auto-Calculate DA
+    // 4. Auto-Calculate DA
     const d1 = new Date(onwardDate);
     const d2 = returnDate ? new Date(returnDate) : d1;
     const days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
