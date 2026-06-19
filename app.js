@@ -393,9 +393,11 @@ async function generateQuickJourney() {
             
             const abridgeName = (name) => {
                 if (!name || name.length <= 45) return name;
-                const words = name.split(' ');
+                // Split on spaces AND commas so e.g. "(UN-AIDED),MEENANGADI,WYNAD" = 3 words
+                const words = name.split(/[\s,]+/).filter(Boolean);
                 if (words.length <= 4) return name.substring(0, 42) + '...';
-                return words.slice(0, 2).join(' ') + ' ... ' + words.slice(-2).join(' ');
+                const lastWord = words[words.length - 1];
+                return words.slice(0, 2).join(' ') + ' ... ' + lastWord;
             };
             
             row.querySelector('input[type="date"]').value = date;
