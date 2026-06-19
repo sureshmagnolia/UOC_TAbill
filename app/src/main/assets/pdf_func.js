@@ -27,7 +27,7 @@ function getTruncatedCollegeNamePDF(collegeName, doc, maxWidth) {
         place = parts.pop().trim();
         namePart = parts.join(',').trim();
     } else {
-        let parts = collegeName.split(/\s+/);
+        let parts = collegeName.split(/[\s,]+/).filter(Boolean);
         if (parts.length > 1) {
             place = parts.pop().trim();
             namePart = parts.join(' ').trim();
@@ -61,7 +61,7 @@ function getTruncatedCollegeNameHTML(collegeName, maxLength = 50) {
         place = parts.pop().trim();
         namePart = parts.join(',').trim();
     } else {
-        let parts = collegeName.split(/\s+/);
+        let parts = collegeName.split(/[\s,]+/).filter(Boolean);
         if (parts.length > 1) {
             place = parts.pop().trim();
             namePart = parts.join(' ').trim();
@@ -76,8 +76,8 @@ function truncateStation(name, maxLen) {
     if (!name) return "";
     maxLen = maxLen || 30;
     if (name.length <= maxLen) return name;
-    // Keep first 2 words and last word (which is usually the place)
-    const words = name.split(/\s+/);
+    // Split on spaces AND commas so "(UN-AIDED),MEENANGADI,WYNAD" = 3 words
+    const words = name.split(/[\s,]+/).filter(Boolean);
     if (words.length <= 3) return name.substring(0, maxLen - 3) + '...';
     const lastWord = words[words.length - 1];
     const firstTwo = words.slice(0, 2).join(' ');
