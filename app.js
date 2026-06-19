@@ -244,9 +244,9 @@ async function init() {
     const quickFrom = document.getElementById('quick-from');
     const profCollege = document.getElementById('prof-college');
     if (quickFrom && profCollege && !quickFrom.value && profCollege.value) {
-        const abbr = profCollege.value;
+        const abbr = profCollege.dataset.abbr || resolveAbbreviation(profCollege.value);
         const match = taDatabase.abbreviations.find(a => a.Abbreviation === abbr);
-        quickFrom.value = match ? match['Full College Name & Location'] : abbr;
+        quickFrom.value = match ? match['Full College Name & Location'] : profCollege.value;
         quickFrom.dataset.abbr = abbr;
     }
 
@@ -373,12 +373,22 @@ function getFullCollegeName(abbr) {
     return match ? match['Full College Name & Location'] : abbr;
 }
 
+function resolveAbbreviation(val) {
+    if (!val || !taDatabase || !taDatabase.abbreviations) return val || '';
+    const cleanVal = val.trim().toLowerCase();
+    const match = taDatabase.abbreviations.find(a => 
+        (a.Abbreviation || '').toLowerCase() === cleanVal || 
+        (a['Full College Name & Location'] || '').toLowerCase() === cleanVal
+    );
+    return match ? match.Abbreviation : val.trim();
+}
+
 async function generateQuickJourney() {
     const fromEl = document.getElementById('quick-from');
     const toEl   = document.getElementById('quick-to');
-    // Use stored abbreviation if available (custom autocomplete), else fall back to raw value
-    const fromAbbr = (fromEl.dataset.abbr || fromEl.value).trim();
-    const toAbbr   = (toEl.dataset.abbr   || toEl.value).trim();
+    // Use stored abbreviation if available (custom autocomplete), else resolve from name
+    const fromAbbr = (fromEl.dataset.abbr || resolveAbbreviation(fromEl.value)).trim();
+    const toAbbr   = (toEl.dataset.abbr   || resolveAbbreviation(toEl.value)).trim();
     const onwardDate = document.getElementById('quick-date-onward').value;
     const returnDate = document.getElementById('quick-date-return').value;
     const onwardStartTime = document.getElementById('quick-time-onward').value;
@@ -574,8 +584,8 @@ function setupEventListeners() {
         const handler = () => {
             const quickFrom = document.getElementById('quick-from');
             if (quickFrom) {
-                // Use stored abbreviation if available, otherwise raw value
-                const abbr = profCollege.dataset.abbr || profCollege.value;
+                // Use stored abbreviation if available, otherwise resolve from name
+                const abbr = profCollege.dataset.abbr || resolveAbbreviation(profCollege.value);
                 const match = taDatabase.abbreviations.find(a => a.Abbreviation === abbr);
                 quickFrom.value = match ? match['Full College Name & Location'] : profCollege.value;
                 quickFrom.dataset.abbr = abbr;
