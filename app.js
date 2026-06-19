@@ -188,7 +188,7 @@ async function loadRoutesFor(fromAbbr) {
     try {
         const routeMap = await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', `routes/${fromAbbr}.json`, true);
+            xhr.open('GET', `routes/${fromAbbr}.json?v=${Date.now()}`, true);
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { resolve(JSON.parse(xhr.responseText)); }
@@ -219,7 +219,7 @@ async function init() {
         // Load abbreviations only (~60KB) — routes are lazy-loaded per college
         const abbrevs = await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'ta_abbrevs.json', true);
+            xhr.open('GET', `ta_abbrevs.json?v=${Date.now()}`, true);
             xhr.onload = function() {
                 if (xhr.status === 200 || xhr.status === 0) {
                     try { resolve(JSON.parse(xhr.responseText)); }
