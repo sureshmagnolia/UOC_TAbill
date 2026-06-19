@@ -1,3 +1,93 @@
+function cleanAddressString(addr) {
+    if (!addr) return "";
+    let lines = addr.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    let joined = lines.map((line, index) => {
+        if (index === lines.length - 1) return line;
+        if (/[,\.\-\/;]$/.test(line)) {
+            return line;
+        }
+        return line + ',';
+    }).join(' ');
+    joined = joined.replace(/\s+/g, ' ');
+    joined = joined.replace(/\s*,\s*,+/g, ',');
+    joined = joined.replace(/\s*,\s*/g, ', ');
+    return joined.trim().replace(/,$/, '').trim();
+}
+
+function getTruncatedCollegeNamePDF(collegeName, doc, maxWidth) {
+    if (!collegeName) return "";
+    let fullText = `3) College: ${collegeName}`;
+    if (doc.getTextWidth(fullText) <= maxWidth) {
+        return fullText;
+    }
+    let place = "";
+    let namePart = collegeName;
+    if (collegeName.includes(',')) {
+        let parts = collegeName.split(',');
+        place = parts.pop().trim();
+        namePart = parts.join(',').trim();
+    } else {
+        let parts = collegeName.split(/\s+/);
+        if (parts.length > 1) {
+            place = parts.pop().trim();
+            namePart = parts.join(' ').trim();
+        }
+    }
+    let suffix = place ? `, ${place}` : "";
+    let basePrefix = "3) College: ";
+    let low = 0;
+    let high = namePart.length;
+    let bestTruncated = "";
+    while (low <= high) {
+        let mid = Math.floor((low + high) / 2);
+        let testName = namePart.substring(0, mid);
+        let testString = `${basePrefix}${testName}...${suffix}`;
+        if (doc.getTextWidth(testString) <= maxWidth) {
+            bestTruncated = testName;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return `${basePrefix}${bestTruncated}...${suffix}`;
+}
+
+function getTruncatedCollegeNameHTML(collegeName, maxLength = 50) {
+    if (!collegeName || collegeName.length <= maxLength) return collegeName;
+    let place = "";
+    let namePart = collegeName;
+    if (collegeName.includes(',')) {
+        let parts = collegeName.split(',');
+        place = parts.pop().trim();
+        namePart = parts.join(',').trim();
+    } else {
+        let parts = collegeName.split(/\s+/);
+        if (parts.length > 1) {
+            place = parts.pop().trim();
+            namePart = parts.join(' ').trim();
+        }
+    }
+    let suffix = place ? `, ${place}` : "";
+    let maxNameLen = maxLength - suffix.length - 3;
+    if (maxNameLen < 5) maxNameLen = 5;
+    return `${namePart.substring(0, maxNameLen)}...${suffix}`;
+}
+
+function truncateStation(name, maxLen) {
+    if (!name) return "";
+    maxLen = maxLen || 30;
+    if (name.length <= maxLen) return name;
+    // Keep first 2 words and last word (which is usually the place)
+    const words = name.split(/\s+/);
+    if (words.length <= 3) return name.substring(0, maxLen - 3) + '...';
+    const lastWord = words[words.length - 1];
+    const firstTwo = words.slice(0, 2).join(' ');
+    const candidate = `${firstTwo}... ${lastWord}`;
+    if (candidate.length <= maxLen) return candidate;
+    // If even that's too long, just truncate lastWord
+    return `${firstTwo}...`;
+}
+
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'pt', 'a4');
@@ -23,9 +113,16 @@ function generatePDF() {
     doc.text(`5) Basic Pay: Rs ${getVal('prof-basic-pay')}/-`, 350, 90);
     doc.text(`2) Designation: ${getVal('prof-designation')}`, 40, 105);
     doc.text(`6) SB A/c No: ${getVal('prof-acc-no')}`, 350, 105);
-    doc.text(`3) College: ${getFullCollegeName(getVal('prof-college'))}`, 40, 120);
+    
+    let truncatedCollege = getTruncatedCollegeNamePDF(getFullCollegeName(getVal('prof-college')), doc, 290);
+    doc.text(truncatedCollege, 40, 120);
+    
     doc.text(`7) Bank & IFSC: ${getVal('prof-bank-ifsc')}`, 350, 120);
-    doc.text(`4) Address: ${getVal('prof-address').substring(0, 40)}`, 40, 135);
+    
+    let cleanAddress = cleanAddressString(getVal('prof-address'));
+    let addressLabel = `4) Address: ${cleanAddress}`;
+    let addressLines = doc.splitTextToSize(addressLabel, 515);
+    doc.text(addressLines, 40, 135);
 
     const tableData = [];
     let totalClaim = 0;
@@ -60,8 +157,8 @@ function generatePDF() {
         const tTime = row.querySelector('input[placeholder="TT"]').value || "";
         const dateTime = `${date}\n${fTime}-${tTime}`;
 
-        const from = row.querySelector('input[placeholder="From"]').value;
-        const to = row.querySelector('input[placeholder="To"]').value;
+        const from = truncateStation(row.querySelector('input[placeholder="From"]').value, 28);
+        const to = truncateStation(row.querySelector('input[placeholder="To"]').value, 28);
         const mode = row.querySelector('select').value;
         const kmText = row.querySelector('input[placeholder="KM"]').value;
         const km = parseFloat(kmText) || 0;
@@ -113,7 +210,7 @@ function generatePDF() {
     }
 
     doc.autoTable({
-        startY: 150,
+        startY: Math.max(135 + (addressLines.length * 11) + 5, 150),
         head: [
             [{ content: 'Date & Time', rowSpan: 2 }, { content: 'Place', colSpan: 2 }, { content: 'Mode', rowSpan: 2 }, { content: 'Dist', colSpan: 2 }, { content: 'Rail (2nd AC)', colSpan: 3 }, { content: 'Road', colSpan: 2 }, { content: 'DA', colSpan: 2 }, { content: 'Total', rowSpan: 2 }, { content: 'Purpose', rowSpan: 2 }],
             ['From', 'To', 'Rail', 'Road', 'Fare', 'Rate', 'Amt', 'Rate', 'Amt', 'Days', 'Amt'],
@@ -177,7 +274,7 @@ function generatePDF() {
         styles: { fontSize: 8, cellPadding: 2 },
         columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 15 } }
     });
-    finalY = doc.lastAutoTable.finalY + 15;
+    finalY = doc.lastAutoTable.finalY + 20;
 
     let returnDate = '';
     const journeyRows = document.querySelectorAll('#journey-body tr');
@@ -479,8 +576,8 @@ function generateHTMLBill(autoPrint = false) {
         const fTime = row.querySelector('input[placeholder="FT"]').value || "";
         const tTime = row.querySelector('input[placeholder="TT"]').value || "";
         const dateTime = (fTime || tTime) ? `${date}<br><span style="font-size:8px">${fTime} - ${tTime}</span>` : date;
-        const from = row.querySelector('input[placeholder="From"]').value;
-        const to = row.querySelector('input[placeholder="To"]').value;
+        const from = truncateStation(row.querySelector('input[placeholder="From"]').value, 30);
+        const to = truncateStation(row.querySelector('input[placeholder="To"]').value, 30);
         const mode = row.querySelector('select').value;
         const kmText = row.querySelector('input[placeholder="KM"]').value;
         const km = parseFloat(kmText) || 0;
@@ -600,11 +697,11 @@ function generateHTMLBill(autoPrint = false) {
                 <td>6) Savings Bank A/c No: ${getVal('prof-acc-no')}</td>
             </tr>
             <tr>
-                <td>3) Name of the College: ${getFullCollegeName(getVal('prof-college'))}</td>
+                <td>3) Name of the College: ${getTruncatedCollegeNameHTML(getFullCollegeName(getVal('prof-college')), 50)}</td>
                 <td>7) Name of the Bank with IFSC code: ${getVal('prof-bank-ifsc')}</td>
             </tr>
             <tr>
-                <td>4) Permanent Address: ${getVal('prof-address')}</td>
+                <td>4) Permanent Address: ${cleanAddressString(getVal('prof-address'))}</td>
                 <td>
                     Voucher No. .................................................................<br>
                     Month of .................................................................<br>
