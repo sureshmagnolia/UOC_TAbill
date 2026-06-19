@@ -88,6 +88,18 @@ function truncateStation(name, maxLen) {
     return `${firstTwo}...`;
 }
 
+function formatTime12H(timeStr) {
+    if (!timeStr) return "";
+    if (!timeStr.includes(':')) return timeStr; // fallback if already 12h or text
+    const [hStr, mStr] = timeStr.split(':');
+    let h = parseInt(hStr, 10);
+    const m = mStr.substring(0, 2);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12;
+    h = h ? h : 12; // the hour '0' should be '12'
+    return `${String(h).padStart(2, '0')}:${m} ${ampm}`;
+}
+
 function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'pt', 'a4');
@@ -97,7 +109,7 @@ function generatePDF() {
     const formatDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
     
     let autoMonth = "";
-    const firstDateInput = document.querySelector('#journey-body tr input[type="date"]');
+    const firstDateInput = document.querySelector('#journey-body .journey-card input[type="date"]');
     if (firstDateInput && firstDateInput.value) {
         const d = new Date(firstDateInput.value);
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
@@ -138,12 +150,13 @@ function generatePDF() {
         limBuf = null;
     };
 
-    const rows = document.querySelectorAll('#journey-body tr');
+    const rows = document.querySelectorAll('#journey-body .journey-card');
     rows.forEach((row, idx) => {
         const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
             flushLim(isFirst);
-            const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+            const numInputs = row.querySelectorAll('input[type="number"]');
+            const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
@@ -153,17 +166,20 @@ function generatePDF() {
         }
         const dateRaw = row.querySelector('input[type="date"]').value;
         const date = formatDate(dateRaw);
-        const fTime = row.querySelector('input[placeholder="FT"]').value || "";
-        const tTime = row.querySelector('input[placeholder="TT"]').value || "";
-        const dateTime = `${date}\n${fTime}-${tTime}`;
+        const timeInputs = row.querySelectorAll('input[type="time"]');
+        const fTime = timeInputs[0] ? timeInputs[0].value : "";
+        const tTime = timeInputs[1] ? timeInputs[1].value : "";
+        const dateTime = (fTime || tTime) ? `${date}\n${formatTime12H(fTime)}-${formatTime12H(tTime)}` : date;
 
-        const from = truncateStation(row.querySelector('input[placeholder="From"]').value, 28);
-        const to = truncateStation(row.querySelector('input[placeholder="To"]').value, 28);
-        const mode = row.querySelector('select').value;
-        const kmText = row.querySelector('input[placeholder="KM"]').value;
+        const stationInputs = row.querySelectorAll('input[type="text"][list="stations"]');
+        const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 28);
+        const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 28);
+        const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
+        const numInputs = row.querySelectorAll('input[type="number"]');
+        const kmText = numInputs[0] ? numInputs[0].value : "";
         const km = parseFloat(kmText) || 0;
-        let fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
-        const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+        let fare = parseFloat(numInputs[1] ? numInputs[1].value : 0) || 0;
+        const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
         
         let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
         
@@ -277,7 +293,7 @@ function generatePDF() {
     finalY = doc.lastAutoTable.finalY + 20;
 
     let returnDate = '';
-    const journeyRows = document.querySelectorAll('#journey-body tr');
+    const journeyRows = document.querySelectorAll('#journey-body .journey-card');
     for (let i = journeyRows.length - 1; i >= 0; i--) {
         const row = journeyRows[i];
         if (row.dataset.type !== "DA") {
@@ -499,7 +515,7 @@ function generateHTMLBill(autoPrint = false) {
     const fixDate = (d) => { if(!d) return ""; const p = d.split('-'); return `${p[2]}/${p[1]}/${p[0].slice(-2)}`; };
     
     let autoMonth = "";
-    const firstDateInput = document.querySelector('#journey-body tr input[type="date"]');
+    const firstDateInput = document.querySelector('#journey-body .journey-card input[type="date"]');
     if (firstDateInput && firstDateInput.value) {
         const d = new Date(firstDateInput.value);
         autoMonth = d.toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
@@ -507,7 +523,7 @@ function generateHTMLBill(autoPrint = false) {
     const month = autoMonth || new Date().toLocaleString('default', { month: 'long', year: 'numeric' }).toUpperCase();
 
     let returnDate = '';
-    const journeyRows = document.querySelectorAll('#journey-body tr');
+    const journeyRows = document.querySelectorAll('#journey-body .journey-card');
     for (let i = journeyRows.length - 1; i >= 0; i--) {
         const row = journeyRows[i];
         if (row.dataset.type !== "DA") {
@@ -558,12 +574,13 @@ function generateHTMLBill(autoPrint = false) {
         limBufHtml = null;
     };
 
-    const rows = document.querySelectorAll('#journey-body tr');
+    const rows = document.querySelectorAll('#journey-body .journey-card');
     rows.forEach((row, idx) => {
         const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
             flushLimHtml(isFirst);
-            const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+            const numInputs = row.querySelectorAll('input[type="number"]');
+            const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
@@ -573,16 +590,19 @@ function generateHTMLBill(autoPrint = false) {
         }
         const dateRaw = row.querySelector('input[type="date"]').value;
         const date = fixDate(dateRaw);
-        const fTime = row.querySelector('input[placeholder="FT"]').value || "";
-        const tTime = row.querySelector('input[placeholder="TT"]').value || "";
-        const dateTime = (fTime || tTime) ? `${date}<br><span style="font-size:8px">${fTime} - ${tTime}</span>` : date;
-        const from = truncateStation(row.querySelector('input[placeholder="From"]').value, 30);
-        const to = truncateStation(row.querySelector('input[placeholder="To"]').value, 30);
-        const mode = row.querySelector('select').value;
-        const kmText = row.querySelector('input[placeholder="KM"]').value;
+        const timeInputs = row.querySelectorAll('input[type="time"]');
+        const fTime = timeInputs[0] ? timeInputs[0].value : "";
+        const tTime = timeInputs[1] ? timeInputs[1].value : "";
+        const dateTime = (fTime || tTime) ? `${date}<br><span style="font-size:8px">${formatTime12H(fTime)} - ${formatTime12H(tTime)}</span>` : date;
+        const stationInputs = row.querySelectorAll('input[type="text"][list="stations"]');
+        const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 30);
+        const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 30);
+        const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
+        const numInputs = row.querySelectorAll('input[type="number"]');
+        const kmText = numInputs[0] ? numInputs[0].value : "";
         const km = parseFloat(kmText) || 0;
-        let fare = parseFloat(row.querySelector('input[placeholder="Fare"]').value) || 0;
-        const da = parseFloat(row.querySelector('input[placeholder="DA"]').value) || 0;
+        let fare = parseFloat(numInputs[1] ? numInputs[1].value : 0) || 0;
+        const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
         
         let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
         
