@@ -25,16 +25,19 @@ function saveFormState() {
     const journeys = [];
     document.querySelectorAll('#journey-body .journey-card').forEach(row => {
         if (row.dataset.type === "DA") {
+            const daIn = row.querySelector('input[data-field="da"]');
             journeys.push({
                 type: "DA",
                 date: row.querySelector('input[type="date"]').value,
                 fromDate: row.dataset.fromDate || row.querySelector('input[type="date"]').value,
                 toDate: row.dataset.toDate || row.querySelector('input[type="date"]').value,
                 daDays: row.dataset.days,
-                daAmt: (function(){ const n=row.querySelectorAll('input[type="number"]'); return n[2]?n[2].value:''; })()
+                daAmt: daIn ? daIn.value : ''
             });
         } else {
-            const numInputs = row.querySelectorAll('input[type="number"]');
+            const kmIn = row.querySelector('input[data-field="km"]');
+            const fareIn = row.querySelector('input[data-field="fare"]');
+            const daIn = row.querySelector('input[data-field="da"]');
             const textInputs = row.querySelectorAll('input[type="text"][list="stations"]');
             const timeInputs = row.querySelectorAll('input[type="time"]');
             journeys.push({
@@ -45,10 +48,10 @@ function saveFormState() {
                 from: textInputs[0] ? textInputs[0].value : '',
                 to: textInputs[1] ? textInputs[1].value : '',
                 mode: row.querySelector('select') ? row.querySelector('select').value : 'Special',
-                km: numInputs[0] ? numInputs[0].value : '',
-                fare: numInputs[1] ? numInputs[1].value : '',
-                fareAuto: numInputs[1] ? numInputs[1].dataset.auto : 'true',
-                da: numInputs[2] ? numInputs[2].value : '',
+                km: kmIn ? kmIn.value : '',
+                fare: fareIn ? fareIn.value : '',
+                fareAuto: fareIn ? (fareIn.dataset.auto || 'true') : 'true',
+                da: daIn ? daIn.value : '',
                 isLimited: row.querySelector('.limit-check') ? row.querySelector('.limit-check').checked : false
             });
         }
@@ -110,10 +113,12 @@ function loadFormState() {
                         row.querySelector('select') && (row.querySelector('select').style.display = 'none');
                         const timesRow = row.querySelector('.times-row');
                         if (timesRow) timesRow.style.display = 'none';
-                        const numInputs = row.querySelectorAll('input[type="number"]');
-                        if (numInputs[0]) numInputs[0].style.display = 'none'; // KM
-                        if (numInputs[1]) numInputs[1].style.display = 'none'; // Fare
-                        if (numInputs[2]) numInputs[2].value = j.daAmt || '';  // DA
+                        const kmIn = row.querySelector('input[data-field="km"]');
+                        const fareIn = row.querySelector('input[data-field="fare"]');
+                        const daIn = row.querySelector('input[data-field="da"]');
+                        if (kmIn) kmIn.style.display = 'none'; // KM
+                        if (fareIn) fareIn.style.display = 'none'; // Fare
+                        if (daIn) daIn.value = j.daAmt || '';  // DA
                         row.dataset.days = days;
                     } else {
                         row.querySelector('input[type="date"]').value = j.date || '';
@@ -124,10 +129,12 @@ function loadFormState() {
                         if (textInputs[0]) textInputs[0].value = j.from || '';
                         if (textInputs[1]) textInputs[1].value = j.to || '';
                         if (row.querySelector('select')) row.querySelector('select').value = j.mode || 'Special';
-                        const numInputs = row.querySelectorAll('input[type="number"]');
-                        if (numInputs[0]) numInputs[0].value = j.km || '';
-                        if (numInputs[1]) { numInputs[1].value = j.fare || ''; numInputs[1].dataset.auto = j.fareAuto || 'true'; }
-                        if (numInputs[2]) numInputs[2].value = j.da || '';
+                        const kmIn = row.querySelector('input[data-field="km"]');
+                        const fareIn = row.querySelector('input[data-field="fare"]');
+                        const daIn = row.querySelector('input[data-field="da"]');
+                        if (kmIn) kmIn.value = j.km || '';
+                        if (fareIn) { fareIn.value = j.fare || ''; fareIn.dataset.auto = j.fareAuto || 'true'; }
+                        if (daIn) daIn.value = j.da || '';
                         if (j.isLimited && row.querySelector('.limit-check')) row.querySelector('.limit-check').checked = true;
                     }
                 });
@@ -534,12 +541,14 @@ async function generateQuickJourney() {
         daRow.querySelector('select') && (daRow.querySelector('select').style.display = 'none');
         const timesRow = daRow.querySelector('.times-row');
         if (timesRow) timesRow.style.display = 'none';
-        const numInputs = daRow.querySelectorAll('input[type="number"]');
-        if (numInputs[0]) numInputs[0].style.display = 'none'; // KM
-        if (numInputs[1]) numInputs[1].style.display = 'none'; // Fare
+        const kmIn = daRow.querySelector('input[data-field="km"]');
+        const fareIn = daRow.querySelector('input[data-field="fare"]');
+        const daIn = daRow.querySelector('input[data-field="da"]');
+        if (kmIn) kmIn.style.display = 'none'; // KM
+        if (fareIn) fareIn.style.display = 'none'; // Fare
         const grade = getSelectedGrade();
         const daRate = grade ? grade.daInside : 600;
-        if (numInputs[2]) numInputs[2].value = days * daRate; // DA
+        if (daIn) daIn.value = days * daRate; // DA
         daRow.dataset.days = days;
     }
     
@@ -686,15 +695,15 @@ function addJourneyRow() {
             </div>
             <div>
                 <div class="field-label">KM</div>
-                <input type="number" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="calculateRowFare(this.closest('.journey-card'))">
+                <input type="number" data-field="km" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="calculateRowFare(this.closest('.journey-card'))">
             </div>
             <div>
                 <div class="field-label">Fare ₹</div>
-                <input type="number" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="handleFareManual(this)">
+                <input type="number" data-field="fare" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="handleFareManual(this)">
             </div>
             <div>
                 <div class="field-label">DA ₹</div>
-                <input type="number" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="updateCalculations()">
+                <input type="number" data-field="da" placeholder="0" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none text-right" oninput="updateCalculations()">
             </div>
         </div>
         <!-- Validation Error Message -->
@@ -737,7 +746,7 @@ function handleStationInput(input) {
             if (kmInput) kmInput.value = route.KM;
             const sel = row.querySelector('select');
             if (sel) sel.value = route.Mode === 'Taxi' || route.Mode === 'Special' ? 'Special' : (route.Mode === 'Train' ? 'Rail' : route.Mode);
-            const fareInput = row.querySelectorAll('input[type="number"]')[1];
+            const fareInput = row.querySelector('input[data-field="fare"]');
             if (fareInput) {
                 if (route.Fare) {
                     fareInput.value = route.Fare;
@@ -758,11 +767,9 @@ function handleFareManual(input) {
 
 function calculateRowFare(row) {
     if (!row || row.dataset.type === "DA") return;
-    // KM: 2nd number input (index 1)
-    const numInputs = row.querySelectorAll('input[type="number"]');
-    const kmInput  = numInputs[0]; // KM
-    const fareInput = numInputs[1]; // Fare
-    const daInput  = numInputs[2];  // DA
+    const kmInput  = row.querySelector('input[data-field="km"]');
+    const fareInput = row.querySelector('input[data-field="fare"]');
+    const daInput  = row.querySelector('input[data-field="da"]');
     const km = parseFloat(kmInput ? kmInput.value : 0) || 0;
     const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
     
@@ -798,14 +805,15 @@ function updateCalculations() {
     }
     let total = 0;
     document.querySelectorAll('#journey-body .journey-card').forEach(row => {
+        const daIn = row.querySelector('input[data-field="da"]');
         if (row.dataset.type === "DA") {
-            const daInputs = row.querySelectorAll('input[type="number"]');
-            total += parseFloat(daInputs[2] ? daInputs[2].value : 0) || 0;
+            total += parseFloat(daIn ? daIn.value : 0) || 0;
         } else {
-            const numInputs = row.querySelectorAll('input[type="number"]');
-            const km = parseFloat(numInputs[0] ? numInputs[0].value : 0) || 0;
-            const fare = parseFloat(numInputs[1] ? numInputs[1].value : 0) || 0;
-            const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
+            const kmIn = row.querySelector('input[data-field="km"]');
+            const fareIn = row.querySelector('input[data-field="fare"]');
+            const km = parseFloat(kmIn ? kmIn.value : 0) || 0;
+            const fare = parseFloat(fareIn ? fareIn.value : 0) || 0;
+            const da = parseFloat(daIn ? daIn.value : 0) || 0;
             const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
             let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
             let rowTotal = 0;

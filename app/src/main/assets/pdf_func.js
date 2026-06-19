@@ -155,8 +155,8 @@ function generatePDF() {
         const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
             flushLim(isFirst);
-            const numInputs = row.querySelectorAll('input[type="number"]');
-            const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
+            const daIn = row.querySelector('input[data-field="da"]');
+            const da = parseFloat(daIn ? daIn.value : 0) || 0;
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
@@ -175,11 +175,13 @@ function generatePDF() {
         const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 28);
         const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 28);
         const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
-        const numInputs = row.querySelectorAll('input[type="number"]');
-        const kmText = numInputs[0] ? numInputs[0].value : "";
+        const kmIn = row.querySelector('input[data-field="km"]');
+        const fareIn = row.querySelector('input[data-field="fare"]');
+        const daIn = row.querySelector('input[data-field="da"]');
+        const kmText = kmIn ? kmIn.value : "";
         const km = parseFloat(kmText) || 0;
-        let fare = parseFloat(numInputs[1] ? numInputs[1].value : 0) || 0;
-        const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
+        let fare = parseFloat(fareIn ? fareIn.value : 0) || 0;
+        const da = parseFloat(daIn ? daIn.value : 0) || 0;
         
         let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
         
@@ -225,6 +227,16 @@ function generatePDF() {
         }
     }
 
+    let mainTableFontSize = 6.5;
+    let mainTableCellPadding = 1.0;
+    if (rows.length > 12) {
+        mainTableFontSize = 5.2;
+        mainTableCellPadding = 0.4;
+    } else if (rows.length > 8) {
+        mainTableFontSize = 5.8;
+        mainTableCellPadding = 0.7;
+    }
+
     doc.autoTable({
         startY: Math.max(135 + (addressLines.length * 11) + 5, 150),
         head: [
@@ -233,7 +245,7 @@ function generatePDF() {
             ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
         ],
         body: tableData,
-        theme: 'grid', styles: { fontSize: 6.5, cellPadding: 1, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' },
+        theme: 'grid', styles: { fontSize: mainTableFontSize, cellPadding: mainTableCellPadding, textColor: 0, lineColor: 0, lineWidth: 0.5 }, headStyles: { fillColor: false, halign: 'center', fontStyle: 'bold' },
         didDrawCell: function(data) {
             if (data.section === 'body' && data.column.index === 14 && data.row.index === 0) {
                 var text = getVal('bill-purpose');
@@ -262,22 +274,26 @@ function generatePDF() {
         }
     });
 
-    let finalY = doc.lastAutoTable.finalY + 15;
+    const tableEndY = doc.lastAutoTable.finalY;
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const availableSpace = pageHeight - 30 - tableEndY; // 30pt safety margin at bottom
     
-    // Add page if there's no room for the complex certificate section
-    if (finalY + 380 > doc.internal.pageSize.getHeight()) {
-        doc.addPage();
-        finalY = 40;
+    // Normal footer height without scaling is ~370pt.
+    let scale = 1.0;
+    if (availableSpace < 370) {
+        scale = Math.max(0.52, availableSpace / 370);
     }
 
-    doc.setFontSize(9);
+    let finalY = tableEndY + 12 * scale;
+
+    doc.setFontSize(Math.max(6, 9 * scale));
     doc.text(`Grand Total: Rs. ${totalClaim.toFixed(2)}`, pageWidth - 40, finalY, { align: "right" });
     doc.text(`Total Amount in Words: ${numberToWords(totalClaim)} Only`, 40, finalY);
 
-    finalY += 20;
-    doc.setFontSize(10);
+    finalY += 15 * scale;
+    doc.setFontSize(Math.max(7, 10 * scale));
     doc.text("CERTIFICATE", pageWidth / 2, finalY, { align: "center" });
-    finalY += 10;
+    finalY += 8 * scale;
 
     doc.autoTable({
         startY: finalY,
@@ -287,10 +303,10 @@ function generatePDF() {
             ['', '3)', 'I Certify that i was actually present on the previous day of the practical examination for the preparation work\n*Necessary certificate should be attested with dated signature']
         ],
         theme: 'plain',
-        styles: { fontSize: 8, cellPadding: 2 },
-        columnStyles: { 0: { cellWidth: 45 }, 1: { cellWidth: 15 } }
+        styles: { fontSize: Math.max(5.5, 8 * scale), cellPadding: Math.max(0.5, 2 * scale) },
+        columnStyles: { 0: { cellWidth: 45 * scale }, 1: { cellWidth: 15 * scale } }
     });
-    finalY = doc.lastAutoTable.finalY + 20;
+    finalY = doc.lastAutoTable.finalY + 15 * scale;
 
     let returnDate = '';
     const journeyRows = document.querySelectorAll('#journey-body .journey-card');
@@ -330,14 +346,15 @@ function generatePDF() {
         }
     }
 
+    doc.setFontSize(Math.max(6, 8 * scale));
     doc.text(`Place: ${placeText || '.........................'}`, 40, finalY);
     doc.text("Signature..........................................................", pageWidth - 40, finalY, { align: "right" });
-    finalY += 15;
+    finalY += 10 * scale;
     doc.text(`Date: ${returnDate}`, 40, finalY);
     
-    finalY += 15;
+    finalY += 10 * scale;
     doc.line(40, finalY, pageWidth - 40, finalY);
-    finalY += 15;
+    finalY += 10 * scale;
 
     doc.autoTable({
         startY: finalY,
@@ -349,24 +366,25 @@ function generatePDF() {
             ]
         ],
         theme: 'plain',
-        styles: { fontSize: 8, cellPadding: 5, valign: 'top' }
+        styles: { fontSize: Math.max(5.5, 8 * scale), cellPadding: Math.max(1, 4 * scale), valign: 'top' }
     });
-    finalY = doc.lastAutoTable.finalY + 15;
+    finalY = doc.lastAutoTable.finalY + 10 * scale;
 
+    doc.setFontSize(Math.max(6, 8 * scale));
     doc.text("Countersigned and certified that the days for which halting allowance is claimed were necessarily", pageWidth / 2, finalY, { align: "center" });
-    finalY += 12;
+    finalY += 8 * scale;
     doc.text("spent for conduct of university business. The Claim may be admitted", pageWidth / 2, finalY, { align: "center" });
     
-    finalY += 30;
-    doc.text("Signature...........................................................", 40, finalY);
+    finalY += 20 * scale;
+    doc.text("Signature...................................................", 40, finalY);
     doc.text("Chairman/Board of Examiners/Question Paper Setters in ......................", pageWidth - 40, finalY, { align: "right" });
     
-    finalY += 25;
+    finalY += 18 * scale;
     doc.text("Asst.", 100, finalY);
     doc.text("S.O.", pageWidth / 2, finalY, { align: "center" });
     doc.text("A.R./D.R.", pageWidth - 100, finalY, { align: "right" });
 
-    finalY += 15;
+    finalY += 10 * scale;
 
     doc.autoTable({
         startY: finalY,
@@ -377,7 +395,7 @@ function generatePDF() {
             ]
         ],
         theme: 'grid',
-        styles: { fontSize: 8, cellPadding: 8, valign: 'top', textColor: 0, lineColor: 0, lineWidth: 0.5 },
+        styles: { fontSize: Math.max(5.5, 8 * scale), cellPadding: Math.max(2, 5 * scale), valign: 'top', textColor: 0, lineColor: 0, lineWidth: 0.5 },
         columnStyles: { 0: { cellWidth: '50%' }, 1: { cellWidth: '50%' } }
     });
 
@@ -579,8 +597,8 @@ function generateHTMLBill(autoPrint = false) {
         const isFirst = (idx === 0);
         if (row.dataset.type === "DA") {
             flushLimHtml(isFirst);
-            const numInputs = row.querySelectorAll('input[type="number"]');
-            const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
+            const daIn = row.querySelector('input[data-field="da"]');
+            const da = parseFloat(daIn ? daIn.value : 0) || 0;
             totalClaim += da;
             const days = row.dataset.days;
             const rate = da > 0 ? da / days : 0;
@@ -598,11 +616,13 @@ function generateHTMLBill(autoPrint = false) {
         const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 30);
         const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 30);
         const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
-        const numInputs = row.querySelectorAll('input[type="number"]');
-        const kmText = numInputs[0] ? numInputs[0].value : "";
+        const kmIn = row.querySelector('input[data-field="km"]');
+        const fareIn = row.querySelector('input[data-field="fare"]');
+        const daIn = row.querySelector('input[data-field="da"]');
+        const kmText = kmIn ? kmIn.value : "";
         const km = parseFloat(kmText) || 0;
-        let fare = parseFloat(numInputs[1] ? numInputs[1].value : 0) || 0;
-        const da = parseFloat(numInputs[2] ? numInputs[2].value : 0) || 0;
+        let fare = parseFloat(fareIn ? fareIn.value : 0) || 0;
+        const da = parseFloat(daIn ? daIn.value : 0) || 0;
         
         let isLimited = row.querySelector('.limit-check') && row.querySelector('.limit-check').checked;
         
