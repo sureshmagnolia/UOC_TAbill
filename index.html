@@ -110,6 +110,7 @@
                 <div class="flex items-center gap-2">
                     <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     <span class="font-bold text-sm">Quick Journey Entry</span>
+                    <button onclick="openGpsEditor()" class="ml-2 px-2 py-0.5 bg-blue-800 text-blue-200 text-[10px] rounded hover:bg-blue-700 transition" title="Fix incorrect distances">⚙️ Edit GPS</button>
                 </div>
                 <button onclick="clearQuickFields()" class="text-xs text-blue-300 hover:text-white underline focus:outline-none">Clear</button>
             </div>
@@ -208,6 +209,47 @@
         </div>
     </div>
 
+    <!-- GPS Editor Modal -->
+    <div id="gps-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h2 class="text-base font-bold">Override College GPS</h2>
+                <button onclick="closeGpsEditor()" class="text-gray-400 hover:text-gray-600 p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-4">
+                <p class="text-xs text-gray-500 mb-4">If the live map distance is incorrect, you can manually fix the GPS coordinates for any college here.</p>
+                <div class="mb-4">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Select College</label>
+                    <div class="relative" id="gps-search-wrap">
+                        <input type="text" id="gps-search" autocomplete="off" class="w-full border border-gray-200 rounded p-2 text-sm focus:border-blue-400 outline-none" placeholder="Type college name...">
+                        <input type="hidden" id="gps-abbr">
+                        <div id="gps-search-dropdown" class="absolute bg-white border border-gray-200 shadow-lg max-h-48 overflow-y-auto w-full hidden mt-1 z-50 text-sm rounded-lg"></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-2">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Latitude</label>
+                        <input type="number" step="0.000001" id="gps-lat" class="w-full border border-gray-200 rounded p-2 text-sm focus:border-blue-400 outline-none" placeholder="e.g. 10.5922">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Longitude</label>
+                        <input type="number" step="0.000001" id="gps-lon" class="w-full border border-gray-200 rounded p-2 text-sm focus:border-blue-400 outline-none" placeholder="e.g. 76.4685">
+                    </div>
+                </div>
+                <div class="text-[10px] text-green-600 hidden font-semibold" id="gps-success-msg">Saved successfully!</div>
+            </div>
+            <div class="p-4 border-t bg-gray-50 flex justify-between items-center rounded-b-xl">
+                <button onclick="resetGps()" class="text-xs text-red-500 hover:underline font-semibold">Reset to Default</button>
+                <div class="space-x-2">
+                    <button onclick="closeGpsEditor()" class="px-3 py-1.5 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded-lg transition">Cancel</button>
+                    <button onclick="saveGpsOverride()" class="px-3 py-1.5 text-sm font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Save GPS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Settings Modal -->
     <div id="settings-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -226,6 +268,6 @@
     </div>
 
     <script src="pdf_func.js?v=7"></script>
-    <script src="app.js?v=20"></script>
+    <script src="app.js?v=21"></script>
 </body>
 </html>
