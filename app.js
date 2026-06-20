@@ -25,33 +25,38 @@ function saveFormState() {
 
     const journeys = [];
     document.querySelectorAll('#journey-body .journey-card').forEach(row => {
-        if (row.dataset.type === "DA") {
+        const rowType = row.getAttribute('data-type') || row.dataset.type;
+        const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
+        const dateVal = dateInput ? dateInput.value : '';
+        if (rowType === "DA") {
             const daIn = row.querySelector('input[data-field="da"]');
             journeys.push({
                 type: "DA",
-                date: row.querySelector('input[type="date"]').value,
-                fromDate: row.dataset.fromDate || row.querySelector('input[type="date"]').value,
-                toDate: row.dataset.toDate || row.querySelector('input[type="date"]').value,
-                daDays: row.dataset.days,
+                date: dateVal,
+                fromDate: row.getAttribute('data-from-date') || row.dataset.fromDate || dateVal,
+                toDate: row.getAttribute('data-to-date') || row.dataset.toDate || dateVal,
+                daDays: row.getAttribute('data-days') || row.dataset.days,
                 daAmt: daIn ? daIn.value : ''
             });
         } else {
             const kmIn = row.querySelector('input[data-field="km"]');
             const fareIn = row.querySelector('input[data-field="fare"]');
             const daIn = row.querySelector('input[data-field="da"]');
-            const textInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-            const timeInputs = row.querySelectorAll('input[type="time"]');
+            const fromIn = row.querySelector('.from-station-input');
+            const toIn = row.querySelector('.to-station-input');
+            const depTimeIn = row.querySelector('.dep-time-input');
+            const arrTimeIn = row.querySelector('.arr-time-input');
             journeys.push({
                 type: "journey",
-                date: row.querySelector('input[type="date"]').value,
-                ft: timeInputs[0] ? timeInputs[0].value : '',
-                tt: timeInputs[1] ? timeInputs[1].value : '',
-                from: textInputs[0] ? textInputs[0].value : '',
-                to: textInputs[1] ? textInputs[1].value : '',
+                date: dateVal,
+                ft: depTimeIn ? depTimeIn.value : '',
+                tt: arrTimeIn ? arrTimeIn.value : '',
+                from: fromIn ? fromIn.value : '',
+                to: toIn ? toIn.value : '',
                 mode: row.querySelector('select') ? row.querySelector('select').value : 'Special',
                 km: kmIn ? kmIn.value : '',
                 fare: fareIn ? fareIn.value : '',
-                fareAuto: fareIn ? (fareIn.dataset.auto || 'true') : 'true',
+                fareAuto: fareIn ? (fareIn.getAttribute('data-auto') || fareIn.dataset.auto || 'true') : 'true',
                 da: daIn ? daIn.value : '',
                 isLimited: row.querySelector('.limit-check') ? row.querySelector('.limit-check').checked : false
             });
@@ -108,9 +113,10 @@ function loadFormState() {
                         const rangeStr = toDate && toDate !== fromDate
                             ? `${fmtS(fromDate)} → ${fmtS(toDate)}`
                             : fmtS(fromDate);
-                        const textInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-                        if (textInputs[0]) textInputs[0].value = `DA: ${rangeStr} · ${days} Day${days > 1 ? 's' : ''}`;
-                        if (textInputs[1]) textInputs[1].closest('div').style.display = 'none';
+                        const fromIn = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+                        if (fromIn) fromIn.value = `DA: ${rangeStr} · ${days} Day${days > 1 ? 's' : ''}`;
+                        const toIn = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
+                        if (toIn) toIn.closest('div').style.display = 'none';
                         row.querySelector('select') && (row.querySelector('select').style.display = 'none');
                         const timesRow = row.querySelector('.times-row');
                         if (timesRow) timesRow.style.display = 'none';
@@ -120,21 +126,29 @@ function loadFormState() {
                         if (kmIn) kmIn.style.display = 'none'; // KM
                         if (fareIn) fareIn.style.display = 'none'; // Fare
                         if (daIn) daIn.value = j.daAmt || '';  // DA
+                        row.setAttribute('data-days', days);
                         row.dataset.days = days;
                     } else {
-                        row.querySelector('input[type="date"]').value = j.date || '';
-                        const timeInputs = row.querySelectorAll('input[type="time"]');
-                        if (timeInputs[0]) timeInputs[0].value = j.ft || '';
-                        if (timeInputs[1]) timeInputs[1].value = j.tt || '';
-                        const textInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-                        if (textInputs[0]) textInputs[0].value = j.from || '';
-                        if (textInputs[1]) textInputs[1].value = j.to || '';
+                        const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
+                        if (dateInput) dateInput.value = j.date || '';
+                        const depTimeIn = row.querySelector('.dep-time-input') || row.querySelectorAll('input[type="time"]')[0];
+                        const arrTimeIn = row.querySelector('.arr-time-input') || row.querySelectorAll('input[type="time"]')[1];
+                        if (depTimeIn) depTimeIn.value = j.ft || '';
+                        if (arrTimeIn) arrTimeIn.value = j.tt || '';
+                        const fromIn = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+                        const toIn = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
+                        if (fromIn) fromIn.value = j.from || '';
+                        if (toIn) toIn.value = j.to || '';
                         if (row.querySelector('select')) row.querySelector('select').value = j.mode || 'Special';
                         const kmIn = row.querySelector('input[data-field="km"]');
                         const fareIn = row.querySelector('input[data-field="fare"]');
                         const daIn = row.querySelector('input[data-field="da"]');
                         if (kmIn) kmIn.value = j.km || '';
-                        if (fareIn) { fareIn.value = j.fare || ''; fareIn.dataset.auto = j.fareAuto || 'true'; }
+                        if (fareIn) {
+                            fareIn.value = j.fare || '';
+                            fareIn.setAttribute('data-auto', j.fareAuto || 'true');
+                            fareIn.dataset.auto = j.fareAuto || 'true';
+                        }
                         if (daIn) daIn.value = j.da || '';
                         if (j.isLimited && row.querySelector('.limit-check')) row.querySelector('.limit-check').checked = true;
                     }
@@ -408,13 +422,16 @@ async function generateQuickJourney() {
                 return words.slice(0, 2).join(' ') + ' ... ' + words[words.length - 1];
             };
             
-            row.querySelector('input[type="date"]').value = date;
-            const timeInputs = row.querySelectorAll('input[type="time"]');
-            if (timeInputs[0]) timeInputs[0].value = fromTime;
-            if (timeInputs[1]) timeInputs[1].value = toTime;
-            const stationInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-            if (stationInputs[0]) stationInputs[0].value = abridgeName(step.From);
-            if (stationInputs[1]) stationInputs[1].value = abridgeName(step.To);
+            const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
+            if (dateInput) dateInput.value = date;
+            const depTimeIn = row.querySelector('.dep-time-input') || row.querySelectorAll('input[type="time"]')[0];
+            const arrTimeIn = row.querySelector('.arr-time-input') || row.querySelectorAll('input[type="time"]')[1];
+            if (depTimeIn) depTimeIn.value = fromTime;
+            if (arrTimeIn) arrTimeIn.value = toTime;
+            const fromIn = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+            const toIn = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
+            if (fromIn) fromIn.value = abridgeName(step.From);
+            if (toIn) toIn.value = abridgeName(step.To);
             if (row.querySelector('select')) row.querySelector('select').value = mode;
             const numInputs = row.querySelectorAll('input[type="number"]');
             if (numInputs[0]) numInputs[0].value = step.KM;
@@ -524,9 +541,10 @@ async function generateQuickJourney() {
         const dateRange = returnDate && returnDate !== onwardDate
             ? `${fmtShort(onwardDate)} → ${fmtShort(returnDate)}`
             : fmtShort(onwardDate);
-        const stationInputs = daRow.querySelectorAll('input[type="text"][list="stations"]');
-        if (stationInputs[0]) stationInputs[0].value = `DA: ${dateRange} · ${days} Day${days > 1 ? 's' : ''}`;
-        if (stationInputs[1]) stationInputs[1].closest('div') && (stationInputs[1].closest('div').style.display = 'none');
+        const fromIn = daRow.querySelector('.from-station-input') || daRow.querySelectorAll('input[type="text"][list="stations"]')[0];
+        if (fromIn) fromIn.value = `DA: ${dateRange} · ${days} Day${days > 1 ? 's' : ''}`;
+        const toIn = daRow.querySelector('.to-station-input') || daRow.querySelectorAll('input[type="text"][list="stations"]')[1];
+        if (toIn) toIn.closest('div') && (toIn.closest('div').style.display = 'none');
         daRow.querySelector('select') && (daRow.querySelector('select').style.display = 'none');
         const timesRow = daRow.querySelector('.times-row');
         if (timesRow) timesRow.style.display = 'none';
@@ -640,7 +658,7 @@ function addJourneyRow() {
         <div class="flex justify-between items-center mb-2.5">
             <div class="w-1/2">
                 <div class="field-label">Journey Date</div>
-                <input type="date" class="w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none">
+                <input type="date" class="journey-date-input w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none">
             </div>
             <button onclick="removeRow('${rowId}')" class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition self-end">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
@@ -651,11 +669,11 @@ function addJourneyRow() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 mb-2.5">
             <div>
                 <div class="field-label">From Station / College</div>
-                <input type="text" list="stations" placeholder="From station" class="w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="handleStationInput(this)">
+                <input type="text" list="stations" placeholder="From station" class="from-station-input w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="handleStationInput(this)">
             </div>
             <div>
                 <div class="field-label">To Station / College</div>
-                <input type="text" list="stations" placeholder="To station" class="w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="handleStationInput(this)">
+                <input type="text" list="stations" placeholder="To station" class="to-station-input w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="handleStationInput(this)">
             </div>
         </div>
 
@@ -663,11 +681,11 @@ function addJourneyRow() {
         <div class="grid grid-cols-2 gap-2.5 mb-2.5 times-row">
             <div>
                 <div class="field-label">Departure Time (From)</div>
-                <input type="time" class="w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="updateCalculations()">
+                <input type="time" class="dep-time-input w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="updateCalculations()">
             </div>
             <div>
                 <div class="field-label">Arrival Time (To)</div>
-                <input type="time" class="w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="updateCalculations()">
+                <input type="time" class="arr-time-input w-full mt-1 border border-gray-200 rounded-lg px-2.5 py-1.5 text-xs bg-white focus:border-blue-400 outline-none" oninput="updateCalculations()">
             </div>
         </div>
 
@@ -724,8 +742,8 @@ function ensureDatalist() {
 function handleStationInput(input) {
     const row = input.closest('.journey-card');
     if (!row) return;
-    const fromInput = row.querySelectorAll('input[type="text"][list="stations"]')[0];
-    const toInput = row.querySelectorAll('input[type="text"][list="stations"]')[1];
+    const fromInput = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+    const toInput = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
     const from = fromInput ? fromInput.value : '';
     const to = toInput ? toInput.value : '';
     if (from && to) {

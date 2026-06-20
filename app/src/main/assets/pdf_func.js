@@ -153,27 +153,31 @@ function generatePDF() {
     const rows = document.querySelectorAll('#journey-body .journey-card');
     rows.forEach((row, idx) => {
         const isFirst = (idx === 0);
-        if (row.dataset.type === "DA") {
+        const rowType = row.getAttribute('data-type') || row.dataset.type;
+        if (rowType === "DA") {
             flushLim(isFirst);
             const daIn = row.querySelector('input[data-field="da"]');
             const da = parseFloat(daIn ? daIn.value : 0) || 0;
             totalClaim += da;
-            const days = row.dataset.days;
+            const days = row.getAttribute('data-days') || row.dataset.days;
             const rate = da > 0 ? da / days : 0;
             const daStr = da > 0 ? `\n${rate} X ${days} Days = ${da}` : "";
             tableData.push(["", { content: `DA${daStr}`, colSpan: 10, styles: { halign: 'left', fontStyle: 'bold' } }, days, da.toFixed(2), da.toFixed(2), isFirst?getVal('bill-purpose'):""]);
             return;
         }
-        const dateRaw = row.querySelector('input[type="date"]').value;
+        const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
+        const dateRaw = dateInput ? dateInput.value : '';
         const date = formatDate(dateRaw);
-        const timeInputs = row.querySelectorAll('input[type="time"]');
-        const fTime = timeInputs[0] ? timeInputs[0].value : "";
-        const tTime = timeInputs[1] ? timeInputs[1].value : "";
+        const depTimeIn = row.querySelector('.dep-time-input') || row.querySelectorAll('input[type="time"]')[0];
+        const arrTimeIn = row.querySelector('.arr-time-input') || row.querySelectorAll('input[type="time"]')[1];
+        const fTime = depTimeIn ? depTimeIn.value : "";
+        const tTime = arrTimeIn ? arrTimeIn.value : "";
         const dateTime = (fTime || tTime) ? `${date}\n${formatTime12H(fTime)}-${formatTime12H(tTime)}` : date;
 
-        const stationInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-        const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 28);
-        const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 28);
+        const fromIn = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+        const toIn = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
+        const from = truncateStation(fromIn ? fromIn.value : "", 28);
+        const to = truncateStation(toIn ? toIn.value : "", 28);
         const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
         const kmIn = row.querySelector('input[data-field="km"]');
         const fareIn = row.querySelector('input[data-field="fare"]');
@@ -312,8 +316,9 @@ function generatePDF() {
     const journeyRows = document.querySelectorAll('#journey-body .journey-card');
     for (let i = journeyRows.length - 1; i >= 0; i--) {
         const row = journeyRows[i];
-        if (row.dataset.type !== "DA") {
-            const dateInput = row.querySelector('input[type="date"]');
+        const rowType = row.getAttribute('data-type') || row.dataset.type;
+        if (rowType !== "DA") {
+            const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
             if (dateInput && dateInput.value) {
                 const p = dateInput.value.split('-');
                 if (p.length === 3) {
@@ -544,8 +549,9 @@ function generateHTMLBill(autoPrint = false) {
     const journeyRows = document.querySelectorAll('#journey-body .journey-card');
     for (let i = journeyRows.length - 1; i >= 0; i--) {
         const row = journeyRows[i];
-        if (row.dataset.type !== "DA") {
-            const dateInput = row.querySelector('input[type="date"]');
+        const rowType = row.getAttribute('data-type') || row.dataset.type;
+        if (rowType !== "DA") {
+            const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
             if (dateInput && dateInput.value) {
                 const p = dateInput.value.split('-');
                 if (p.length === 3) {
@@ -595,26 +601,30 @@ function generateHTMLBill(autoPrint = false) {
     const rows = document.querySelectorAll('#journey-body .journey-card');
     rows.forEach((row, idx) => {
         const isFirst = (idx === 0);
-        if (row.dataset.type === "DA") {
+        const rowType = row.getAttribute('data-type') || row.dataset.type;
+        if (rowType === "DA") {
             flushLimHtml(isFirst);
             const daIn = row.querySelector('input[data-field="da"]');
             const da = parseFloat(daIn ? daIn.value : 0) || 0;
             totalClaim += da;
-            const days = row.dataset.days;
+            const days = row.getAttribute('data-days') || row.dataset.days;
             const rate = da > 0 ? da / days : 0;
             const daStr = da > 0 ? `<br><span class="font-normal" style="font-size:9px">${rate} X ${days} Days = ${da}</span>` : "";
             htmlRows.push(`<tr><td></td><td colspan="10" class="text-left font-bold" style="padding-left:5px;">DA${daStr}</td><td class="text-center">${days}</td><td class="text-right">${da.toFixed(2)}</td><td class="text-right font-bold">${da.toFixed(2)}</td>${isFirst?`<td rowspan="@@ROWSPAN@@" style="position:relative;padding:0;"><div id="html-purpose-container" style="position:absolute;top:2px;bottom:2px;left:2px;right:2px;overflow:hidden;display:flex;align-items:center;justify-content:center;"><div id="html-purpose-text" style="font-size:10px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;max-height:100%;word-wrap:break-word;">${getVal('bill-purpose')}</div></div></td>`:""}</tr>`);
             return;
         }
-        const dateRaw = row.querySelector('input[type="date"]').value;
+        const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
+        const dateRaw = dateInput ? dateInput.value : '';
         const date = fixDate(dateRaw);
-        const timeInputs = row.querySelectorAll('input[type="time"]');
-        const fTime = timeInputs[0] ? timeInputs[0].value : "";
-        const tTime = timeInputs[1] ? timeInputs[1].value : "";
+        const depTimeIn = row.querySelector('.dep-time-input') || row.querySelectorAll('input[type="time"]')[0];
+        const arrTimeIn = row.querySelector('.arr-time-input') || row.querySelectorAll('input[type="time"]')[1];
+        const fTime = depTimeIn ? depTimeIn.value : "";
+        const tTime = arrTimeIn ? arrTimeIn.value : "";
         const dateTime = (fTime || tTime) ? `${date}<br><span style="font-size:8px">${formatTime12H(fTime)} - ${formatTime12H(tTime)}</span>` : date;
-        const stationInputs = row.querySelectorAll('input[type="text"][list="stations"]');
-        const from = truncateStation(stationInputs[0] ? stationInputs[0].value : "", 30);
-        const to = truncateStation(stationInputs[1] ? stationInputs[1].value : "", 30);
+        const fromIn = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
+        const toIn = row.querySelector('.to-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[1];
+        const from = truncateStation(fromIn ? fromIn.value : "", 30);
+        const to = truncateStation(toIn ? toIn.value : "", 30);
         const mode = row.querySelector('select') ? row.querySelector('select').value : 'Special';
         const kmIn = row.querySelector('input[data-field="km"]');
         const fareIn = row.querySelector('input[data-field="fare"]');
