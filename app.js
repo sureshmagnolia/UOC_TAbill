@@ -1008,20 +1008,28 @@ window.generatePdfFromAndroid = async function(profileJson, journeyJson) {
 };
 
 // GPS Editor Logic
+let isGpsEditorSetup = false;
 function openGpsEditor() {
     document.getElementById('gps-modal').classList.remove('hidden');
     document.getElementById('gps-success-msg').classList.add('hidden');
     
+    if (!isGpsEditorSetup) {
+        setupGpsEditorAutocomplete();
+        isGpsEditorSetup = true;
+    }
+
     const searchInput = document.getElementById('gps-search');
-    const dropdown = document.getElementById('gps-search-dropdown');
-    
-    // Quick populate if quick-from has a value
     const quickFrom = document.getElementById('quick-from');
     if (quickFrom && quickFrom.dataset.abbr && !searchInput.value) {
         searchInput.value = quickFrom.value;
         document.getElementById('gps-abbr').value = quickFrom.dataset.abbr;
         loadGpsForAbbr(quickFrom.dataset.abbr);
     }
+}
+
+function setupGpsEditorAutocomplete() {
+    const searchInput = document.getElementById('gps-search');
+    const dropdown = document.getElementById('gps-search-dropdown');
     
     searchInput.addEventListener('input', () => {
         document.getElementById('gps-abbr').value = '';
