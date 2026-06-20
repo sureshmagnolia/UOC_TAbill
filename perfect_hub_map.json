@@ -708,7 +708,7 @@
     "km_to_station": 29.5
   },
   "KNFJ": {
-    "nearest_station": "Pattambi Railway Stn",
+    "nearest_station": "Pattambi Railway Station",
     "km_to_station": 1.5
   },
   "KPAT": {
@@ -748,7 +748,7 @@
     "km_to_station": 14.5
   },
   "LCOA": {
-    "nearest_station": "Pattambi Railway Stn",
+    "nearest_station": "Pattambi Railway Station",
     "km_to_station": 1.5
   },
   "LCOM": {
@@ -860,7 +860,7 @@
     "km_to_station": 8
   },
   "MCY": {
-    "nearest_station": "Palakkad Jn Railway",
+    "nearest_station": "Palakkad Railway Station",
     "km_to_station": "5.5"
   },
   "MDCP": {
@@ -1076,7 +1076,7 @@
     "km_to_station": 58.5
   },
   "OTP": {
-    "nearest_station": "Ottappalam Railway Stn",
+    "nearest_station": "Ottappalam Railway Station",
     "km_to_station": "2.5"
   },
   "PAAS": {
@@ -1148,7 +1148,7 @@
     "km_to_station": 105
   },
   "PRK": {
-    "nearest_station": "Palakkad Jn Railway",
+    "nearest_station": "Palakkad Railway Station",
     "km_to_station": "14.5"
   },
   "PSMO": {
@@ -1432,7 +1432,7 @@
     "km_to_station": 6
   },
   "SNGS": {
-    "nearest_station": "Pattambi Railway Stn",
+    "nearest_station": "Pattambi Railway Station",
     "km_to_station": "1.5"
   },
   "SODA": {
@@ -1588,7 +1588,7 @@
     "km_to_station": 14.2
   },
   "UOC": {
-    "nearest_station": "Parappanangadi Stn",
+    "nearest_station": "Parappanangadi Railway Station",
     "km_to_station": "12.0"
   },
   "UOYE": {
@@ -1616,7 +1616,7 @@
     "km_to_station": 52
   },
   "VIC": {
-    "nearest_station": "Palakkad Jn Railway",
+    "nearest_station": "Palakkad Railway Station",
     "km_to_station": "4.5"
   },
   "VKHM": {
