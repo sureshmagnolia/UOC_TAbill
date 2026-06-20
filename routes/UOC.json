@@ -131,20 +131,6 @@
       "Mode": "Taxi",
       "KM": "5.5",
       "Type": "Last_Mile"
-    },
-    {
-      "From": "Palakkad Jn Railway",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Hub_Connect"
-    },
-    {
-      "From": "Palakkad KSRTC Stand",
-      "To": "Mercy College Palakkad",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "Last_Mile"
     }
   ],
   "UOC_MKD": [

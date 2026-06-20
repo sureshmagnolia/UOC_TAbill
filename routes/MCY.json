@@ -211,35 +211,6 @@
       "Type": "First_Mile"
     },
     {
-      "From": "Mercy College Palakkad",
-      "To": "Palakkad KSRTC Stand",
-      "Mode": "Taxi",
-      "KM": "3.5",
-      "Type": "First_Mile"
-    },
-    {
-      "From": "Palakkad Jn Railway",
-      "To": "Parappanangadi Stn",
-      "Mode": "Train",
-      "KM": "105.0",
-      "Type": "Main_Haul",
-      "Fare": 750
-    },
-    {
-      "From": "Palakkad KSRTC Stand",
-      "To": "Palakkad Jn Railway",
-      "Mode": "Taxi",
-      "KM": "2.0",
-      "Type": "Hub_Connect"
-    },
-    {
-      "From": "Parappanangadi Stn",
-      "To": "University of Calicut",
-      "Mode": "Bus",
-      "KM": "12.0",
-      "Type": "Last_Mile"
-    },
-    {
       "From": "Palakkad Jn Railway",
       "To": "Parappanangadi Stn",
       "Mode": "Train",
