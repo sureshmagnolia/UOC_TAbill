@@ -190,25 +190,15 @@ function getSelectedGrade() {
     return appSettings.grades.find(g => g.id === gradeId) || appSettings.grades[appSettings.grades.length - 1];
 }
 
-// OSRM API Logic
-async function fetchOSRM(fromLon, fromLat, toLon, toLat) {
-    const url = `https://router.project-osrm.org/route/v1/driving/${fromLon},${fromLat};${toLon},${toLat}?overview=false`;
-    for(let i=0; i<3; i++) {
-        try {
-            const res = await fetch(url);
-            if(res.ok) {
-                const data = await res.json();
-                if(data.routes && data.routes.length > 0) {
-                    return parseFloat((data.routes[0].distance / 1000).toFixed(1));
-                }
-            }
-            if(res.status === 429) {
-                await new Promise(r => setTimeout(r, 1000 + Math.random()*1000));
-                continue;
-            }
-        } catch(e) { console.error("OSRM Error", e); }
-    }
-    return 0; // fallback
+function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
 }
 
 // Initialize App
@@ -464,7 +454,8 @@ async function generateQuickJourney() {
         const toName = getFullCollegeName(toAbbr);
 
         if (fromGeo && toGeo) {
-            totalKm = await fetchOSRM(fromGeo.lon, fromGeo.lat, toGeo.lon, toGeo.lat);
+            const direct = haversineDistance(fromGeo.lat, fromGeo.lon, toGeo.lat, toGeo.lon);
+            totalKm = parseFloat((direct * 1.3).toFixed(1));
         } else {
             totalKm = 20; 
         }

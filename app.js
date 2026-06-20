@@ -2,6 +2,7 @@
 
 let taDatabase = { abbreviations: [], routes: [] };
 let appSettings = {};
+let customGeocodes = {};
 let _dbReadyResolve = null;
 const dbReadyPromise = new Promise(resolve => { _dbReadyResolve = resolve; });
 
@@ -189,79 +190,48 @@ function getSelectedGrade() {
     return appSettings.grades.find(g => g.id === gradeId) || appSettings.grades[appSettings.grades.length - 1];
 }
 
-// Route cache: stores pre-flattened { routeId: [legObj,...] } per source college
-const _routeCache = {};
-
-/**
- * Lazy-loads routes for a given source college abbreviation.
- * Returns an array of flat route objects: { Route_ID, From, To, Mode, KM, ... }
- * Caches results so the file is only fetched once per session.
- */
-async function loadRoutesFor(fromAbbr) {
-    if (_routeCache[fromAbbr]) return _routeCache[fromAbbr];
-    try {
-        const routeMap = await new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `routes/${fromAbbr}.json?v=${Date.now()}`, true);
-            xhr.onload = function() {
-                if (xhr.status === 200 || xhr.status === 0) {
-                    try { resolve(JSON.parse(xhr.responseText)); }
-                    catch(e) { reject(e); }
-                } else { reject(new Error('XHR ' + xhr.status)); }
-            };
-            xhr.onerror = () => reject(new Error('XHR network error'));
-            xhr.send();
-        });
-        // Flatten into array for compatibility with existing generateQuickJourney
-        const flat = [];
-        Object.keys(routeMap).forEach(routeId => {
-            routeMap[routeId].forEach((leg, idx) => {
-                flat.push({ Route_ID: routeId, Step: String(idx + 1), ...leg });
-            });
-        });
-        _routeCache[fromAbbr] = flat;
-        return flat;
-    } catch(e) {
-        console.error('Failed to load routes for', fromAbbr, e);
-        return [];
-    }
+function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
 }
 
 // Initialize App
 async function init() {
     try {
-        // Load abbreviations only (~60KB) — routes are lazy-loaded per college
-        const abbrevs = await new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `ta_abbrevs.json?v=${Date.now()}`, true);
-            xhr.onload = function() {
-                if (xhr.status === 200 || xhr.status === 0) {
-                    try { resolve(JSON.parse(xhr.responseText)); }
-                    catch(e) { reject(e); }
-                } else { reject(new Error('XHR ' + xhr.status)); }
-            };
-            xhr.onerror = () => reject(new Error('XHR network error'));
-            xhr.send();
-        });
-        taDatabase.abbreviations = abbrevs;
+        const files = ['ta_abbrevs.json', 'geocodes_osm.json', 'perfect_hub_map.json', 'train_backbone.json'];
+        const responses = await Promise.all(files.map(f => fetch(f + '?v=' + Date.now()).then(r => r.json())));
+        taDatabase.abbreviations = responses[0];
+        taDatabase.geocodes = responses[1];
+        taDatabase.hubMap = responses[2];
+        taDatabase.trainBackbone = responses[3];
+        
         populateCollegeDropdowns();
     } catch (e) {
-        console.error("Failed to load abbreviations", e);
+        console.error("Failed to load databases", e);
     }
-    // Signal ready — routes are loaded on demand
+    
     if (_dbReadyResolve) { _dbReadyResolve(); _dbReadyResolve = null; }
 
     loadSettings();
     setupEventListeners();
 
-    // Set up custom autocomplete for college fields (web only)
     setupCollegeAutocomplete('quick-from');
     setupCollegeAutocomplete('quick-to');
     setupCollegeAutocomplete('prof-college');
 
     const loaded = loadFormState();
 
-    // Default Quick From on startup if empty — show full college name
+    const customGeoStr = localStorage.getItem('custom_geocodes');
+    if (customGeoStr) {
+        try { customGeocodes = JSON.parse(customGeoStr); } catch(e) {}
+    }
+
     const quickFrom = document.getElementById('quick-from');
     const profCollege = document.getElementById('prof-college');
     if (quickFrom && profCollege && !quickFrom.value && profCollege.value) {
@@ -271,7 +241,6 @@ async function init() {
         quickFrom.dataset.abbr = abbr;
     }
 
-    // Sync clear-button visibility after state is restored
     ['quick-from', 'quick-to', 'prof-college'].forEach(id => {
         const inp = document.getElementById(id);
         const btn = document.getElementById(id + '-clear');
@@ -305,24 +274,18 @@ function populateCollegeDropdowns() {
     });
 }
 
-/**
- * Custom autocomplete for college search fields.
- * Dropdown appears only after 3+ characters are typed.
- */
 function setupCollegeAutocomplete(inputId) {
     const input = document.getElementById(inputId);
     const clearBtn = document.getElementById(inputId + '-clear');
     const dropdown = document.getElementById(inputId + '-dropdown');
     if (!input || !dropdown) return;
 
-    // Sync clear-button visibility with current value
     const syncClear = () => {
         if (clearBtn) clearBtn.classList.toggle('hidden', !input.value);
     };
     syncClear();
 
     input.addEventListener('input', () => {
-        // When user types, clear any previously selected abbreviation
         delete input.dataset.abbr;
         syncClear();
         const val = input.value.trim();
@@ -352,24 +315,21 @@ function setupCollegeAutocomplete(inputId) {
         dropdown.classList.remove('hidden');
     });
 
-    // Select item from dropdown — show full name, store abbreviation in data-abbr
     dropdown.addEventListener('mousedown', e => {
         const item = e.target.closest('[data-abbr]');
         if (!item) return;
-        e.preventDefault(); // prevent blur before click fires
-        input.value = item.dataset.full || item.dataset.abbr; // display full name
-        input.dataset.abbr = item.dataset.abbr;               // store abbr for routing
+        e.preventDefault();
+        input.value = item.dataset.full || item.dataset.abbr;
+        input.dataset.abbr = item.dataset.abbr;
         syncClear();
         dropdown.classList.add('hidden');
         saveFormState();
     });
 
-    // Clear button
     if (clearBtn) {
         clearBtn.addEventListener('click', () => clearCollegeField(inputId));
     }
 
-    // Close on outside click
     document.addEventListener('click', e => {
         const wrap = document.getElementById(inputId + '-wrap');
         if (wrap && !wrap.contains(e.target)) {
@@ -407,7 +367,6 @@ function resolveAbbreviation(val) {
 async function generateQuickJourney() {
     const fromEl = document.getElementById('quick-from');
     const toEl   = document.getElementById('quick-to');
-    // Use stored abbreviation if available (custom autocomplete), else resolve from name
     const fromAbbr = (fromEl.dataset.abbr || resolveAbbreviation(fromEl.value)).trim();
     const toAbbr   = (toEl.dataset.abbr   || resolveAbbreviation(toEl.value)).trim();
     const onwardDate = document.getElementById('quick-date-onward').value;
@@ -420,17 +379,20 @@ async function generateQuickJourney() {
     }
     
     const tbody = document.getElementById('journey-body');
-    tbody.innerHTML = ""; // Clear existing
+    tbody.innerHTML = "";
+    
+    // Show loading text
+    const loadingRow = document.createElement('tr');
+    loadingRow.innerHTML = `<td colspan="6" class="p-4 text-center text-gray-500">Loading live map routes (OSRM)...</td>`;
+    tbody.appendChild(loadingRow);
     
     const addTimedSteps = (steps, date, startTime, isLimitedTrip = false) => {
         let currentTime = new Date(`${date}T${startTime}`);
-        
         steps.forEach((step, idx) => {
             addJourneyRow();
             const row = tbody.lastElementChild;
             const km = parseFloat(step.KM) || 0;
             const mode = step.Mode === 'Taxi' || step.Mode === 'Special' ? 'Special' : (step.Mode === 'Train' ? 'Rail' : step.Mode);
-            
             const speed = (mode === 'Rail') ? 60 : 40;
             const durationMin = Math.max(15, Math.round((km / speed) * 60));
             
@@ -445,11 +407,9 @@ async function generateQuickJourney() {
             
             const abridgeName = (name) => {
                 if (!name || name.length <= 45) return name;
-                // Split on spaces AND commas so e.g. "(UN-AIDED),MEENANGADI,WYNAD" = 3 words
                 const words = name.split(/[\s,]+/).filter(Boolean);
                 if (words.length <= 4) return name.substring(0, 42) + '...';
-                const lastWord = words[words.length - 1];
-                return words.slice(0, 2).join(' ') + ' ... ' + lastWord;
+                return words.slice(0, 2).join(' ') + ' ... ' + words[words.length - 1];
             };
             
             const dateInput = row.querySelector('.journey-date-input') || row.querySelector('input[type="date"]');
@@ -464,8 +424,8 @@ async function generateQuickJourney() {
             if (toIn) toIn.value = abridgeName(step.To);
             if (row.querySelector('select')) row.querySelector('select').value = mode;
             const numInputs = row.querySelectorAll('input[type="number"]');
-            if (numInputs[0]) numInputs[0].value = step.KM; // KM
-            if (numInputs[1]) { // Fare
+            if (numInputs[0]) numInputs[0].value = step.KM;
+            if (numInputs[1]) {
                 if (step.Fare) {
                     numInputs[1].value = step.Fare;
                     numInputs[1].dataset.auto = "false";
@@ -476,50 +436,71 @@ async function generateQuickJourney() {
             if (isLimitedTrip && row.querySelector('.limit-check')) {
                 row.querySelector('.limit-check').checked = true;
             }
-
             calculateRowFare(row);
-
-            // Add buffer for next segment
             currentTime.setMinutes(currentTime.getMinutes() + (idx < steps.length - 1 ? 10 : 0));
         });
     };
 
-    // 1. If From and To are the same college, skip route lookup — generate DA only
-    //    (prevents self-route entries like CTR_CTR from appearing as journey legs)
     const sameCollege = fromAbbr === toAbbr;
+    let onwardSteps = [];
+    let isLimitedTrip = false;
+    let totalKm = 0;
 
-    // 2. Load routes for source college (lazy, cached) — only if needed
-    const fromRoutes = sameCollege ? [] : await loadRoutesFor(fromAbbr);
+    if (!sameCollege) {
+        const fromGeo = customGeocodes[fromAbbr] || taDatabase.geocodes.find(g => g.abbr === fromAbbr);
+        const toGeo = customGeocodes[toAbbr] || taDatabase.geocodes.find(g => g.abbr === toAbbr);
+        
+        const fromName = getFullCollegeName(fromAbbr);
+        const toName = getFullCollegeName(toAbbr);
 
-    // 3. Onward
-    const onwardRouteId = `${fromAbbr}_${toAbbr}`;
-    let onwardSteps = sameCollege ? [] : fromRoutes.filter(r => r.Route_ID === onwardRouteId);
-    let totalKm = onwardSteps.reduce((sum, step) => sum + parseFloat(step.KM || 0), 0);
-    let isLimitedTrip = totalKm > 0 && totalKm <= 8;
+        if (fromGeo && toGeo) {
+            const direct = haversineDistance(fromGeo.lat, fromGeo.lon, toGeo.lat, toGeo.lon);
+            totalKm = parseFloat((direct * 1.3).toFixed(1));
+        } else {
+            totalKm = 20; 
+        }
+        
+        isLimitedTrip = totalKm > 0 && totalKm <= 8;
 
-    // Rule: Rail travel is only permissible if total journey distance > 50 km.
-    // If the route has Rail steps but total KM ≤ 50, collapse the entire multi-step
-    // route into a single direct Bus step (origin college → destination college).
-    // This avoids awkward entries like "Ottappalam Rly Stn → Palakkad Jn : Bus".
-    const RAIL_MIN_KM = 50;
-    const hasRailStep = onwardSteps.some(s => s.Mode === 'Train' || s.Mode === 'Rail');
-    if (hasRailStep && totalKm <= RAIL_MIN_KM) {
-        const originName  = onwardSteps[0].From;
-        const destName    = onwardSteps[onwardSteps.length - 1].To;
-        onwardSteps = [{
-            Route_ID: onwardRouteId,
-            From: originName,
-            To:   destName,
-            Mode: 'Bus',
-            KM:   totalKm
-        }];
+        const RAIL_MIN_KM = 50;
+        
+        if (totalKm > RAIL_MIN_KM && taDatabase.hubMap[fromAbbr] && taDatabase.hubMap[toAbbr]) {
+            const stationA = taDatabase.hubMap[fromAbbr].nearest_station;
+            const kmA = taDatabase.hubMap[fromAbbr].km_to_station;
+            const stationB = taDatabase.hubMap[toAbbr].nearest_station;
+            const kmB = taDatabase.hubMap[toAbbr].km_to_station;
+
+            if (stationA !== stationB) {
+                const trainKey1 = `${stationA}|${stationB}`;
+                const trainKey2 = `${stationB}|${stationA}`;
+                let trainHop = taDatabase.trainBackbone[trainKey1];
+                if (!trainHop && taDatabase.trainBackbone[trainKey2]) {
+                     trainHop = { ...taDatabase.trainBackbone[trainKey2], From: stationA, To: stationB };
+                }
+
+                if (trainHop) {
+                    onwardSteps = [
+                        { From: fromName, To: stationA, Mode: 'Bus', KM: kmA },
+                        trainHop,
+                        { From: stationB, To: toName, Mode: 'Bus', KM: kmB }
+                    ];
+                } else {
+                    onwardSteps = [{ From: fromName, To: toName, Mode: 'Bus', KM: totalKm }];
+                }
+            } else {
+                onwardSteps = [{ From: fromName, To: toName, Mode: 'Bus', KM: totalKm }];
+            }
+        } else {
+            onwardSteps = [{ From: fromName, To: toName, Mode: 'Bus', KM: totalKm }];
+        }
     }
+
+    tbody.innerHTML = "";
 
     if (onwardSteps.length > 0) {
         addTimedSteps(onwardSteps, onwardDate, onwardStartTime, isLimitedTrip);
     }
 
-    // 4. Return — simply reverse the onward steps to guarantee exact symmetry
     if (returnDate && returnStartTime && onwardSteps.length > 0) {
         const returnSteps = [...onwardSteps].reverse().map(s => ({
             ...s,
@@ -529,7 +510,6 @@ async function generateQuickJourney() {
         addTimedSteps(returnSteps, returnDate, returnStartTime, isLimitedTrip);
     }
 
-    // 5. Auto-Calculate DA
     const d1 = new Date(onwardDate);
     const d2 = returnDate ? new Date(returnDate) : d1;
     const days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24)) + 1;
@@ -562,11 +542,11 @@ async function generateQuickJourney() {
         const kmIn = daRow.querySelector('input[data-field="km"]');
         const fareIn = daRow.querySelector('input[data-field="fare"]');
         const daIn = daRow.querySelector('input[data-field="da"]');
-        if (kmIn) kmIn.style.display = 'none'; // KM
-        if (fareIn) fareIn.style.display = 'none'; // Fare
+        if (kmIn) kmIn.style.display = 'none';
+        if (fareIn) fareIn.style.display = 'none';
         const grade = getSelectedGrade();
         const daRate = grade ? grade.daInside : 600;
-        if (daIn) daIn.value = days * daRate; // DA
+        if (daIn) daIn.value = days * daRate;
         daRow.dataset.days = days;
     }
     
@@ -1035,3 +1015,135 @@ window.generatePdfFromAndroid = async function(profileJson, journeyJson) {
         }
     }
 };
+
+// GPS Editor Logic
+let isGpsEditorSetup = false;
+function openGpsEditor() {
+    document.getElementById('gps-modal').classList.remove('hidden');
+    document.getElementById('gps-success-msg').classList.add('hidden');
+    
+    if (!isGpsEditorSetup) {
+        setupGpsEditorAutocomplete();
+        isGpsEditorSetup = true;
+    }
+
+    const searchInput = document.getElementById('gps-search');
+    const quickFrom = document.getElementById('quick-from');
+    if (quickFrom && quickFrom.dataset.abbr && !searchInput.value) {
+        searchInput.value = quickFrom.value;
+        document.getElementById('gps-abbr').value = quickFrom.dataset.abbr;
+        loadGpsForAbbr(quickFrom.dataset.abbr);
+    }
+}
+
+function setupGpsEditorAutocomplete() {
+    const searchInput = document.getElementById('gps-search');
+    const dropdown = document.getElementById('gps-search-dropdown');
+    
+    searchInput.addEventListener('input', () => {
+        document.getElementById('gps-abbr').value = '';
+        document.getElementById('gps-lat').value = '';
+        document.getElementById('gps-lon').value = '';
+        document.getElementById('gps-success-msg').classList.add('hidden');
+        
+        const val = searchInput.value.trim();
+        if (val.length < 3) {
+            dropdown.classList.add('hidden');
+            dropdown.innerHTML = '';
+            return;
+        }
+        
+        const lower = val.toLowerCase();
+        const matches = taDatabase.abbreviations.filter(a =>
+            (a['Full College Name & Location'] || '').toLowerCase().includes(lower) ||
+            (a.Abbreviation || '').toLowerCase().includes(lower)
+        ).slice(0, 25);
+
+        if (matches.length === 0) {
+            dropdown.innerHTML = '<div class="px-3 py-2 text-xs text-gray-400">No matches found</div>';
+        } else {
+            dropdown.innerHTML = matches.map(m => {
+                const abb = (m.Abbreviation || '').replace(/"/g, '&quot;');
+                const full = (m['Full College Name & Location'] || '').replace(/"/g, '&quot;');
+                return `<div class="px-3 py-2 cursor-pointer hover:bg-blue-50 border-b border-gray-100 last:border-0 flex gap-2 items-start" data-abbr="${abb}" data-full="${full}">
+                    <span class="font-semibold text-blue-800 text-xs shrink-0 mt-0.5">${m.Abbreviation}</span>
+                    <span class="text-gray-600 text-[11px] leading-snug">${m['Full College Name & Location']}</span>
+                </div>`;
+            }).join('');
+        }
+        dropdown.classList.remove('hidden');
+    });
+
+    dropdown.addEventListener('mousedown', e => {
+        const item = e.target.closest('[data-abbr]');
+        if (!item) return;
+        e.preventDefault();
+        searchInput.value = item.dataset.full || item.dataset.abbr;
+        document.getElementById('gps-abbr').value = item.dataset.abbr;
+        dropdown.classList.add('hidden');
+        loadGpsForAbbr(item.dataset.abbr);
+    });
+
+    document.addEventListener('click', e => {
+        const wrap = document.getElementById('gps-search-wrap');
+        if (wrap && !wrap.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+}
+
+function loadGpsForAbbr(abbr) {
+    let geo = customGeocodes[abbr];
+    if (!geo) {
+        geo = taDatabase.geocodes.find(g => g.abbr === abbr);
+    }
+    if (geo) {
+        document.getElementById('gps-lat').value = geo.lat;
+        document.getElementById('gps-lon').value = geo.lon;
+    } else {
+        document.getElementById('gps-lat').value = '';
+        document.getElementById('gps-lon').value = '';
+    }
+}
+
+function closeGpsEditor() {
+    document.getElementById('gps-modal').classList.add('hidden');
+}
+
+function saveGpsOverride() {
+    const abbr = document.getElementById('gps-abbr').value;
+    const lat = document.getElementById('gps-lat').value;
+    const lon = document.getElementById('gps-lon').value;
+    
+    if (!abbr) return alert("Select a college first");
+    if (!lat || !lon) return alert("Enter valid latitude and longitude");
+    
+    customGeocodes[abbr] = { lat: parseFloat(lat), lon: parseFloat(lon) };
+    localStorage.setItem('custom_geocodes', JSON.stringify(customGeocodes));
+    
+    const msg = document.getElementById('gps-success-msg');
+    msg.classList.remove('hidden');
+    setTimeout(() => msg.classList.add('hidden'), 3000);
+}
+
+function resetGps() {
+    const abbr = document.getElementById('gps-abbr').value;
+    if (!abbr) return;
+    
+    if (confirm("Reset GPS to system default for this college?")) {
+        delete customGeocodes[abbr];
+        localStorage.setItem('custom_geocodes', JSON.stringify(customGeocodes));
+        loadGpsForAbbr(abbr);
+        const msg = document.getElementById('gps-success-msg');
+        msg.textContent = "Reset to default!";
+        msg.classList.remove('text-green-600');
+        msg.classList.add('text-blue-600');
+        msg.classList.remove('hidden');
+        setTimeout(() => {
+            msg.classList.add('hidden');
+            msg.textContent = "Saved successfully!";
+            msg.classList.add('text-green-600');
+            msg.classList.remove('text-blue-600');
+        }, 3000);
+    }
+}
