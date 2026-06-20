@@ -1,0 +1,458 @@
+{
+  "Kozhikode Railway Station|Palakkad Railway Station": {
+    "From": "Kozhikode Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 137
+  },
+  "Kozhikode Railway Station|Thrissur Railway Station": {
+    "From": "Kozhikode Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 125
+  },
+  "Kozhikode Railway Station|Shoranur Railway Station": {
+    "From": "Kozhikode Railway Station",
+    "To": "Shoranur Railway Station",
+    "Mode": "Train",
+    "KM": 92
+  },
+  "Kozhikode Railway Station|Kuttippuram Railway Station": {
+    "From": "Kozhikode Railway Station",
+    "To": "Kuttippuram Railway Station",
+    "Mode": "Train",
+    "KM": 56
+  },
+  "Kozhikode Railway Station|Pattambi Railway Stn": {
+    "From": "Kozhikode Railway Station",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": 63
+  },
+  "Vadakara Railway Station|Palakkad Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 183
+  },
+  "Vadakara Railway Station|Thrissur Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 171
+  },
+  "Vadakara Railway Station|Shoranur Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Shoranur Railway Station",
+    "Mode": "Train",
+    "KM": 138
+  },
+  "Vadakara Railway Station|Parappanangadi Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Parappanangadi Railway Station",
+    "Mode": "Train",
+    "KM": 71
+  },
+  "Vadakara Railway Station|Tirur Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Tirur Railway Station",
+    "Mode": "Train",
+    "KM": 87
+  },
+  "Vadakara Railway Station|Kuttippuram Railway Station": {
+    "From": "Vadakara Railway Station",
+    "To": "Kuttippuram Railway Station",
+    "Mode": "Train",
+    "KM": 102
+  },
+  "Vadakara Railway Station|Pattambi Railway Stn": {
+    "From": "Vadakara Railway Station",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": 109
+  },
+  "Kuttippuram Railway Station|Palakkad Railway Station": {
+    "From": "Kuttippuram Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 81
+  },
+  "Kuttippuram Railway Station|Thrissur Railway Station": {
+    "From": "Kuttippuram Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 69
+  },
+  "Kuttippuram Railway Station|Vadakara Railway Station": {
+    "From": "Kuttippuram Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 102
+  },
+  "Kuttippuram Railway Station|Kozhikode Railway Station": {
+    "From": "Kuttippuram Railway Station",
+    "To": "Kozhikode Railway Station",
+    "Mode": "Train",
+    "KM": 56
+  },
+  "Parappanangadi Railway Station|Palakkad Railway Station": {
+    "From": "Parappanangadi Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 112
+  },
+  "Parappanangadi Railway Station|Thrissur Railway Station": {
+    "From": "Parappanangadi Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 100
+  },
+  "Parappanangadi Railway Station|Shoranur Railway Station": {
+    "From": "Parappanangadi Railway Station",
+    "To": "Shoranur Railway Station",
+    "Mode": "Train",
+    "KM": 67
+  },
+  "Parappanangadi Railway Station|Vadakara Railway Station": {
+    "From": "Parappanangadi Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 71
+  },
+  "Parappanangadi Railway Station|Pattambi Railway Stn": {
+    "From": "Parappanangadi Railway Station",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": 38
+  },
+  "Tirur Railway Station|Palakkad Railway Station": {
+    "From": "Tirur Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 96
+  },
+  "Tirur Railway Station|Thrissur Railway Station": {
+    "From": "Tirur Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 84
+  },
+  "Tirur Railway Station|Shoranur Railway Station": {
+    "From": "Tirur Railway Station",
+    "To": "Shoranur Railway Station",
+    "Mode": "Train",
+    "KM": 51
+  },
+  "Tirur Railway Station|Vadakara Railway Station": {
+    "From": "Tirur Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 87
+  },
+  "Tirur Railway Station|Pattambi Railway Stn": {
+    "From": "Tirur Railway Station",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": 22
+  },
+  "Shoranur Railway Station|Parappanangadi Railway Station": {
+    "From": "Shoranur Railway Station",
+    "To": "Parappanangadi Railway Station",
+    "Mode": "Train",
+    "KM": 67
+  },
+  "Shoranur Railway Station|Vadakara Railway Station": {
+    "From": "Shoranur Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 138
+  },
+  "Shoranur Railway Station|Kozhikode Railway Station": {
+    "From": "Shoranur Railway Station",
+    "To": "Kozhikode Railway Station",
+    "Mode": "Train",
+    "KM": 92
+  },
+  "Shoranur Railway Station|Tirur Railway Station": {
+    "From": "Shoranur Railway Station",
+    "To": "Tirur Railway Station",
+    "Mode": "Train",
+    "KM": 51
+  },
+  "Thrissur Railway Station|Palakkad Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Palakkad Railway Station",
+    "Mode": "Train",
+    "KM": 78
+  },
+  "Thrissur Railway Station|Parappanangadi Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Parappanangadi Railway Station",
+    "Mode": "Train",
+    "KM": 100
+  },
+  "Thrissur Railway Station|Vadakara Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 171
+  },
+  "Thrissur Railway Station|Kozhikode Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Kozhikode Railway Station",
+    "Mode": "Train",
+    "KM": 125
+  },
+  "Thrissur Railway Station|Tirur Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Tirur Railway Station",
+    "Mode": "Train",
+    "KM": 84
+  },
+  "Thrissur Railway Station|Kuttippuram Railway Station": {
+    "From": "Thrissur Railway Station",
+    "To": "Kuttippuram Railway Station",
+    "Mode": "Train",
+    "KM": 69
+  },
+  "Palakkad Railway Station|Thrissur Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Thrissur Railway Station",
+    "Mode": "Train",
+    "KM": 78
+  },
+  "Palakkad Railway Station|Parappanangadi Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Parappanangadi Railway Station",
+    "Mode": "Train",
+    "KM": 112
+  },
+  "Palakkad Railway Station|Vadakara Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 183
+  },
+  "Palakkad Railway Station|Kozhikode Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Kozhikode Railway Station",
+    "Mode": "Train",
+    "KM": 137
+  },
+  "Palakkad Railway Station|Tirur Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Tirur Railway Station",
+    "Mode": "Train",
+    "KM": 96
+  },
+  "Palakkad Railway Station|Kuttippuram Railway Station": {
+    "From": "Palakkad Railway Station",
+    "To": "Kuttippuram Railway Station",
+    "Mode": "Train",
+    "KM": 81
+  },
+  "Thrissur Railway Stn|Guruvayur Railway Stn": {
+    "From": "Thrissur Railway Stn",
+    "To": "Guruvayur Railway Stn",
+    "Mode": "Train",
+    "KM": "23"
+  },
+  "Palakkad Jn Railway|Ottappalam Railway Stn": {
+    "From": "Palakkad Jn Railway",
+    "To": "Ottappalam Railway Stn",
+    "Mode": "Train",
+    "KM": "32.0"
+  },
+  "Thrissur Railway Stn|Parappanangadi Stn": {
+    "From": "Thrissur Railway Stn",
+    "To": "Parappanangadi Stn",
+    "Mode": "Train",
+    "KM": "80.0"
+  },
+  "Palakkad Jn Railway|Pattambi Railway Stn": {
+    "From": "Palakkad Jn Railway",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": "55.0"
+  },
+  "Thrissur Railway Stn|Palakkad Jn Railway": {
+    "From": "Thrissur Railway Stn",
+    "To": "Palakkad Jn Railway",
+    "Mode": "Train",
+    "KM": "74.0"
+  },
+  "Thrissur Railway Stn|Ottappalam Railway Stn": {
+    "From": "Thrissur Railway Stn",
+    "To": "Ottappalam Railway Stn",
+    "Mode": "Train",
+    "KM": "33.0"
+  },
+  "Thrissur Railway Stn|Pattambi Railway Stn": {
+    "From": "Thrissur Railway Stn",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": "44.0"
+  },
+  "Palakkad Jn Railway|Thrissur Railway Stn": {
+    "From": "Palakkad Jn Railway",
+    "To": "Thrissur Railway Stn",
+    "Mode": "Train",
+    "KM": "74.0"
+  },
+  "Palakkad Jn Railway|Parappanangadi Stn": {
+    "From": "Palakkad Jn Railway",
+    "To": "Parappanangadi Stn",
+    "Mode": "Train",
+    "KM": "105.0"
+  },
+  "Pattambi Railway Stn|Parappanangadi Railway Station": {
+    "From": "Pattambi Railway Stn",
+    "To": "Parappanangadi Railway Station",
+    "Mode": "Train",
+    "KM": 38
+  },
+  "Pattambi Railway Stn|Vadakara Railway Station": {
+    "From": "Pattambi Railway Stn",
+    "To": "Vadakara Railway Station",
+    "Mode": "Train",
+    "KM": 109
+  },
+  "Pattambi Railway Stn|Kozhikode Railway Station": {
+    "From": "Pattambi Railway Stn",
+    "To": "Kozhikode Railway Station",
+    "Mode": "Train",
+    "KM": 63
+  },
+  "Pattambi Railway Stn|Tirur Railway Station": {
+    "From": "Pattambi Railway Stn",
+    "To": "Tirur Railway Station",
+    "Mode": "Train",
+    "KM": 22
+  },
+  "Guruvayur Railway Stn|Thrissur Railway Stn": {
+    "From": "Guruvayur Railway Stn",
+    "To": "Thrissur Railway Stn",
+    "Mode": "Train",
+    "KM": "23"
+  },
+  "Guruvayur Railway Stn|Palakkad Jn Railway": {
+    "From": "Guruvayur Railway Stn",
+    "To": "Palakkad Jn Railway",
+    "Mode": "Train",
+    "KM": "97"
+  },
+  "Guruvayur Railway Stn|Ottappalam Railway Stn": {
+    "From": "Guruvayur Railway Stn",
+    "To": "Ottappalam Railway Stn",
+    "Mode": "Train",
+    "KM": "45.0"
+  },
+  "Guruvayur Railway Stn|Parappanangadi Stn": {
+    "From": "Guruvayur Railway Stn",
+    "To": "Parappanangadi Stn",
+    "Mode": "Train",
+    "KM": "106"
+  },
+  "Guruvayur Railway Stn|Pattambi Railway Stn": {
+    "From": "Guruvayur Railway Stn",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": "32.0"
+  },
+  "Palakkad Jn Railway|Guruvayur Railway Stn": {
+    "From": "Palakkad Jn Railway",
+    "To": "Guruvayur Railway Stn",
+    "Mode": "Train",
+    "KM": "97"
+  },
+  "Ottappalam Railway Stn|Palakkad Jn Railway": {
+    "From": "Ottappalam Railway Stn",
+    "To": "Palakkad Jn Railway",
+    "Mode": "Train",
+    "KM": "32.0"
+  },
+  "Ottappalam Railway Stn|Thrissur Railway Stn": {
+    "From": "Ottappalam Railway Stn",
+    "To": "Thrissur Railway Stn",
+    "Mode": "Train",
+    "KM": "33.0"
+  },
+  "Ottappalam Railway Stn|Guruvayur Railway Stn": {
+    "From": "Ottappalam Railway Stn",
+    "To": "Guruvayur Railway Stn",
+    "Mode": "Train",
+    "KM": "45.0"
+  },
+  "Ottappalam Railway Stn|Pattambi Railway Stn": {
+    "From": "Ottappalam Railway Stn",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": "18.0"
+  },
+  "Ottappalam Railway Stn|Parappanangadi Stn": {
+    "From": "Ottappalam Railway Stn",
+    "To": "Parappanangadi Stn",
+    "Mode": "Train",
+    "KM": "85.0"
+  },
+  "Pattambi Railway Stn|Ottappalam Railway Stn": {
+    "From": "Pattambi Railway Stn",
+    "To": "Ottappalam Railway Stn",
+    "Mode": "Train",
+    "KM": "18.0"
+  },
+  "Pattambi Railway Stn|Thrissur Railway Stn": {
+    "From": "Pattambi Railway Stn",
+    "To": "Thrissur Railway Stn",
+    "Mode": "Train",
+    "KM": "44.0"
+  },
+  "Pattambi Railway Stn|Parappanangadi Stn": {
+    "From": "Pattambi Railway Stn",
+    "To": "Parappanangadi Stn",
+    "Mode": "Train",
+    "KM": "38.0"
+  },
+  "Pattambi Railway Stn|Palakkad Jn Railway": {
+    "From": "Pattambi Railway Stn",
+    "To": "Palakkad Jn Railway",
+    "Mode": "Train",
+    "KM": "55.0"
+  },
+  "Pattambi Railway Stn|Guruvayur Railway Stn": {
+    "From": "Pattambi Railway Stn",
+    "To": "Guruvayur Railway Stn",
+    "Mode": "Train",
+    "KM": "32.0"
+  },
+  "Parappanangadi Stn|Thrissur Railway Stn": {
+    "From": "Parappanangadi Stn",
+    "To": "Thrissur Railway Stn",
+    "Mode": "Train",
+    "KM": "80.0"
+  },
+  "Parappanangadi Stn|Palakkad Jn Railway": {
+    "From": "Parappanangadi Stn",
+    "To": "Palakkad Jn Railway",
+    "Mode": "Train",
+    "KM": "105.0"
+  },
+  "Parappanangadi Stn|Guruvayur Railway Stn": {
+    "From": "Parappanangadi Stn",
+    "To": "Guruvayur Railway Stn",
+    "Mode": "Train",
+    "KM": "106"
+  },
+  "Parappanangadi Stn|Ottappalam Railway Stn": {
+    "From": "Parappanangadi Stn",
+    "To": "Ottappalam Railway Stn",
+    "Mode": "Train",
+    "KM": "85.0"
+  },
+  "Parappanangadi Stn|Pattambi Railway Stn": {
+    "From": "Parappanangadi Stn",
+    "To": "Pattambi Railway Stn",
+    "Mode": "Train",
+    "KM": "38.0"
+  }
+}

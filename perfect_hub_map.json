@@ -1,0 +1,1754 @@
+{
+  "AAAS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 20.2
+  },
+  "AACN": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18.2
+  },
+  "AACP": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 7.8
+  },
+  "AACT": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 15.8
+  },
+  "AACV": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 8.5
+  },
+  "AAMC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 10.5
+  },
+  "ABCD": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "ACOA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24.5
+  },
+  "ACOE": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 12.5
+  },
+  "ACOS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 12
+  },
+  "ACT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 34.5
+  },
+  "AEUZ": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 18
+  },
+  "AHAA": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 22
+  },
+  "AHMI": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 28.5
+  },
+  "AHPE": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 32.5
+  },
+  "AIAA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 28
+  },
+  "AIAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 31
+  },
+  "AIAT": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32.5
+  },
+  "AIEB": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 12
+  },
+  "AIFT": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 4.2
+  },
+  "AIWA": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 20.2
+  },
+  "AJAA": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 34.2
+  },
+  "ALA": {
+    "nearest_station": "Erattakulam Stop",
+    "km_to_station": "0.5"
+  },
+  "ALOU": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 8
+  },
+  "AOAC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 39.5
+  },
+  "AQYX": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 1
+  },
+  "ASCK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 2.8
+  },
+  "ASCO": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 36.5
+  },
+  "ASM": {
+    "nearest_station": "Kodungallur Stand",
+    "km_to_station": "7.5"
+  },
+  "ASOC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 18.5
+  },
+  "ASOM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 21
+  },
+  "ATCF": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 14.8
+  },
+  "AWCP": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15
+  },
+  "BASC": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 18
+  },
+  "BBTC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24.8
+  },
+  "BCC": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 34.5
+  },
+  "BCOA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 25.4
+  },
+  "BECF": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 26.5
+  },
+  "BFMH": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 14
+  },
+  "BIAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 20.5
+  },
+  "BIAS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 20.5
+  },
+  "BIOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 25
+  },
+  "BKCS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 82.5
+  },
+  "BMSE": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 6
+  },
+  "BNSK": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 2.5
+  },
+  "BRIO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11.5
+  },
+  "BUAC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 28.2
+  },
+  "BVNA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 7.8
+  },
+  "BVNC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 8
+  },
+  "BYAA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 10.2
+  },
+  "CAAS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 5
+  },
+  "CBRK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 4
+  },
+  "CCI": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22.5
+  },
+  "CCM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 34
+  },
+  "CCMW": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 9.5
+  },
+  "CCOA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 84
+  },
+  "CCOG": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 14
+  },
+  "CCOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 3
+  },
+  "CCOS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 18
+  },
+  "CCOT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 8
+  },
+  "CCXH": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 10.5
+  },
+  "CFCS": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 41
+  },
+  "CGAA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 22
+  },
+  "CIOR": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24
+  },
+  "CKRM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 104
+  },
+  "CMGC": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 24.5
+  },
+  "CMGM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 4
+  },
+  "CMKM": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 12.5
+  },
+  "COAS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15.5
+  },
+  "CRCF": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 7
+  },
+  "CTR": {
+    "nearest_station": "Chittur Bus Stand",
+    "km_to_station": "2.0"
+  },
+  "CURC": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 26.5
+  },
+  "DAAS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 22
+  },
+  "DAMC": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 14.2
+  },
+  "DAMG": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 26
+  },
+  "DBCM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 32
+  },
+  "DBCS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 95
+  },
+  "DBJV": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 11
+  },
+  "DCFA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 54
+  },
+  "DCOA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 38
+  },
+  "DIOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 31
+  },
+  "DLGH": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 14
+  },
+  "DMAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 40
+  },
+  "DPIO": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 48
+  },
+  "DPMS": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "DUAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "DUTC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "EAAS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 25
+  },
+  "ECFA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "ECOA": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 16
+  },
+  "EERX": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 26.5
+  },
+  "EFYF": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28.5
+  },
+  "EIOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 7
+  },
+  "EKCC": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 35
+  },
+  "EKUE": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 26
+  },
+  "EMBC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 85
+  },
+  "ETCI": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "ETCM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 30
+  },
+  "EVZE": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 16
+  },
+  "FAAS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 75
+  },
+  "FACD": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 27
+  },
+  "FBCC": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 15
+  },
+  "FCK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11
+  },
+  "FCKE": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 30
+  },
+  "FDJM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 29.5
+  },
+  "FHDX": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 10.5
+  },
+  "FIAQ": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 14.5
+  },
+  "FIEY": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "FIOM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11
+  },
+  "FITC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 66
+  },
+  "FKIA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 32
+  },
+  "FNTR": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 2.5
+  },
+  "FTCF": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11
+  },
+  "FWXK": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 12.2
+  },
+  "GAAS": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 35
+  },
+  "GASC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 78
+  },
+  "GBEQ": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 1.5
+  },
+  "GCC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 15
+  },
+  "GCKK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 38
+  },
+  "GCM": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 26
+  },
+  "GCOA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "GCOP": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 5
+  },
+  "GCOT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 1.5
+  },
+  "GHAA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 22
+  },
+  "GIWF": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 13.5
+  },
+  "GOPO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 52.5
+  },
+  "GVCO": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 18
+  },
+  "HAAS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 22
+  },
+  "HCIO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 3
+  },
+  "HCOA": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 52
+  },
+  "HFCO": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 12
+  },
+  "HGAO": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "HGMW": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 4
+  },
+  "HIKB": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 26.8
+  },
+  "HMCO": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 25
+  },
+  "HPKC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 35
+  },
+  "IAAS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 17
+  },
+  "IASC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "ICFA": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 12
+  },
+  "ICOA": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 28
+  },
+  "ICOT": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32
+  },
+  "ICSB": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 96
+  },
+  "IIAC": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 1.2
+  },
+  "IMAA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 30
+  },
+  "IMTT": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 14.5
+  },
+  "IOAS": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 1.8
+  },
+  "IODZ": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18
+  },
+  "ITCP": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 17
+  },
+  "JAAS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 105
+  },
+  "JCLJ": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "JCOA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 2.5
+  },
+  "JDNC": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 18
+  },
+  "JFLI": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 32
+  },
+  "JIAA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "JICO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 8.5
+  },
+  "JNAS": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 41.5
+  },
+  "JNTC": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 41.5
+  },
+  "JNWA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 41.5
+  },
+  "JNZP": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 14.5
+  },
+  "JPIH": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 6.5
+  },
+  "JTCK": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 2
+  },
+  "JTCM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 32.5
+  },
+  "JTTG": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 10
+  },
+  "JWAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11.5
+  },
+  "JWRH": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 2.5
+  },
+  "KAAS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 2.5
+  },
+  "KACT": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 6.5
+  },
+  "KAHM": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 27.5
+  },
+  "KAIN": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 16
+  },
+  "KASC": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 8.5
+  },
+  "KCAU": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 24.5
+  },
+  "KCOD": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 10
+  },
+  "KCOE": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 22
+  },
+  "KCOT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 27
+  },
+  "KFAA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 14.5
+  },
+  "KGAS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 19.5
+  },
+  "KMCO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 29.5
+  },
+  "KNFJ": {
+    "nearest_station": "Pattambi Railway Stn",
+    "km_to_station": 1.5
+  },
+  "KPAT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 6.5
+  },
+  "KPX": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 34
+  },
+  "KSCK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 21.5
+  },
+  "KSNC": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 9.5
+  },
+  "KSQV": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 30
+  },
+  "KTMC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 62
+  },
+  "KUMD": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 12
+  },
+  "KWHT": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 26.5
+  },
+  "LAAS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 14.5
+  },
+  "LCOA": {
+    "nearest_station": "Pattambi Railway Stn",
+    "km_to_station": 1.5
+  },
+  "LCOM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 10
+  },
+  "LETC": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 26
+  },
+  "LFC": {
+    "nearest_station": "Guruvayur Bus Stand",
+    "km_to_station": "1.0"
+  },
+  "LFCG": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 27.5
+  },
+  "LFIO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 43.5
+  },
+  "LGNA": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 28
+  },
+  "LKLX": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32
+  },
+  "LMDC": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 1
+  },
+  "LNAA": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 8.5
+  },
+  "LXAJ": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 12.2
+  },
+  "LYRX": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24
+  },
+  "MAAS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 2
+  },
+  "MACV": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 35
+  },
+  "MAKA": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28.5
+  },
+  "MARM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 28.5
+  },
+  "MASC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25.5
+  },
+  "MBCO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 95
+  },
+  "MBQF": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 5
+  },
+  "MCBJ": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 27
+  },
+  "MCC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 78.5
+  },
+  "MCCC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 1.5
+  },
+  "MCM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 85
+  },
+  "MCOA": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18
+  },
+  "MCOC": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 15
+  },
+  "MCOS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 9.8
+  },
+  "MCOT": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 3.2
+  },
+  "MCV": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 8
+  },
+  "MCY": {
+    "nearest_station": "Palakkad Jn Railway",
+    "km_to_station": "5.5"
+  },
+  "MDCP": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 30
+  },
+  "MDWG": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "MEWQ": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 26
+  },
+  "MGIO": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "MHFR": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 25
+  },
+  "MICP": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 34.5
+  },
+  "MIIO": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 35.5
+  },
+  "MKCM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 40
+  },
+  "MKCV": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 8
+  },
+  "MKD": {
+    "nearest_station": "Mannarkkad Bus Stand",
+    "km_to_station": "1.5"
+  },
+  "MKSH": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 14
+  },
+  "MMC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 55
+  },
+  "MMSN": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 1.5
+  },
+  "MOCO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 9.8
+  },
+  "MOCP": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15
+  },
+  "MOCT": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 14.5
+  },
+  "MOTC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15
+  },
+  "MPC": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 15
+  },
+  "MPFT": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 5.5
+  },
+  "MSCO": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 21.5
+  },
+  "MTCA": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 12.5
+  },
+  "MTCM": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 5
+  },
+  "MTCO": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 24.5
+  },
+  "MTCP": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 15
+  },
+  "MTCR": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 35
+  },
+  "MUAC": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 16
+  },
+  "MVKH": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 5
+  },
+  "MWWC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 105
+  },
+  "MWZB": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 75
+  },
+  "NAAS": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 40.5
+  },
+  "NAT": {
+    "nearest_station": "Nattika Jn",
+    "km_to_station": "1.0"
+  },
+  "NBSK": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 35
+  },
+  "NCM": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 26.5
+  },
+  "NCN": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 32
+  },
+  "NCO": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 13.8
+  },
+  "NCOA": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32.2
+  },
+  "NCOS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 62
+  },
+  "NCOT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22.5
+  },
+  "NEM": {
+    "nearest_station": "Nemmara Bus Stand",
+    "km_to_station": "1.5"
+  },
+  "NESA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 25.5
+  },
+  "NGCK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 75
+  },
+  "NIOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 32.5
+  },
+  "NMAA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 30.5
+  },
+  "NMLY": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 9.8
+  },
+  "NOBD": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 35.5
+  },
+  "NTC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 13.5
+  },
+  "NWCM": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "NWSW": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 24.5
+  },
+  "NYDL": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 22
+  },
+  "OCOH": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 63.5
+  },
+  "OCOT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 26.2
+  },
+  "OMYK": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 4.5
+  },
+  "OSOH": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 58.5
+  },
+  "OTP": {
+    "nearest_station": "Ottappalam Railway Stn",
+    "km_to_station": "2.5"
+  },
+  "PAAS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 13.5
+  },
+  "PASC": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28.5
+  },
+  "PCAA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 7
+  },
+  "PCOA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 3
+  },
+  "PCOT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 6.5
+  },
+  "PCSZ": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 5
+  },
+  "PDLC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 14
+  },
+  "PELD": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 36
+  },
+  "PEMA": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 3.5
+  },
+  "PFFE": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 11
+  },
+  "PLCT": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 22
+  },
+  "PMGC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 32
+  },
+  "PMHT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 11.5
+  },
+  "PMST": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 10.5
+  },
+  "PNCP": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 14
+  },
+  "PPTM": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 15
+  },
+  "PRCP": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 105
+  },
+  "PRK": {
+    "nearest_station": "Palakkad Jn Railway",
+    "km_to_station": "14.5"
+  },
+  "PSMO": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 7
+  },
+  "PSUL": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 1.5
+  },
+  "PTMG": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32
+  },
+  "PVCO": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "PVSC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 8.5
+  },
+  "PWCM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 6.5
+  },
+  "PYDS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 10.5
+  },
+  "QAAW": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 82
+  },
+  "QFGD": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 33
+  },
+  "QFIP": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 25
+  },
+  "QHPR": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 29.5
+  },
+  "QLBF": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 33.2
+  },
+  "QNNI": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 39.5
+  },
+  "QTRL": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 18
+  },
+  "QZSP": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 95
+  },
+  "RACK": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 10
+  },
+  "RCNF": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15.8
+  },
+  "RCOA": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 9
+  },
+  "RCOS": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 22
+  },
+  "RCTY": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 26
+  },
+  "RGMG": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 75
+  },
+  "RLPO": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 11
+  },
+  "RMSY": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "ROHW": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 24.5
+  },
+  "RPIU": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 18.2
+  },
+  "RUAC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11
+  },
+  "SAAS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 6
+  },
+  "SACA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 29.5
+  },
+  "SACC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 26.8
+  },
+  "SACE": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 4.5
+  },
+  "SACK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15
+  },
+  "SACM": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 22
+  },
+  "SACP": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 11
+  },
+  "SARB": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 28.5
+  },
+  "SASC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 6.5
+  },
+  "SBCP": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 35
+  },
+  "SCFW": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 12.5
+  },
+  "SCGC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 6.5
+  },
+  "SCOA": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 11
+  },
+  "SCOT": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 30
+  },
+  "SCT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 1.2
+  },
+  "SCWK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 55
+  },
+  "SDSM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 16
+  },
+  "SEOT": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18
+  },
+  "SFLH": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 28
+  },
+  "SGAA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 18
+  },
+  "SHAS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18
+  },
+  "SHCF": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 32
+  },
+  "SHIO": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 26
+  },
+  "SIAC": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18
+  },
+  "SIOA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 18
+  },
+  "SIOM": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "SJAA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "SJCD": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 6
+  },
+  "SJCI": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "SJTC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 23.2
+  },
+  "SKCM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 18
+  },
+  "SKCT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 2.5
+  },
+  "SKG": {
+    "nearest_station": "Guruvayur Bus Stand",
+    "km_to_station": "3.5"
+  },
+  "SKVB": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 28
+  },
+  "SMAS": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 10
+  },
+  "SMCP": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 28
+  },
+  "SMCS": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 96
+  },
+  "SMCT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 1.5
+  },
+  "SMT": {
+    "nearest_station": "Thrissur KSRTC Stand",
+    "km_to_station": "2.0"
+  },
+  "SNCA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24
+  },
+  "SNCC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 14
+  },
+  "SNCN": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 24
+  },
+  "SNCO": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 20
+  },
+  "SNCV": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 6
+  },
+  "SNGS": {
+    "nearest_station": "Pattambi Railway Stn",
+    "km_to_station": "1.5"
+  },
+  "SODA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 3
+  },
+  "SPGF": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 20
+  },
+  "SPZS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 52
+  },
+  "SRVG": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 18
+  },
+  "SSCA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 30
+  },
+  "SSCE": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 32
+  },
+  "SSLJ": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 28.5
+  },
+  "SSSS": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 20
+  },
+  "SSVC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 14
+  },
+  "STAA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 35
+  },
+  "STCK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 15
+  },
+  "STEJ": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 28
+  },
+  "STTC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 85
+  },
+  "SVBW": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 23.5
+  },
+  "SVCK": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22
+  },
+  "SVCO": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 78
+  },
+  "SVNC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 18
+  },
+  "SVPK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 78
+  },
+  "SVTE": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 24
+  },
+  "SXAA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 4.5
+  },
+  "SXMT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 40
+  },
+  "SYMR": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 105
+  },
+  "SYSS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32
+  },
+  "TAAC": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 27.5
+  },
+  "TAAS": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 22.8
+  },
+  "TASU": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 2
+  },
+  "TECE": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 24.5
+  },
+  "TECO": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 12
+  },
+  "TEGU": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 10
+  },
+  "TMGT": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 2.5
+  },
+  "TMOV": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 21.5
+  },
+  "TQJV": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 26.8
+  },
+  "TTCN": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18.2
+  },
+  "TXFN": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 18.5
+  },
+  "UCFP": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 96.2
+  },
+  "UCOA": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 25.5
+  },
+  "UFHJ": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 26
+  },
+  "UKSD": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 14.2
+  },
+  "UOC": {
+    "nearest_station": "Parappanangadi Stn",
+    "km_to_station": "12.0"
+  },
+  "UOYE": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 41
+  },
+  "UTEC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 31.5
+  },
+  "VASP": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 28
+  },
+  "VCOA": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 18.5
+  },
+  "VCT": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 4.5
+  },
+  "VEKH": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 52
+  },
+  "VIC": {
+    "nearest_station": "Palakkad Jn Railway",
+    "km_to_station": "4.5"
+  },
+  "VKHM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 29.2
+  },
+  "VPEC": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 18
+  },
+  "VPGG": {
+    "nearest_station": "Parappanangadi Railway Station",
+    "km_to_station": 18
+  },
+  "VPRO": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 98
+  },
+  "VVCO": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 15.2
+  },
+  "VVFQ": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "WAAS": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 51.5
+  },
+  "WCEK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 51.5
+  },
+  "WDXW": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 12.8
+  },
+  "WGGT": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 25
+  },
+  "WHEU": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 11
+  },
+  "WIUZ": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 18
+  },
+  "WPEP": {
+    "nearest_station": "Kuttippuram Railway Station",
+    "km_to_station": 11.2
+  },
+  "WSCM": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 79
+  },
+  "WTSR": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 10
+  },
+  "WUTE": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 15
+  },
+  "XGNZ": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 34
+  },
+  "XHDK": {
+    "nearest_station": "Shoranur Railway Station",
+    "km_to_station": 32
+  },
+  "XLQJ": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 20
+  },
+  "XOGR": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 6
+  },
+  "XRLI": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 30.5
+  },
+  "XUJC": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 38
+  },
+  "YANP": {
+    "nearest_station": "Thrissur Railway Station",
+    "km_to_station": 18
+  },
+  "YBKE": {
+    "nearest_station": "Vadakara Railway Station",
+    "km_to_station": 18.5
+  },
+  "YCOK": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 35
+  },
+  "YHST": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 8.5
+  },
+  "YIOM": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 14.8
+  },
+  "YNGR": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 32
+  },
+  "YOCB": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 18
+  },
+  "YRMA": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 22
+  },
+  "YVQG": {
+    "nearest_station": "Tirur Railway Station",
+    "km_to_station": 9.5
+  },
+  "ZGCC": {
+    "nearest_station": "Kozhikode Railway Station",
+    "km_to_station": 7.2
+  },
+  "ZPEB": {
+    "nearest_station": "Palakkad Railway Station",
+    "km_to_station": 18
+  }
+}
