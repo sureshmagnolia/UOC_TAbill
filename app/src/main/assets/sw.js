@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ta-bill-cache-20260621-0925';
+const CACHE_NAME = 'ta-bill-cache-2026-06-21T10-09-01-112Z';
 
 const STATIC_ASSETS = [
     './',

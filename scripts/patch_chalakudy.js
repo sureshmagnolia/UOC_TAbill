@@ -11,6 +11,16 @@ const assetsRoutesDir = path.join(rootDir, 'app', 'src', 'main', 'assets', 'rout
 console.log('Loading legs.json...');
 const db = JSON.parse(fs.readFileSync(legsPath, 'utf8'));
 
+console.log('Loading ta_abbrevs.json...');
+const abbrevs = JSON.parse(fs.readFileSync(path.join(rootDir, 'ta_abbrevs.json'), 'utf8'));
+const abbrMap = {};
+for (const item of abbrevs) {
+    if (item.Abbreviation) {
+        abbrMap[item.Abbreviation] = item['Full College Name & Location'] || item['Full Name & Location'];
+    }
+}
+abbrMap['UOC'] = 'University of Calicut (Thenjipalam)';
+
 // 1. Find indices of Thrissur Railway Station and Chalakudy colleges
 const thrissurNames = ["Thrissur Railway Station", "Thrissur Railway Stn"];
 const thrissurIndices = thrissurNames.map(name => db.stations.indexOf(name)).filter(idx => idx !== -1);
@@ -20,7 +30,8 @@ const colleges = {
     "QLBF": { name: "NIRMALA COLLEGE OF ARTS AND SCIENCE , KUNNAPPILLY PO, MELOOR, CHALAKUDY, THRISSUR", km: 6.5 },
     "PMGC": { name: "PANAMPILLY MEMORIAL GOVT (P.M.G) COLLEGE, CHALAKUDY", km: 2.0 },
     "SHCF": { name: "SACRED HEART COLLEGE FOR WOMEN, CHALAKUDY", km: 1.5 },
-    "UTEC": { name: "UNIVERSITY TEACHER EDUCATION CENTRE CHALAKUDY", km: 1.0 }
+    "UTEC": { name: "UNIVERSITY TEACHER EDUCATION CENTRE CHALAKUDY", km: 1.0 },
+    "DIOM": { name: "DIVINE INSTITUTE OF MEDIA SCIENCE(DIMS) CHALAKKUDY", km: 2.0 }
 };
 
 const collegeIndices = {};
@@ -166,7 +177,15 @@ for (const file of routeFiles) {
         
         // If distance is >= 50 KM, we want it to be a train route!
         if (totalKm >= 50.0) {
-            const otherIdx = db.stations.indexOf(db.stations.find(s => s.includes(otherCol)));
+            let otherIdx = -1;
+            const fullName = abbrMap[otherCol];
+            if (fullName) {
+                otherIdx = db.stations.indexOf(fullName);
+            }
+            if (otherIdx === -1) {
+                otherIdx = db.stations.indexOf(db.stations.find(s => s.includes(otherCol)));
+            }
+            
             const destRlyIdx = collegeToRly[otherIdx];
             
             if (destRlyIdx && chalakudyTrainLegs[destRlyIdx]) {
