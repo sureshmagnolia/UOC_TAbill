@@ -7585,17 +7585,16 @@
     },
     {
       "From": "Palakkad Railway Station",
-      "To": "Irinjalakuda Railway Stn",
+      "To": "Kozhikode Railway Station",
       "Mode": "Train",
-      "KM": "95.0",
-      "Fare": 750,
+      "KM": 137,
       "Type": "Main_Haul"
     },
     {
-      "From": "Irinjalakuda Railway Stn",
-      "To": "ST JOSEPHS COLLEGE (AUTONOMOUS), IRINJALAKUDA",
-      "Mode": "Taxi",
-      "KM": "8.0",
+      "From": "Kozhikode Railway Station",
+      "To": "ST JOSEPHS COLLEGE (AUTONOMOUS), DEVAGIRI",
+      "Mode": "Bus",
+      "KM": 6,
       "Type": "Last_Mile"
     }
   ],
