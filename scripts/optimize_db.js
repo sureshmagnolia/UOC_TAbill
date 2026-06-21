@@ -58,7 +58,6 @@ const irinjalakudaColleges = {
     "ASM": { name: "MES Asmabi College", km: 22.0 },
     "NAT": { name: "SN College, Nattika", km: 24.0 },
     "CCI": { name: "Christ College (Autonomous), Irinjalakuda", km: 7.0 },
-    "SJCD": { name: "ST JOSEPHS COLLEGE (AUTONOMOUS), IRINJALAKUDA", km: 8.0 },
     "SJCI": { name: "ST JOSEPHS COLLEGE (AUTONOMOUS), IRINJALAKUDA", km: 8.0 },
     "ETCI": { name: "EUPHRAISIA TRAINING COLLEGE, IRINJALAKUDA, THRISSUR", km: 8.0 }
 };
