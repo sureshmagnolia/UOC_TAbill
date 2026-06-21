@@ -196,7 +196,25 @@ async function init() {
         const files = ['ta_abbrevs.json', 'legs.json'];
         const responses = await Promise.all(files.map(f => fetch(f + '?v=' + Date.now()).then(r => r.json())));
         taDatabase.abbreviations = responses[0];
-        taDatabase.legs = responses[1];
+        
+        const rawLegsData = responses[1];
+        const decompressedLegs = {};
+        if (rawLegsData && rawLegsData.legs && rawLegsData.stations) {
+            const { stations, modes, types, legs } = rawLegsData;
+            for (const [id, arr] of Object.entries(legs)) {
+                decompressedLegs[id] = {
+                    From: stations[arr[0]],
+                    To: stations[arr[1]],
+                    Mode: modes[arr[2]],
+                    KM: arr[3],
+                    Type: types[arr[4]],
+                    ...(arr[5] !== undefined && arr[5] !== null ? { Fare: arr[5] } : {})
+                };
+            }
+            taDatabase.legs = decompressedLegs;
+        } else {
+            taDatabase.legs = rawLegsData;
+        }
         
         populateCollegeDropdowns();
     } catch (e) {

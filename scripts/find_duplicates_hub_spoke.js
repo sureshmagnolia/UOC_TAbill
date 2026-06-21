@@ -9,7 +9,22 @@ if (!fs.existsSync(routesDir) || !fs.existsSync(legsPath)) {
     process.exit(0);
 }
 
-const legsDb = JSON.parse(fs.readFileSync(legsPath, 'utf8'));
+let legsDb = JSON.parse(fs.readFileSync(legsPath, 'utf8'));
+if (legsDb && legsDb.legs && legsDb.stations) {
+    const { stations, modes, types, legs } = legsDb;
+    const decompressed = {};
+    for (const [id, arr] of Object.entries(legs)) {
+        decompressed[id] = {
+            From: stations[arr[0]],
+            To: stations[arr[1]],
+            Mode: modes[arr[2]],
+            KM: arr[3],
+            Type: types[arr[4]],
+            ...(arr[5] !== undefined && arr[5] !== null ? { Fare: arr[5] } : {})
+        };
+    }
+    legsDb = decompressed;
+}
 const files = fs.readdirSync(routesDir).filter(f => f.endsWith('.json'));
 let duplicatesFound = false;
 

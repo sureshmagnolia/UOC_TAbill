@@ -143,9 +143,50 @@ for (const [routeKey, legIds] of Object.entries(activeRoutes)) {
 
 console.log(`Deduplicated legs count: ${Object.keys(newLegs).length}`);
 
-// Step 3: Write the deduplicated legs.json
-fs.writeFileSync(outLegsPath, JSON.stringify(newLegs));
-console.log(`Written legs.json: ${(fs.statSync(outLegsPath).size / 1024 / 1024).toFixed(2)} MB`);
+// Step 3: Compress and write the deduplicated legs.json
+const stationsSet = new Set();
+const modesSet = new Set();
+const typesSet = new Set();
+
+for (const leg of Object.values(newLegs)) {
+    if (leg.From) stationsSet.add(leg.From);
+    if (leg.To) stationsSet.add(leg.To);
+    if (leg.Mode) modesSet.add(leg.Mode);
+    if (leg.Type) typesSet.add(leg.Type);
+}
+
+const stations = Array.from(stationsSet);
+const modes = Array.from(modesSet);
+const types = Array.from(typesSet);
+
+const stationsMap = new Map(stations.map((s, i) => [s, i]));
+const modesMap = new Map(modes.map((m, i) => [m, i]));
+const typesMap = new Map(types.map((t, i) => [t, i]));
+
+const compressedLegs = {};
+for (const [id, leg] of Object.entries(newLegs)) {
+    const arr = [
+        stationsMap.get(leg.From),
+        stationsMap.get(leg.To),
+        modesMap.get(leg.Mode),
+        typeof leg.KM === 'string' ? parseFloat(leg.KM) : leg.KM,
+        typesMap.get(leg.Type)
+    ];
+    if (leg.Fare !== undefined) {
+        arr.push(leg.Fare);
+    }
+    compressedLegs[id] = arr;
+}
+
+const outputData = {
+    stations,
+    modes,
+    types,
+    legs: compressedLegs
+};
+
+fs.writeFileSync(outLegsPath, JSON.stringify(outputData));
+console.log(`Written compressed legs.json: ${(fs.statSync(outLegsPath).size / 1024 / 1024).toFixed(2)} MB`);
 
 // Step 4: Group routes by source college and write individual files
 const routesBySource = {};
