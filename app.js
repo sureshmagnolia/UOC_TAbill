@@ -445,25 +445,31 @@ async function generateQuickJourney() {
     let isLimitedTrip = false;
     
     if (fromAbbr !== toAbbr) {
-        // Ensure routes for fromAbbr are loaded
-        if (!loadedRoutes[fromAbbr]) {
+        const first = fromAbbr < toAbbr ? fromAbbr : toAbbr;
+        const second = fromAbbr < toAbbr ? toAbbr : fromAbbr;
+        
+        // Ensure routes for the alphabetically smaller college are loaded
+        if (!loadedRoutes[first]) {
             try {
-                const res = await fetch(`routes/${fromAbbr}.json?v=` + Date.now());
+                const res = await fetch(`routes/${first}.json?v=` + Date.now());
                 if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-                loadedRoutes[fromAbbr] = await res.json();
+                loadedRoutes[first] = await res.json();
             } catch (e) {
-                console.error(`Failed to load routes for ${fromAbbr}`, e);
+                console.error(`Failed to load routes for ${first}`, e);
                 tbody.innerHTML = "";
-                alert(`Error loading routes for college ${fromAbbr}. Please make sure database exists.`);
+                alert(`Error loading routes for college ${first}. Please make sure database exists.`);
                 return;
             }
         }
         
-        const routeKey = `${fromAbbr}_${toAbbr}`;
-        const legIds = loadedRoutes[fromAbbr][routeKey];
+        const routeKey = `${first}_${second}`;
+        const legIds = loadedRoutes[first][routeKey];
         if (legIds && legIds.length > 0) {
             let totalKm = 0;
-            onwardSteps = legIds.map(legId => {
+            const isReversed = fromAbbr > toAbbr;
+            const processedLegIds = isReversed ? [...legIds].reverse() : legIds;
+            
+            const rawSteps = processedLegIds.map(legId => {
                 const leg = taDatabase.legs[legId];
                 if (!leg) {
                     throw new Error(`Leg ID ${legId} not found in legs database.`);
@@ -471,6 +477,28 @@ async function generateQuickJourney() {
                 totalKm += parseFloat(leg.KM) || 0;
                 return leg;
             });
+            
+            if (rawSteps.length === 1) {
+                const leg = rawSteps[0];
+                onwardSteps = [isReversed ? { ...leg, From: leg.To, To: leg.From } : leg];
+            } else {
+                onwardSteps = [];
+                for (let i = 0; i < rawSteps.length; i++) {
+                    const leg = rawSteps[i];
+                    if (i < rawSteps.length - 1) {
+                        const nextLeg = rawSteps[i + 1];
+                        const C = (leg.From === nextLeg.From || leg.From === nextLeg.To) ? leg.From : leg.To;
+                        const stepFrom = (leg.To === C) ? leg.From : leg.To;
+                        onwardSteps.push({ ...leg, From: stepFrom, To: C });
+                    } else {
+                        const prevOriented = onwardSteps[i - 1];
+                        const C = prevOriented.To;
+                        const stepTo = (leg.From === C) ? leg.To : leg.From;
+                        onwardSteps.push({ ...leg, From: C, To: stepTo });
+                    }
+                }
+            }
+            
             isLimitedTrip = totalKm > 0 && totalKm <= 8;
         } else {
             tbody.innerHTML = "";
