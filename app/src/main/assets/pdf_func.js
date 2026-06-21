@@ -27,6 +27,10 @@ function generatePDF() {
     doc.text(`7) Bank & IFSC: ${getVal('prof-bank-ifsc')}`, 350, 120);
     doc.text(`4) Address: ${getVal('prof-address').substring(0, 40)}`, 40, 135);
 
+    doc.text("Voucher No. .................................................................", 350, 135);
+    doc.text("Month of .................................................................", 350, 147);
+    doc.text("Debit Head .................................................................", 350, 159);
+
     const tableData = [];
     let totalClaim = 0;
     
@@ -113,7 +117,7 @@ function generatePDF() {
     }
 
     doc.autoTable({
-        startY: 150,
+        startY: 175,
         head: [
             [{ content: 'Date & Time', rowSpan: 2 }, { content: 'Place', colSpan: 2 }, { content: 'Mode', rowSpan: 2 }, { content: 'Dist', colSpan: 2 }, { content: 'Rail (2nd AC)', colSpan: 3 }, { content: 'Road', colSpan: 2 }, { content: 'DA', colSpan: 2 }, { content: 'Total', rowSpan: 2 }, { content: 'Purpose', rowSpan: 2 }],
             ['From', 'To', 'Rail', 'Road', 'Fare', 'Rate', 'Amt', 'Rate', 'Amt', 'Days', 'Amt'],
