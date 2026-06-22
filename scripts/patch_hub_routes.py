@@ -37,7 +37,11 @@ college_hub_map = {
     "SAHRDAYA COLLEGE OF ADVANCED STUDIES, KODAKARA": "Chalakudy Railway Station",
     # Pazhanji
     "MAR DIONYSIUS COLLEGE, PAZHANJI": "Pattambi Railway Stn",
+    # Aranattukara & Vatakara
+    "Centre for Computer Science and Information Technology(CCSIT), JMC Aranattukara": "Thrissur Railway Station",
+    "SCHOOL OF MANAGEMENT STUDIES, VATAKARA": "Vadakara Railway Station",
 }
+
 
 # Build lookups
 station_to_idx = {normalize(name): idx for idx, name in enumerate(db['stations'])}
