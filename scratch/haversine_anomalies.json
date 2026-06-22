@@ -1,0 +1,1301 @@
+{
+  "high_anomalies": [
+    {
+      "leg_id": "LEG_15634",
+      "from_abbr": "EAAS",
+      "to_abbr": "OCOH",
+      "db_km": 62.2,
+      "straight_km": 12.7,
+      "ratio": 4.9
+    },
+    {
+      "leg_id": "LEG_25180",
+      "from_abbr": "ICOA",
+      "to_abbr": "OCOH",
+      "db_km": 62.2,
+      "straight_km": 12.7,
+      "ratio": 4.9
+    },
+    {
+      "leg_id": "LEG_15667",
+      "from_abbr": "EAAS",
+      "to_abbr": "QAAW",
+      "db_km": 86.1,
+      "straight_km": 22.1,
+      "ratio": 3.9
+    },
+    {
+      "leg_id": "LEG_25213",
+      "from_abbr": "ICOA",
+      "to_abbr": "QAAW",
+      "db_km": 86.1,
+      "straight_km": 22.1,
+      "ratio": 3.9
+    },
+    {
+      "leg_id": "LEG_15633",
+      "from_abbr": "EAAS",
+      "to_abbr": "NGCK",
+      "db_km": 71.9,
+      "straight_km": 18.55,
+      "ratio": 3.88
+    },
+    {
+      "leg_id": "LEG_25179",
+      "from_abbr": "ICOA",
+      "to_abbr": "NGCK",
+      "db_km": 71.9,
+      "straight_km": 18.55,
+      "ratio": 3.88
+    },
+    {
+      "leg_id": "LEG_14127",
+      "from_abbr": "DCOA",
+      "to_abbr": "RGMG",
+      "db_km": 24.3,
+      "straight_km": 6.86,
+      "ratio": 3.54
+    },
+    {
+      "leg_id": "LEG_7860",
+      "from_abbr": "BKCS",
+      "to_abbr": "EAAS",
+      "db_km": 77.9,
+      "straight_km": 22.7,
+      "ratio": 3.43
+    },
+    {
+      "leg_id": "LEG_7877",
+      "from_abbr": "BKCS",
+      "to_abbr": "ICOA",
+      "db_km": 77.9,
+      "straight_km": 22.7,
+      "ratio": 3.43
+    },
+    {
+      "leg_id": "LEG_15672",
+      "from_abbr": "EAAS",
+      "to_abbr": "WSCM",
+      "db_km": 77.9,
+      "straight_km": 22.7,
+      "ratio": 3.43
+    },
+    {
+      "leg_id": "LEG_25218",
+      "from_abbr": "ICOA",
+      "to_abbr": "WSCM",
+      "db_km": 77.9,
+      "straight_km": 22.7,
+      "ratio": 3.43
+    },
+    {
+      "leg_id": "LEG_9888",
+      "from_abbr": "CCOA",
+      "to_abbr": "EAAS",
+      "db_km": 90.9,
+      "straight_km": 28.58,
+      "ratio": 3.18
+    },
+    {
+      "leg_id": "LEG_9905",
+      "from_abbr": "CCOA",
+      "to_abbr": "ICOA",
+      "db_km": 90.9,
+      "straight_km": 28.58,
+      "ratio": 3.18
+    },
+    {
+      "leg_id": "LEG_15627",
+      "from_abbr": "EAAS",
+      "to_abbr": "MBCO",
+      "db_km": 90.8,
+      "straight_km": 28.58,
+      "ratio": 3.18
+    },
+    {
+      "leg_id": "LEG_25173",
+      "from_abbr": "ICOA",
+      "to_abbr": "MBCO",
+      "db_km": 90.8,
+      "straight_km": 28.58,
+      "ratio": 3.18
+    },
+    {
+      "leg_id": "LEG_15593",
+      "from_abbr": "EAAS",
+      "to_abbr": "EMBC",
+      "db_km": 85.2,
+      "straight_km": 29.08,
+      "ratio": 2.93
+    },
+    {
+      "leg_id": "LEG_15630",
+      "from_abbr": "EAAS",
+      "to_abbr": "MCM",
+      "db_km": 85.2,
+      "straight_km": 29.08,
+      "ratio": 2.93
+    },
+    {
+      "leg_id": "LEG_17088",
+      "from_abbr": "EMBC",
+      "to_abbr": "ICOA",
+      "db_km": 85.2,
+      "straight_km": 29.08,
+      "ratio": 2.93
+    },
+    {
+      "leg_id": "LEG_25176",
+      "from_abbr": "ICOA",
+      "to_abbr": "MCM",
+      "db_km": 85.2,
+      "straight_km": 29.08,
+      "ratio": 2.93
+    },
+    {
+      "leg_id": "LEG_1281",
+      "from_abbr": "AACV",
+      "to_abbr": "ICFA",
+      "db_km": 25.5,
+      "straight_km": 9.05,
+      "ratio": 2.82
+    },
+    {
+      "leg_id": "LEG_11432",
+      "from_abbr": "CKRM",
+      "to_abbr": "EAAS",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_11449",
+      "from_abbr": "CKRM",
+      "to_abbr": "ICOA",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_15607",
+      "from_abbr": "EAAS",
+      "to_abbr": "JAAS",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_15645",
+      "from_abbr": "EAAS",
+      "to_abbr": "SYMR",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_25153",
+      "from_abbr": "ICOA",
+      "to_abbr": "JAAS",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_25191",
+      "from_abbr": "ICOA",
+      "to_abbr": "SYMR",
+      "db_km": 103.1,
+      "straight_km": 37.43,
+      "ratio": 2.75
+    },
+    {
+      "leg_id": "LEG_15635",
+      "from_abbr": "EAAS",
+      "to_abbr": "OCOT",
+      "db_km": 35.1,
+      "straight_km": 12.8,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_15638",
+      "from_abbr": "EAAS",
+      "to_abbr": "PRCP",
+      "db_km": 104.4,
+      "straight_km": 38.12,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_15669",
+      "from_abbr": "EAAS",
+      "to_abbr": "GOPO",
+      "db_km": 31.8,
+      "straight_km": 11.62,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_22657",
+      "from_abbr": "GOPO",
+      "to_abbr": "ICOA",
+      "db_km": 31.8,
+      "straight_km": 11.62,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_25181",
+      "from_abbr": "ICOA",
+      "to_abbr": "OCOT",
+      "db_km": 35.1,
+      "straight_km": 12.8,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_25184",
+      "from_abbr": "ICOA",
+      "to_abbr": "PRCP",
+      "db_km": 104.4,
+      "straight_km": 38.12,
+      "ratio": 2.74
+    },
+    {
+      "leg_id": "LEG_3418",
+      "from_abbr": "AIAC",
+      "to_abbr": "EAAS",
+      "db_km": 100.1,
+      "straight_km": 36.91,
+      "ratio": 2.71
+    },
+    {
+      "leg_id": "LEG_3435",
+      "from_abbr": "AIAC",
+      "to_abbr": "ICOA",
+      "db_km": 100.1,
+      "straight_km": 36.91,
+      "ratio": 2.71
+    },
+    {
+      "leg_id": "LEG_6548",
+      "from_abbr": "BCC",
+      "to_abbr": "EAAS",
+      "db_km": 31.4,
+      "straight_km": 11.78,
+      "ratio": 2.67
+    },
+    {
+      "leg_id": "LEG_6553",
+      "from_abbr": "BCC",
+      "to_abbr": "ICOA",
+      "db_km": 31.4,
+      "straight_km": 11.78,
+      "ratio": 2.67
+    },
+    {
+      "leg_id": "LEG_15581",
+      "from_abbr": "EAAS",
+      "to_abbr": "FKIA",
+      "db_km": 36.8,
+      "straight_km": 14.07,
+      "ratio": 2.62
+    },
+    {
+      "leg_id": "LEG_19990",
+      "from_abbr": "FKIA",
+      "to_abbr": "ICOA",
+      "db_km": 36.8,
+      "straight_km": 14.07,
+      "ratio": 2.62
+    },
+    {
+      "leg_id": "LEG_15605",
+      "from_abbr": "EAAS",
+      "to_abbr": "ICSB",
+      "db_km": 103.5,
+      "straight_km": 40.48,
+      "ratio": 2.56
+    },
+    {
+      "leg_id": "LEG_25151",
+      "from_abbr": "ICOA",
+      "to_abbr": "ICSB",
+      "db_km": 103.5,
+      "straight_km": 40.48,
+      "ratio": 2.56
+    },
+    {
+      "leg_id": "LEG_15598",
+      "from_abbr": "EAAS",
+      "to_abbr": "GCKK",
+      "db_km": 44.7,
+      "straight_km": 17.52,
+      "ratio": 2.55
+    },
+    {
+      "leg_id": "LEG_21273",
+      "from_abbr": "GCKK",
+      "to_abbr": "ICOA",
+      "db_km": 44.7,
+      "straight_km": 17.52,
+      "ratio": 2.55
+    },
+    {
+      "leg_id": "LEG_13653",
+      "from_abbr": "DBCS",
+      "to_abbr": "EAAS",
+      "db_km": 97.5,
+      "straight_km": 39.27,
+      "ratio": 2.48
+    },
+    {
+      "leg_id": "LEG_13670",
+      "from_abbr": "DBCS",
+      "to_abbr": "ICOA",
+      "db_km": 97.5,
+      "straight_km": 39.27,
+      "ratio": 2.48
+    },
+    {
+      "leg_id": "LEG_15668",
+      "from_abbr": "EAAS",
+      "to_abbr": "VPRO",
+      "db_km": 98.4,
+      "straight_km": 39.79,
+      "ratio": 2.47
+    },
+    {
+      "leg_id": "LEG_25214",
+      "from_abbr": "ICOA",
+      "to_abbr": "VPRO",
+      "db_km": 98.4,
+      "straight_km": 39.79,
+      "ratio": 2.47
+    },
+    {
+      "leg_id": "LEG_33285",
+      "from_abbr": "KTMC",
+      "to_abbr": "RGMG",
+      "db_km": 63.5,
+      "straight_km": 26.32,
+      "ratio": 2.41
+    },
+    {
+      "leg_id": "LEG_44410",
+      "from_abbr": "NCOS",
+      "to_abbr": "RGMG",
+      "db_km": 63.5,
+      "straight_km": 26.32,
+      "ratio": 2.41
+    },
+    {
+      "leg_id": "LEG_43440",
+      "from_abbr": "MWZB",
+      "to_abbr": "SVCO",
+      "db_km": 116.3,
+      "straight_km": 49.0,
+      "ratio": 2.37
+    },
+    {
+      "leg_id": "LEG_43441",
+      "from_abbr": "MWZB",
+      "to_abbr": "SVPK",
+      "db_km": 116.6,
+      "straight_km": 49.2,
+      "ratio": 2.37
+    },
+    {
+      "leg_id": "LEG_12165",
+      "from_abbr": "COAS",
+      "to_abbr": "YANP",
+      "db_km": 34.9,
+      "straight_km": 14.77,
+      "ratio": 2.36
+    },
+    {
+      "leg_id": "LEG_22575",
+      "from_abbr": "GOPO",
+      "to_abbr": "OCOH",
+      "db_km": 56.9,
+      "straight_km": 24.15,
+      "ratio": 2.36
+    },
+    {
+      "leg_id": "LEG_30469",
+      "from_abbr": "KAIN",
+      "to_abbr": "YANP",
+      "db_km": 34.9,
+      "straight_km": 14.77,
+      "ratio": 2.36
+    },
+    {
+      "leg_id": "LEG_13225",
+      "from_abbr": "DAMG",
+      "to_abbr": "EAAS",
+      "db_km": 41.4,
+      "straight_km": 17.64,
+      "ratio": 2.35
+    },
+    {
+      "leg_id": "LEG_13242",
+      "from_abbr": "DAMG",
+      "to_abbr": "ICOA",
+      "db_km": 41.4,
+      "straight_km": 17.64,
+      "ratio": 2.35
+    },
+    {
+      "leg_id": "LEG_15651",
+      "from_abbr": "EAAS",
+      "to_abbr": "MEWQ",
+      "db_km": 41.4,
+      "straight_km": 17.64,
+      "ratio": 2.35
+    },
+    {
+      "leg_id": "LEG_25197",
+      "from_abbr": "ICOA",
+      "to_abbr": "MEWQ",
+      "db_km": 41.4,
+      "straight_km": 17.64,
+      "ratio": 2.35
+    },
+    {
+      "leg_id": "LEG_15546",
+      "from_abbr": "EAAS",
+      "to_abbr": "SSLJ",
+      "db_km": 30.2,
+      "straight_km": 12.9,
+      "ratio": 2.34
+    },
+    {
+      "leg_id": "LEG_25092",
+      "from_abbr": "ICOA",
+      "to_abbr": "SSLJ",
+      "db_km": 30.2,
+      "straight_km": 12.9,
+      "ratio": 2.34
+    },
+    {
+      "leg_id": "LEG_51880",
+      "from_abbr": "QAAW",
+      "to_abbr": "SSLJ",
+      "db_km": 79.2,
+      "straight_km": 33.86,
+      "ratio": 2.34
+    },
+    {
+      "leg_id": "LEG_6650",
+      "from_abbr": "BCC",
+      "to_abbr": "OCOH",
+      "db_km": 56.5,
+      "straight_km": 24.33,
+      "ratio": 2.32
+    },
+    {
+      "leg_id": "LEG_37249",
+      "from_abbr": "MCC",
+      "to_abbr": "MWZB",
+      "db_km": 112.3,
+      "straight_km": 48.65,
+      "ratio": 2.31
+    },
+    {
+      "leg_id": "LEG_6810",
+      "from_abbr": "BECF",
+      "to_abbr": "EAAS",
+      "db_km": 50.3,
+      "straight_km": 21.84,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_6815",
+      "from_abbr": "BECF",
+      "to_abbr": "ICOA",
+      "db_km": 50.3,
+      "straight_km": 21.84,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_15560",
+      "from_abbr": "EAAS",
+      "to_abbr": "SBCP",
+      "db_km": 50.3,
+      "straight_km": 21.84,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_15629",
+      "from_abbr": "EAAS",
+      "to_abbr": "MWWC",
+      "db_km": 105.1,
+      "straight_km": 45.71,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_25106",
+      "from_abbr": "ICOA",
+      "to_abbr": "SBCP",
+      "db_km": 50.3,
+      "straight_km": 21.84,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_25175",
+      "from_abbr": "ICOA",
+      "to_abbr": "MWWC",
+      "db_km": 105.1,
+      "straight_km": 45.71,
+      "ratio": 2.3
+    },
+    {
+      "leg_id": "LEG_6911",
+      "from_abbr": "BECF",
+      "to_abbr": "OCOH",
+      "db_km": 75.4,
+      "straight_km": 32.92,
+      "ratio": 2.29
+    },
+    {
+      "leg_id": "LEG_22574",
+      "from_abbr": "GOPO",
+      "to_abbr": "NGCK",
+      "db_km": 66.6,
+      "straight_km": 29.04,
+      "ratio": 2.29
+    },
+    {
+      "leg_id": "LEG_46458",
+      "from_abbr": "OCOH",
+      "to_abbr": "SBCP",
+      "db_km": 75.4,
+      "straight_km": 32.92,
+      "ratio": 2.29
+    },
+    {
+      "leg_id": "LEG_15557",
+      "from_abbr": "EAAS",
+      "to_abbr": "SHIO",
+      "db_km": 49.0,
+      "straight_km": 21.45,
+      "ratio": 2.28
+    },
+    {
+      "leg_id": "LEG_22608",
+      "from_abbr": "GOPO",
+      "to_abbr": "QAAW",
+      "db_km": 68.7,
+      "straight_km": 30.08,
+      "ratio": 2.28
+    },
+    {
+      "leg_id": "LEG_25103",
+      "from_abbr": "ICOA",
+      "to_abbr": "SHIO",
+      "db_km": 49.0,
+      "straight_km": 21.45,
+      "ratio": 2.28
+    },
+    {
+      "leg_id": "LEG_6683",
+      "from_abbr": "BCC",
+      "to_abbr": "QAAW",
+      "db_km": 68.9,
+      "straight_km": 30.35,
+      "ratio": 2.27
+    },
+    {
+      "leg_id": "LEG_6649",
+      "from_abbr": "BCC",
+      "to_abbr": "NGCK",
+      "db_km": 66.2,
+      "straight_km": 29.27,
+      "ratio": 2.26
+    },
+    {
+      "leg_id": "LEG_11205",
+      "from_abbr": "CIOR",
+      "to_abbr": "MWZB",
+      "db_km": 80.7,
+      "straight_km": 35.67,
+      "ratio": 2.26
+    },
+    {
+      "leg_id": "LEG_14108",
+      "from_abbr": "DCOA",
+      "to_abbr": "MWZB",
+      "db_km": 37.1,
+      "straight_km": 16.43,
+      "ratio": 2.26
+    },
+    {
+      "leg_id": "LEG_2680",
+      "from_abbr": "AHAA",
+      "to_abbr": "RACK",
+      "db_km": 28.9,
+      "straight_km": 12.85,
+      "ratio": 2.25
+    },
+    {
+      "leg_id": "LEG_34018",
+      "from_abbr": "LCOM",
+      "to_abbr": "MWZB",
+      "db_km": 66.4,
+      "straight_km": 29.56,
+      "ratio": 2.25
+    },
+    {
+      "leg_id": "LEG_46454",
+      "from_abbr": "OCOH",
+      "to_abbr": "SHIO",
+      "db_km": 74.1,
+      "straight_km": 32.88,
+      "ratio": 2.25
+    },
+    {
+      "leg_id": "LEG_2361",
+      "from_abbr": "ACT",
+      "to_abbr": "EAAS",
+      "db_km": 55.4,
+      "straight_km": 24.73,
+      "ratio": 2.24
+    },
+    {
+      "leg_id": "LEG_2378",
+      "from_abbr": "ACT",
+      "to_abbr": "ICOA",
+      "db_km": 55.4,
+      "straight_km": 24.73,
+      "ratio": 2.24
+    },
+    {
+      "leg_id": "LEG_33214",
+      "from_abbr": "KTMC",
+      "to_abbr": "MWZB",
+      "db_km": 76.4,
+      "straight_km": 34.17,
+      "ratio": 2.24
+    },
+    {
+      "leg_id": "LEG_43424",
+      "from_abbr": "MWZB",
+      "to_abbr": "NCOS",
+      "db_km": 76.4,
+      "straight_km": 34.17,
+      "ratio": 2.24
+    },
+    {
+      "leg_id": "LEG_37320",
+      "from_abbr": "MCC",
+      "to_abbr": "RGMG",
+      "db_km": 99.5,
+      "straight_km": 44.56,
+      "ratio": 2.23
+    },
+    {
+      "leg_id": "LEG_54191",
+      "from_abbr": "RGMG",
+      "to_abbr": "SVCO",
+      "db_km": 103.5,
+      "straight_km": 46.35,
+      "ratio": 2.23
+    },
+    {
+      "leg_id": "LEG_54192",
+      "from_abbr": "RGMG",
+      "to_abbr": "SVPK",
+      "db_km": 103.7,
+      "straight_km": 46.54,
+      "ratio": 2.23
+    },
+    {
+      "leg_id": "LEG_7829",
+      "from_abbr": "BKCS",
+      "to_abbr": "GOPO",
+      "db_km": 72.6,
+      "straight_km": 32.63,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_15566",
+      "from_abbr": "EAAS",
+      "to_abbr": "QZSP",
+      "db_km": 107.1,
+      "straight_km": 48.14,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_15657",
+      "from_abbr": "EAAS",
+      "to_abbr": "SMCS",
+      "db_km": 107.1,
+      "straight_km": 48.14,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_22612",
+      "from_abbr": "GOPO",
+      "to_abbr": "WSCM",
+      "db_km": 72.6,
+      "straight_km": 32.63,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_25112",
+      "from_abbr": "ICOA",
+      "to_abbr": "QZSP",
+      "db_km": 107.1,
+      "straight_km": 48.14,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_25203",
+      "from_abbr": "ICOA",
+      "to_abbr": "SMCS",
+      "db_km": 107.1,
+      "straight_km": 48.14,
+      "ratio": 2.22
+    },
+    {
+      "leg_id": "LEG_14907",
+      "from_abbr": "DPIO",
+      "to_abbr": "NGCK",
+      "db_km": 88.2,
+      "straight_km": 39.9,
+      "ratio": 2.21
+    },
+    {
+      "leg_id": "LEG_43357",
+      "from_abbr": "MWZB",
+      "to_abbr": "YHST",
+      "db_km": 70.4,
+      "straight_km": 31.89,
+      "ratio": 2.21
+    },
+    {
+      "leg_id": "LEG_68417",
+      "from_abbr": "UCOA",
+      "to_abbr": "YANP",
+      "db_km": 34.7,
+      "straight_km": 15.71,
+      "ratio": 2.21
+    },
+    {
+      "leg_id": "LEG_68548",
+      "from_abbr": "UFHJ",
+      "to_abbr": "YANP",
+      "db_km": 34.7,
+      "straight_km": 15.71,
+      "ratio": 2.21
+    },
+    {
+      "leg_id": "LEG_6593",
+      "from_abbr": "BCC",
+      "to_abbr": "BKCS",
+      "db_km": 72.2,
+      "straight_km": 32.88,
+      "ratio": 2.2
+    },
+    {
+      "leg_id": "LEG_6688",
+      "from_abbr": "BCC",
+      "to_abbr": "WSCM",
+      "db_km": 72.2,
+      "straight_km": 32.88,
+      "ratio": 2.2
+    },
+    {
+      "leg_id": "LEG_14909",
+      "from_abbr": "DPIO",
+      "to_abbr": "OCOH",
+      "db_km": 81.1,
+      "straight_km": 37.18,
+      "ratio": 2.18
+    },
+    {
+      "leg_id": "LEG_50933",
+      "from_abbr": "PVCO",
+      "to_abbr": "TXFN",
+      "db_km": 34.2,
+      "straight_km": 15.7,
+      "ratio": 2.18
+    },
+    {
+      "leg_id": "LEG_46432",
+      "from_abbr": "OCOH",
+      "to_abbr": "SSLJ",
+      "db_km": 55.3,
+      "straight_km": 25.44,
+      "ratio": 2.17
+    },
+    {
+      "leg_id": "LEG_3204",
+      "from_abbr": "AIAA",
+      "to_abbr": "EAAS",
+      "db_km": 46.6,
+      "straight_km": 21.53,
+      "ratio": 2.16
+    },
+    {
+      "leg_id": "LEG_3221",
+      "from_abbr": "AIAA",
+      "to_abbr": "ICOA",
+      "db_km": 46.6,
+      "straight_km": 21.53,
+      "ratio": 2.16
+    },
+    {
+      "leg_id": "LEG_1622",
+      "from_abbr": "ABCD",
+      "to_abbr": "DIOM",
+      "db_km": 111.5,
+      "straight_km": 51.81,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_11108",
+      "from_abbr": "CGAA",
+      "to_abbr": "EAAS",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_11125",
+      "from_abbr": "CGAA",
+      "to_abbr": "ICOA",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_15597",
+      "from_abbr": "EAAS",
+      "to_abbr": "GHAA",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_15610",
+      "from_abbr": "EAAS",
+      "to_abbr": "KSCK",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_15615",
+      "from_abbr": "EAAS",
+      "to_abbr": "TMOV",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_22333",
+      "from_abbr": "GHAA",
+      "to_abbr": "ICOA",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_25156",
+      "from_abbr": "ICOA",
+      "to_abbr": "KSCK",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_25161",
+      "from_abbr": "ICOA",
+      "to_abbr": "TMOV",
+      "db_km": 46.6,
+      "straight_km": 21.69,
+      "ratio": 2.15
+    },
+    {
+      "leg_id": "LEG_3336",
+      "from_abbr": "AIAC",
+      "to_abbr": "LFIO",
+      "db_km": 90.7,
+      "straight_km": 42.45,
+      "ratio": 2.14
+    },
+    {
+      "leg_id": "LEG_55751",
+      "from_abbr": "SACE",
+      "to_abbr": "SVCK",
+      "db_km": 40.0,
+      "straight_km": 18.7,
+      "ratio": 2.14
+    },
+    {
+      "leg_id": "LEG_17696",
+      "from_abbr": "FAAS",
+      "to_abbr": "MWZB",
+      "db_km": 105.2,
+      "straight_km": 49.43,
+      "ratio": 2.13
+    },
+    {
+      "leg_id": "LEG_19724",
+      "from_abbr": "FITC",
+      "to_abbr": "MWZB",
+      "db_km": 105.2,
+      "straight_km": 49.43,
+      "ratio": 2.13
+    },
+    {
+      "leg_id": "LEG_34037",
+      "from_abbr": "LCOM",
+      "to_abbr": "RGMG",
+      "db_km": 53.6,
+      "straight_km": 25.15,
+      "ratio": 2.13
+    },
+    {
+      "leg_id": "LEG_46395",
+      "from_abbr": "OCOH",
+      "to_abbr": "WUTE",
+      "db_km": 77.9,
+      "straight_km": 36.68,
+      "ratio": 2.12
+    },
+    {
+      "leg_id": "LEG_2229",
+      "from_abbr": "ACT",
+      "to_abbr": "AIAC",
+      "db_km": 76.1,
+      "straight_km": 36.25,
+      "ratio": 2.1
+    },
+    {
+      "leg_id": "LEG_8677",
+      "from_abbr": "BVNC",
+      "to_abbr": "MWZB",
+      "db_km": 73.9,
+      "straight_km": 35.15,
+      "ratio": 2.1
+    },
+    {
+      "leg_id": "LEG_15534",
+      "from_abbr": "EAAS",
+      "to_abbr": "WUTE",
+      "db_km": 52.8,
+      "straight_km": 25.31,
+      "ratio": 2.09
+    },
+    {
+      "leg_id": "LEG_17767",
+      "from_abbr": "FAAS",
+      "to_abbr": "RGMG",
+      "db_km": 92.4,
+      "straight_km": 44.19,
+      "ratio": 2.09
+    },
+    {
+      "leg_id": "LEG_19795",
+      "from_abbr": "FITC",
+      "to_abbr": "RGMG",
+      "db_km": 92.4,
+      "straight_km": 44.19,
+      "ratio": 2.09
+    },
+    {
+      "leg_id": "LEG_23034",
+      "from_abbr": "HAAS",
+      "to_abbr": "OCOH",
+      "db_km": 79.3,
+      "straight_km": 38.01,
+      "ratio": 2.09
+    },
+    {
+      "leg_id": "LEG_25081",
+      "from_abbr": "ICOA",
+      "to_abbr": "WUTE",
+      "db_km": 52.8,
+      "straight_km": 25.31,
+      "ratio": 2.09
+    },
+    {
+      "leg_id": "LEG_43341",
+      "from_abbr": "MWZB",
+      "to_abbr": "PRK",
+      "db_km": 68.2,
+      "straight_km": 32.76,
+      "ratio": 2.08
+    },
+    {
+      "leg_id": "LEG_45010",
+      "from_abbr": "NGCK",
+      "to_abbr": "SSLJ",
+      "db_km": 65.0,
+      "straight_km": 31.41,
+      "ratio": 2.07
+    },
+    {
+      "leg_id": "LEG_46566",
+      "from_abbr": "OCOT",
+      "to_abbr": "QAAW",
+      "db_km": 72.3,
+      "straight_km": 34.86,
+      "ratio": 2.07
+    },
+    {
+      "leg_id": "LEG_9935",
+      "from_abbr": "CCOA",
+      "to_abbr": "SSLJ",
+      "db_km": 83.9,
+      "straight_km": 40.64,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_15611",
+      "from_abbr": "EAAS",
+      "to_abbr": "KCAU",
+      "db_km": 41.4,
+      "straight_km": 20.12,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_15619",
+      "from_abbr": "EAAS",
+      "to_abbr": "MASC",
+      "db_km": 41.4,
+      "straight_km": 20.12,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_25157",
+      "from_abbr": "ICOA",
+      "to_abbr": "KCAU",
+      "db_km": 41.4,
+      "straight_km": 20.12,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_25165",
+      "from_abbr": "ICOA",
+      "to_abbr": "MASC",
+      "db_km": 41.4,
+      "straight_km": 20.12,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_36699",
+      "from_abbr": "MBCO",
+      "to_abbr": "SSLJ",
+      "db_km": 83.9,
+      "straight_km": 40.64,
+      "ratio": 2.06
+    },
+    {
+      "leg_id": "LEG_17040",
+      "from_abbr": "EMBC",
+      "to_abbr": "GOPO",
+      "db_km": 79.9,
+      "straight_km": 39.04,
+      "ratio": 2.05
+    },
+    {
+      "leg_id": "LEG_22571",
+      "from_abbr": "GOPO",
+      "to_abbr": "MCM",
+      "db_km": 79.9,
+      "straight_km": 39.04,
+      "ratio": 2.05
+    },
+    {
+      "leg_id": "LEG_8697",
+      "from_abbr": "BVNC",
+      "to_abbr": "RGMG",
+      "db_km": 61.1,
+      "straight_km": 29.9,
+      "ratio": 2.04
+    },
+    {
+      "leg_id": "LEG_15536",
+      "from_abbr": "EAAS",
+      "to_abbr": "HAAS",
+      "db_km": 54.2,
+      "straight_km": 26.59,
+      "ratio": 2.04
+    },
+    {
+      "leg_id": "LEG_22937",
+      "from_abbr": "HAAS",
+      "to_abbr": "ICOA",
+      "db_km": 54.2,
+      "straight_km": 26.59,
+      "ratio": 2.04
+    },
+    {
+      "leg_id": "LEG_46444",
+      "from_abbr": "OCOH",
+      "to_abbr": "RACK",
+      "db_km": 88.8,
+      "straight_km": 43.57,
+      "ratio": 2.04
+    },
+    {
+      "leg_id": "LEG_2355",
+      "from_abbr": "ACT",
+      "to_abbr": "DPIO",
+      "db_km": 48.8,
+      "straight_km": 24.2,
+      "ratio": 2.02
+    },
+    {
+      "leg_id": "LEG_6609",
+      "from_abbr": "BCC",
+      "to_abbr": "EMBC",
+      "db_km": 79.5,
+      "straight_km": 39.29,
+      "ratio": 2.02
+    },
+    {
+      "leg_id": "LEG_6646",
+      "from_abbr": "BCC",
+      "to_abbr": "MCM",
+      "db_km": 79.5,
+      "straight_km": 39.29,
+      "ratio": 2.02
+    },
+    {
+      "leg_id": "LEG_15549",
+      "from_abbr": "EAAS",
+      "to_abbr": "RACK",
+      "db_km": 63.7,
+      "straight_km": 31.5,
+      "ratio": 2.02
+    },
+    {
+      "leg_id": "LEG_25095",
+      "from_abbr": "ICOA",
+      "to_abbr": "RACK",
+      "db_km": 63.7,
+      "straight_km": 31.5,
+      "ratio": 2.02
+    },
+    {
+      "leg_id": "LEG_8567",
+      "from_abbr": "BVNA",
+      "to_abbr": "MWZB",
+      "db_km": 72.5,
+      "straight_km": 36.04,
+      "ratio": 2.01
+    },
+    {
+      "leg_id": "LEG_14161",
+      "from_abbr": "DCOA",
+      "to_abbr": "KTMC",
+      "db_km": 50.6,
+      "straight_km": 25.22,
+      "ratio": 2.01
+    },
+    {
+      "leg_id": "LEG_14177",
+      "from_abbr": "DCOA",
+      "to_abbr": "NCOS",
+      "db_km": 50.6,
+      "straight_km": 25.22,
+      "ratio": 2.01
+    },
+    {
+      "leg_id": "LEG_7907",
+      "from_abbr": "BKCS",
+      "to_abbr": "SSLJ",
+      "db_km": 71.0,
+      "straight_km": 35.42,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_15617",
+      "from_abbr": "EAAS",
+      "to_abbr": "KGAS",
+      "db_km": 54.9,
+      "straight_km": 27.38,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_15620",
+      "from_abbr": "EAAS",
+      "to_abbr": "SPGF",
+      "db_km": 54.9,
+      "straight_km": 27.38,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_25163",
+      "from_abbr": "ICOA",
+      "to_abbr": "KGAS",
+      "db_km": 54.9,
+      "straight_km": 27.38,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_25166",
+      "from_abbr": "ICOA",
+      "to_abbr": "SPGF",
+      "db_km": 54.9,
+      "straight_km": 27.38,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_54109",
+      "from_abbr": "RGMG",
+      "to_abbr": "YHST",
+      "db_km": 57.5,
+      "straight_km": 28.69,
+      "ratio": 2.0
+    },
+    {
+      "leg_id": "LEG_63263",
+      "from_abbr": "SSLJ",
+      "to_abbr": "WSCM",
+      "db_km": 71.0,
+      "straight_km": 35.42,
+      "ratio": 2.0
+    }
+  ],
+  "low_anomalies": [],
+  "missing_coords": [
+    "Guruvayur Bus Stand",
+    "Thrissur KSRTC Stand",
+    "Ottappalam Railway Stn",
+    "Pattambi Railway Stn",
+    "Palakkad Stadium Stand",
+    "SN College Alathur",
+    "Guruvayur Railway Stn",
+    "Little Flower College",
+    "Nemmara Bus Stand",
+    "SNGS College Pattambi",
+    "Tanur Railway Station",
+    "Chalakudy Railway Station",
+    "Erattakulam Stop",
+    "Kuttippuram Railway Station",
+    "Palakkad Jn Railway",
+    "NAIPUNYA INSTITUTE OF MANAGEMENT AND INFORMATION TECHNOLOGY, PONGAM, KORATTY",
+    "THAQWA AFZAL-UL-ULAMA ARABIC COLLEGE(WOMENS ARABIC), ANDATHODE",
+    "St. Marys College, Thrissur",
+    "Ariyannur Stop",
+    "Palakkad Railway Station",
+    "Feroke Railway Station",
+    "Palakkad KSRTC Stand",
+    "Mannarkkad Bus Stand",
+    "Ottappalam Bus Stand",
+    "Tirur Railway Station",
+    "Kozhikode Railway Station",
+    "Thrissur Railway Stn",
+    "Shoranur Railway Station",
+    "Irinjalakuda Railway Stn",
+    "Nattika Jn",
+    "Thrissur Railway Station",
+    "Pattambi Bus Stand",
+    "Vadakara Railway Station",
+    "Parappanangadi Stn",
+    "N.S.S COLLEGE, OTTAPPALAM",
+    "Parappanangadi Railway Station",
+    "Kodungallur Stand",
+    "Chittur Bus Stand"
+  ]
+}
