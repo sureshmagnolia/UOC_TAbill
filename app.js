@@ -205,28 +205,13 @@ function getSelectedGrade() {
 // Initialize App
 async function init() {
     try {
-        const files = ['ta_abbrevs.json', 'legs.json'];
-        const responses = await Promise.all(files.map(f => fetch(f + '?v=' + Date.now()).then(r => r.json())));
-        taDatabase.abbreviations = responses[0];
+        const abbrevsRes = await fetch('ta_abbrevs.json?v=' + Date.now()).then(r => r.json());
+        taDatabase.abbreviations = abbrevsRes;
+
+        const stationsRes = await fetch('https://worker.sureshmagnolia.workers.dev/api/stations').then(r => r.json());
         
-        const rawLegsData = responses[1];
-        const decompressedLegs = {};
-        if (rawLegsData && rawLegsData.legs && rawLegsData.stations) {
-            const { stations, modes, types, legs } = rawLegsData;
-            for (const [id, arr] of Object.entries(legs)) {
-                decompressedLegs[id] = {
-                    From: stations[arr[0]],
-                    To: stations[arr[1]],
-                    Mode: modes[arr[2]],
-                    KM: arr[3],
-                    Type: types[arr[4]],
-                    ...(arr[5] !== undefined && arr[5] !== null ? { Fare: arr[5] } : {})
-                };
-            }
-            taDatabase.legs = decompressedLegs;
-        } else {
-            taDatabase.legs = rawLegsData;
-        }
+        // Emulate taDatabase.legs for the UI dropdown logic without the actual graph details
+        taDatabase.legs = stationsRes.map(st => ({ From: st, To: st }));
         
         populateCollegeDropdowns();
     } catch (e) {
@@ -524,37 +509,28 @@ async function generateQuickJourney() {
     
     if (fromAbbr !== toAbbr) {
         const first = fromAbbr < toAbbr ? fromAbbr : toAbbr;
-        const second = fromAbbr < toAbbr ? toAbbr : fromAbbr;
+        const last = fromAbbr < toAbbr ? toAbbr : fromAbbr;
         
-        // Ensure routes for the alphabetically smaller college are loaded
-        if (!loadedRoutes[first]) {
-            try {
-                const res = await fetch(`routes/${first}.json?v=` + Date.now());
-                if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-                loadedRoutes[first] = await res.json();
-            } catch (e) {
-                console.error(`Failed to load routes for ${first}`, e);
-                tbody.innerHTML = "";
-                alert(`Error loading routes for college ${first}. Please make sure database exists.`);
+        try {
+            // Secure route fetch from Cloudflare API
+            const res = await fetch(`https://worker.sureshmagnolia.workers.dev/api/route?fromCollege=${first}&toCollege=${last}`);
+            if (!res.ok) {
+                alert(`Unable to find a valid route between ${first} and ${last}.`);
                 return;
             }
-        }
-        
-        const routeKey = `${first}_${second}`;
-        const legIds = loadedRoutes[first][routeKey];
-        if (legIds && legIds.length > 0) {
-            let totalKm = 0;
-            const isReversed = fromAbbr > toAbbr;
-            const processedLegIds = isReversed ? [...legIds].reverse() : legIds;
             
-            const rawSteps = processedLegIds.map(legId => {
-                const leg = taDatabase.legs[legId];
-                if (!leg) {
-                    throw new Error(`Leg ID ${legId} not found in legs database.`);
-                }
-                totalKm += parseFloat(leg.KM) || 0;
-                return leg;
-            });
+            const rawSteps = await res.json();
+            
+            if (!rawSteps || rawSteps.length === 0) {
+                alert(`Unable to find a valid route between ${first} and ${last}.`);
+                return;
+            }
+            
+            const totalKm = rawSteps.reduce((sum, leg) => sum + (parseFloat(leg.KM) || 0), 0);
+            const isReversed = fromAbbr > toAbbr;
+            if (isReversed) {
+                rawSteps.reverse();
+            }
             
             if (rawSteps.length === 1) {
                 const leg = rawSteps[0];
@@ -578,7 +554,8 @@ async function generateQuickJourney() {
             }
             
             isLimitedTrip = totalKm > 0 && totalKm <= 8;
-        } else {
+        } catch (e) {
+            console.error(e);
             tbody.innerHTML = "";
             alert(`No pre-calculated route found between ${fromAbbr} and ${toAbbr}.`);
             return;
@@ -853,7 +830,7 @@ function ensureDatalist() {
     document.body.appendChild(dl);
 }
 
-function handleStationInput(input) {
+async function handleStationInput(input) {
     const row = input.closest('.journey-card');
     if (!row) return;
     const fromInput = row.querySelector('.from-station-input') || row.querySelectorAll('input[type="text"][list="stations"]')[0];
@@ -862,10 +839,13 @@ function handleStationInput(input) {
     const to = toInput ? toInput.value : '';
     if (from && to) {
         let leg = null;
-        if (taDatabase.legs) {
-            leg = Object.values(taDatabase.legs).find(l => 
-                (l.From === from && l.To === to) || (l.From === to && l.To === from)
-            );
+        try {
+            const res = await fetch(`https://worker.sureshmagnolia.workers.dev/api/leg?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
+            if (res.ok) {
+                leg = await res.json();
+            }
+        } catch (e) {
+            console.error(e);
         }
         if (leg) {
             const kmInput = row.querySelector('input[placeholder="KM"], input[placeholder="0"][oninput*="calculateRowFare"]');

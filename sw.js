@@ -8,8 +8,7 @@ const STATIC_ASSETS = [
     './libs/tailwind.js',
     './libs/jspdf.umd.min.js',
     './libs/jspdf.plugin.autotable.min.js',
-    './ta_abbrevs.json',
-    './legs.json'
+    './ta_abbrevs.json'
 ];
 
 self.addEventListener('install', event => {
