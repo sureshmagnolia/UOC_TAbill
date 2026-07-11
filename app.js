@@ -155,6 +155,18 @@ function loadFormState() {
                 });
                 loadedJourneys = true;
                 updateCalculations();
+                const statusDiv = document.getElementById('journey-status');
+                const tbody = document.getElementById('journey-body');
+                const btnAddLeg = document.getElementById('btn-add-leg');
+                if (tbody) tbody.classList.add('hidden');
+                if (btnAddLeg) btnAddLeg.classList.add('hidden');
+                if (statusDiv) {
+                    statusDiv.innerHTML = '<button class="px-4 py-1.5 rounded-md bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold border border-blue-200 transition-colors shadow-sm inline-flex items-center justify-center" onclick="window.toggleJourneyEdit()">Journey log Loaded, click here to edit</button>';
+                    statusDiv.classList.remove('hidden');
+                }
+                const warningDiv = document.getElementById('quick-journey-warning');
+                if (warningDiv) warningDiv.classList.add('hidden');
+                enableGenerateButtons();
             }
         } catch(e) {
             console.error("Failed to load state", e);
@@ -247,9 +259,39 @@ async function init() {
         if (inp && btn && inp.value) btn.classList.remove('hidden');
     });
 
-    if (!loaded) {
-        addJourneyRow();
-    }
+    ['quick-from', 'quick-to', 'quick-date-onward', 'quick-time-onward', 'quick-date-return', 'quick-time-return'].forEach(id => {
+        const inp = document.getElementById(id);
+        if (inp) {
+            const invalidate = () => {
+                const btnPrint = document.getElementById('btn-generate-print');
+                const btnPdf = document.getElementById('btn-generate-pdf');
+                if (btnPrint) { btnPrint.disabled = true; btnPrint.classList.add('opacity-50', 'cursor-not-allowed'); }
+                if (btnPdf) { btnPdf.disabled = true; btnPdf.classList.add('opacity-50', 'cursor-not-allowed'); }
+                
+                const warningDiv = document.getElementById('quick-journey-warning');
+                if (warningDiv) {
+                    warningDiv.innerHTML = '<span class="inline-block mt-2 px-3 py-1.5 rounded-md bg-orange-50 border border-orange-200 text-orange-600 font-bold text-xs shadow-sm">Data changed. Please click "Auto-Fill Journey Log".</span>';
+                    warningDiv.classList.remove('hidden');
+                }
+                
+                const statusDiv = document.getElementById('journey-status');
+                if (statusDiv) statusDiv.classList.add('hidden');
+                
+                const tbody = document.getElementById('journey-body');
+                if (tbody) tbody.classList.add('hidden');
+                
+                const btnAddLeg = document.getElementById('btn-add-leg');
+                if (btnAddLeg) btnAddLeg.classList.add('hidden');
+                
+                const totalAmountBox = document.getElementById('total-claim-box');
+                if (totalAmountBox) totalAmountBox.classList.add('hidden');
+            };
+            inp.addEventListener('input', invalidate);
+            inp.addEventListener('change', invalidate);
+        }
+    });
+
+    // Removed default journey row initialization here.
 }
 
 function populateCollegeDropdowns() {
@@ -324,6 +366,7 @@ function setupCollegeAutocomplete(inputId) {
         syncClear();
         dropdown.classList.add('hidden');
         saveFormState();
+        input.dispatchEvent(new Event('change'));
     });
 
     if (clearBtn) {
@@ -355,36 +398,71 @@ function getFullCollegeName(abbr) {
 }
 
 function resolveAbbreviation(val) {
-    if (!val || !taDatabase || !taDatabase.abbreviations) return val || '';
+    if (!val || !taDatabase || !taDatabase.abbreviations) return null;
     const cleanVal = val.trim().toLowerCase();
     const match = taDatabase.abbreviations.find(a => 
         (a.Abbreviation || '').toLowerCase() === cleanVal || 
         (a['Full College Name & Location'] || '').toLowerCase() === cleanVal
     );
-    return match ? match.Abbreviation : val.trim();
+    return match ? match.Abbreviation : null;
 }
 
 async function generateQuickJourney() {
+    const requiredProfileFields = [
+        { id: 'prof-name', name: 'Full Name' },
+        { id: 'prof-designation', name: 'Designation' },
+        { id: 'prof-basic-pay', name: 'Basic Pay' },
+        { id: 'prof-college', name: 'College' },
+        { id: 'prof-grade', name: 'Grade' },
+        { id: 'prof-acc-no', name: 'SB Account No' },
+        { id: 'prof-bank-ifsc', name: 'Bank & IFSC' },
+        { id: 'prof-address', name: 'Permanent Address' }
+    ];
+    
+    for (const field of requiredProfileFields) {
+        const el = document.getElementById(field.id);
+        if (!el || !el.value.trim()) {
+            alert(`Please fill the mandatory Personal Profile field: ${field.name}`);
+            if (el) el.focus();
+            return;
+        }
+    }
+
     const fromEl = document.getElementById('quick-from');
     const toEl   = document.getElementById('quick-to');
-    const fromAbbr = (fromEl.dataset.abbr || resolveAbbreviation(fromEl.value)).trim();
-    const toAbbr   = (toEl.dataset.abbr   || resolveAbbreviation(toEl.value)).trim();
+    const fromAbbr = fromEl.dataset.abbr || resolveAbbreviation(fromEl.value);
+    const toAbbr   = toEl.dataset.abbr   || resolveAbbreviation(toEl.value);
     const onwardDate = document.getElementById('quick-date-onward').value;
     const returnDate = document.getElementById('quick-date-return').value;
     const onwardStartTime = document.getElementById('quick-time-onward').value;
     const returnStartTime = document.getElementById('quick-time-return').value;
     
-    if (!fromAbbr || !toAbbr || !onwardDate || !onwardStartTime) {
-        throw new Error(`[From:${fromAbbr}][To:${toAbbr}][Date:${onwardDate}][Time:${onwardStartTime}] missing.`);
+    if (!fromAbbr) {
+        alert("Please search and find the 'From College' by entering any 3 characters of the college name.");
+        return;
+    }
+    if (!toAbbr) {
+        alert("Please search and find the 'To College' by entering any 3 characters of the college name.");
+        return;
+    }
+    if (!onwardDate || !onwardStartTime) {
+        alert("Please provide the onward date and time.");
+        return;
     }
     
     const tbody = document.getElementById('journey-body');
+    const statusDiv = document.getElementById('journey-status');
+    const btnAddLeg = document.getElementById('btn-add-leg');
+    
     tbody.innerHTML = "";
+    tbody.classList.add('hidden');
+    if (btnAddLeg) btnAddLeg.classList.add('hidden');
     
     // Show loading text
-    const loadingRow = document.createElement('tr');
-    loadingRow.innerHTML = `<td colspan="6" class="p-4 text-center text-gray-500">Loading route data...</td>`;
-    tbody.appendChild(loadingRow);
+    if (statusDiv) {
+        statusDiv.innerHTML = '<span class="text-gray-500 animate-pulse">Loading route data...</span>';
+        statusDiv.classList.remove('hidden');
+    }
     
     const addTimedSteps = (steps, date, startTime, isLimitedTrip = false) => {
         let currentTime = new Date(`${date}T${startTime}`);
@@ -565,6 +643,27 @@ async function generateQuickJourney() {
     }
     
     updateCalculations();
+    enableGenerateButtons();
+    if (statusDiv) {
+        statusDiv.classList.remove('animate-pulse');
+        statusDiv.innerHTML = '<button class="px-4 py-1.5 rounded-md bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-semibold border border-blue-200 transition-colors shadow-sm inline-flex items-center justify-center" onclick="window.toggleJourneyEdit()">Journey log Loaded, click here to edit</button>';
+        statusDiv.classList.remove('hidden');
+    }
+    const warningDiv = document.getElementById('quick-journey-warning');
+    if (warningDiv) warningDiv.classList.add('hidden');
+}
+
+window.toggleJourneyEdit = function() {
+    const tbody = document.getElementById('journey-body');
+    if (tbody) tbody.classList.toggle('hidden');
+    updateCalculations();
+};
+
+function enableGenerateButtons() {
+    const btnPrint = document.getElementById('btn-generate-print');
+    const btnPdf = document.getElementById('btn-generate-pdf');
+    if (btnPrint) { btnPrint.disabled = false; btnPrint.classList.remove('opacity-50', 'cursor-not-allowed'); }
+    if (btnPdf) { btnPdf.disabled = false; btnPdf.classList.remove('opacity-50', 'cursor-not-allowed'); }
 }
 
 function loadSettings() {
@@ -644,7 +743,7 @@ function calculateGrade() {
     document.getElementById('prof-grade').value = grade ? grade.id : "IV";
 }
 
-function addJourneyRow() {
+function addJourneyRow(referenceNode = null) {
     const container = document.getElementById('journey-body');
     const rowId = Date.now() + Math.random();
 
@@ -661,9 +760,14 @@ function addJourneyRow() {
                 <div class="field-label">Journey Date</div>
                 <input type="date" class="journey-date-input w-full mt-1 border border-gray-200 rounded-lg px-2 py-1.5 text-xs bg-white focus:border-blue-400 outline-none">
             </div>
-            <button onclick="removeRow('${rowId}')" class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition self-end">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-            </button>
+            <div class="flex gap-1 self-end">
+                <button title="Insert leg below" onclick="addJourneyRow(this.closest('.journey-card'))" class="p-2 rounded-lg text-gray-400 hover:text-green-600 hover:bg-green-50 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                </button>
+                <button title="Remove leg" onclick="removeRow('${rowId}')" class="p-2 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+            </div>
         </div>
 
         <!-- Stations Row (From / To) -->
@@ -720,7 +824,11 @@ function addJourneyRow() {
         <input type="checkbox" class="limit-check hidden" onchange="calculateRowFare(this.closest('.journey-card'))">
     `;
 
-    container.appendChild(card);
+    if (referenceNode) {
+        referenceNode.insertAdjacentElement('afterend', card);
+    } else {
+        container.appendChild(card);
+    }
     ensureDatalist();
 }
 
@@ -822,11 +930,13 @@ function updateCalculations() {
         validateTimeStream();
     }
     let total = 0;
+    let travelLegCount = 0;
     document.querySelectorAll('#journey-body .journey-card').forEach(row => {
         const daIn = row.querySelector('input[data-field="da"]');
         if (row.dataset.type === "DA") {
             total += parseFloat(daIn ? daIn.value : 0) || 0;
         } else {
+            travelLegCount++;
             const kmIn = row.querySelector('input[data-field="km"]');
             const fareIn = row.querySelector('input[data-field="fare"]');
             const km = parseFloat(kmIn ? kmIn.value : 0) || 0;
@@ -842,6 +952,18 @@ function updateCalculations() {
         }
     });
     document.getElementById('total-amount').innerText = `₹ ${total.toFixed(2)}`;
+    const totalBox = document.getElementById('total-claim-box');
+    if (totalBox) totalBox.classList.remove('hidden');
+    
+    const btnAddLegTop = document.getElementById('btn-add-leg');
+    const tbody = document.getElementById('journey-body');
+    if (btnAddLegTop && tbody) {
+        if (!tbody.classList.contains('hidden') && travelLegCount === 0) {
+            btnAddLegTop.classList.remove('hidden');
+        } else {
+            btnAddLegTop.classList.add('hidden');
+        }
+    }
     
     if (typeof saveFormState === 'function') {
         clearTimeout(window._saveTimeout);
